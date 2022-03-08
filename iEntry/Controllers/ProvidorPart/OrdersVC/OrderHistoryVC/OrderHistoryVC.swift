@@ -16,7 +16,8 @@ class OrderHistoryVC: UIViewController,IndicatorInfoProvider {
     @IBOutlet weak var tblView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //using same model and local storage for provider
+        print(ShareData.shareInfo.contractorListdataValueGetByUserid.id ?? "")
         self.tblView.register(UINib.init(nibName: "OrderHistoryCell", bundle: nil), forCellReuseIdentifier: "OrderHistoryCell")
     }
     

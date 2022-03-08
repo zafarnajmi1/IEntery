@@ -8,10 +8,16 @@
 import UIKit
 import XLPagerTabStrip
 class QRCodeVC: BaseController, IndicatorInfoProvider {
+
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "CÓDIGO QR")
     }
-
+    
+    
+    var contractdata : GetContractorByUserIdModelData?
+    
+var isfromContract = false
+    @IBOutlet weak var mpView: UIView!
     @IBOutlet weak var lblusername: UILabel!
     @IBOutlet weak var lbltime: UILabel!
     @IBOutlet weak var lbldate: UILabel!
@@ -26,6 +32,12 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isfromContract == true {
+            self.mpView.isHidden = false
+        } else {
+            self.mpView.isHidden = true
+        }
         mainView.shadowAndRoundcorner(cornerRadius: 5, shadowColor: #colorLiteral(red: 0.8626509309, green: 0.8627994061, blue: 0.8626416326, alpha: 1), shadowRadius: 2.0, shadowOpacity: 1)
         
         userimg.roundViiew()
@@ -53,6 +65,24 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
 
         return nil
     }
+    
+    
+    @IBAction func mapAction(_ sender: UIButton) {
+        
+        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
+            
+        vc?.companyname =   ShareData.shareInfo.contractorListdataValueGetByUserid.company?.name ?? ""
+        vc?.address = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.address ?? ""
+        vc?.lat = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.latitud ?? 0
+        vc?.long = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.longitud ?? 0
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
+    
+    
+    
     @IBAction func scanAction(_ sender: UIButton) {
         let storyboard = UIStoryboard.init(name: StoryBoards.Home.rawValue, bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "QRScanVC") as? QRScanVC

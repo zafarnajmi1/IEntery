@@ -34,17 +34,24 @@ class MenuVC: BaseController {
         if ShareData.shareInfo.userRole == .contractor {
             
             MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
-            MeneList.append(MenuData(Titl: "CONTRATISTAS", Img: UIImage(named: "ic-contract")))
+            MeneList.append(MenuData(Titl: "CONTRATOS", Img: UIImage(named: "ic-contract")))
             MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
             
             
-        } else  if ShareData.shareInfo.userRole == .provider {
+        } else  if ShareData.shareInfo.userRole == .contractoremplyee {
+            
+            MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
+            MeneList.append(MenuData(Titl: "CONTRATOS", Img: UIImage(named: "ic-contract")))
+            MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
+            
+            
+        }  else  if ShareData.shareInfo.userRole == .provider {
             
             MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
             MeneList.append(MenuData(Titl: "ORDENES DE COMPRA", Img: UIImage(named: "ic-contract-1")))
             MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
             
-        } else {
+        } else if ShareData.shareInfo.userRole == .employees {
             
         
         MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
@@ -103,7 +110,31 @@ extension MenuVC: UITableViewDelegate,UITableViewDataSource {
             
             
             
-        } else if ShareData.shareInfo.userRole == .provider {
+        } else
+        if ShareData.shareInfo.userRole == .contractoremplyee {
+            
+            
+            switch indx {
+            case 0:
+                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier:"NotificationVC") as? NotificationVC
+                self.navigationController?.pushViewController(vc!, animated: true)
+            case 1 :
+                let storyBoard = UIStoryboard.init(name: "Contract", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier:"ContractVC") as? ContractVC
+                self.navigationController?.pushViewController(vc!, animated: true)
+            case 2:
+                
+                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier:"UserProfileVC") as? UserProfileVC
+                self.navigationController?.pushViewController(vc!, animated: true)
+            default:
+                break
+            }
+            
+            
+            
+        }else if ShareData.shareInfo.userRole == .provider {
             switch indx {
             case 0:
                 let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
@@ -123,7 +154,7 @@ extension MenuVC: UITableViewDelegate,UITableViewDataSource {
             }
             
             
-        } else  {
+        } else if ShareData.shareInfo.userRole == .employees {
         
         
         switch indx {

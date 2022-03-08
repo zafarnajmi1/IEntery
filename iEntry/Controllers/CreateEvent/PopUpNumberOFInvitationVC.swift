@@ -16,7 +16,6 @@ class PopUpNumberOFInvitationVC: BaseController {
         view.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 0.2935282726)
         setMDCTxtFieldDesign(txtfiled: txtnumber, Placeholder: "NO INIVITADOS", imageIcon: UIImage())
         
-        
     }
     
 

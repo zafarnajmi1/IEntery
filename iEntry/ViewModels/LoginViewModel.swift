@@ -65,7 +65,7 @@ class  LoginViewModel {
     
     func sendEmail(email:String,Success: @escaping (SendEmailModel?,String?) -> Void, Failure: @escaping(NetworkError) -> Void){
        let url = Constant.MainUrl + Constant.URLs.sendEmail + "\(email)"
-
+              
                Networkhandler.GetRequiest(url: url, parameters: nil, success: {(successResponse)  in
 
                    do {
@@ -91,6 +91,8 @@ class  LoginViewModel {
     func otpValidate(email:String, otp:String,Success: @escaping (CheckUserModel?,String?) -> Void, Failure: @escaping(NetworkError) -> Void){
         let url =  Constant.MainUrl + "authentication-service/check-verification-code/\(otp)/by-username/\(email)"
 
+        print("url:",url)
+        
                Networkhandler.GetRequiest(url: url, parameters: nil, success: {(successResponse)  in
 
                    do {

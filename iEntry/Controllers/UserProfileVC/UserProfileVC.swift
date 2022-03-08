@@ -144,7 +144,18 @@ class UserProfileVC: BaseController {
             
             let storyBoard = UIStoryboard.init(name: StoryBoards.Main.rawValue, bundle: nil)
                     let vc = storyBoard.instantiateViewController(withIdentifier:"LoginVC") as? LoginVC
-                    self.navigationController?.pushViewController(vc!, animated: true)
+            ShareData.shareInfo.saveUser(user: nil)
+            ShareData.shareInfo.saveContract(contract: nil)
+            let defaults = UserDefaults.standard
+            defaults.set(nil, forKey: "checkuserExist")
+            
+            defaults.set(nil, forKey: "contractList")
+            
+            
+            defaults.set(nil, forKey: "contractorData")
+            UserDefaults.standard.set(nil, forKey: "notification")
+            UserDefaults.standard.set(nil, forKey: "contactList")
+            self.navigationController?.pushViewController(vc!, animated: true)
                     
         }
         vc?.modalPresentationStyle = .overFullScreen

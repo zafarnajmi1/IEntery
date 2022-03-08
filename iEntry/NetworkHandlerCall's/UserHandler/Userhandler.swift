@@ -887,6 +887,111 @@ class userhandler {
          })
      }
     
+    
+    //MARK:- get All ContractLists
+    
+    class func getAllIncomingContractList(params:[String:Any],newurl:String,Success: @escaping (IncomingContractListModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+        var url = ""
+        
+            url = newurl //Constant.MainUrl + Constant.URLs.incomingContractList
+       
+         //url = Constant.MainUrl + Constant.URLs.contractHirotyList
+        
+        print("page url :", url)
+         Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(IncomingContractListModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    
+    
+    //MARK: Get Contractor By user ID
+    class func getContractorByUserIDs(userid:String,Success: @escaping (GetContractorByUserIdModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.getContractorByUserId + userid
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(GetContractorByUserIdModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    
+    //MARK: Get Contractor Employee By user ID
+    class func getContractorEmployeeByUserIDs(userid:String,Success: @escaping (GetContractorEmployeeByUserIDModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.getContractorEmployeeByUserID + userid
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(GetContractorEmployeeByUserIDModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    //MARK: Get Contractor By user ID
+    class func getProviderByUserIDs(userid:String,Success: @escaping (GetContractorByUserIdModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.getproviderbyuserid + userid
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(GetContractorByUserIdModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
 }
 
 

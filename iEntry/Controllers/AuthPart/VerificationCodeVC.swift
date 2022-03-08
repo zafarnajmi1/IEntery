@@ -129,6 +129,65 @@ func dismissKeyboard(){
     }
 
     
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range:NSRange, replacementString string: String) -> Bool {
+//            // Range.length == 1 means,clicking backspace
+//        if (range.length == 0){
+//            if textField == txtone {
+//                txttwo?.becomeFirstResponder()
+//            }
+//            if textField == txttwo {
+//                txtthree?.becomeFirstResponder()
+//            }
+//            if textField == txtthree {
+//                txtfour?.becomeFirstResponder()
+//            }
+//            if textField == txtfour {
+//                txtfive?.becomeFirstResponder()
+//            }
+//            if textField == txtfive {
+//                txtsix?.becomeFirstResponder()
+//
+//            }
+//
+//
+//
+//            if textField == txtsix {
+//                txtsix?.resignFirstResponder()
+//                 /*After the otpbox6 is filled we capture the All the OTP textField and do the server call. If you want to capture the otpbox6 use string.*/
+//                self.otpTex = "\((txtone?.text)!)\((txttwo?.text)!)\((txtthree?.text)!)\((txtfour?.text)!)\((txtfive?.text)!)\((txtsix?.text)!)\(textField.text ?? "")"
+//                self.otpValidate(otp: otpTex)
+//
+//            }
+//            textField.text? = string
+//            print(textField.text ?? "")
+//            return false
+//        }else if (range.length == 1) {
+//                if textField == txtsix {
+//                    txtfive?.becomeFirstResponder()
+//                }
+//                if textField == txtfive {
+//                    txtfour?.becomeFirstResponder()
+//                }
+//                if textField == txtfour {
+//                    txtthree?.becomeFirstResponder()
+//                }
+//                if textField == txtthree {
+//                    txttwo?.becomeFirstResponder()
+//                }
+//                if textField == txttwo {
+//                    txtone?.becomeFirstResponder()
+//                }
+//                if textField == txtone {
+//                    txtone?.resignFirstResponder()
+//                }
+//                textField.text? = ""
+//                return false
+//        }
+//        return true
+//        }
+      
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range:NSRange, replacementString string: String) -> Bool {
             // Range.length == 1 means,clicking backspace
         if (range.length == 0){
@@ -153,7 +212,7 @@ func dismissKeyboard(){
                 txtsix?.resignFirstResponder()
                  /*After the otpbox6 is filled we capture the All the OTP textField and do the server call. If you want to capture the otpbox6 use string.*/
                 self.otpTex = "\((txtone?.text)!)\((txttwo?.text)!)\((txtthree?.text)!)\((txtfour?.text)!)\((txtfive?.text)!)\(string)"
-                self.otpValidate()
+                self.otpValidate(otp:self.otpTex )
                 
             }
             textField.text? = string
@@ -182,7 +241,8 @@ func dismissKeyboard(){
         }
         return true
         }
-      
+    
+    
     func checkkData() ->Bool {
         if otpTex.count < 6 {
             alert(message: "OTP Is Not Correct Please Enter Correct OTP!")
@@ -201,9 +261,13 @@ func dismissKeyboard(){
         return true
     }
   
-    func otpValidate() {
+    func otpValidate(otp:String) {
         self.showLoader()
-        loginVM.otpValidate(email: email, otp: otpTex, Success: {response , trycatch in
+//        self.otpTex = "\(self.txtone.text ?? "")\(self.txttwo.text ?? "")\(self.txtthree.text ?? "")\(self.txtfour.text ?? "")\(self.txtfive.text ?? "")\(self.txtsix.text ?? "")"
+
+            print("otp :",otp)
+        
+        loginVM.otpValidate(email: email, otp: otp, Success: {response , trycatch in
             self.hidLoader()
             if response?.data ?? false {
                 self.moveOnChangePassword()

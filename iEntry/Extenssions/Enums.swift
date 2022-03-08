@@ -19,6 +19,8 @@ enum UserRole {
     case provider
     case employees
     case guests
+    case contractoremplyee
+    case provideremployee
 }
 
 

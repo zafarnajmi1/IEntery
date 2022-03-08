@@ -11,7 +11,7 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
     
     
     //MARK:- here are the iboutlet
-    
+    var contractdata : GetContractorByUserIdModelData?
     @IBOutlet weak var bottomView: UIView!
     
     
@@ -50,6 +50,7 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
            titleLabel.textColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
         titleLabel.font = UIFont(name: "Montserrat-Bold", size: 20)
            navigationItem.titleView = titleLabel
+        getProviderApi()
     
     }
     
@@ -98,6 +99,20 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
             let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier:"FilterVC") as? FilterVC
             self.present(vc!, animated: true, completion: nil)
+    }
+    
+    
+    func getProviderApi(){
+        userhandler.getProviderByUserIDs(userid: ShareData.shareInfo.obj?.id ?? "", Success: { response in
+            if response?.success == true {
+                self.contractdata = response?.data
+                ShareData.shareInfo.saveContractorListGetByUserid(contractor: (response?.data)!)
+            } else {
+                
+            }
+        }, Failure: {error in
+            
+        })
     }
 }
 

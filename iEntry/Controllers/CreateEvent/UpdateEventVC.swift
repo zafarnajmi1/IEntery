@@ -17,7 +17,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
     var invitationsData : [getAllInvitationsAgainstEventModelData]? = nil
     var eventdata : EventModuleData? = nil
     var eventDetaildata : EventDetailModelData? = nil
-    var  commenAreasdata : [CommenAreasModelsData]? = nil
+    var  commenAreasdata = [CommenAreasModelsData]()
     var usersIDsarr = [String]()
     var checkRegisterUser = [checkUserExistModel]()
     var invitationlist = [InvitationsHistoryModel]()
@@ -141,7 +141,23 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         self.reservationName =  eventdata?.reservation?.zone?.name ?? ""
         self.reservationId = eventdata?.reservation?.zone?.id ?? ""
        
-        getallCommenAreasApi(startdate:self.eventDetaildata?.startDate ?? 0,endDate:self.eventDetaildata?.endDate ?? 0)
+       getallCommenAreasApi(startdate:self.eventDetaildata?.startDate ?? 0,endDate:self.eventDetaildata?.endDate ?? 0)
+        
+      
+        
+        
+           // if self.eventdata?.reservation?.zone?.id
+//        self.commenAreasdata[0].isSelected = true
+//        self.commenAreasdata[0].name = self.eventdata?.reservation?.zone?.name
+//        self.commenAreasdata[0].zoneId = self.eventdata?.reservation?.zone?.id
+//
+//        self.reservationName = self.eventdata?.reservation?.zone?.name ?? ""
+//        self.reservationId =  self.eventdata?.reservation?.zone?.id ?? ""
+//        self.reserveTableView.reloadData()
+//        self.reserveTableHeight.constant =  self.reserveTableView.contentSize.height
+//        self.view.setNeedsLayout()
+//        self.view.layoutIfNeeded()
+        
     }
     
     func getallCommenAreasApi(startdate:Int,endDate:Int){
@@ -161,7 +177,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         userhandler.getallCommenAreas(params: dic) { response in
             self.hidLoader()
             if response?.success == true {
-                self.commenAreasdata =  response?.data
+                self.commenAreasdata =  (response?.data)!
                 
                 for item in self.commenAreasdata ?? [] {
                     if self.eventdata?.reservation?.zone?.id == item.zoneId {
@@ -317,7 +333,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
             
         } else {
             
-            if self.commenAreasdata?.count == 0 {
+            if self.commenAreasdata.count == 0 {
                 self.alert(message: "No free reservarion areas")
                 return
             }
@@ -463,7 +479,7 @@ extension UpdateEventVC : UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  tableView == reserveTableView  {
-            return  self.commenAreasdata?.count ?? 0
+            return  self.commenAreasdata.count ?? 0
         } else {
             return self.checkRegisterUser.count
         }
@@ -474,12 +490,12 @@ extension UpdateEventVC : UITableViewDelegate,UITableViewDataSource {
         if tableView ==  reserveTableView {
             let cell =  tableView.dequeueReusableCell(withIdentifier: "NearChoosCell") as? NearChoosCell
             self.view.setNeedsLayout()
-            cell?.lblname.text = self.commenAreasdata?[indexPath.row].name
-            cell?.lblvenu.text = self.commenAreasdata?[indexPath.row].name
-            cell?.lblactive.text = self.commenAreasdata?[indexPath.row].status?.name
+            cell?.lblname.text = self.commenAreasdata[indexPath.row].name
+            cell?.lblvenu.text = self.commenAreasdata[indexPath.row].name
+            cell?.lblactive.text = self.commenAreasdata[indexPath.row].status?.name
             
             
-            if self.commenAreasdata?[indexPath.row].isSelected == true {
+            if self.commenAreasdata[indexPath.row].isSelected == true {
                 cell?.mainView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             } else {
                 cell?.mainView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -513,12 +529,12 @@ extension UpdateEventVC : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == reserveTableView {
             
-                for item in 0..<self.commenAreasdata!.count{
-                    self.commenAreasdata?[item].isSelected = false
+            for item in 0..<self.commenAreasdata.count{
+                self.commenAreasdata[item].isSelected = false
                 }
-                self.commenAreasdata?[indexPath.row].isSelected = true
-            reservationName =  self.commenAreasdata?[indexPath.row].name ?? ""
-            reservationId = self.commenAreasdata?[indexPath.row].zoneId ?? ""
+            self.commenAreasdata[indexPath.row].isSelected = true
+            reservationName =  self.commenAreasdata[indexPath.row].name ?? ""
+            reservationId = self.commenAreasdata[indexPath.row].zoneId ?? ""
             self.isNewReservation = true
                 self.reserveTableView.reloadData()
         } else {

@@ -16,12 +16,14 @@
 		1C2FDA4126F243AF0037AD0B /* GeneralQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2FDA4026F243AF0037AD0B /* GeneralQRCodeVC.swift */; };
 		1C2FDA4326F25CDF0037AD0B /* QRScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2FDA4226F25CDF0037AD0B /* QRScanVC.swift */; };
 		1C30FCAB273D999400929A2D /* ContractHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30FCAA273D999400929A2D /* ContractHistoryVC.swift */; };
+		1C338CF427D14C2C0041BE2F /* GetContractorEmployeeByUserIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C338CF327D14C2C0041BE2F /* GetContractorEmployeeByUserIDModel.swift */; };
 		1C33D44E273EC3F80094B63F /* ContractInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C33D44D273EC3F80094B63F /* ContractInformationVC.swift */; };
 		1C344D292774EB290026743A /* GetAllZonesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C344D282774EB290026743A /* GetAllZonesModel.swift */; };
 		1C35B7FC27772F9100A10096 /* PreRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35B7FB27772F9100A10096 /* PreRegisterModel.swift */; };
 		1C35B7FE2777386400A10096 /* UserNotRegisterPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35B7FD2777386400A10096 /* UserNotRegisterPopUpVC.swift */; };
 		1C35B80027773D2200A10096 /* PreRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35B7FF27773D2200A10096 /* PreRegisterVC.swift */; };
 		1C35B802277755F300A10096 /* CreateInvitationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35B801277755F200A10096 /* CreateInvitationModel.swift */; };
+		1C3623D527BED15A003DDF8B /* IncomingContractListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3623D427BED15A003DDF8B /* IncomingContractListModel.swift */; };
 		1C3625C127B2CEB4000C61E0 /* NewNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3625BF27B2CEB4000C61E0 /* NewNotificationCell.swift */; };
 		1C3625C227B2CEB4000C61E0 /* NewNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3625C027B2CEB4000C61E0 /* NewNotificationCell.xib */; };
 		1C3625C427B2D2DE000C61E0 /* GetAllNotificationTypesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3625C327B2D2DE000C61E0 /* GetAllNotificationTypesModel.swift */; };
@@ -29,6 +31,7 @@
 		1C378EE527B41DE60040DED7 /* CreateNotificationWithUsersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C378EE427B41DE60040DED7 /* CreateNotificationWithUsersListModel.swift */; };
 		1C378EE727B440DD0040DED7 /* LogOutPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C378EE627B440DD0040DED7 /* LogOutPopUpVC.swift */; };
 		1C378EE927B449800040DED7 /* InvitationUserDeleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C378EE827B449800040DED7 /* InvitationUserDeleteModel.swift */; };
+		1C397EA427C5395400C16E60 /* GetContractorByUserIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C397EA327C5395400C16E60 /* GetContractorByUserIdModel.swift */; };
 		1C3C17EF278DD42600F40D0E /* EventDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C17EE278DD42600F40D0E /* EventDetailModel.swift */; };
 		1C3C17F1278DD82900F40D0E /* getAllInvitationsAgainstEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C17F0278DD82900F40D0E /* getAllInvitationsAgainstEventModel.swift */; };
 		1C3D169D27A32AC0001D8293 /* NotificationsSaveLocaly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3D169C27A32AC0001D8293 /* NotificationsSaveLocaly.swift */; };
@@ -300,12 +303,14 @@
 		1C2FDA4026F243AF0037AD0B /* GeneralQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralQRCodeVC.swift; sourceTree = "<group>"; };
 		1C2FDA4226F25CDF0037AD0B /* QRScanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanVC.swift; sourceTree = "<group>"; };
 		1C30FCAA273D999400929A2D /* ContractHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractHistoryVC.swift; sourceTree = "<group>"; };
+		1C338CF327D14C2C0041BE2F /* GetContractorEmployeeByUserIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContractorEmployeeByUserIDModel.swift; sourceTree = "<group>"; };
 		1C33D44D273EC3F80094B63F /* ContractInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractInformationVC.swift; sourceTree = "<group>"; };
 		1C344D282774EB290026743A /* GetAllZonesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllZonesModel.swift; sourceTree = "<group>"; };
 		1C35B7FB27772F9100A10096 /* PreRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterModel.swift; sourceTree = "<group>"; };
 		1C35B7FD2777386400A10096 /* UserNotRegisterPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotRegisterPopUpVC.swift; sourceTree = "<group>"; };
 		1C35B7FF27773D2200A10096 /* PreRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterVC.swift; sourceTree = "<group>"; };
 		1C35B801277755F200A10096 /* CreateInvitationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvitationModel.swift; sourceTree = "<group>"; };
+		1C3623D427BED15A003DDF8B /* IncomingContractListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingContractListModel.swift; sourceTree = "<group>"; };
 		1C3625BF27B2CEB4000C61E0 /* NewNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotificationCell.swift; sourceTree = "<group>"; };
 		1C3625C027B2CEB4000C61E0 /* NewNotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNotificationCell.xib; sourceTree = "<group>"; };
 		1C3625C327B2D2DE000C61E0 /* GetAllNotificationTypesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllNotificationTypesModel.swift; sourceTree = "<group>"; };
@@ -313,6 +318,7 @@
 		1C378EE427B41DE60040DED7 /* CreateNotificationWithUsersListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationWithUsersListModel.swift; sourceTree = "<group>"; };
 		1C378EE627B440DD0040DED7 /* LogOutPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutPopUpVC.swift; sourceTree = "<group>"; };
 		1C378EE827B449800040DED7 /* InvitationUserDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationUserDeleteModel.swift; sourceTree = "<group>"; };
+		1C397EA327C5395400C16E60 /* GetContractorByUserIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContractorByUserIdModel.swift; sourceTree = "<group>"; };
 		1C3C17EE278DD42600F40D0E /* EventDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModel.swift; sourceTree = "<group>"; };
 		1C3C17F0278DD82900F40D0E /* getAllInvitationsAgainstEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getAllInvitationsAgainstEventModel.swift; sourceTree = "<group>"; };
 		1C3D169C27A32AC0001D8293 /* NotificationsSaveLocaly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSaveLocaly.swift; sourceTree = "<group>"; };
@@ -525,6 +531,7 @@
 		1C07B92926E0189A006A81B9 /* ContractsListVC */ = {
 			isa = PBXGroup;
 			children = (
+				1C3623D327BED12E003DDF8B /* IncomingContractListModel */,
 				1C07B92426E00F2F006A81B9 /* CreateContractVC.swift */,
 				1C9A2AFC26DEC8E000EB6DAD /* ContractsListVC.swift */,
 				1C07B92B26E01A30006A81B9 /* ContractDetailVC.swift */,
@@ -558,8 +565,34 @@
 		1C30FCA7273D6BDA00929A2D /* ProvidorPart */ = {
 			isa = PBXGroup;
 			children = (
+				1C76E6952742B7E50056B7DA /* OrdersVC */,
 			);
 			path = ProvidorPart;
+			sourceTree = "<group>";
+		};
+		1C338CF227D14BFF0041BE2F /* ContractorEmployee */ = {
+			isa = PBXGroup;
+			children = (
+				1C338CF327D14C2C0041BE2F /* GetContractorEmployeeByUserIDModel.swift */,
+			);
+			path = ContractorEmployee;
+			sourceTree = "<group>";
+		};
+		1C3623D327BED12E003DDF8B /* IncomingContractListModel */ = {
+			isa = PBXGroup;
+			children = (
+				1C397EA227C5392F00C16E60 /* GetContractorByUserIdModel */,
+				1C3623D427BED15A003DDF8B /* IncomingContractListModel.swift */,
+			);
+			path = IncomingContractListModel;
+			sourceTree = "<group>";
+		};
+		1C397EA227C5392F00C16E60 /* GetContractorByUserIdModel */ = {
+			isa = PBXGroup;
+			children = (
+				1C397EA327C5395400C16E60 /* GetContractorByUserIdModel.swift */,
+			);
+			path = GetContractorByUserIdModel;
 			sourceTree = "<group>";
 		};
 		1C4117F227A1CC060064918F /* NotificationModel */ = {
@@ -879,9 +912,9 @@
 		1C76E6952742B7E50056B7DA /* OrdersVC */ = {
 			isa = PBXGroup;
 			children = (
+				1C76E6962742BACC0056B7DA /* OrdersVC.swift */,
 				1C76E69B2742C1FF0056B7DA /* OrderHistoryVC */,
 				1C76E6982742C10D0056B7DA /* CurrentOrder */,
-				1C76E6962742BACC0056B7DA /* OrdersVC.swift */,
 			);
 			path = OrdersVC;
 			sourceTree = "<group>";
@@ -1022,7 +1055,7 @@
 		1CB2F46F26BB063E00E1F79F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1C76E6952742B7E50056B7DA /* OrdersVC */,
+				1C338CF227D14BFF0041BE2F /* ContractorEmployee */,
 				1C30FCA7273D6BDA00929A2D /* ProvidorPart */,
 				1C30FCA6273D6BC300929A2D /* ContractorPart */,
 				1CD86BB526E2724A0047568F /* PayROll */,
@@ -1467,6 +1500,7 @@
 				1C51C57326C5B7D400D8EED0 /* EventInvitationCell.swift in Sources */,
 				1C35B7FE2777386400A10096 /* UserNotRegisterPopUpVC.swift in Sources */,
 				1C9A2AFB26DEC6E100EB6DAD /* ContractVC.swift in Sources */,
+				1C397EA427C5395400C16E60 /* GetContractorByUserIdModel.swift in Sources */,
 				1C344D292774EB290026743A /* GetAllZonesModel.swift in Sources */,
 				1C51C57026C5AD0000D8EED0 /* EventInvitation.swift in Sources */,
 				1C438ACC27834C8900073F60 /* getUserIsExistModel.swift in Sources */,
@@ -1506,6 +1540,7 @@
 				1CB2F43F26BB05C900E1F79F /* SplashVC.swift in Sources */,
 				1CB18B1D275E84240089AF62 /* VerifySixDigitCodeModel.swift in Sources */,
 				1C53FAF026C3077300849C95 /* RecordVC.swift in Sources */,
+				1C3623D527BED15A003DDF8B /* IncomingContractListModel.swift in Sources */,
 				1C4F4D74271A20DD00158769 /* CompanyRegisterModelView.swift in Sources */,
 				1C4DAEC326D56DBC0010E4F1 /* UserPersonalInfoVC.swift in Sources */,
 				1CB2F4C126BB1CAC00E1F79F /* Extenssions.swift in Sources */,
@@ -1580,6 +1615,7 @@
 				1C54CB752784BF0D0089BD86 /* EventInvitationsModels.swift in Sources */,
 				1C53FAE826C2ECDA00849C95 /* MenuVC.swift in Sources */,
 				1C4488D1275923A200464ACB /* CreateUserContractModel.swift in Sources */,
+				1C338CF427D14C2C0041BE2F /* GetContractorEmployeeByUserIDModel.swift in Sources */,
 				1CDD965026C6CB4400FA6725 /* CompanyMapVC.swift in Sources */,
 				1C4C13A126C444CE00351F3C /* menuCell.swift in Sources */,
 				1CB2F44526BB05C900E1F79F /* iEntry.xcdatamodeld in Sources */,

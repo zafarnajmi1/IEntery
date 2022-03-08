@@ -11,8 +11,6 @@ import UIKit
 
 class Constant {
     
-
-   
     static var MainUrl : String { return "http://182.176.161.38:8080/corporate-user-pre-prod-v1/" //"http://182.180.148.189:8080/corporate-user-pre-prod-v1/"
     }
     
@@ -102,6 +100,26 @@ class Constant {
         static let getAllUsersList = "user-company-service/get-all-only-user-data/by-company-id/"
         static let createNotificationWithUsers = "notification-service/user-notification/create/by-employees-ids"
         static let deleteInvitation = "event-service/delete-invitation-by-invitation-id/"
+        
+        
+        //MARK:- Contractor Endpoints
+        
+        static let incomingContractList = "contract-service/contractor/get-all/incoming-active"
+        static let contractHirotyList = "contract-service/contractor/get-all/records"
+        
+        static let getContractorByUserId = "contractor-service/get-by-user-id/"
+        static let getallIncomingContractorEmployee = "contract-service/contractor-employee/get-all/incoming-active"
+        
+        static let getallRecordContractorEmployee = "contract-service/contractor-employee/get-all/records"
+        
+        static let getContractorEmployeeByUserID = "contractor-employee-service/get-by-user-id/"
+        
+        
+        //MARK:- Provider Endpoint
+        static let getproviderbyuserid = "provider-service/get-by-user-id/"
+        static let getorderrecordbyuserid = "order-service/provider/get-all/by-provider-id/"
+        static let getorderbyuserid = "order-service/get-by-id/"
+        
     }
     
     

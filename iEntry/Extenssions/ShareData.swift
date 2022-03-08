@@ -18,6 +18,127 @@ class ShareData {
     
     
     
+    var contractorEmployeeGetByUserid : GetContractorEmployeeByUserIDModelData?
+    
+    func saveContractorEmployeeGetByUserid(contractoremployee:GetContractorEmployeeByUserIDModelData?){
+        contractorEmployeeGetByUserid = contractoremployee
+        setContractorEmployeeGetByUserid(user: contractorEmployeeGetByUserid!)
+    }
+    
+    
+    func setContractorEmployeeGetByUserid(user:GetContractorEmployeeByUserIDModelData?) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            UserDefaults.resetStandardUserDefaults()
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "contractorEmployeeData")
+           
+        }
+
+    }
+
+    var contractorEmployeedataValueGetByUserid: GetContractorEmployeeByUserIDModelData? {
+        get {
+            return UserDefaults.standard.retrieve(object: GetContractorEmployeeByUserIDModelData.self, fromKey: "contractorEmployeeData")
+        }
+        set {
+            
+            UserDefaults.standard.save(customObject: contractorEmployeeGetByUserid, inKey: "contractorEmployeeData")
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    var contractorListDataGetByUserid : GetContractorByUserIdModelData?
+    
+    func saveContractorListGetByUserid(contractor:GetContractorByUserIdModelData){
+        contractorListDataGetByUserid = contractor
+        setContractorListvalueGetByUserid(user: contractorListDataGetByUserid!)
+    }
+    
+    
+    func setContractorListvalueGetByUserid(user:GetContractorByUserIdModelData) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            UserDefaults.resetStandardUserDefaults()
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "contractorData")
+           
+        }
+
+    }
+
+    var contractorListdataValueGetByUserid: GetContractorByUserIdModelData {
+        get {
+            return UserDefaults.standard.retrieve(object: GetContractorByUserIdModelData.self, fromKey: "contractorData")!
+        }
+        set {
+            
+            UserDefaults.standard.save(customObject: contractorListDataGetByUserid, inKey: "contractorData")
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    var contractListData = [IncomingContractListModelData]()
+    
+    func saveContractList(contract:[IncomingContractListModelData]){
+        contractListData = contract
+        setContractListvalue(user: contractListData)
+    }
+    
+    
+    func setContractListvalue(user:[IncomingContractListModelData]) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            UserDefaults.resetStandardUserDefaults()
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "contractList")
+           
+        }
+
+    }
+
+    var contractListdataValue: [IncomingContractListModelData] {
+        get {
+            return UserDefaults.standard.retrieve(object: [IncomingContractListModelData].self, fromKey: "contractList") ?? []
+        }
+        set {
+            
+            UserDefaults.standard.save(customObject: contractListData, inKey: "contractList")
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

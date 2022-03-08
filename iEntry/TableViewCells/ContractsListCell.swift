@@ -10,6 +10,13 @@ import UIKit
 class ContractsListCell: UITableViewCell {
     //MARK:- here are the IBOutlet
     
+    @IBOutlet weak var lblcompanyName: UILabel!
+    @IBOutlet weak var lblendDate: UILabel!
+    @IBOutlet weak var lblstartDate: UILabel!
+    @IBOutlet weak var lblusername: UILabel!
+    @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var lblstatsu: UILabel!
+    @IBOutlet weak var lblcontractNumber: UILabel!
     @IBOutlet weak var mainView: UIView!
     //MARK:- call back function intializing here
     var callBack: ((_ done: Bool) -> (Void))? = nil

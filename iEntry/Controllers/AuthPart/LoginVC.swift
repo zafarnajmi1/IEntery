@@ -21,9 +21,9 @@ class LoginVC: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.isTranslucent = false
-        
-        self.txtemail.text = "luis.cornejo.2610@gmail.com"
-        self.txtpassword.text = "root"
+       
+        self.txtemail.text = "Luis122@gmail.com"//"luis45@gmail.com" //"najm.technology786@gmail.com"//"luis.cornejo.2610@gmail.com"
+        self.txtpassword.text = "IdIxk3f89MTd"//"odq4JM26KVsv"//"lomTO2WqTQ87" //"root"
         conFigUI()
     }
     
@@ -94,13 +94,18 @@ class LoginVC: BaseController {
                 if response?.data?.userType?.name?.lowercased() == "employee" {
                     ShareData.shareInfo.userRole = .employees
                     self.moveOnEmployeeRole()
-                } else if response?.data?.userType?.name?.lowercased() == "providor" {
-                    ShareData.shareInfo.userRole = .provider
-                    self.providorRole()
-                } else if response?.data?.userType?.name?.lowercased() == "contractor" {
+                    
+                }  else if response?.data?.userType?.id == 3 {
                     ShareData.shareInfo.userRole = .contractor
                     self.ContractorRole()
-                }
+                } else if response?.data?.userType?.id == 4 {
+                    ShareData.shareInfo.userRole = .contractoremplyee
+                    self.ContractorRole()
+                    
+                }else if response?.data?.userType?.id == 5{
+                                ShareData.shareInfo.userRole = .provider
+                                self.providorRole()
+                            }
                 
                 
                 
@@ -164,8 +169,8 @@ class LoginVC: BaseController {
     }
     
     func ContractorRole() {
-        let storyBoard = UIStoryboard.init(name: StoryBoards.Home.rawValue, bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyVC") as? CompanyVC//CompanyVC //HomeVC///EnterEmailVC
+        let storyBoard = UIStoryboard.init(name: StoryBoards.Contract.rawValue, bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier:"ContractVC") as? ContractVC//CompanyVC //HomeVC///EnterEmailVC
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     

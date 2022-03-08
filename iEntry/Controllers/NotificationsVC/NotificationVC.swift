@@ -27,7 +27,7 @@ class NotificationVC: BaseController {
         self.inerView.roundViiew()
         navigationBarHidShow(isTrue: true)
         tblView.register(UINib.init(nibName: "NotificationsCell", bundle: nil), forCellReuseIdentifier: "NotificationsCell")
-        if ShareData.shareInfo.userRole == .contractor
+        if ShareData.shareInfo.userRole == .contractor ||  ShareData.shareInfo.userRole == .contractoremplyee
         {
             buttonView.isHidden = true
         } else {
@@ -65,7 +65,24 @@ class NotificationVC: BaseController {
         let sectimeInMili = Int (timeInMiliSec.timeIntervalSince1970 * 1000)
         
         //30 * 24 * 60 * 60 * 1000
-        let dic : [String:Any] = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.conractWithCompany?.company?.id ?? "","date":sectimeInMili]
+        var dic : [String:Any] = [:]
+        
+        if ShareData.shareInfo.userRole == .contractor {
+            
+            
+            dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid.company?.id ?? "","date":sectimeInMili]
+            
+        }else if ShareData.shareInfo.userRole == .contractoremplyee {
+            //contractorEmployeeId
+            dic = ["userId":ShareData.shareInfo.contractorEmployeedataValueGetByUserid?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid.company?.id ?? "","date":sectimeInMili]
+            
+        } else if ShareData.shareInfo.userRole == .employees{
+            
+            dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.conractWithCompany?.company?.id ?? "","date":sectimeInMili]
+        }
+        
+        
+            
         userhandler.getNotificationAfterDate(params: dic, Success: {response in
             self.hidLoader()
             if response?.success == true {
@@ -138,7 +155,7 @@ extension NotificationVC :  UITableViewDelegate,UITableViewDataSource {
 }
 extension NotificationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "you have no Invitation"
+        let text = "you have no Notification"
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray
