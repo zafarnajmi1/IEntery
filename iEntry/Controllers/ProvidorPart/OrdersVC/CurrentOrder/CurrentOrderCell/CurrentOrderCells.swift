@@ -9,6 +9,26 @@ import UIKit
 
 class CurrentOrderCells: UITableViewCell {
     //MARK:- here are the iboutlet
+    
+    @IBOutlet weak var lblstatus: UILabel!
+    
+    @IBOutlet weak var statusView: UIView!
+    
+    @IBOutlet weak var lblcompany: UILabel!
+    
+    @IBOutlet weak var lblemployee: UILabel!
+    
+    @IBOutlet weak var lblvehicle: UILabel!
+    
+    @IBOutlet weak var lbldeliverydate: UILabel!
+    @IBOutlet weak var lbldeliverycompany: UILabel!
+    
+    @IBOutlet weak var lbldeliveryproduct: UILabel!
+    @IBOutlet weak var lbldeliverydetail: UILabel!
+    
+    
+    
+    
     @IBOutlet weak var mainView: UIView!
     
     //MARK:- calback function intialize 

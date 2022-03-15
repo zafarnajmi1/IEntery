@@ -968,10 +968,10 @@ class userhandler {
     
     
     
-    //MARK: Get Contractor By user ID
+    //MARK: Get Provider By user ID
     class func getProviderByUserIDs(userid:String,Success: @escaping (GetContractorByUserIdModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.getproviderbyuserid + userid
-        
+        print("page url",url)
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
@@ -991,6 +991,83 @@ class userhandler {
      }
     
     
+    
+    //MARK: Get Provider employee By user ID
+    class func getProviderEmployeeByUserIDs(userid:String,Success: @escaping (ProviderUserByIdModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.getprovideremployeebyuserid + userid
+        print("page url",url)
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(ProviderUserByIdModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    //MARK: Get Provider order record By user ID
+    class func getBeforeDateProviderOrdersByUserIDs(userid:String,datevalue:String,isproviderEmployee:Bool,Success: @escaping (ProviderModels?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     var url = ""
+        if isproviderEmployee == false {
+        url = Constant.MainUrl + Constant.URLs.getorderrecordbyuserid + userid + "/by-before-date/\(datevalue)"
+        } else {
+            url = Constant.MainUrl + Constant.URLs.providerEmployeeOrder + userid + "/by-before-date/\(datevalue)"
+        }
+        print("page url : ",url)
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(ProviderModels.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    //MARK: Get Provider After Date order record By user ID
+    class func getAfterDateProviderOrdersByUserIDs(userid:String,datevalue:String,isproviderEmployee:Bool,Success: @escaping (ProviderModels?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     var url = ""
+        if isproviderEmployee == false {
+        url = Constant.MainUrl + Constant.URLs.getorderrecordbyuserid + userid + "/by-after-date/\(datevalue)"
+        } else {
+            url = Constant.MainUrl + Constant.URLs.providerEmployeeOrder + userid + "/by-after-date/\(datevalue)"
+        }
+        print("page url : ",url)
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(ProviderModels.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
     
 }
 

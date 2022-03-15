@@ -116,20 +116,14 @@ class Constant {
         
         
         //MARK:- Provider Endpoint
+        
         static let getproviderbyuserid = "provider-service/get-by-user-id/"
         static let getorderrecordbyuserid = "order-service/provider/get-all/by-provider-id/"
         static let getorderbyuserid = "order-service/get-by-id/"
+       static let providerEmployeeOrder = "order-service/provider-employee/get-all/by-provider-employee-id/"
+        static let getprovideremployeebyuserid = "provider-employee-service/get-by-user-id/"
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     struct NetworkErrorType {

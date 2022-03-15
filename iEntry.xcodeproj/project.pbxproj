@@ -37,6 +37,7 @@
 		1C3D169D27A32AC0001D8293 /* NotificationsSaveLocaly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3D169C27A32AC0001D8293 /* NotificationsSaveLocaly.swift */; };
 		1C4117F427A1CC2A0064918F /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4117F327A1CC2A0064918F /* NotificationModel.swift */; };
 		1C4117F627A1E3FC0064918F /* CreateNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4117F527A1E3FC0064918F /* CreateNotificationModel.swift */; };
+		1C41280227D7D95F00A31B88 /* ProviderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C41280127D7D95F00A31B88 /* ProviderModels.swift */; };
 		1C437BA2278605AB00D20C00 /* InvitationsHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C437BA1278605AB00D20C00 /* InvitationsHistoryModel.swift */; };
 		1C438ACC27834C8900073F60 /* getUserIsExistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C438ACB27834C8900073F60 /* getUserIsExistModel.swift */; };
 		1C4488CA27591BF300464ACB /* GetGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4488C927591BF300464ACB /* GetGenderModel.swift */; };
@@ -47,6 +48,7 @@
 		1C4488D5275932DB00464ACB /* CreateZoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4488D4275932DB00464ACB /* CreateZoneModel.swift */; };
 		1C4488D727593D1400464ACB /* CreateExtraUserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4488D627593D1400464ACB /* CreateExtraUserDataModel.swift */; };
 		1C44F2E827A83DF800E098F8 /* ExtradataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C44F2E727A83DF800E098F8 /* ExtradataModel.swift */; };
+		1C45597727DF9F3800049F79 /* ProviderUserByIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C45597627DF9F3800049F79 /* ProviderUserByIdModel.swift */; };
 		1C473A74279F20CD00C1F040 /* PopUpNumberOFInvitationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C473A73279F20CD00C1F040 /* PopUpNumberOFInvitationVC.swift */; };
 		1C48899126DFD59D00C7BC94 /* ContractorsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48898F26DFD59D00C7BC94 /* ContractorsListCell.swift */; };
 		1C48899226DFD59D00C7BC94 /* ContractorsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C48899026DFD59D00C7BC94 /* ContractorsListCell.xib */; };
@@ -77,6 +79,7 @@
 		1C4DE8D7277388D600A7BB87 /* GetAllInvitationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DE8D6277388D600A7BB87 /* GetAllInvitationModel.swift */; };
 		1C4E1A1326E1369100B0D235 /* AddContractorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E1A1226E1369100B0D235 /* AddContractorVC.swift */; };
 		1C4E1A1526E144DC00B0D235 /* ContractorDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E1A1426E144DC00B0D235 /* ContractorDetailVC.swift */; };
+		1C4E41A927D93892004320FA /* ProviderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E41A827D93892004320FA /* ProviderDetailVC.swift */; };
 		1C4F4D682719EBA900158769 /* GenerateTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F4D672719EBA900158769 /* GenerateTokenModel.swift */; };
 		1C4F4D6A271A07D500158769 /* SelectCompanyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F4D69271A07D500158769 /* SelectCompanyVC.swift */; };
 		1C4F4D6D271A08AC00158769 /* SelectCompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F4D6B271A08AC00158769 /* SelectCompanyCell.swift */; };
@@ -324,6 +327,7 @@
 		1C3D169C27A32AC0001D8293 /* NotificationsSaveLocaly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSaveLocaly.swift; sourceTree = "<group>"; };
 		1C4117F327A1CC2A0064918F /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		1C4117F527A1E3FC0064918F /* CreateNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationModel.swift; sourceTree = "<group>"; };
+		1C41280127D7D95F00A31B88 /* ProviderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderModels.swift; sourceTree = "<group>"; };
 		1C437BA1278605AB00D20C00 /* InvitationsHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsHistoryModel.swift; sourceTree = "<group>"; };
 		1C438ACB27834C8900073F60 /* getUserIsExistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getUserIsExistModel.swift; sourceTree = "<group>"; };
 		1C4488C927591BF300464ACB /* GetGenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenderModel.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 		1C4488D4275932DB00464ACB /* CreateZoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateZoneModel.swift; sourceTree = "<group>"; };
 		1C4488D627593D1400464ACB /* CreateExtraUserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExtraUserDataModel.swift; sourceTree = "<group>"; };
 		1C44F2E727A83DF800E098F8 /* ExtradataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtradataModel.swift; sourceTree = "<group>"; };
+		1C45597627DF9F3800049F79 /* ProviderUserByIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderUserByIdModel.swift; sourceTree = "<group>"; };
 		1C473A73279F20CD00C1F040 /* PopUpNumberOFInvitationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpNumberOFInvitationVC.swift; sourceTree = "<group>"; };
 		1C48898F26DFD59D00C7BC94 /* ContractorsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractorsListCell.swift; sourceTree = "<group>"; };
 		1C48899026DFD59D00C7BC94 /* ContractorsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractorsListCell.xib; sourceTree = "<group>"; };
@@ -360,6 +365,7 @@
 		1C4DE8D6277388D600A7BB87 /* GetAllInvitationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllInvitationModel.swift; sourceTree = "<group>"; };
 		1C4E1A1226E1369100B0D235 /* AddContractorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContractorVC.swift; sourceTree = "<group>"; };
 		1C4E1A1426E144DC00B0D235 /* ContractorDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractorDetailVC.swift; sourceTree = "<group>"; };
+		1C4E41A827D93892004320FA /* ProviderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderDetailVC.swift; sourceTree = "<group>"; };
 		1C4F4D672719EBA900158769 /* GenerateTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateTokenModel.swift; sourceTree = "<group>"; };
 		1C4F4D69271A07D500158769 /* SelectCompanyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCompanyVC.swift; sourceTree = "<group>"; };
 		1C4F4D6B271A08AC00158769 /* SelectCompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCompanyCell.swift; sourceTree = "<group>"; };
@@ -565,7 +571,9 @@
 		1C30FCA7273D6BDA00929A2D /* ProvidorPart */ = {
 			isa = PBXGroup;
 			children = (
+				1C41280027D7D93900A31B88 /* Providermodels */,
 				1C76E6952742B7E50056B7DA /* OrdersVC */,
+				1C4E41A827D93892004320FA /* ProviderDetailVC.swift */,
 			);
 			path = ProvidorPart;
 			sourceTree = "<group>";
@@ -606,6 +614,15 @@
 				1C378EE427B41DE60040DED7 /* CreateNotificationWithUsersListModel.swift */,
 			);
 			path = NotificationModel;
+			sourceTree = "<group>";
+		};
+		1C41280027D7D93900A31B88 /* Providermodels */ = {
+			isa = PBXGroup;
+			children = (
+				1C41280127D7D95F00A31B88 /* ProviderModels.swift */,
+				1C45597627DF9F3800049F79 /* ProviderUserByIdModel.swift */,
+			);
+			path = Providermodels;
 			sourceTree = "<group>";
 		};
 		1C4488CF2759235400464ACB /* CreateUserEmployeeContractModels */ = {
@@ -1542,6 +1559,7 @@
 				1C53FAF026C3077300849C95 /* RecordVC.swift in Sources */,
 				1C3623D527BED15A003DDF8B /* IncomingContractListModel.swift in Sources */,
 				1C4F4D74271A20DD00158769 /* CompanyRegisterModelView.swift in Sources */,
+				1C41280227D7D95F00A31B88 /* ProviderModels.swift in Sources */,
 				1C4DAEC326D56DBC0010E4F1 /* UserPersonalInfoVC.swift in Sources */,
 				1CB2F4C126BB1CAC00E1F79F /* Extenssions.swift in Sources */,
 				1C4C13A526C456D800351F3C /* FilterVC.swift in Sources */,
@@ -1580,6 +1598,7 @@
 				1C9A2AFD26DEC8E000EB6DAD /* ContractsListVC.swift in Sources */,
 				1C5CADBA26BD848B0079392C /* BaseController.swift in Sources */,
 				1C5B355926CAB320000DA340 /* VehiclesCell.swift in Sources */,
+				1C4E41A927D93892004320FA /* ProviderDetailVC.swift in Sources */,
 				1C9A2AFF26DEC93E00EB6DAD /* ContractorsListVC.swift in Sources */,
 				1C567C1E26BC4095000CCA7C /* EnterEmailVC.swift in Sources */,
 				1CA48F9F27973FE100C95067 /* EventUpdateInvitationModel.swift in Sources */,
@@ -1599,6 +1618,7 @@
 				1C07B92526E00F2F006A81B9 /* CreateContractVC.swift in Sources */,
 				1C2FDA4126F243AF0037AD0B /* GeneralQRCodeVC.swift in Sources */,
 				1C3625C127B2CEB4000C61E0 /* NewNotificationCell.swift in Sources */,
+				1C45597727DF9F3800049F79 /* ProviderUserByIdModel.swift in Sources */,
 				1CD221D226F8FB5200D7828B /* DictioneryToJson.swift in Sources */,
 				1C07B92126DFFEBB006A81B9 /* Enums.swift in Sources */,
 				1C44F2E827A83DF800E098F8 /* ExtradataModel.swift in Sources */,

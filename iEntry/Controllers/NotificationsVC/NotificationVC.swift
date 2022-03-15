@@ -30,6 +30,8 @@ class NotificationVC: BaseController {
         if ShareData.shareInfo.userRole == .contractor ||  ShareData.shareInfo.userRole == .contractoremplyee
         {
             buttonView.isHidden = true
+        } else if ShareData.shareInfo.userRole == .provider ||  ShareData.shareInfo.userRole == .provideremployee{
+            buttonView.isHidden = true
         } else {
             buttonView.isHidden = false
         }
@@ -67,7 +69,17 @@ class NotificationVC: BaseController {
         //30 * 24 * 60 * 60 * 1000
         var dic : [String:Any] = [:]
         
-        if ShareData.shareInfo.userRole == .contractor {
+        if ShareData.shareInfo.userRole == .provideremployee{
+            
+            dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.providerEmployeedataValueGetByUserid?.provider?.company?.id ?? "","date":sectimeInMili]
+            
+        }else
+        if ShareData.shareInfo.userRole == .provider{
+            
+            
+            dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid.company?.id ?? "","date":sectimeInMili]
+            
+        } else if ShareData.shareInfo.userRole == .contractor {
             
             
             dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid.company?.id ?? "","date":sectimeInMili]

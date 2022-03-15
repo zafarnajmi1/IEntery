@@ -18,6 +18,50 @@ class ShareData {
     
     
     
+    
+    
+    var providerEmployeeGetByUserid : ProviderUserByIdModelData?
+    
+    func saveproviderEmployeeGetByUserid(provideremployee:ProviderUserByIdModelData?){
+        providerEmployeeGetByUserid = provideremployee
+        setproviderEmployeeGetByUserid(user: providerEmployeeGetByUserid!)
+    }
+    
+    
+    func setproviderEmployeeGetByUserid(user:ProviderUserByIdModelData?) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            UserDefaults.resetStandardUserDefaults()
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "providerEmployeeData")
+           
+        }
+
+    }
+
+    var providerEmployeedataValueGetByUserid: ProviderUserByIdModelData? {
+        get {
+            return UserDefaults.standard.retrieve(object: ProviderUserByIdModelData.self, fromKey: "providerEmployeeData")
+        }
+        set {
+            
+            UserDefaults.standard.save(customObject: providerEmployeeGetByUserid, inKey: "providerEmployeeData")
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     var contractorEmployeeGetByUserid : GetContractorEmployeeByUserIDModelData?
     
     func saveContractorEmployeeGetByUserid(contractoremployee:GetContractorEmployeeByUserIDModelData?){

@@ -156,6 +156,8 @@ class UserProfileVC: BaseController {
             UserDefaults.standard.set(nil, forKey: "notification")
             UserDefaults.standard.set(nil, forKey: "contactList")
             self.navigationController?.pushViewController(vc!, animated: true)
+            
+            defaults.set(nil, forKey: "contractorData")
                     
         }
         vc?.modalPresentationStyle = .overFullScreen

@@ -337,7 +337,18 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="EZo-gg-V6N"/>
             <connections>
+                <outlet property="lblcompany" destination="AZF-Wj-LjA" id="eOe-3Y-MnT"/>
+                <outlet property="lbldeliverycompany" destination="AZg-bM-uBh" id="SFg-D2-KzR"/>
+                <outlet property="lbldeliverydate" destination="fV0-ea-tKh" id="teo-KK-Ak1"/>
+                <outlet property="lbldeliverydetail" destination="wrw-EK-Lof" id="1Dt-QM-IBR"/>
+                <outlet property="lbldeliveryproduct" destination="XiK-M5-7Qx" id="r5p-yO-fbk"/>
+                <outlet property="lblemployee" destination="udW-qK-u8T" id="o3v-hF-G8n"/>
+                <outlet property="lblreceiver" destination="njD-fS-ZP1" id="yqJ-WA-i8h"/>
+                <outlet property="lblrecieverdate" destination="PRD-lD-v5H" id="bfu-Dy-p9I"/>
+                <outlet property="lblstatus" destination="bCK-fZ-r5f" id="a7N-Rj-KKq"/>
+                <outlet property="lblvehicle" destination="Fp1-ab-ORF" id="S6y-LC-XUD"/>
                 <outlet property="mainView" destination="qdb-ia-crQ" id="SdO-b3-WFw"/>
+                <outlet property="statusView" destination="k7I-v2-Rvm" id="zVa-ha-RaQ"/>
             </connections>
             <point key="canvasLocation" x="92.028985507246389" y="230.02232142857142"/>
         </tableViewCell>

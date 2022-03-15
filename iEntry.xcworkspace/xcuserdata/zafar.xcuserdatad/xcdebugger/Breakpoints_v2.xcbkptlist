@@ -50,38 +50,6 @@
             endingLineNumber = "108"
             landmarkName = "animateView()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F991EA1E-3035-4AED-810B-007498884305 - 13c42b3520971cfe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "iEntry.CompanyMapVC.animateView() -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/MapVC/CompanyMapVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "1355">
-               </Location>
-               <Location
-                  uuid = "F991EA1E-3035-4AED-810B-007498884305 - bc794c183dfd0aad"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; () in iEntry.CompanyMapVC.animateView() -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/MapVC/CompanyMapVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "55">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -144,8 +112,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "checkUser(email:Success:Failure:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -160,40 +128,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "1E6973B2-6148-4EDC-AD1A-B66D960896B6 - 8b590b7f2664ebfe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "iEntry.LoginViewModel.checkUser(email: Swift.String, Success: (Swift.Optional&lt;iEntry.CheckUserModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; (), Failure: (iEntry.NetworkError) -&gt; ()) -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/ViewModels/LoginViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "962">
-               </Location>
-               <Location
-                  uuid = "1E6973B2-6148-4EDC-AD1A-B66D960896B6 - 2b92e3b186be9002"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in iEntry.LoginViewModel.checkUser(email: Swift.String, Success: (Swift.Optional&lt;iEntry.CheckUserModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; (), Failure: (iEntry.NetworkError) -&gt; ()) -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/ViewModels/LoginViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "175">
-               </Location>
-            </Locations>
+            landmarkName = "checkUser(email:Success:Failure:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -208,8 +144,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "checkUser(email:Success:Failure:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -224,8 +160,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "checkUser(email:Success:Failure:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -240,8 +176,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "checkUser(email:Success:Failure:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -306,38 +242,6 @@
             endingLineNumber = "53"
             landmarkName = "sendEmailApi()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "632402B0-43D3-4310-9D4E-EA919670EB5A - de85cfe425b97f0b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "iEntry.EnterEmailVC.sendEmailApi() -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/AuthPart/EnterEmailVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "86">
-               </Location>
-               <Location
-                  uuid = "632402B0-43D3-4310-9D4E-EA919670EB5A - 8448ca837b4c6a0e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;iEntry.SendEmailModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in iEntry.EnterEmailVC.sendEmailApi() -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/AuthPart/EnterEmailVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "216">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -400,8 +304,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "loginApiCall(params:Success:Failure:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -562,6 +466,38 @@
             endingLineNumber = "83"
             landmarkName = "createInvitationApi()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B75969F1-AC33-4E6C-B260-E400F9DE6A6C - f7f532b9fd35ff97"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iEntry.InvitationPOPUpVC.createInvitationApi() -&gt; ()"
+                  moduleName = "iEntry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/InvitationPOPUpVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "1854">
+               </Location>
+               <Location
+                  uuid = "B75969F1-AC33-4E6C-B260-E400F9DE6A6C - f7f532b9fd35ff97"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iEntry.InvitationPOPUpVC.createInvitationApi() -&gt; ()"
+                  moduleName = "iEntry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/InvitationPOPUpVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "2855">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -738,6 +674,38 @@
             endingLineNumber = "88"
             landmarkName = "preRegisterUser()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DA93F1D9-6531-483D-9F06-55A904677277 - cc5f321602a1ca68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iEntry.PreRegisterVC.preRegisterUser() -&gt; ()"
+                  moduleName = "iEntry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/PreRegisterVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "DA93F1D9-6531-483D-9F06-55A904677277 - cc5f321602a1ca68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iEntry.PreRegisterVC.preRegisterUser() -&gt; ()"
+                  moduleName = "iEntry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/PreRegisterVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "1794">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -754,38 +722,6 @@
             endingLineNumber = "90"
             landmarkName = "preRegisterUser()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1A78C67D-7CE0-4741-B067-A56A96A9D9D7 - cc5f321602a1ca2a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "iEntry.PreRegisterVC.preRegisterUser() -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/PreRegisterVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "2267">
-               </Location>
-               <Location
-                  uuid = "1A78C67D-7CE0-4741-B067-A56A96A9D9D7 - 7a4cd9d10d86dd7f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;iEntry.getUserIsExistModel&gt;) -&gt; () in iEntry.PreRegisterVC.preRegisterUser() -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/PreRegisterVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "141">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -818,6 +754,38 @@
             endingLineNumber = "59"
             landmarkName = "getAllZonesApi()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8F279B39-87E8-4D0A-A601-E7620D3A8980 - 2334cfe94693a395"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iEntry.InvitationPOPUpVC.getAllZonesApi() -&gt; ()"
+                  moduleName = "iEntry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/InvitationPOPUpVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "98">
+               </Location>
+               <Location
+                  uuid = "8F279B39-87E8-4D0A-A601-E7620D3A8980 - 2334cfe94693a395"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iEntry.InvitationPOPUpVC.getAllZonesApi() -&gt; ()"
+                  moduleName = "iEntry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/InvitationPOPUpVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1776">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -866,38 +834,6 @@
             endingLineNumber = "60"
             landmarkName = "getAllZonesApi()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2B008FEC-647C-42ED-B49A-7A72174B1AF0 - 2334cfe94693a3b2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "iEntry.InvitationPOPUpVC.getAllZonesApi() -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/InvitationPOPUpVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "2073">
-               </Location>
-               <Location
-                  uuid = "2B008FEC-647C-42ED-B49A-7A72174B1AF0 - 86be226dd01db4c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;iEntry.GetAllZonesModel&gt;) -&gt; () in iEntry.InvitationPOPUpVC.getAllZonesApi() -&gt; ()"
-                  moduleName = "iEntry"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zafar/Documents/Projects/ApexDigital/iEntryGit/iEntry/Controllers/InvitationVC/InvitationPOPUpVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "141">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -976,8 +912,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
             endingLineNumber = "211"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -992,8 +928,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
             endingLineNumber = "213"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1008,8 +944,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "220"
             endingLineNumber = "220"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1024,8 +960,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
             endingLineNumber = "218"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1072,8 +1008,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "361"
             endingLineNumber = "361"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "StripAction(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1088,8 +1024,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "365"
             endingLineNumber = "365"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "StripAction(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1104,8 +1040,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
             endingLineNumber = "362"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "StripAction(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1200,8 +1136,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "157"
             endingLineNumber = "157"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "conFigData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1216,8 +1152,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "conFigData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1232,8 +1168,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
             endingLineNumber = "150"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "conFigData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1278,8 +1214,8 @@
             filePath = "iEntry/Extenssions/ShareData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "contractorEmployeedataValueGetByUserid"
             landmarkType = "24">
          </BreakpointContent>
@@ -1294,8 +1230,8 @@
             filePath = "iEntry/Extenssions/ShareData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "setContractorEmployeeGetByUserid(user:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1310,8 +1246,8 @@
             filePath = "iEntry/Extenssions/ShareData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "setContractorEmployeeGetByUserid(user:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1326,8 +1262,8 @@
             filePath = "iEntry/Extenssions/ShareData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "saveContractorEmployeeGetByUserid(contractoremployee:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1342,9 +1278,137 @@
             filePath = "iEntry/Extenssions/ShareData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "saveContractorEmployeeGetByUserid(contractoremployee:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA6829C5-4561-4373-8DF0-6D46170EF3D0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iEntry/Controllers/ProvidorPart/OrdersVC/OrdersVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "getProvideremployeeApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "089F9A95-FA6A-4E7D-82F0-E7C6F9886FC1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iEntry/Controllers/ProvidorPart/OrdersVC/OrdersVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "getProvideremployeeApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6800584D-81E3-4363-ADF0-0F4198A69E25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iEntry/Controllers/ProvidorPart/OrdersVC/OrdersVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "getProvideremployeeApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65E2F8FD-3EDC-4BE0-89DD-A74AF9248B0B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iEntry/Controllers/ProvidorPart/OrdersVC/OrdersVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "getProvideremployeeApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AEC65CC-BEF3-42DA-B412-1B7862795D84"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iEntry/NetworkHandlerCall&apos;s/UserHandler/Userhandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1025"
+            endingLineNumber = "1025"
+            landmarkName = "getBeforeDateProviderOrdersByUserIDs(userid:datevalue:isproviderEmployee:Success:Failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "80C2727F-8154-4C80-9116-3FEAE5B395C9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iEntry/NetworkHandlerCall&apos;s/UserHandler/Userhandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1026"
+            endingLineNumber = "1026"
+            landmarkName = "getBeforeDateProviderOrdersByUserIDs(userid:datevalue:isproviderEmployee:Success:Failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "964617CA-A32F-4C37-89C9-0AEA69C87153"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iEntry/NetworkHandlerCall&apos;s/UserHandler/Userhandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1053"
+            endingLineNumber = "1053"
+            landmarkName = "getAfterDateProviderOrdersByUserIDs(userid:datevalue:isproviderEmployee:Success:Failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3F5C7421-BB79-4BBA-AEEA-B42E800F7D4E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iEntry/NetworkHandlerCall&apos;s/UserHandler/Userhandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1052"
+            endingLineNumber = "1052"
+            landmarkName = "getAfterDateProviderOrdersByUserIDs(userid:datevalue:isproviderEmployee:Success:Failure:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

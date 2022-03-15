@@ -284,7 +284,16 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="N1R-5g-EMf"/>
             <connections>
+                <outlet property="lblcompany" destination="gyQ-qF-vH3" id="88T-c4-gao"/>
+                <outlet property="lbldeliverycompany" destination="N9e-Oy-lnY" id="KFb-Im-LVE"/>
+                <outlet property="lbldeliverydate" destination="0hR-Ca-kpZ" id="aQT-1V-b8t"/>
+                <outlet property="lbldeliverydetail" destination="KAy-HT-NqS" id="cgz-r1-Sjd"/>
+                <outlet property="lbldeliveryproduct" destination="KRU-xw-acO" id="DZX-Qw-vtl"/>
+                <outlet property="lblemployee" destination="SA9-6w-A3H" id="AyR-fe-Tut"/>
+                <outlet property="lblstatus" destination="SnE-8d-U5G" id="5Jd-2q-Js5"/>
+                <outlet property="lblvehicle" destination="Nph-ak-wDi" id="uZo-gR-iIW"/>
                 <outlet property="mainView" destination="gvc-TP-LGA" id="EVU-Ey-bU2"/>
+                <outlet property="statusView" destination="JOW-oL-waB" id="7nJ-M8-cgc"/>
             </connections>
             <point key="canvasLocation" x="92.028985507246389" y="200.22321428571428"/>
         </tableViewCell>

@@ -22,8 +22,8 @@ class LoginVC: BaseController {
         super.viewDidLoad()
         self.navigationController!.navigationBar.isTranslucent = false
        
-        self.txtemail.text = "Luis122@gmail.com"//"luis45@gmail.com" //"najm.technology786@gmail.com"//"luis.cornejo.2610@gmail.com"
-        self.txtpassword.text = "IdIxk3f89MTd"//"odq4JM26KVsv"//"lomTO2WqTQ87" //"root"
+        self.txtemail.text = "john@gmail.com"//"Luis122@gmail.com"//"luis45@gmail.com" //"najm.technology786@gmail.com"//"luis.cornejo.2610@gmail.com"
+        self.txtpassword.text = "WbxbE7q5LA90"//"IdIxk3f89MTd"//"odq4JM26KVsv"//"lomTO2WqTQ87" //"root"
         conFigUI()
     }
     
@@ -105,6 +105,9 @@ class LoginVC: BaseController {
                 }else if response?.data?.userType?.id == 5{
                                 ShareData.shareInfo.userRole = .provider
                                 self.providorRole()
+                            } else if response?.data?.userType?.id == 6{
+                                ShareData.shareInfo.userRole = .provideremployee
+                                self.providorRole()
                             }
                 
                 
@@ -122,7 +125,7 @@ class LoginVC: BaseController {
     }
     
     func sendfcmToken() {
-        userhandler.sendFCMToken(fcmtoken: ShareData.shareInfo.token!, Success: {response in
+        userhandler.sendFCMToken(fcmtoken: ShareData.shareInfo.token ?? "", Success: {response in
             if response?.success == true {
                 
             } else {

@@ -31,21 +31,23 @@ class MenuVC: BaseController {
     //MARK:-  this funtion use  to append the array
     func menuConfig()  {
         
-        if ShareData.shareInfo.userRole == .contractor {
+        if ShareData.shareInfo.userRole == .contractor || ShareData.shareInfo.userRole == .contractoremplyee{
             
             MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
             MeneList.append(MenuData(Titl: "CONTRATOS", Img: UIImage(named: "ic-contract")))
             MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
             
             
-        } else  if ShareData.shareInfo.userRole == .contractoremplyee {
-            
-            MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
-            MeneList.append(MenuData(Titl: "CONTRATOS", Img: UIImage(named: "ic-contract")))
-            MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
-            
-            
-        }  else  if ShareData.shareInfo.userRole == .provider {
+        }
+//        else  if ShareData.shareInfo.userRole == .contractoremplyee {
+//
+//            MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
+//            MeneList.append(MenuData(Titl: "CONTRATOS", Img: UIImage(named: "ic-contract")))
+//            MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
+//
+//
+//        }
+        else  if ShareData.shareInfo.userRole == .provider || ShareData.shareInfo.userRole == .provideremployee {
             
             MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
             MeneList.append(MenuData(Titl: "ORDENES DE COMPRA", Img: UIImage(named: "ic-contract-1")))
@@ -134,7 +136,7 @@ extension MenuVC: UITableViewDelegate,UITableViewDataSource {
             
             
             
-        }else if ShareData.shareInfo.userRole == .provider {
+        }else if ShareData.shareInfo.userRole == .provider || ShareData.shareInfo.userRole == .provideremployee {
             switch indx {
             case 0:
                 let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)

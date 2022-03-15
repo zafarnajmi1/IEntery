@@ -12,11 +12,12 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
     
     //MARK:- here are the iboutlet
     var contractdata : GetContractorByUserIdModelData?
+    var providerdata : ProviderUserByIdModelData?
     @IBOutlet weak var bottomView: UIView!
     
     
     override func viewDidLoad() {
-        self.navigationController!.navigationBar.isTranslucent = false
+        self.navigationController!.navigationBar.isTranslucent = true
         self.settings.style.selectedBarHeight = 2
            self.settings.style.selectedBarBackgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
         
@@ -37,7 +38,6 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
             
         }
         
-        
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
@@ -50,7 +50,12 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
            titleLabel.textColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
         titleLabel.font = UIFont(name: "Montserrat-Bold", size: 20)
            navigationItem.titleView = titleLabel
-        getProviderApi()
+        
+        if ShareData.shareInfo.userRole == .provider {
+               getProviderApi()
+        } else {
+               getProvideremployeeApi()
+        }
     
     }
     
@@ -69,7 +74,7 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
         let child_2 = UIStoryboard(name: StoryBoards.Contract.rawValue, bundle: nil).instantiateViewController(withIdentifier: "OrderHistoryVC")  as? OrderHistoryVC
         
         let child_3 = UIStoryboard(name: StoryBoards.Home.rawValue, bundle: nil).instantiateViewController(withIdentifier: "QRCodeVC")  as? QRCodeVC
-            
+        child_3?.isfromContract = true
         let child_4 = UIStoryboard(name: StoryBoards.Home.rawValue, bundle: nil).instantiateViewController(withIdentifier: "CompanyVerificationCodeVC")  as? CompanyVerificationCodeVC
         
             ///UIStoryboard(name: StoryBoards.Contract.rawValue, bundle: nil).instantiateViewController(withIdentifier: "ContractorsListVC")  as? ContractorsListVC
@@ -107,6 +112,20 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
             if response?.success == true {
                 self.contractdata = response?.data
                 ShareData.shareInfo.saveContractorListGetByUserid(contractor: (response?.data)!)
+                print(ShareData.shareInfo.contractorListdataValueGetByUserid)
+            } else {
+                
+            }
+        }, Failure: {error in
+            
+        })
+    }
+    func getProvideremployeeApi(){
+        userhandler.getProviderEmployeeByUserIDs(userid: ShareData.shareInfo.obj?.id ?? "", Success: { response in
+            if response?.success == true {
+                self.providerdata = response?.data
+                ShareData.shareInfo.saveproviderEmployeeGetByUserid(provideremployee: (response?.data)!)
+                print(ShareData.shareInfo.providerEmployeedataValueGetByUserid)
             } else {
                 
             }
