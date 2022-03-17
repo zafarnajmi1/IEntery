@@ -30,6 +30,19 @@ class LoginVC: BaseController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationBarHidShow(isTrue: true)
+        
+        self.navigationController?.navigationBar.setNeedsLayout()
+        if #available(iOS 15, *) {
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = .white
+                UINavigationBar.appearance().standardAppearance = appearance
+                UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            } else {
+            
+        }
+        
     }
     
     func conFigUI() {

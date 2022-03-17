@@ -63,7 +63,7 @@ class CurrentOrderVC: BaseController,IndicatorInfoProvider {
             if response?.success == true {
                 self.providerdata = response?.data
                 ShareData.shareInfo.saveproviderEmployeeGetByUserid(provideremployee: (response?.data)!)
-                print(ShareData.shareInfo.contractorListdataValueGetByUserid)
+                
                 self.getproviderorderRecordsapi()
             } else {
                 

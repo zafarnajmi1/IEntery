@@ -59,6 +59,15 @@ class ContractVC: ButtonBarPagerTabStripViewController {
         titleLabel.font = UIFont(name: "Montserrat-Bold", size: 20)
            navigationItem.titleView = titleLabel
         
+        
+        let appearance = UINavigationBarAppearance()
+
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = UIColor.white
+
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
+        
     }
     
     //ContractHistoryVC

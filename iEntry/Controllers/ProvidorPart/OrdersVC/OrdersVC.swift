@@ -17,7 +17,7 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
     
     
     override func viewDidLoad() {
-        self.navigationController!.navigationBar.isTranslucent = true
+        self.navigationController!.navigationBar.isTranslucent = false
         self.settings.style.selectedBarHeight = 2
            self.settings.style.selectedBarBackgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
         
@@ -43,13 +43,24 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
         self.navigationItem.hidesBackButton = true
         self.view.bringSubviewToFront(bottomView)
        
-        navigationController?.navigationBar.isTranslucent = false
+       //navigationController?.navigationBar.isTranslucent = false
            
            let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
            titleLabel.text = "O R D E N E S"
            titleLabel.textColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
         titleLabel.font = UIFont(name: "Montserrat-Bold", size: 20)
            navigationItem.titleView = titleLabel
+
+        
+        let appearance = UINavigationBarAppearance()
+
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = UIColor.white
+
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
+        
+        
         
         if ShareData.shareInfo.userRole == .provider {
                getProviderApi()
@@ -62,8 +73,8 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
     //ContractHistoryVC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationBarHidShow(isTrue: false)
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationBarHidShow(isTrue: false )
+
     }
     
     //MARK:- tabs funtion to intialize the controller

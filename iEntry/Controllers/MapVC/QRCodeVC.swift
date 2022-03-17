@@ -16,7 +16,8 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
     
     var contractdata : GetContractorByUserIdModelData?
     
-var isfromContract = false
+    @IBOutlet weak var lblprofessional: UILabel!
+    var isfromContract = false
     @IBOutlet weak var mpView: UIView!
     @IBOutlet weak var lblusername: UILabel!
     @IBOutlet weak var lbltime: UILabel!
@@ -48,7 +49,7 @@ var isfromContract = false
         self.lblusername.text = ShareData.shareInfo.obj?.name
         self.lbltime.text = self.getCurrentTime()
         self.lbldate.text = self.getCurrentDate()
-    
+        self.lblprofessional.text = ShareData.shareInfo.obj?.userType?.name ?? ""
     }
     
     func generateQRCode(from string: String) -> UIImage? {
@@ -71,11 +72,23 @@ var isfromContract = false
         
         let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
+        if  ShareData.shareInfo.userRole == .provideremployee {
             
+            
+            vc?.companyname =   ShareData.shareInfo.providerEmployeedataValueGetByUserid?.provider?.company?.name ?? ""
+            vc?.address = ShareData.shareInfo.providerEmployeedataValueGetByUserid?.provider?.company?.address ?? ""
+            vc?.lat = ShareData.shareInfo.providerEmployeedataValueGetByUserid?.provider?.company?.latitud ?? 0
+            vc?.long = ShareData.shareInfo.providerEmployeedataValueGetByUserid?.provider?.company?.longitud ?? 0
+            
+            
+            
+            
+        } else {
         vc?.companyname =   ShareData.shareInfo.contractorListdataValueGetByUserid.company?.name ?? ""
         vc?.address = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.address ?? ""
         vc?.lat = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.latitud ?? 0
         vc?.long = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.longitud ?? 0
+        }
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
