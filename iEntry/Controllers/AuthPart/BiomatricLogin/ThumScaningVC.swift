@@ -8,7 +8,10 @@
 import UIKit
 import LocalAuthentication
 class ThumScaningVC: UIViewController {
-
+    @IBOutlet weak var btnpasswordapp: UIButton!
+    
+    @IBOutlet weak var lbldetail: UILabel!
+    @IBOutlet weak var lblbiomatrictitle: UILabel!
     @IBOutlet weak var mainBottomView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()

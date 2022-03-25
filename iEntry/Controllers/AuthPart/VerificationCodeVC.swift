@@ -21,6 +21,11 @@ class VerificationCodeVC: BaseController,UITextFieldDelegate {
     @IBOutlet weak var sixView: UIView!
     @IBOutlet weak var fourView: UIView!
     
+    @IBOutlet weak var lbldetail: UILabel!
+    @IBOutlet weak var lblwelcome: UILabel!
+    
+    @IBOutlet weak var lbltimerdetail: UILabel!
+    
     
     @IBOutlet weak var txtone: UITextField!
     @IBOutlet weak var txttwo: UITextField!

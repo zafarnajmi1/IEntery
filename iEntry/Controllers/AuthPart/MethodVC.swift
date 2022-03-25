@@ -11,6 +11,7 @@ class MethodVC: UIViewController {
 //MARK:- Here Are IBoutlet
     @IBOutlet weak var mainView: UIView!
     
+    @IBOutlet weak var lbldetail: UILabel!
     @IBOutlet weak var lblemailmethod: UILabel!
     @IBOutlet weak var lblphoneMethos: UILabel!
   var email = ""

@@ -74,7 +74,6 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
         let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
         if  ShareData.shareInfo.userRole == .provideremployee {
             
-            
             vc?.companyname =   ShareData.shareInfo.providerEmployeedataValueGetByUserid?.provider?.company?.name ?? ""
             vc?.address = ShareData.shareInfo.providerEmployeedataValueGetByUserid?.provider?.company?.address ?? ""
             vc?.lat = ShareData.shareInfo.providerEmployeedataValueGetByUserid?.provider?.company?.latitud ?? 0

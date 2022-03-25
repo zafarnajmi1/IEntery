@@ -8,6 +8,11 @@
 import UIKit
 
 class PermissionVC: UIViewController {
+    
+    
+    @IBOutlet weak var lblwouldyoulike: UILabel!
+    
+    @IBOutlet weak var lblsubjecthard: UILabel!
     @IBOutlet weak var btnnowithPassword: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var btncontinue: UIButton!

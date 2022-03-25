@@ -13,6 +13,7 @@ class EnterEmailVC: BaseController {
     @IBOutlet weak var btnEnter: UIButton!
     @IBOutlet weak var btncancel: UIButton!
     
+    @IBOutlet weak var lbldetail: UILabel!
     @IBOutlet weak var txtemail: MDCOutlinedTextField!
     
     var loginVM = LoginViewModel()

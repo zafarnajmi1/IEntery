@@ -10,6 +10,9 @@ import UIKit
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 
 class ChangePasswordVC: BaseController {
+    
+    @IBOutlet weak var lblenternewpassword: UILabel!
+    
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var btnEnter: UIButton!
 

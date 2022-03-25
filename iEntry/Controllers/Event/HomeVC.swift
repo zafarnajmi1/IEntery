@@ -54,7 +54,13 @@ class HomeVC: ButtonBarPagerTabStripViewController {
            navigationItem.titleView = titleLabel
         
         
-  
+        let appearance = UINavigationBarAppearance()
+
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = UIColor.white
+
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
 
     }
     

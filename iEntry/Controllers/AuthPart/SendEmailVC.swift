@@ -12,6 +12,8 @@ class SendEmailVC: UIViewController,UITextFieldDelegate {
     //MARK:- are iboutlet
     @IBOutlet weak var btnBottom: UIButton!
     
+    @IBOutlet weak var lbldetail: UILabel!
+    @IBOutlet weak var lblrecoverpassword: UILabel!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var oneView: UIView!
     @IBOutlet weak var twoView: UIView!

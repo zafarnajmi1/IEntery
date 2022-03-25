@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QDO-Cb-Nzv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QDO-Cb-Nzv">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -215,8 +215,10 @@
                     </view>
                     <connections>
                         <outlet property="btneye" destination="GuP-4q-jl0" id="dk4-HH-s84"/>
+                        <outlet property="btnforgot" destination="N9k-oc-udV" id="YEb-RO-TAx"/>
                         <outlet property="btnlogin" destination="Tp0-ET-u2a" id="w7h-ps-Yf2"/>
                         <outlet property="emailView" destination="0Xm-dl-DAG" id="1pG-XQ-9fw"/>
+                        <outlet property="lblhaveyou" destination="63v-rJ-LVB" id="bOa-Ra-TRf"/>
                         <outlet property="passwordView" destination="dv9-90-kuI" id="dQi-3z-eUO"/>
                         <outlet property="txtemail" destination="hAz-F7-sz8" id="6nt-tI-C50"/>
                         <outlet property="txtpassword" destination="r8c-wV-bOc" id="kVV-c1-yTy"/>
@@ -482,7 +484,10 @@
                         <outlet property="btnBottom" destination="1Lk-H1-t6z" id="UQl-O2-XUS"/>
                         <outlet property="fiveView" destination="ZdG-X4-CfZ" id="Rtm-wk-9QD"/>
                         <outlet property="fourView" destination="nXF-Mu-l8l" id="ZHg-be-q28"/>
+                        <outlet property="lbldetail" destination="2Lt-Sn-PBH" id="b4q-yh-0FQ"/>
                         <outlet property="lbltime" destination="O64-GM-5x6" id="yP2-c3-Xmc"/>
+                        <outlet property="lbltimerdetail" destination="hFu-sz-JnP" id="YAO-LK-nGK"/>
+                        <outlet property="lblwelcome" destination="0KS-Ni-vAf" id="NEf-bq-8hu"/>
                         <outlet property="mainView" destination="euT-9s-EAe" id="hfj-9e-gDD"/>
                         <outlet property="oneView" destination="ngf-YY-LR4" id="i8c-Zi-f0q"/>
                         <outlet property="sixView" destination="PgT-kn-zna" id="txQ-Iz-w8a"/>
@@ -640,6 +645,7 @@
                     </view>
                     <connections>
                         <outlet property="btnEnter" destination="HR2-6a-zNC" id="aXG-lq-xmN"/>
+                        <outlet property="lblenternewpassword" destination="H2U-T5-kGv" id="pjD-lq-uXk"/>
                         <outlet property="mainView" destination="mIZ-gz-h5f" id="GTp-rZ-Val"/>
                         <outlet property="txtpassword" destination="WeC-6G-ZPj" id="GSq-7W-iS9"/>
                     </connections>
@@ -786,6 +792,8 @@
                     <connections>
                         <outlet property="btncontinue" destination="IY5-1k-SDa" id="b79-2H-Ush"/>
                         <outlet property="btnnowithPassword" destination="Gqg-Tp-JVy" id="8sW-4L-qwQ"/>
+                        <outlet property="lblsubjecthard" destination="ugx-2m-heP" id="wkO-iu-IL0"/>
+                        <outlet property="lblwouldyoulike" destination="h4a-oh-sjX" id="QW2-X0-iOf"/>
                         <outlet property="mainView" destination="iEu-xX-WFc" id="dAp-sE-HXc"/>
                     </connections>
                 </viewController>
@@ -1049,7 +1057,10 @@
                         <outlet property="btnBottom" destination="751-pM-Ajt" id="v9e-Et-3dK"/>
                         <outlet property="fiveView" destination="YlT-DN-JVE" id="AFq-3K-p2D"/>
                         <outlet property="fourView" destination="n0C-FP-6FF" id="EJ7-Bd-VmH"/>
+                        <outlet property="lbldetail" destination="0FV-jL-ggv" id="oY0-qj-UPJ"/>
+                        <outlet property="lblrecoverypassword" destination="kMg-5H-snR" id="YP3-jy-dza"/>
                         <outlet property="lbltime" destination="Gh9-zu-eNH" id="YRc-Mz-D0c"/>
+                        <outlet property="lbltimealive" destination="2ua-Cl-tM1" id="Lhd-YN-HKR"/>
                         <outlet property="mainView" destination="PsA-L3-iBC" id="FOL-j3-qZG"/>
                         <outlet property="oneView" destination="zoS-Ap-YnJ" id="va5-l5-LGG"/>
                         <outlet property="sixView" destination="QSb-1Q-ctK" id="3S3-2Y-AYc"/>
@@ -1203,6 +1214,7 @@
                     <connections>
                         <outlet property="btnEnter" destination="S5z-ZX-XPL" id="D1V-0k-68S"/>
                         <outlet property="btncancel" destination="qBk-zb-Ah3" id="we0-Hf-YZq"/>
+                        <outlet property="lbldetail" destination="gHd-5O-IVa" id="y7W-Nj-4JQ"/>
                         <outlet property="mainView" destination="x5y-db-qYu" id="hPc-uR-aNi"/>
                         <outlet property="txtemail" destination="SA6-ST-bY3" id="4iS-R7-kNU"/>
                     </connections>
@@ -1344,6 +1356,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lbldetail" destination="dGP-uA-fe4" id="PaU-0Q-dTB"/>
                         <outlet property="lblemailmethod" destination="VCo-T6-aAD" id="Zqa-7D-7Em"/>
                         <outlet property="lblphoneMethos" destination="OrO-hd-RKl" id="xiC-TZ-0Kx"/>
                         <outlet property="mainView" destination="VDa-Nz-IlX" id="rVt-gn-bbK"/>
@@ -1475,6 +1488,7 @@
                     </view>
                     <connections>
                         <outlet property="btnEnter" destination="cKq-wy-H1x" id="wyH-6T-8uV"/>
+                        <outlet property="lbldetail" destination="8jX-5R-P4l" id="NPI-qO-pYH"/>
                         <outlet property="mainView" destination="ZTc-vd-rEX" id="6yu-oQ-EPt"/>
                         <outlet property="txtpassword" destination="3Gf-QB-iiT" id="L9d-bQ-T70"/>
                     </connections>
@@ -1737,7 +1751,9 @@
                         <outlet property="btnBottom" destination="hk3-0t-n32" id="OsV-WY-43s"/>
                         <outlet property="fiveView" destination="cm5-5I-xxJ" id="JW6-1O-X8m"/>
                         <outlet property="fourView" destination="ree-IG-mUX" id="5xo-zU-o59"/>
+                        <outlet property="lbldetail" destination="LR0-zY-X2A" id="SN3-di-jc2"/>
                         <outlet property="lblerrormsg" destination="hXj-RQ-RHN" id="2EA-d1-2FB"/>
+                        <outlet property="lblrecoverpassword" destination="mIn-eB-83S" id="6a7-3D-Vbv"/>
                         <outlet property="mainView" destination="jqG-LW-0qd" id="hLH-H5-Y2Q"/>
                         <outlet property="oneView" destination="Onx-TO-cK6" id="80P-UR-kat"/>
                         <outlet property="sixView" destination="ogW-aU-IzF" id="sRe-5U-ieS"/>
@@ -2036,6 +2052,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnpasswordapp" destination="m8y-1r-GUk" id="Od3-rf-pkG"/>
+                        <outlet property="lblbiomatrictitle" destination="GlR-7x-vej" id="HBa-B0-kfd"/>
+                        <outlet property="lbldetail" destination="kDe-31-cU1" id="7ZL-DS-VyF"/>
                         <outlet property="mainBottomView" destination="Kwz-Re-F5s" id="qny-l3-vs5"/>
                     </connections>
                 </viewController>

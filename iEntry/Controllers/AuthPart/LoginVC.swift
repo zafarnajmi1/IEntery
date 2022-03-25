@@ -17,6 +17,8 @@ class LoginVC: BaseController {
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var emailView: UIView!
     
+    @IBOutlet weak var btnforgot: UIButton!
+    @IBOutlet weak var lblhaveyou: UILabel!
     var loginVM = LoginViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()

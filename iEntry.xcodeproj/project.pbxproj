@@ -13,6 +13,7 @@
 		1C07B92526E00F2F006A81B9 /* CreateContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07B92426E00F2F006A81B9 /* CreateContractVC.swift */; };
 		1C07B92C26E01A30006A81B9 /* ContractDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07B92B26E01A30006A81B9 /* ContractDetailVC.swift */; };
 		1C07B92E26E025ED006A81B9 /* UpdateContractVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07B92D26E025ED006A81B9 /* UpdateContractVC.swift */; };
+		1C2C19D527EBAE4B002600C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C2C19D727EBAE4B002600C2 /* Localizable.strings */; };
 		1C2FDA4126F243AF0037AD0B /* GeneralQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2FDA4026F243AF0037AD0B /* GeneralQRCodeVC.swift */; };
 		1C2FDA4326F25CDF0037AD0B /* QRScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2FDA4226F25CDF0037AD0B /* QRScanVC.swift */; };
 		1C30FCAB273D999400929A2D /* ContractHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30FCAA273D999400929A2D /* ContractHistoryVC.swift */; };
@@ -257,6 +258,8 @@
 		1CB2F4C926BB270000E1F79F /* VerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2F4C826BB270000E1F79F /* VerificationCodeVC.swift */; };
 		1CB2F4CA26BB270000E1F79F /* VerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2F4C826BB270000E1F79F /* VerificationCodeVC.swift */; };
 		1CB2F4CB26BB270000E1F79F /* VerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2F4C826BB270000E1F79F /* VerificationCodeVC.swift */; };
+		1CC67BCA27EBAFEA00236983 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C2C19D727EBAE4B002600C2 /* Localizable.strings */; };
+		1CC67BCB27EBAFEB00236983 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C2C19D727EBAE4B002600C2 /* Localizable.strings */; };
 		1CD221D226F8FB5200D7828B /* DictioneryToJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD221D126F8FB5200D7828B /* DictioneryToJson.swift */; };
 		1CD86BB726E272BF0047568F /* PayRollVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD86BB626E272BF0047568F /* PayRollVC.swift */; };
 		1CD86BBA26E279D40047568F /* PayRollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD86BB826E279D40047568F /* PayRollCell.swift */; };
@@ -303,6 +306,10 @@
 		1C07B92426E00F2F006A81B9 /* CreateContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContractVC.swift; sourceTree = "<group>"; };
 		1C07B92B26E01A30006A81B9 /* ContractDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDetailVC.swift; sourceTree = "<group>"; };
 		1C07B92D26E025ED006A81B9 /* UpdateContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateContractVC.swift; sourceTree = "<group>"; };
+		1C2C19D627EBAE4B002600C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1C2C19D827EBAEAE002600C2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1C2C19D927EBAEB5002600C2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		1C2C19DA27EBAEB8002600C2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1C2FDA4026F243AF0037AD0B /* GeneralQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralQRCodeVC.swift; sourceTree = "<group>"; };
 		1C2FDA4226F25CDF0037AD0B /* QRScanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanVC.swift; sourceTree = "<group>"; };
 		1C30FCAA273D999400929A2D /* ContractHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractHistoryVC.swift; sourceTree = "<group>"; };
@@ -1008,6 +1015,7 @@
 			isa = PBXGroup;
 			children = (
 				1C529A6F2704ACDC006EB22D /* iEntry.entitlements */,
+				1C2C19D727EBAE4B002600C2 /* Localizable.strings */,
 				1C5FA38726E90D2600512F15 /* NetworkHandlerCall's */,
 				1CB2F4BF26BB1C9000E1F79F /* Extenssions */,
 				1CB2F47226BB165300E1F79F /* Font */,
@@ -1301,6 +1309,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 1CB2F42E26BB05C800E1F79F;
 			productRefGroup = 1CB2F43826BB05C900E1F79F /* Products */;
@@ -1359,6 +1368,7 @@
 				1CB2F49B26BB167200E1F79F /* Montserrat-Black.ttf in Resources */,
 				1CFC11DA2706460000526EEE /* NewInvitationCell.xib in Resources */,
 				1CB2F44226BB05C900E1F79F /* Main.storyboard in Resources */,
+				1C2C19D527EBAE4B002600C2 /* Localizable.strings in Resources */,
 				1CB2F49226BB167200E1F79F /* Montserrat-SemiBold.ttf in Resources */,
 				1CE1A242270B5A07005A84A4 /* InvitarCell.xib in Resources */,
 				1CB2F48F26BB167200E1F79F /* Montserrat-ExtraLightItalic.ttf in Resources */,
@@ -1380,6 +1390,7 @@
 				1CB2F49C26BB167200E1F79F /* Montserrat-Black.ttf in Resources */,
 				1CB2F49026BB167200E1F79F /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				1CB2F4BD26BB167200E1F79F /* Montserrat-ThinItalic.ttf in Resources */,
+				1CC67BCA27EBAFEA00236983 /* Localizable.strings in Resources */,
 				1C4A5B4C26FCE20D009F7DE9 /* GoogleService-Info.plist in Resources */,
 				1CB2F4AE26BB167200E1F79F /* Montserrat-Thin.ttf in Resources */,
 				1CB2F49626BB167200E1F79F /* Montserrat-Bold.ttf in Resources */,
@@ -1407,6 +1418,7 @@
 				1CB2F49D26BB167200E1F79F /* Montserrat-Black.ttf in Resources */,
 				1CB2F49126BB167200E1F79F /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				1CB2F4BE26BB167200E1F79F /* Montserrat-ThinItalic.ttf in Resources */,
+				1CC67BCB27EBAFEB00236983 /* Localizable.strings in Resources */,
 				1C4A5B4D26FCE20D009F7DE9 /* GoogleService-Info.plist in Resources */,
 				1CB2F4AF26BB167200E1F79F /* Montserrat-Thin.ttf in Resources */,
 				1CB2F49726BB167200E1F79F /* Montserrat-Bold.ttf in Resources */,
@@ -1724,10 +1736,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1C2C19D727EBAE4B002600C2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C2C19D627EBAE4B002600C2 /* en */,
+				1C2C19DA27EBAEB8002600C2 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		1CB2F44026BB05C900E1F79F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1CB2F44126BB05C900E1F79F /* Base */,
+				1C2C19D927EBAEB5002600C2 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1736,6 +1758,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1CB2F44926BB05CC00E1F79F /* Base */,
+				1C2C19D827EBAEAE002600C2 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1747,6 +1770,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1808,6 +1832,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

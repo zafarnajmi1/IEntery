@@ -668,7 +668,14 @@ class ShareData {
         }
     }
     
-   
+    var  lang : String? {
+        get{
+            return UserDefaults.standard.string(forKey: "lang")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "lang")
+        }
+    }
     
     
        class func showProgress() {

@@ -9,6 +9,9 @@ import UIKit
 
 class PasswordRecoveryVC: UIViewController,UITextFieldDelegate {
 
+    @IBOutlet weak var lbltimealive: UILabel!
+    @IBOutlet weak var lbldetail: UILabel!
+    @IBOutlet weak var lblrecoverypassword: UILabel!
     @IBOutlet weak var btnBottom: UIButton!
     @IBOutlet weak var lbltime: UILabel!
     @IBOutlet weak var mainView: UIView!

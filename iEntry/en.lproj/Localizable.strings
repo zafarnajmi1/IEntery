@@ -1,0 +1,64 @@
+/* 
+  Localizable.strings
+  iEntry
+
+  Created by ZAFAR on 24/03/2022.
+  
+*/
+
+
+//MARK:- Login Screen
+
+"NOMBRE DE USUARIO" = "USERNAME";
+"CONTRASEÑA" = "PASSWORD";
+"INICIAR SESIÓN" = "LOG IN";
+"¿Has olvidado tu" = "have you forgotten";
+"contraseña?" = "password?";
+
+//MARK:- Verification Code Screen
+"BIENVENIDO !!!" = "WELCOME !!!";
+"para continuar necesitamos saber algunos datos personales pero antes necesitamos confirmar tu cuenta. En cuestión de segundos te llegará un mensaje de texto que se leerá solo." = "To continue we need to know some personal information but first we need to confirm your account. In a matter of seconds, you will receive a text message that will read itself.";
+"Tiempo de vida del mensaje:" = "Message lifetime:";
+"Nunca llevo el mensaje, enviarlo nuevamente" = "I never get the message, send it again";
+
+//MARK:- Change Password (Forgot PAssword)
+"INGRESE NUEVA CONTRASEÑA PARA CONTINUAR" = "ENTER NEW PASSWORD TO CONTINUE";
+"PASSWORD" = "PASSWORD";
+"ENTRAR" = "GET IN";
+
+
+//MARK:-  Permission VC
+"TE GUSTARÍA INICIAR SESIÓN CON TU HUELLA Y/O ESCANER FACIAL*?" = "WOULD YOU LIKE TO LOG IN WITH YOUR FINGERPRINT AND/OR FACIAL SCAN*?";
+"SÍ, CONTINUAR" = "YES CONTINUE";
+"no, con contraseña" = "no, with password";
+"*Sujeto a disponibilidad de hardware" = "*Subject to hardware availability";
+
+
+//MARK:- Password Recovery
+"RECUPERACIÓN DE CONTRASEÑA" = "PASSWORD RECOVERY";
+"un breves momentos te llegará un mensaje de recuperación para poder ingresar una nueva contraseña." = "a few moments you will receive a recovery message to enter a new password.";
+"Time alive for this message:" = "Time alive for this message:";
+"The message never came, send another message" = "The message never came, send another message";
+
+//MARK:- Enter Email VC
+"INGRESE CORREO DEL LA CUENTA A RECUPERAR CONTRASEÑA" = "ENTER EMAIL OF THE ACCOUNT TO RECOVER PASSWORD";
+"CANCELAR" = "CANCEL";
+"ACEPTAR" = "AGREE";
+
+
+//MARK:- MethodVC
+"SELECCIONE EL MÉTODO CON EL CUAL DESEA RECUPERAR LA CONTRASEÑA:" = "SELECT THE METHOD WITH WHICH YOU WANT TO RECOVER THE PASSWORD:";
+"NVIAR SMS AL CELULAR VINCULADO " = "SEND SMS TO PAIRED CELL PHONE ";
+"ENVIAR CÓDIGO AL CORREO DE LA CUENTA" = "SEND CODE TO ACCOUNT EMAIL";
+
+
+//MARK:- NewPassword Screen
+"INGRESE CONTRASEÑA NUEVA" = "ENTER NEW PASSWORD";
+//MARK:- SendEmailVC
+"RECUPERACIÓN DE CONTRASEÑA" = "PASSWORD RECOVERY";
+"RECUPERACIÓN DE CONTRASEÑA verifica en tu correo registrado, debió de haberte llegado un mensaje con un código, por favor introducelo, sino lo encuentras en tu bandeja de entrada verifica en la sección de SPAM" = "RECOVERY OF PASSWORD check your registered email, you should have received a message with a code, please enter it, if you do not find it in your inbox check the SPAM section";
+
+//MARK:- ThumnilVC
+"Biometric credentials" = "Biometric credentials";
+"Log in using yout biometric credential" = "Log in using you biometric credential";
+"Use password App" = "Use password App";

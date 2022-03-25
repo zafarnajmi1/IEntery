@@ -10,6 +10,7 @@ import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class NewPasswordVC: BaseController {
     
     //MARK:- here are iboutlete
+    @IBOutlet weak var lbldetail: UILabel!
     @IBOutlet weak var txtpassword: MDCOutlinedTextField!
     
     @IBOutlet weak var mainView: UIView!
