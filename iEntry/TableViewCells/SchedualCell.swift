@@ -9,12 +9,20 @@ import UIKit
 
 class SchedualCell: UITableViewCell {
     //MARK:- here are the IBOutlet
+    @IBOutlet weak var lblplacetitle: UILabel!
+    @IBOutlet weak var lblhosttitle: UILabel!
+    @IBOutlet weak var lbleventtitle: UILabel!
     @IBOutlet weak var qrView: UIView!
     @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var lbleventName: UILabel!
     @IBOutlet weak var lblhostName: UILabel!
     
+    @IBOutlet weak var lblqrCodeTitle: UILabel!
+    @IBOutlet weak var lblmoredetail: UILabel!
+    @IBOutlet weak var lblreservationtitle: UILabel!
+    @IBOutlet weak var lblstartdatetitle: UILabel!
+    @IBOutlet weak var lblinvitationtitle: UILabel!
     @IBOutlet weak var lbltitleEnddate: UILabel!
     @IBOutlet weak var lblstatus: UILabel!
     @IBOutlet weak var lblplace: UILabel!
@@ -36,6 +44,17 @@ class SchedualCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         viewDesign()
+        
+        self.lbleventtitle.text = "Nombre del evento".localized
+        self.lblhosttitle.text = "Anfitrión".localized
+        self.lblplacetitle.text = "Lugar".localized
+        self.lblinvitationtitle.text = "Invitaciones";
+        self.lblstartdatetitle.text = "Inicio".localized
+        self.lbltitleEnddate.text = "Fin".localized
+        self.lblreservationtitle.text = "Reservación".localized
+        self.lblmoredetail.text = "MAS DETALLES".localized
+        self.lblqrCodeTitle.text = "GENERAR QR".localized
+        
     }
 
     

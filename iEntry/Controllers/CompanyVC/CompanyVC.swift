@@ -9,6 +9,8 @@ import UIKit
  import SimpleAnimation
 class CompanyVC: BaseController {
     //MARK:- here are iboutlet
+    @IBOutlet weak var lbledittitle: UILabel!
+    @IBOutlet weak var lblcontract: UILabel!
     @IBOutlet weak var tblView: UITableView!
     var companyregisterVM = CompanyregisterModelView()
     @IBOutlet weak var tblHeight: NSLayoutConstraint!
@@ -27,7 +29,8 @@ class CompanyVC: BaseController {
         self.tblView.register(UINib.init(nibName: "CompanyCell", bundle: nil), forCellReuseIdentifier: "CompanyCell")
 //        self.lblcompanyName.text = "" //ShareData.shareInfo.obj?.company?.name
 //        self.lbladdress.text = "" //ShareData.shareInfo.obj?.company?.address
-       
+        self.lblcontract.text = "C O N T R A C T".localized
+        self.lbledittitle.text = "ACTUALIZAR DATOS".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {

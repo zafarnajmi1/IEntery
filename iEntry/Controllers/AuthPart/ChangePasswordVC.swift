@@ -28,6 +28,16 @@ class ChangePasswordVC: BaseController {
         btnEnter.roundButtonWithCustomRadius(radius: 8)
         TextFieldConfig()
         self.getuserUserByEmail()
+        
+        
+        
+//        "INGRESE NUEVA CONTRASEÑA PARA CONTINUAR" = "INGRESE NUEVA CONTRASEÑA PARA CONTINUAR";
+//        "PASSWORD" = "PASSWORD";
+//        "ENTRAR" = "ENTRAR";
+        
+        self.lblenternewpassword.text = "INGRESE NUEVA CONTRASEÑA PARA CONTINUAR".localized
+        self.txtpassword.placeholder = "PASSWORD".localized
+        self.btnEnter.setTitle("ENTRAR".localized, for: .normal)
     }
     
     

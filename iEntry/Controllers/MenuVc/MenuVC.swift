@@ -33,9 +33,9 @@ class MenuVC: BaseController {
         
         if ShareData.shareInfo.userRole == .contractor || ShareData.shareInfo.userRole == .contractoremplyee{
             
-            MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
-            MeneList.append(MenuData(Titl: "CONTRATOS", Img: UIImage(named: "ic-contract")))
-            MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
+            MeneList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")))
+            MeneList.append(MenuData(Titl: "CONTRATOS".localized, Img: UIImage(named: "ic-contract")))
+            MeneList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")))
             
             
         }
@@ -49,21 +49,21 @@ class MenuVC: BaseController {
 //        }
         else  if ShareData.shareInfo.userRole == .provider || ShareData.shareInfo.userRole == .provideremployee {
             
-            MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
-            MeneList.append(MenuData(Titl: "ORDENES DE COMPRA", Img: UIImage(named: "ic-contract-1")))
-            MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
+            MeneList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")))
+            MeneList.append(MenuData(Titl: "ORDENES DE COMPRA".localized, Img: UIImage(named: "ic-contract-1")))
+            MeneList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")))
             
         } else if ShareData.shareInfo.userRole == .employees {
             
         
-        MeneList.append(MenuData(Titl: "NOTIFICACIONES", Img: UIImage(named: "ic-bell")))
-        MeneList.append(MenuData(Titl: "COMPAÑIA", Img: UIImage(named: "ic-building-outline")))
-        MeneList.append(MenuData(Titl: "EVENTOS", Img: UIImage(named: "ic-event")))
-        MeneList.append(MenuData(Titl: "INVITACIONES", Img: UIImage(named: "ic-invitation")))
+            MeneList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")))
+            MeneList.append(MenuData(Titl: "COMPAÑIA".localized, Img: UIImage(named: "ic-building-outline")))
+            MeneList.append(MenuData(Titl: "EVENTOS".localized, Img: UIImage(named: "ic-event")))
+            MeneList.append(MenuData(Titl: "INVITACIONES".localized, Img: UIImage(named: "ic-invitation")))
         
         //MeneList.append(MenuData(Titl: "CONTRATISTAS", Img: UIImage(named: "ic-contract")))
         //MeneList.append(MenuData(Titl: "NOMINA", Img: UIImage(named: "ic-report")))
-            MeneList.append(MenuData(Titl: "PERFIL", Img: UIImage(named: "user-circle-solid-1")))
+            MeneList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")))
         }
     }
 

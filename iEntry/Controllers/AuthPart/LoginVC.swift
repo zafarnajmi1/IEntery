@@ -24,8 +24,25 @@ class LoginVC: BaseController {
         super.viewDidLoad()
         self.navigationController!.navigationBar.isTranslucent = false
        
-        self.txtemail.text = "john@gmail.com"//"Luis122@gmail.com"//"luis45@gmail.com" //"najm.technology786@gmail.com"//"luis.cornejo.2610@gmail.com"
-        self.txtpassword.text = "WbxbE7q5LA90"//"IdIxk3f89MTd"//"odq4JM26KVsv"//"lomTO2WqTQ87" //"root"
+        //MARK:- Provider employee
+           //"john@gmail.com"
+           //"WbxbE7q5LA90"
+        //MARK:- Provider
+            //"Luis122@gmail.com"
+            //"IdIxk3f89MTd"
+        //MARK:- Cpntractor employeee
+         //"luis45@gmail.com"
+        //"odq4JM26KVsv"
+        
+        //MARK:- Contractor
+         //"najm.technology786@gmail.com"
+            //"lomTO2WqTQ87"
+        
+        //MARK:- Company
+          //"luis.cornejo.2610@gmail.com"
+        //"root"
+        self.txtemail.text = "luis.cornejo.2610@gmail.com"
+        self.txtpassword.text = "root"
         conFigUI()
     }
     
@@ -55,15 +72,12 @@ class LoginVC: BaseController {
         passwordView.roundViiew()
         btnlogin.roundButtonWithCustomRadius(radius: 10)
         
-        
-//        let dic = ["2": "B", "1": "A", "3": "C"]
-//        let encoder = JSONEncoder()
-//        if let jsonData = try? encoder.encode(dic) {
-//            if let jsonString = String(data: jsonData, encoding: .utf8) {
-//                print("Nice Json", jsonString)
-//            }
-//        }
-        
+        self.txtemail.placeholder = "NOMBRE DE USUARIO".localized
+        self.txtpassword.placeholder = "CONTRASEÑA".localized
+        self.btnlogin.setTitle("INICIAR SESIÓN".localized, for: .normal)
+        self.lblhaveyou.text = "¿Has olvidado tu".localized
+        self.btnforgot.setTitle("contraseña?".localized, for: .normal)
+
     }
     
     

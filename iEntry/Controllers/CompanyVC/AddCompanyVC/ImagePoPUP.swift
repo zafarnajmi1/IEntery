@@ -9,12 +9,22 @@ import UIKit
 import Photos
 class ImagePoPUP: UIViewController{
     //MARK:- here are iboutlet
+    @IBOutlet weak var btnaccept: UIButton!
+    @IBOutlet weak var btncancel: UIButton!
+    @IBOutlet weak var lblselectGallerytitle: UILabel!
+    @IBOutlet weak var lblselectCameraTitle: UILabel!
+    @IBOutlet weak var lblcamerainformationtitle: UILabel!
     @IBOutlet weak var mainView: UIView!
     //MARK:- call back function
     var callBack : ((_ image:UIImage)-> Void)? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.lblcamerainformationtitle.text = "C A M B I A R I M A G E".localized
+        self.lblselectCameraTitle.text = "TOMAR FOTO".localized
+        self.lblselectGallerytitle.text = "SELECCIONAR DE IMAGENES".localized
+        self.btncancel.setTitle("CANCELAR".localized, for: .normal)
+        self.btnaccept.setTitle("ACEPTAR".localized, for: .normal)
+        
         navigationBarHidShow(isTrue: true)
         mainView.roundViewWithCustomRadius(radius: 8)
     }

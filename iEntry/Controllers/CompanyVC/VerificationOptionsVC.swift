@@ -9,14 +9,15 @@ import UIKit
 import HMSegmentedControl
 class VerificationOptionsVC: UIViewController {
     //MARK:- here are iboutlet
+    @IBOutlet weak var lbloptionsTitle: UILabel!
     @IBOutlet weak var oneContainer: UIView!
     @IBOutlet weak var twoContainer: UIView!
     
     @IBOutlet weak var tabsView: UIView!
 //    @IBOutlet weak var sigmentedController: UISegmentedControl!
     let segmentedControl = HMSegmentedControl(sectionTitles: [
-        "CÓDIGO QR",
-        "TOKEN",
+        "CÓDIGO QR".localized,
+        "TOKEN".localized,
         
     ])
     
@@ -38,7 +39,7 @@ class VerificationOptionsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.lbloptionsTitle.text = "O P C I O N E S".localized
         self.navigationBarHidShow(isTrue: true)
         
         

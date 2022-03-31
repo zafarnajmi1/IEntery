@@ -9,6 +9,10 @@ import UIKit
 
 class RecordDetailVC: BaseController {
     //MARK:- here are iboutlet
+    @IBOutlet weak var lblnametitle: UILabel!
+    @IBOutlet weak var lbldetailtitle: UILabel!
+    @IBOutlet weak var lblupdateeventtitle: UILabel!
+    @IBOutlet weak var lblcanceleventtitle: UILabel!
     @IBOutlet weak var tblHeight: NSLayoutConstraint!
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var bannerIMg: UIImageView!
@@ -34,6 +38,13 @@ class RecordDetailVC: BaseController {
     @IBOutlet var moreView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblcanceleventtitle.text = "CANCELAR EVENTO".localized
+        self.lblupdateeventtitle.text = "ACTUALIZAR EVENTO".localized
+        self.lbldetailtitle.text = "D E T A L L E S".localized
+        self.lblnametitle.text = "NOMBRE".localized
+        
+        
+        
         
         if isfromHistory == true {
             btnmore.isHidden = true

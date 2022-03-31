@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 class SchedualVC: BaseController,IndicatorInfoProvider {
     //MARK:- this funtion is delegate of tab
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "PROGRAMADOS")
+        return IndicatorInfo(title: "PROGRAMADOS".localized)
     }
     fileprivate func  emptyDataSetUp() {
         self.tblView.emptyDataSetSource = self

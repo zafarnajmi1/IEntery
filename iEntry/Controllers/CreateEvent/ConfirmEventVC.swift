@@ -9,13 +9,29 @@ import UIKit
 
 class ConfirmEventVC: BaseController {
     //MARK:- here are the iboutlet
-    @IBOutlet weak var btncancel: UIStackView!
+    
+    @IBOutlet weak var lblreservationtitle: UILabel!
+    
+    @IBOutlet weak var lblattitle: UILabel!
+    
+    
+    
+    @IBOutlet weak var lblthetitle: UILabel!
+    @IBOutlet weak var lbldatestitle: UILabel!
+    @IBOutlet weak var lblnumbertitle: UILabel!
+    //@IBOutlet weak var btncancel: UIStackView!
+    @IBOutlet weak var btncancel: UIButton!
     @IBOutlet weak var btnconfirm: UIButton!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var lblname: UILabel!
     @IBOutlet weak var lbltime: UILabel!
     @IBOutlet weak var lblendtime: UILabel!
     @IBOutlet weak var lblreservation: UILabel!
+    
+    @IBOutlet weak var lblcreateeventtitle: UILabel!
+    
+    
+    
     var callBack :((_ Ok : Bool, _ eventid:String)->(Void))? = nil
     var isfromupdate = false 
     var name = ""
@@ -40,6 +56,20 @@ class ConfirmEventVC: BaseController {
         
         self.lblendtime.text =  getMilisecondstoTime(seconds: endDate, formatter: "")
         self.lblreservation.text = reservationName
+        
+        
+        self.lblcreateeventtitle.text = "C O N F I R M A R E V E N T O".localized
+        self.lblnumbertitle.text = "NOMBRE".localized
+    
+        self.lbldatestitle.text = "FECHAS".localized
+        self.lblthetitle.text = "EL".localized
+    
+        lblattitle.text = "A LAS".localized
+        self.lblreservationtitle.text = "RESERVACIONES".localized
+        self.btncancel.setTitle("CANCELAR".localized, for: .normal)
+        self.btnconfirm.setTitle("CONFIMRMAR".localized, for: .normal)
+        
+    
     }
     
     

@@ -10,6 +10,7 @@ import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import DropDown
 class AddEmployeeVC: BaseController {
     //MARK:- here are iboutlet
+    @IBOutlet weak var lblupdatetitle: UILabel!
     @IBOutlet weak var stripView: UIView!
     @IBOutlet weak var txtstatus: MDCOutlinedTextField!
     @IBOutlet weak var txtgender: MDCOutlinedTextField!
@@ -22,13 +23,16 @@ class AddEmployeeVC: BaseController {
     var MainDrowpDown = DropDown()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setMDCTxtFieldDesign(txtfiled: txtname, Placeholder: "NOMBRE", imageIcon:UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtemail, Placeholder: "CORREO", imageIcon:UIImage(named: "ic-invitation")!)
-        setMDCTxtFieldDesign(txtfiled: txtmobile, Placeholder: "CELULAR", imageIcon:UIImage(named: "ic-arrow-down")!)
-        setMDCTxtFieldDesign(txtfiled: txtpassword, Placeholder: "CONTRASEÑA", imageIcon:UIImage(named: "eye-regular")!)
-        setMDCTxtFieldDesign(txtfiled: txtgender, Placeholder: "GÉNERO", imageIcon:UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtstatus, Placeholder: "STATUS", imageIcon:UIImage(named: "ic-arrow-down")!)
-       navigationBarHidShow(isTrue: true)
+        setMDCTxtFieldDesign(txtfiled: txtname, Placeholder: "NOMBRE".localized, imageIcon:UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtemail, Placeholder: "CORREO".localized, imageIcon:UIImage(named: "ic-invitation")!)
+        setMDCTxtFieldDesign(txtfiled: txtmobile, Placeholder: "CELULAR".localized, imageIcon:UIImage(named: "ic-arrow-down")!)
+        setMDCTxtFieldDesign(txtfiled: txtpassword, Placeholder: "CONTRASEÑA".localized, imageIcon:UIImage(named: "eye-regular")!)
+        setMDCTxtFieldDesign(txtfiled: txtgender, Placeholder: "GÉNERO".localized, imageIcon:UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtstatus, Placeholder: "STATUS".localized, imageIcon:UIImage(named: "ic-arrow-down")!)
+       
+        self.lblupdatetitle.text = "ACTUALIZAR".localized
+        
+        navigationBarHidShow(isTrue: true)
         emplyeeImg.roundViiew()
         stripView.roundViiew()
         btnaddimg.roundButton()

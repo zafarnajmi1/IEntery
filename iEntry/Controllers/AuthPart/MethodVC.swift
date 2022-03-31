@@ -28,6 +28,11 @@ class MethodVC: UIViewController {
         lblemailmethod.addGestureRecognizer(email)
         lblemailmethod.isUserInteractionEnabled = true
         lblphoneMethos.isUserInteractionEnabled = true
+        
+
+        self.lbldetail.text = "SELECCIONE EL MÉTODO CON EL CUAL DESEA RECUPERAR LA CONTRASEÑA:".localized
+        self.lblphoneMethos.text = "NVIAR SMS AL CELULAR VINCULADO ".localized
+        self.lblemailmethod.text = "ENVIAR CÓDIGO AL CORREO DE LA CUENTA".localized
     }
     
     //MARK:- this funtion use to move on next screen

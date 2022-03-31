@@ -8,6 +8,7 @@
 import UIKit
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class AddVehicleVC: BaseController {
+    @IBOutlet weak var lbluptodatetitle: UILabel!
     //MARK:- here are iboutlet
     @IBOutlet weak var stripView: UIView!
     @IBOutlet weak var txtstatus: MDCOutlinedTextField!
@@ -26,15 +27,18 @@ class AddVehicleVC: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setMDCTxtFieldDesign(txtfiled: txtbrand, Placeholder: "BRAND", imageIcon:UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtsubBrand, Placeholder: "SUB-BRAND", imageIcon:UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtcolor, Placeholder: "COLOR", imageIcon:UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtmodel, Placeholder: "MODEL", imageIcon:UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtplates, Placeholder: "PLATES", imageIcon:UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtvehicleType, Placeholder: "VEHICLE TYPE", imageIcon:UIImage(named: "ic-arrow-down")!)
-        setMDCTxtFieldDesign(txtfiled: txtDriver, Placeholder: "DRIVER", imageIcon:UIImage(named: "ic-arrow-down")!)
-        setMDCTxtFieldDesign(txtfiled: txtstatus, Placeholder: "STATUS", imageIcon:UIImage(named: "ic-arrow-down")!)
-       navigationBarHidShow(isTrue: true)
+        setMDCTxtFieldDesign(txtfiled: txtbrand, Placeholder: "BRAND".localized, imageIcon:UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtsubBrand, Placeholder: "SUB-BRAND".localized, imageIcon:UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtcolor, Placeholder: "COLOR".localized, imageIcon:UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtmodel, Placeholder: "MODEL".localized, imageIcon:UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtplates, Placeholder: "PLATES".localized, imageIcon:UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtvehicleType, Placeholder: "VEHICLE TYPE".localized, imageIcon:UIImage(named: "ic-arrow-down")!)
+        setMDCTxtFieldDesign(txtfiled: txtDriver, Placeholder: "DRIVER".localized, imageIcon:UIImage(named: "ic-arrow-down")!)
+        setMDCTxtFieldDesign(txtfiled: txtstatus, Placeholder: "STATUS".localized, imageIcon:UIImage(named: "ic-arrow-down")!)
+       
+        self.lbluptodatetitle.text = "ACTUALIZAR".localized
+        
+        navigationBarHidShow(isTrue: true)
         vehichleimg.roundViiew()
         stripView.roundViiew()
         btnaddimg.roundButton()

@@ -10,6 +10,12 @@ import GoogleMaps
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class AddProfileDataVC: BaseController {
     //MARK:- here are iboutlet
+    @IBOutlet weak var lblupdatetitle: UILabel!
+    @IBOutlet weak var lblBIOCTitle: UILabel!
+    @IBOutlet weak var lbleventtitl: UILabel!
+    @IBOutlet weak var lbladditionalinfotitle: UILabel!
+    @IBOutlet weak var lblrestrictiontitle: UILabel!
+    @IBOutlet weak var lblinformationtitle: UILabel!
     @IBOutlet weak var btnadditionalinfo: UIButton!
     @IBOutlet weak var btnBioCrown: UIButton!
     @IBOutlet weak var txtcompany: MDCOutlinedTextField!
@@ -34,6 +40,15 @@ class AddProfileDataVC: BaseController {
     var isBioAcronmy = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.lblinformationtitle.text = "I N F O R M A C I Ó N".localized
+        self.lblrestrictiontitle.text = "R E S T R I C C I O N E S".localized
+        self.lbladditionalinfotitle.text = "Aditional information employee".localized
+        self.lbleventtitl.text = "Event Approval".localized
+        self.lblBIOCTitle.text = "BIOCR Validation".localized
+        self.lblupdatetitle.text = "TO UPDATE".localized
+        
         setData()
         getCompanyRistrictionbyID()
         
@@ -42,10 +57,10 @@ class AddProfileDataVC: BaseController {
     
     func setData() {
         
-        setMDCTxtFieldDesign(txtfiled: txtcompany, Placeholder: "COMPAÑIA", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtaddress, Placeholder: "ADDRESS", imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtcompany, Placeholder: "COMPAÑIA".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtaddress, Placeholder: "ADDRESS".localized, imageIcon: UIImage())
         
-        setMDCTxtFieldDesign(txtfiled: txtacronmy, Placeholder: "ACRONYM", imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtacronmy, Placeholder: "ACRONYM".localized, imageIcon: UIImage())
         userimg.roundViiew()
         
         stripView.roundViiew()

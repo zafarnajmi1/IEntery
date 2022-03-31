@@ -24,3 +24,7 @@ enum UserRole {
 }
 
 
+enum lang :String{
+    case en
+    case spa
+}

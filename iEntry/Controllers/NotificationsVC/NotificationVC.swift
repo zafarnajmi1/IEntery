@@ -15,6 +15,7 @@ class NotificationVC: BaseController {
         self.tblView.reloadData()
     }
     //MARK:- here are the iboutlet
+    @IBOutlet weak var lblnotificationsTitle: UILabel!
     @IBOutlet weak var inerView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var buttonView: UIView!
@@ -37,7 +38,7 @@ class NotificationVC: BaseController {
         }
 //        let prefs = UserDefaults.standard
 //        prefs.removeObject(forKey:"notification")
-        
+        self.lblnotificationsTitle.text = "N O T I F I C A C I O N E S".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {

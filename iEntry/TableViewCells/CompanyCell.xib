@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -260,9 +260,15 @@
             <viewLayoutGuide key="safeArea" id="k7A-EJ-CLQ"/>
             <connections>
                 <outlet property="lbladdress" destination="ftm-kh-uIn" id="Jfl-27-szB"/>
+                <outlet property="lblcontractdate" destination="QTB-aM-cFm" id="OmP-Hz-Sje"/>
+                <outlet property="lblemployee" destination="NL3-UO-a9r" id="89D-P4-8VK"/>
                 <outlet property="lblendDate" destination="XQv-vm-dNk" id="y8c-5j-FvC"/>
+                <outlet property="lblenddatetitle" destination="QbG-U5-3gv" id="Psi-cq-Dak"/>
+                <outlet property="lblmap" destination="ugX-3J-wzG" id="2Vb-JR-sN0"/>
                 <outlet property="lblownername" destination="afb-Vi-0I1" id="VAa-An-W2u"/>
+                <outlet property="lblrole" destination="AVk-6M-Of7" id="67D-w8-C6j"/>
                 <outlet property="lblstartDate" destination="7Ol-hH-9EV" id="yQ9-RI-3mI"/>
+                <outlet property="lblstartdatetitle" destination="vsh-3e-19a" id="QbX-wj-Hxd"/>
                 <outlet property="mainView" destination="Ihf-eR-1rp" id="yyu-7d-d8y"/>
                 <outlet property="mapView" destination="DMe-Fb-rSc" id="WuB-jT-9qR"/>
                 <outlet property="qrCodeView" destination="Jad-iI-vnW" id="2B4-bS-bkQ"/>

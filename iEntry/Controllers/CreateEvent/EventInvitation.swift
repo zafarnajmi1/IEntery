@@ -9,7 +9,10 @@ import UIKit
 
 class EventInvitation: BaseController,UITextFieldDelegate {
     
+    @IBOutlet weak var lblenduptitle: UILabel!
+    @IBOutlet weak var btngetnumber: UIButton!
     
+    @IBOutlet weak var lblinvitationtitle: UILabel!
     var invitationsData : [getAllInvitationsAgainstEventModelData]? = nil
     var eventDetaildata : EventDetailModelData? = nil
     var  commenAreasdata : [CommenAreasModelsData]? = nil
@@ -45,6 +48,10 @@ class EventInvitation: BaseController,UITextFieldDelegate {
         txtsearch.delegate = self
         tblView.isScrollEnabled = false
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        self.lblinvitationtitle.text = "I N V I T A C I O N E S  D E L E V E N T O".localized
+        self.txtsearch.placeholder = "Escribe no celular / email para invitar".localized
+        self.btngetnumber.setTitle("O ELIGE EN BASE A TU LISTA DE CONTACTOS".localized, for: .normal)
+        self.lblenduptitle.text = "TERMINAR".localized
     }
     
     
@@ -216,7 +223,7 @@ class EventInvitation: BaseController,UITextFieldDelegate {
                        self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:""))
                }
            }
-           self.lblnumberofInvitation.text = "\(checkRegisterUser.count) Invitaciones)"
+           self.lblnumberofInvitation.text = "\(checkRegisterUser.count) " + "Invitaciones".localized
            //self.filterData =  self.checkRegisterUser
            self.tblView.reloadData()
        }, Failure: {error in
@@ -330,7 +337,7 @@ extension EventInvitation : UITableViewDelegate,UITableViewDataSource {
    
                     debugPrint("Delete tapped")
                 self.checkRegisterUser.remove(at: indexPath.row)
-                self.lblnumberofInvitation.text = "\(self.checkRegisterUser.count) Invitaciones)"
+                self.lblnumberofInvitation.text = "\(self.checkRegisterUser.count)" + "Invitaciones".localized
                 self.tblView.reloadData()
                     success(true)
                 })

@@ -17,6 +17,11 @@ class ThumScaningVC: UIViewController {
         super.viewDidLoad()
         mainBottomView.roundCorners([.topLeft,.topRight], radius: 20)
         authenticationWithTouchID()
+        
+        lblbiomatrictitle.text = "Biometric credentials".localized
+        
+        self.lbldetail.text = "Log in using yout biometric credential".localized
+        self.btnpasswordapp.setTitle("Use password App".localized, for: .normal)
     }
     
     

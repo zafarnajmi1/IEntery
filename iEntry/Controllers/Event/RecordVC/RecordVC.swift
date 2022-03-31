@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 class RecordVC: BaseController,IndicatorInfoProvider {
     //MARK:- this delegate of tab
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "HISTORIAL")
+        return IndicatorInfo(title: "HISTORIAL".localized)
     }
     
     fileprivate func  emptyDataSetUp() {

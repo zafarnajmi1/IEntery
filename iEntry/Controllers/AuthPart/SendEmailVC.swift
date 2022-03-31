@@ -86,6 +86,18 @@ class SendEmailVC: UIViewController,UITextFieldDelegate {
                 txtsix.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
                 txtone.becomeFirstResponder()
     
+        
+        
+//        "RECUPERACIÓN DE CONTRASEÑA" = "RECUPERACIÓN DE CONTRASEÑA";
+//        "RECUPERACIÓN DE CONTRASEÑA verifica en tu correo registrado, debió de haberte llegado un mensaje con un código, por favor introducelo, sino lo encuentras en tu bandeja de entrada verifica en la sección de SPAM" = "RECUPERACIÓN DE CONTRASEÑA verifica en tu correo registrado, debió de haberte llegado un mensaje con un código, por favor introducelo, sino lo encuentras en tu bandeja de entrada verifica en la sección de SPAM";
+        
+        self.lblrecoverpassword.text = "RECUPERACIÓN DE CONTRASEÑA".localized
+        self.lbldetail.text = "RECUPERACIÓN DE CONTRASEÑA verifica en tu correo registrado, debió de haberte llegado un mensaje con un código, por favor introducelo, sino lo encuentras en tu bandeja de entrada verifica en la sección de SPAM".localized
+        self.lblerrormsg.text = "Time alive for this message:".localized
+        
+        self.btnBottom.setTitle("The message never came, send another message".localized, for: .normal)
+        
+        
 }
     //MARK:- this funtion use to enter otp automaticaly 
     

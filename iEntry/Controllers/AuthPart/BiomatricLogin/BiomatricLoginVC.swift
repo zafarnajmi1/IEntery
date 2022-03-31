@@ -9,6 +9,7 @@ import UIKit
 
 class BiomatricLoginVC: UIViewController {
 
+    @IBOutlet weak var txtemail: UITextField!
     @IBOutlet weak var btnpassword: UIButton!
     @IBOutlet weak var txtpassword: UITextField!
     @IBOutlet weak var passwordView: UIView!
@@ -17,6 +18,13 @@ class BiomatricLoginVC: UIViewController {
         passwordView.roundViiew()
         btnpassword.roundButtonWithCustomRadius(radius: 10)
         
+        
+//        "Biometric credentials" = "Biometric credentials";
+//        "Log in using yout biometric credential" = "Log in using yout biometric credential";
+//        "Use password App" = "Use password App";
+        txtemail.placeholder = "Biometric credentials"
+        self.btnpassword.setTitle("INICIAR SESIÓN".localized, for: .normal)
+        self.txtpassword.placeholder = "CONTRASEÑA".localized
     }
     
     @IBAction func loginAction(_ sender: UIButton) {

@@ -83,6 +83,16 @@ class PasswordRecoveryVC: UIViewController,UITextFieldDelegate {
                     txtsix.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
                     txtone.becomeFirstResponder()
         
+
+        
+        self.lblrecoverypassword.text = "RECUPERACIÓN DE CONTRASEÑA".localized
+        
+        self.lbldetail.text = "un breves momentos te llegará un mensaje de recuperación para poder ingresar una nueva contraseña.".localized
+        self.lbltimealive.text = "Time alive for this message:".localized
+        self.btnBottom.setTitle("The message never came, send another message".localized, for: .normal)
+        
+        
+        
     }
     
     //MARK:- this funtion use to inter 6 digit OTP

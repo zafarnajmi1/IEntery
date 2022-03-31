@@ -12,6 +12,7 @@ import CoreLocation
 class CompanyMapVC: UIViewController {
     
     //MARK:- here are the iboutlet
+    @IBOutlet weak var lblmaptitle: UILabel!
     @IBOutlet weak var MapView: GMSMapView!
     
     @IBOutlet weak var lbladdressDetail: UILabel!
@@ -39,6 +40,11 @@ class CompanyMapVC: UIViewController {
         
         self.lblcompnyDetail.text = companyname
         self.lbladdressDetail.text = address
+        
+        
+        self.lblmaptitle.text = "M A P A".localized
+        self.lblcompany.text = "COMPAÑIA".localized
+        self.lbladdresstitle.text = "DIRECCIÓN".localized
         
         conFigMap()
         

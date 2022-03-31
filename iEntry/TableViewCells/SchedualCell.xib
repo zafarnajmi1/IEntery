@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -219,13 +219,13 @@
                                 <rect key="frame" x="10" y="242.5" width="305" height="17.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fid-nH-KvZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="82.5" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.70189815759999996" green="0.70200085639999998" blue="0.70187574630000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08/04/2021 12:00 pm" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pci-uv-qqM">
-                                        <rect key="frame" x="222.5" y="0.0" width="82.5" height="17.5"/>
+                                        <rect key="frame" x="162" y="0.0" width="143" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.43917477129999999" green="0.43924182649999999" blue="0.43916010859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -337,11 +337,19 @@
             <connections>
                 <outlet property="lblendDate" destination="Pci-uv-qqM" id="LsR-n4-ukP"/>
                 <outlet property="lbleventName" destination="GDm-yL-dpK" id="UZe-6a-KR9"/>
+                <outlet property="lbleventtitle" destination="i24-Yv-BeP" id="Ok5-YE-4g5"/>
                 <outlet property="lblhostName" destination="exM-cW-eIS" id="zoW-cT-aKF"/>
+                <outlet property="lblhosttitle" destination="hHc-mf-r25" id="uZb-34-KCq"/>
                 <outlet property="lblinvitations" destination="HG2-iu-SyQ" id="KzD-AS-vCF"/>
+                <outlet property="lblinvitationtitle" destination="EHH-NL-fw2" id="XT8-4H-iai"/>
+                <outlet property="lblmoredetail" destination="JoC-RV-mka" id="ril-Bu-f64"/>
                 <outlet property="lblplace" destination="TPd-Co-rtk" id="48T-yK-0Rg"/>
+                <outlet property="lblplacetitle" destination="yyc-Or-o6i" id="bvQ-wM-kFW"/>
+                <outlet property="lblqrCodeTitle" destination="Biz-cD-Viw" id="UYk-uV-LBq"/>
                 <outlet property="lblreservation" destination="Dus-ML-J9x" id="yNn-4r-htS"/>
+                <outlet property="lblreservationtitle" destination="fiI-zd-flQ" id="eWX-0r-SKJ"/>
                 <outlet property="lblstartDate" destination="iz1-ZZ-3EA" id="0jM-ur-ino"/>
+                <outlet property="lblstartdatetitle" destination="qjR-68-mku" id="XXH-bq-McI"/>
                 <outlet property="lblstatus" destination="SUO-AT-l36" id="Igo-s3-Vqd"/>
                 <outlet property="lbltitleEnddate" destination="fid-nH-KvZ" id="dvq-Aj-RHU"/>
                 <outlet property="mainView" destination="4xK-4f-WHa" id="ass-cM-jv4"/>

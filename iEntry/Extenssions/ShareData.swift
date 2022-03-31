@@ -320,6 +320,8 @@ class ShareData {
     var checkUserExist = UserDefaults.standard.retrieve(object:getUserIsExistModelData.self, fromKey:"checkuserExist")
     
     
+    
+    
     var userRole : UserRole = .employees
        var Loging : LoginModel?
 
@@ -668,12 +670,13 @@ class ShareData {
         }
     }
     
-    var  lang : String? {
-        get{
-            return UserDefaults.standard.string(forKey: "lang")
+    var saveLanguage:String?{
+        set{
+            UserDefaults.standard.set(newValue , forKey: "saveLanguage")
+            UserDefaults.standard.synchronize()
         }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "lang")
+        get{
+            return UserDefaults.standard.string(forKey:  "saveLanguage")
         }
     }
     

@@ -121,6 +121,14 @@ class VerificationCodeVC: BaseController,UITextFieldDelegate {
         txtfive.textContentType = .oneTimeCode
         txtsix.textContentType = .oneTimeCode
         txtone.becomeFirstResponder()
+        
+        
+        self.btnBottom.setTitle("Nunca llevo el mensaje, enviarlo nuevamente".localized, for: .normal)
+        self.lblwelcome.text = "BIENVENIDO !!!".localized + (ShareData.shareInfo.obj?.name)!
+        self.lbltimerdetail.text = "para continuar necesitamos saber algunos datos personales pero antes necesitamos confirmar tu cuenta. En cuestión de segundos te llegará un mensaje de texto que se leerá solo.".localized
+        self.lbltimerdetail.text = "Tiempo de vida del mensaje:".localized
+
+        
     
 }
 

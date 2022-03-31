@@ -33,6 +33,15 @@ class PermissionVC: UIViewController {
                 attributes: yourAttributes
              )
         btnnowithPassword.setAttributedTitle(attributeString, for: .normal)
+        
+        
+    
+        
+        self.lblwouldyoulike.text = "TE GUSTARÍA INICIAR SESIÓN CON TU HUELLA Y/O ESCANER FACIAL*?".localized
+        self.btncontinue.setTitle("SÍ, CONTINUAR".localized, for: .normal)
+        
+        self.btnnowithPassword.setTitle("no, con contraseña".localized, for: .normal)
+        self.lblsubjecthard.text = "*Sujeto a disponibilidad de hardware".localized
     }
     
 

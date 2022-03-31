@@ -62,3 +62,111 @@
 "Biometric credentials" = "Biometric credentials";
 "Log in using yout biometric credential" = "Log in using you biometric credential";
 "Use password App" = "Use password App";
+
+
+//MARK:- Menu VC
+"NOTIFICACIONES" = "NOTIFICATIONS";
+"CONTRATOS" = "CONTRACTS";
+"PERFIL" = "PROFILE";
+"ORDENES DE COMPRA" = "PURCHASE ORDERS";
+"COMPAÑIA" = "COMPANY";
+"EVENTOS" = "EVENTS";
+"INVITACIONES" = "INVITATIONS";
+
+
+//MARK:- Employee
+//MARK:- Company VC
+"C O N T R A C T" = "C O N T R A C T";
+"ACTUALIZAR DATOS" = "UPDATE DATA";
+
+//MARK:- CompanyCell
+"Empleado" = "Employee";
+"MAPA" = "MAP";
+"Rol" = "Rol";
+"Fechas de Contrato" = "Contract Dates";
+"Inicio" = "Inicio";
+"Fin" = "End";
+
+//MARK:- SchedualVC
+"PROGRAMADOS" = "SCHEDULED";
+//MARK:- SchedualCell
+"Nombre del evento" = "Nombre del evento";
+"Anfitrión" = "Host";
+"Lugar" = "Place";
+"Invitaciones" = "Invitations";
+"Reservación" = "Reservation";
+"GENERAR QR" = "GENERATE QR";
+
+
+//MARK:- RecodrVc
+"HISTORIAL" = "RECORD";
+
+//MARK:- CreateEventVc
+"C R E A R E V E N T O" = "C R E A R E V E N T";
+"ELÍGE UN HORARIO" = "CHOOSE A SCHEDULE";
+"ELÍGE LA AREA COMÚN A RESERVAR:" = "CHOOSE THE COMMON AREA TO BOOK:";
+"RESERVACIONES" = "RESERVATIONS";
+
+
+//MARK:-ConfirmEventVC
+"AGREGAR EVENTO" = "ADD EVENT";
+"NOMBRE" = "NAME";
+"FECHAS" = "DATES";
+"EL" = "EL";
+"A LAS" = "AT";
+"CONFIMRMAR" = "CONFIRM";
+
+//MARK:- EventInvitation
+"I N V I T A C I O N E S  D E L E V E N T O" = "L E V E N T I N V I T A T I O N S";
+"Escribe no celular / email para invitar" = "Write no cell phone / email to invite";
+"O ELIGE EN BASE A TU LISTA DE CONTACTOS" = "OR CHOOSE BASED ON YOUR CONTACT LIST";
+"Invitaciones" = "Invitations";
+"TERMINAR" = "END UP";
+
+
+//MARK:-  RecordDetailCell
+"Nombre:" = "Name:";
+"Celular:" = "Cell phone:";
+
+//MARK:- VerificationOptionsVC
+"CÓDIGO QR" = "QR CODE";
+"TOKEN" = "TOKENS";
+"O P C I O N E S" = "OP T I O N S";
+//MARK:- CompanyMapVC
+"DIRECCIÓN" = "ADDRESS";
+//MARK:- NotificationsVC
+"N O T I F I C A C I O N E S" = "N O T I F I C A T I O N S";
+
+//MARK:- AddProfileDataVc
+"I N F O R M A C I Ó N" = "INFORMATION";
+"ACRONYM" = "ACRONYM";
+"ADDRESS" = "ADDRESS";
+"Aditional information employee" = "Additional information employee";
+"Event Approval" = "Event Approval";
+"BIOCR Validation" = "BIOCR Validation";
+"ACTUALIZAR" = "TO UPDATE";
+
+//MARK:- ImagePopUpVc
+"C A M B I A R I M A G E" = "C A M B I A R I M A G E";
+"TOMAR FOTO" = "TAKE PHOTO";
+"SELECCIONAR DE IMAGENES" = "SELECT FROM IMAGES";
+
+//MARK:- AddEmployeeVc
+"NOMBRE" = "NAME";
+"CORREO" = "MAIL";
+"CELULAR" = "CELL PHONE";
+"CONTRASEÑA" = "PASSWORD";
+"GÉNERO" = "GENDER";
+"STATUS" = "STATUS";
+//MARK:- AddVehicleVC
+"BRAND" = "BRAND";
+"SUB-BRAND" = "SUB-BRAND";
+"COLOR" = "COLOUR";
+"MODEL" = "MODEL";
+"PLATES" = "PLATES";
+"VEHICLE TYPE" = "VEHICLE TYPE";
+"DRIVER" = "DRIVER";
+//MARK:- RecordDetailVC
+"CANCELAR EVENTO" = "CANCEL EVENT";
+"ACTUALIZAR EVENTO" = "UPDATE EVENT";
+"D E T A L L E S" = "D E T A I L S";

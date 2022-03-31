@@ -9,17 +9,23 @@ import UIKit
 
 class CompanyCell: UITableViewCell {
     //MARK:- here are the IBOutlet
+    @IBOutlet weak var lblmap: UILabel!
+    @IBOutlet weak var lblemployee: UILabel!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var qrCodeView: UIView!
     @IBOutlet weak var mapView: UIView!
     
+    @IBOutlet weak var lblcontractdate: UILabel!
+    @IBOutlet weak var lblrole: UILabel!
     @IBOutlet weak var lblownername: UILabel!
     
     @IBOutlet weak var lbladdress: UILabel!
     
     @IBOutlet weak var lblstartDate: UILabel!
     @IBOutlet weak var lblendDate: UILabel!
+    @IBOutlet weak var lblenddatetitle: UILabel!
     
+    @IBOutlet weak var lblstartdatetitle: UILabel!
     
     
     //MARK:- call back funtion intializing here 
@@ -30,6 +36,13 @@ class CompanyCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         viewDesign()
+        
+        self.lblmap.text = "MAPA".localized
+        self.lblemployee.text = "Empleado".localized
+        self.lblrole.text = "Rol".localized
+        self.lblcontractdate.text = "Fechas de Contrato".localized
+        self.lblstartdatetitle.text = "Inicio".localized
+        self.lblenddatetitle.text = "Fin".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

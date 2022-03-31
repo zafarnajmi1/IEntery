@@ -22,7 +22,17 @@ class EnterEmailVC: BaseController {
         self.mainView.roundViewWithCustomRadius(radius: 10)
         self.navigationBarHidShow(isTrue: true)
         btnEnter.roundButtonWithCustomRadius(radius: 8)
-        setMDCTxtFieldDesign(txtfiled: txtemail, Placeholder: "EMAIL", imageIcon: trailingImage)
+        setMDCTxtFieldDesign(txtfiled: txtemail, Placeholder: "EMAIL".localized, imageIcon: trailingImage)
+
+        
+        
+        self.lbldetail.text = "INGRESE CORREO DEL LA CUENTA A RECUPERAR CONTRASEÑA".localized
+        self.txtemail.placeholder = "EMAIL".localized
+        self.btncancel.setTitle("CANCELAR".localized, for: .normal)
+        
+        self.btnEnter.setTitle("ACEPTAR".localized, for: .normal)
+        
+        
     }
     let trailingImage: UIImage = {
       return UIImage.init(named: "ic-invitation",

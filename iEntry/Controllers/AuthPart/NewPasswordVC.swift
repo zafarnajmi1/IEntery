@@ -21,7 +21,13 @@ class NewPasswordVC: BaseController {
         self.mainView.roundViewWithCustomRadius(radius: 10)
         self.navigationBarHidShow(isTrue: true)
         btnEnter.roundButtonWithCustomRadius(radius: 8)
-        setMDCTxtFieldDesign(txtfiled: txtpassword, Placeholder: "PASSWORD", imageIcon: trailingImage)
+        setMDCTxtFieldDesign(txtfiled: txtpassword, Placeholder: "PASSWORD".localized, imageIcon: trailingImage)
+        
+        
+        
+        self.lbldetail.text = "INGRESE CONTRASEÑA NUEVA".localized
+        txtpassword.placeholder = "PASSWORD".localized
+        self.btnEnter.setTitle("ENTRAR".localized, for: .normal)
     }
     
     let trailingImage: UIImage = {

@@ -11,10 +11,14 @@ import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import SMDatePicker
 class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UITextFieldDelegate, SMDatePickerDelegate {
     @IBOutlet weak var lblcompany: UILabel!
+    @IBOutlet weak var lblreservationtitle: UILabel!
     
+    @IBOutlet weak var lblagreetitle: UILabel!
+    @IBOutlet weak var lblreservationbottomtitle: UILabel!
     @IBOutlet weak var lbladdress: UILabel!
     
-    @IBOutlet weak var lblreservationtitle: UILabel!
+    @IBOutlet weak var lblcreateEventtitle: UILabel!
+    @IBOutlet weak var lblreservationlisttitle: UILabel!
     
     var  commenAreasdata : [CommenAreasModelsData]? = nil
     
@@ -25,6 +29,7 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
     var startdate = Date()
     var endDate = Date()
     //MARK:- here are the iboutlet
+    @IBOutlet weak var lblschedualtitle: UILabel!
     @IBOutlet weak var btncross: UIButton!
     
     @IBOutlet weak var btnprevius: UIButton!
@@ -72,6 +77,14 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
         self.configUi()
         self.fcCalaender.bringSubviewToFront(btnnext)
         self.fcCalaender.bringSubviewToFront(btnprevius)
+        
+        
+        self.lblcreateEventtitle.text = "C R E A R E V E N T O".localized
+        
+        self.lblschedualtitle.text = "ELÍGE UN HORARIO".localized
+        self.lblreservationtitle.text = "ELÍGE LA AREA COMÚN A RESERVAR:".localized
+        self.lblreservationbottomtitle.text = "RESERVACIONES".localized
+        self.lblagreetitle.text = "AGREGAR EVENTO".localized
     }
     //MARK:- this funtion use to set the UI
     func configUi() {
