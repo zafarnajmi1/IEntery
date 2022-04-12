@@ -10,7 +10,9 @@ import MaterialComponents.MaterialTextControls_FilledTextFields
 import SMDatePicker
 import DropDown
 class NewNotificationVC: BaseController, UITextViewDelegate,SMDatePickerDelegate, UITextFieldDelegate {
+    @IBOutlet weak var lblaceptitle: UILabel!
     @IBOutlet weak var tblHeight: NSLayoutConstraint!
+    @IBOutlet weak var lblnewinvitationtitle: UILabel!
     let timeInMiliSec = Date()
     var sectimeInMili = 0
     var  userListdata = [GetAllUsersListModelData]()
@@ -46,6 +48,8 @@ class NewNotificationVC: BaseController, UITextViewDelegate,SMDatePickerDelegate
     var MainDrowpDown = DropDown()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblnewinvitationtitle.text = "N U E V A  N O T I F I C A CI O N".localized
+        self.lblaceptitle.text = "ENVIAR".localized
         self.getallUsersListApi()
         searchView.shadowAndRoundcorner(cornerRadius: Float(searchView.layer.frame.height) / 2, shadowColor: #colorLiteral(red: 0.8430451751, green: 0.843190372, blue: 0.843035996, alpha: 1), shadowRadius: 3.0, shadowOpacity: 1)
         searchButtonView.roundCorners([.topRight,.bottomRight], radius: 25)
@@ -53,18 +57,18 @@ class NewNotificationVC: BaseController, UITextViewDelegate,SMDatePickerDelegate
         //sectimeInMili = Int(timeInMiliSec.timeIntervalSince1970 * 1000)
         self.navigationBarHidShow(isTrue: true)
        
-        setMDCTxtFieldDesign(txtfiled: txtqualificatioon, Placeholder: "TÍTULO", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txttypeNotification, Placeholder: "TIPO DE NOTIFICACIÓN", imageIcon: UIImage(named: "sort-down-solid")!)
+        setMDCTxtFieldDesign(txtfiled: txtqualificatioon, Placeholder: "TÍTULO".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txttypeNotification, Placeholder: "TIPO DE NOTIFICACIÓN".localized, imageIcon: UIImage(named: "sort-down-solid")!)
         
-        setMDCTxtFieldDesign(txtfiled: txtkind, Placeholder: "TIPO", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txttime, Placeholder: "DE", imageIcon: UIImage(named: "ic-calendar-2")!)
-        setMDCTxtFieldDesign(txtfiled: txtdate, Placeholder: "FECHA", imageIcon: UIImage(named: "ic-calendar-1")!)
-        setMDCTxtFieldDesign(txtfiled: txtscop, Placeholder: "ALCANCE", imageIcon: UIImage(named: "sort-down-solid")!)
+        setMDCTxtFieldDesign(txtfiled: txtkind, Placeholder: "TIPO".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txttime, Placeholder: "DE".localized, imageIcon: UIImage(named: "ic-calendar-2")!)
+        setMDCTxtFieldDesign(txtfiled: txtdate, Placeholder: "FECHA".localized, imageIcon: UIImage(named: "ic-calendar-1")!)
+        setMDCTxtFieldDesign(txtfiled: txtscop, Placeholder: "ALCANCE".localized, imageIcon: UIImage(named: "sort-down-solid")!)
         
         
         let estimatedFrame = CGRect(x: 0, y: 0, width: self.msgView.frame.width, height: self.msgView.frame.height)
         let textArea = MDCOutlinedTextArea(frame: estimatedFrame)
-        textArea.label.text = "MENSAJE"
+        textArea.label.text = "MENSAJE".localized
         textArea.containerRadius = 10
         textArea.textView.delegate = self
         textArea.sizeToFit()

@@ -8,11 +8,45 @@
 import UIKit
 
 class ContractDetailVC: UIViewController {
-
+    @IBOutlet weak var lblgenrateqrtitle: UILabel!
+    @IBOutlet weak var lblnumberofemployeetitle: UILabel!
+    @IBOutlet weak var lbldetaillbltitle: UILabel!
+    
+    @IBOutlet weak var lblactive: UILabel!
+    @IBOutlet weak var lblupdatetitle: UILabel!
+    @IBOutlet weak var lblnumberofvehicletitle: UILabel!
+    @IBOutlet weak var lblbusinesstitle: UILabel!
+    @IBOutlet weak var lblendcontrarcttitle: UILabel!
+    @IBOutlet weak var lblcontractstarttitle: UILabel!
+    @IBOutlet weak var lblcompanytitle: UILabel!
+    @IBOutlet weak var lbltypegrouptitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if myDefaultLanguage == .en {
+            self.lblactive.text = "ACTIVE"
+        } else {
+            self.lblactive.text = "ACTIVO"
+        }
         self.navigationBarHidShow(isTrue: true)
+    
+        self.lbldetaillbltitle.text = "D E T A L L E S".localized
+        self.lbltypegrouptitle.text = "Grupo Tepeyac Mexico".localized
+        self.lblcompanytitle.text = "Compañia".localized
+    
+        self.lblcontractstarttitle.text = "Inicio de contrato".localized
+    
+        self.lblendcontrarcttitle.text  = "Fin de contrato".localized
+    
+        self.lblbusinesstitle.text = "Empresa".localized
+    
+        
+        
+        self.lblnumberofemployeetitle.text = "No. de empleados".localized
+        self.lblnumberofvehicletitle.text = "No. vehículos".localized
+    
+        self.lblupdatetitle.text = "ACTUALIZAR".localized
+    
+        self.lblgenrateqrtitle.text = "GENERAR QR".localized
     }
     
     @IBAction func backAction(_ sender: UIButton) {

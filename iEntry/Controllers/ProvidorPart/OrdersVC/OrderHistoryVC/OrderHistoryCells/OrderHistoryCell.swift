@@ -10,13 +10,25 @@ import UIKit
 class OrderHistoryCell: UITableViewCell {
     //MARK:- here the iboutlet
     
+    @IBOutlet weak var lbldeliverytitle: UILabel!
     
+    @IBOutlet weak var lbldeliveryproducttitle: UILabel!
+    @IBOutlet weak var lbletatitle: UILabel!
     
+    @IBOutlet weak var lblmoretitle: UILabel!
+    @IBOutlet weak var lbldeadlinetitle: UILabel!
+    @IBOutlet weak var lblreceivedbytitle: UILabel!
+    @IBOutlet weak var lbldeliverydetailtitle: UILabel!
+    @IBOutlet weak var lbldeliverycompanytitle: UILabel!
+    @IBOutlet weak var lblprovideremployeetitle: UILabel!
+    @IBOutlet weak var lblprovidercompanytitle: UILabel!
+    @IBOutlet weak var lblprovidertitle: UILabel!
     
     @IBOutlet weak var lblstatus: UILabel!
     
     @IBOutlet weak var statusView: UIView!
     
+    @IBOutlet weak var lblprovidervehicletitle: UILabel!
     @IBOutlet weak var lblcompany: UILabel!
     
     @IBOutlet weak var lblemployee: UILabel!
@@ -49,6 +61,22 @@ class OrderHistoryCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         viewDesign()
+        
+        self.lblprovidertitle.text = "INFORMACIÓN DEL PROVEEDOR".localized
+        self.lblprovidercompanytitle.text = "Compañia".localized
+        self.lblprovideremployeetitle.text = "Empleado".localized
+        self.lblprovidervehicletitle.text = "Vehículo".localized
+        self.lbldeliverytitle.text = "INFORMACIÓN DE ENTREGA".localized
+        self.lbletatitle.text = "ETA".localized
+        self.lbldeliverycompanytitle.text = "Compañia".localized
+        
+        self.lbldeliveryproducttitle.text = "Producto".localized
+        
+        self.lbldeliverydetailtitle.text = "Descripción".localized
+        self.lblreceivedbytitle.text = "Recibido por".localized
+        self.lbldeadlinetitle.text = "Fecha de entrega".localized
+        self.lblmoretitle.text = "VER DETALLES".localized
+        
     }
 
     func viewDesign() {

@@ -10,7 +10,7 @@ import XLPagerTabStrip
 class CurrentOrderVC: BaseController,IndicatorInfoProvider {
     //MARK:- tab delegate
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "ORDENES EN CURSO")
+        return IndicatorInfo(title: "ORDENES EN CURSO".localized)
     }
     
     var providerdata : ProviderUserByIdModelData?

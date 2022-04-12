@@ -10,8 +10,9 @@ import XLPagerTabStrip
 class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorInfoProvider {
     //MARK:- tab delegate
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "TOKEN")
+        return IndicatorInfo(title: "TOKEN".localized)
     }
+    @IBOutlet weak var lbltokentitle: UILabel!
     @IBOutlet weak var lblusername: UILabel!
     @IBOutlet weak var lbldate: UILabel!
     @IBOutlet weak var lbltime: UILabel!
@@ -40,7 +41,9 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
     var count = 1*59
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.lbltokentitle.text = "TOKEN DE ACCESO".localized
+        self.lbltimedetail.text = "Valido por los siguientes 30 segundos.".localized
+        btncode.setTitle("VOLVER A GENERAR".localized, for: .normal)
         self.lblusername.text = ShareData.shareInfo.obj?.name
         self.lbltime.text = self.getCurrentTime()
         self.lbldate.text = self.getCurrentDate()

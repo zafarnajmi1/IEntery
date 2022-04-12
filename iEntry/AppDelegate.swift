@@ -29,9 +29,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            print("FCM Token", token)
             ShareData.shareInfo.token = token
         }
+        
+        if ShareData.shareInfo.saveLanguage == "en" {
+            myDefaultLanguage = .en
+            
+        } else {
+            myDefaultLanguage = .es
+        }
+        
+        
         return true
     }
 
+    
+    
+    
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

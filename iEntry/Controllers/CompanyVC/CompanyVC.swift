@@ -37,6 +37,8 @@ class CompanyVC: BaseController {
         super.viewWillAppear(animated)
         self.getContractByUSerIDApi()
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        self.lblcontract.text = "C O N T R A C T".localized
+        self.lbledittitle.text = "ACTUALIZAR DATOS".localized
     }
 //    override func viewDidLayoutSubviews() {
 //        super.viewDidLayoutSubviews()
@@ -46,7 +48,14 @@ class CompanyVC: BaseController {
 //        super.viewWillLayoutSubviews()
 //        self.tblHeight.constant = 400//tblView.contentSize.height
 //    }
-
+  
+    
+   
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        self.lblcontract.text = "C O N T R A C T".localized
+//        self.lbledittitle.text = "ACTUALIZAR DATOS".localized
+//    }
     
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -190,6 +199,8 @@ extension CompanyVC : UITableViewDelegate,UITableViewDataSource {
             self.navigationController?.pushViewController(vc!, animated: true)
             }
         }
+        
+        cell?.updatelanguage()
         return  cell!
     }
     

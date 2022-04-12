@@ -10,6 +10,8 @@ import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import DropDown
 class UserPersonalInfoVC: BaseController {
     //MARK:- here are the iboutlet
+    @IBOutlet weak var lblupdatetitle: UILabel!
+    @IBOutlet weak var lblinformationtitle: UILabel!
     @IBOutlet weak var bottomView: UIView!
     //@IBOutlet weak var txtCURP: MDCOutlinedTextField!
     @IBOutlet weak var txtDob: MDCOutlinedTextField!
@@ -24,20 +26,21 @@ class UserPersonalInfoVC: BaseController {
     var MainDrowpDown = DropDown()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblinformationtitle.text = "Información".localized
         configData()
         self.navigationBarHidShow(isTrue: true)
         mainView.roundCorners([.topLeft,.topRight], radius: 20)
-        
+        self.lblupdatetitle.text = "ACTUALIZAR DATOS".localized
     
         bottomView.roundViewWithCustomRadius(radius:8 )
         
-        setMDCTxtFieldDesign(txtfiled: txtname, Placeholder: "NOMBRE", imageIcon: UIImage(named: "user-regular")!)
+        setMDCTxtFieldDesign(txtfiled: txtname, Placeholder: "NOMBRE".localized, imageIcon: UIImage(named: "user-regular")!)
         //setMDCTxtFieldDesign(txtfiled: txtactive, Placeholder: "Activo", imageIcon: UIImage(named: "sort-down-solid")!)
-        setMDCTxtFieldDesign(txtfiled: txtgender, Placeholder: "Masculino", imageIcon: UIImage(named: "sort-down-solid")!)
-        setMDCTxtFieldDesign(txtfiled: txtpassword, Placeholder: "CONTRASEÑA", imageIcon: UIImage(named: "eye-regular")!)
-        setMDCTxtFieldDesign(txtfiled: txtemail, Placeholder: "CORREO", imageIcon: UIImage(named: "ic-invitation")!)
-        setMDCTxtFieldDesign(txtfiled: ttxphoneNumber, Placeholder: "NO CELULAR", imageIcon: UIImage(named: "mobile-alt-solid")!)
-        setMDCTxtFieldDesign(txtfiled: txtDob, Placeholder: "CUMPLEAÑOS", imageIcon: UIImage(named: "ic-calendar-1")!)
+        setMDCTxtFieldDesign(txtfiled: txtgender, Placeholder: "Masculino".localized, imageIcon: UIImage(named: "sort-down-solid")!)
+        setMDCTxtFieldDesign(txtfiled: txtpassword, Placeholder: "CONTRASEÑA".localized, imageIcon: UIImage(named: "eye-regular")!)
+        setMDCTxtFieldDesign(txtfiled: txtemail, Placeholder: "CORREO".localized, imageIcon: UIImage(named: "ic-invitation")!)
+        setMDCTxtFieldDesign(txtfiled: ttxphoneNumber, Placeholder: "NO CELULAR".localized, imageIcon: UIImage(named: "mobile-alt-solid")!)
+        setMDCTxtFieldDesign(txtfiled: txtDob, Placeholder: "CUMPLEAÑOS".localized, imageIcon: UIImage(named: "ic-calendar-1")!)
         //setMDCTxtFieldDesign(txtfiled: txtCURP, Placeholder: "CURP", imageIcon: UIImage())
     }
 

@@ -13,6 +13,7 @@ class AcceptORRejectionPopUpVC: UIViewController {
     ////MARK:- here are iboutlet
     @IBOutlet weak var btnaccept: UIButton!
     
+    @IBOutlet weak var lblcanceleventtitle: UILabel!
     @IBOutlet weak var btncancel: UIButton!
     @IBOutlet weak var mainView: UIView!
     var callBack:(()->Void)? = nil
@@ -21,6 +22,9 @@ class AcceptORRejectionPopUpVC: UIViewController {
         mainView.roundViewWithCustomRadius(radius: 8)
         self.navigationBarHidShow(isTrue: true)
         btnaccept.roundButtonWithCustomRadius(radius: 5)
+        self.lblcanceleventtitle.text = "CANCELAR EVENTO".localized
+        btncancel.setTitle("CANCELAR".localized, for: .normal)
+        self.btnaccept.setTitle("ACEPTAR".localized, for: .normal)
     }
     
     @IBAction func cancelAction(_ sender: UIButton) {

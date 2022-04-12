@@ -68,7 +68,8 @@ class Constant {
         static let createInvitation = "invitation-service/create"
         
         static let searchUserByEmail = "user-service/get-by-email/"
-        static let searchUserbyPhone = "user-service/user/get-by-phone-number/"
+        static let searchUserbyPhone = "user-service/get-by-phone-number/"
+        //"user-service/user/get-by-phone-number/"
         
         static let getEventafterDate = "event-service/get-all/by-user-id/after-date"
         

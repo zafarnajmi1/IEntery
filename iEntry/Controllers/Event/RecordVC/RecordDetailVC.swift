@@ -9,6 +9,10 @@ import UIKit
 
 class RecordDetailVC: BaseController {
     //MARK:- here are iboutlet
+    @IBOutlet weak var lblreservationtitle: UILabel!
+    @IBOutlet weak var lblatTitle: UILabel!
+    @IBOutlet weak var lblthetitle: UILabel!
+    @IBOutlet weak var lblstartdatetitle: UILabel!
     @IBOutlet weak var lblnametitle: UILabel!
     @IBOutlet weak var lbldetailtitle: UILabel!
     @IBOutlet weak var lblupdateeventtitle: UILabel!
@@ -42,10 +46,10 @@ class RecordDetailVC: BaseController {
         self.lblupdateeventtitle.text = "ACTUALIZAR EVENTO".localized
         self.lbldetailtitle.text = "D E T A L L E S".localized
         self.lblnametitle.text = "NOMBRE".localized
-        
-        
-        
-        
+        self.lblstartdatetitle.text = "FECHA".localized
+        self.lblthetitle.text = "EL".localized
+        self.lblatTitle.text = "A LAS".localized
+        self.lblreservationtitle.text = "RESERVACIONES".localized
         if isfromHistory == true {
             btnmore.isHidden = true
         } else {
@@ -69,7 +73,7 @@ class RecordDetailVC: BaseController {
         self.lbltime.text = self.getMilisecondstoTime(seconds: "\(self.eventdata?.endDate ?? 0)", formatter: "")
         
         self.lbldate.text = self.getMilisecondstoDate(seconds: "\(self.eventdata?.startDate ?? 0)", formatter: "")
-        self.lblreservationDate.text = "Fecha: " + self.getFormattedMilisecondstoDate(seconds: "\(self.eventdata?.reservation?.toDate ?? 0)", formatter: "")
+        self.lblreservationDate.text = "Fecha: ".localized + self.getFormattedMilisecondstoDate(seconds: "\(self.eventdata?.reservation?.toDate ?? 0)", formatter: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -169,7 +173,7 @@ class RecordDetailVC: BaseController {
             self.hidLoader()
             if response?.success == true {
                 self.invitationsData = response?.data ?? []
-                self.lblnumberofInvitations.text = "\(self.invitationsData?.count ?? 0) Invitations"
+                self.lblnumberofInvitations.text = "\(self.invitationsData?.count ?? 0)" + "Invitations".localized
                 self.tblView.reloadData()
                 self.tblHeight.constant = self.tblView.contentSize.height
             } else {

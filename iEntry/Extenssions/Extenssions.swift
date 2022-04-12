@@ -293,7 +293,7 @@ var  myDefaultLanguage  = lang.en
 extension String {
     
     var localized: String {
-
+         print("abc")
         let path = Bundle.main.path(forResource: myDefaultLanguage.rawValue, ofType: "lproj")
         let bundle = Bundle(path: path!)
 

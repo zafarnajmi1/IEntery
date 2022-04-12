@@ -13,6 +13,7 @@ class ContactListVC: BaseController, UITextFieldDelegate {
     //MARK:- here are the iboutlet
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var txtsearch: UITextField!
+    @IBOutlet weak var lbllistcontracttitle: UILabel!
     
     @IBOutlet weak var lbltotalcontact: UILabel!
     @IBOutlet weak var innerView: UIView!
@@ -26,7 +27,7 @@ class ContactListVC: BaseController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let countryCode = Locale.current.regionCode
-
+        self.lbllistcontracttitle.text = "L I S T A  D E  C O N T A C T O S".localized
         print(countryCode)
         print("country code is \(countryCode)")
         print("country code is1:",getCountryCallingCode(countryRegionCode: countryCode!))

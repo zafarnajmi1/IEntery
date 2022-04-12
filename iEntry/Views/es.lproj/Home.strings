@@ -14,8 +14,8 @@
 /* Class = "UILabel"; text = "NOMBRE"; ObjectID = "3IJ-3b-rrA"; */
 "3IJ-3b-rrA.text" = "NOMBRE";
 
-/* Class = "UILabel"; text = "Alberca principal"; ObjectID = "3N4-G2-ded"; */
-"3N4-G2-ded.text" = "Alberca principal";
+/* Class = "UILabel"; text = "----"; ObjectID = "3N4-G2-ded"; */
+"3N4-G2-ded.text" = "----";
 
 /* Class = "UILabel"; text = "CERRAR SESIÓN"; ObjectID = "3NV-7N-uPT"; */
 "3NV-7N-uPT.text" = "CERRAR SESIÓN";
@@ -170,9 +170,6 @@
 /* Class = "UILabel"; text = "Av de los industriales número 48. Col Jurica."; ObjectID = "N55-7I-tCn"; */
 "N55-7I-tCn.text" = "Av de los industriales número 48. Col Jurica.";
 
-/* Class = "UIButton"; normalTitle = "ENVIAR"; ObjectID = "NTw-Vs-sGM"; */
-"NTw-Vs-sGM.normalTitle" = "ENVIAR";
-
 /* Class = "UILabel"; text = "Información"; ObjectID = "Ngf-m6-nhD"; */
 "Ngf-m6-nhD.text" = "Información";
 
@@ -271,9 +268,6 @@
 
 /* Class = "UILabel"; text = "D A T O S DE U S U A R I O"; ObjectID = "WUs-kT-lj3"; */
 "WUs-kT-lj3.text" = "D A T O S DE U S U A R I O";
-
-/* Class = "UIButton"; normalTitle = "CANCELAR"; ObjectID = "Wl1-Gl-u0v"; */
-"Wl1-Gl-u0v.normalTitle" = "CANCELAR";
 
 /* Class = "UIButton"; normalTitle = "ENVIAR"; ObjectID = "X6B-WI-U30"; */
 "X6B-WI-U30.normalTitle" = "ENVIAR";
@@ -487,9 +481,6 @@
 
 /* Class = "UILabel"; text = "I N F O R M A C I Ó N"; ObjectID = "sBB-CE-vih"; */
 "sBB-CE-vih.text" = "I N F O R M A C I Ó N";
-
-/* Class = "UILabel"; text = "D A T O S DE U S U A R I O"; ObjectID = "sNn-Q9-a2L"; */
-"sNn-Q9-a2L.text" = "D A T O S DE U S U A R I O";
 
 /* Class = "UILabel"; text = "08-04-2021"; ObjectID = "sTr-bX-vOg"; */
 "sTr-bX-vOg.text" = "08-04-2021";

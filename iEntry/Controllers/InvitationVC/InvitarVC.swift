@@ -11,6 +11,8 @@ class InvitarVC: BaseController, UITextFieldDelegate {
     var checkRegisterUser = [checkUserExistModel]()
     var invitationlist = [InvitationsHistoryModel]()
     
+    @IBOutlet weak var btnselectnumbertitle: UIButton!
+    @IBOutlet weak var lblinvitortitle: UILabel!
     //MARK:- here are the iboutlet
     @IBOutlet weak var tblView: UITableView! {
         didSet{
@@ -28,8 +30,9 @@ class InvitarVC: BaseController, UITextFieldDelegate {
     var isSearch = false
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        self.lblinvitortitle.text = "INVITAR".localized
+        self.txtsearch.placeholder = "Escribe para buscar ...".localized
+        self.btnselectnumbertitle.setTitle("O ELIGE EN BASE A TU LISTA DE CONTACTOS".localized, for: .normal)
         txtsearch.delegate = self
         searchView.shadowAndRoundcorner(cornerRadius: 15, shadowColor: #colorLiteral(red: 0.866572082, green: 0.8667211533, blue: 0.8665626645, alpha: 1), shadowRadius: 3, shadowOpacity: 1)
         innerSearch.roundCorners([.topRight,.bottomRight], radius: 15)
@@ -99,7 +102,7 @@ class InvitarVC: BaseController, UITextFieldDelegate {
                  self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:""))
                 }
              }
-             self.lbltotalInvitation.text = "\(checkRegisterUser.count) Invitaciones)"
+             self.lbltotalInvitation.text = "\(checkRegisterUser.count)" + "Invitaciones".localized
              //self.filterData =  self.checkRegisterUser
              self.tblView.reloadData()
          }, Failure: {error in
@@ -165,7 +168,7 @@ class InvitarVC: BaseController, UITextFieldDelegate {
                         self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:""))
                 }
             }
-            self.lbltotalInvitation.text = "\(checkRegisterUser.count) Invitaciones)"
+            self.lbltotalInvitation.text = "\(checkRegisterUser.count)" + "Invitaciones".localized
             //self.filterData =  self.checkRegisterUser
             self.tblView.reloadData()
         }, Failure: {error in

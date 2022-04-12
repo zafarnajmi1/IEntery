@@ -9,8 +9,12 @@ import UIKit
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import SMDatePicker
 class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
+    @IBOutlet weak var lblchooseyourguesttitle: UILabel!
     //MARK:- here are iboutlet
+    @IBOutlet weak var lblupdatetitle: UILabel!
     
+    @IBOutlet weak var lblsavechangestitle: UILabel!
+    @IBOutlet weak var btncontactlisttitle: UIButton!
     @IBOutlet weak var lbladdress: UILabel!
     @IBOutlet weak var txtsearch: UITextField!
     @IBOutlet weak var lblcompanyname: UILabel!
@@ -24,6 +28,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
     var reservationName = ""
     var reservationId = ""
     var isNewReservation = false
+    @IBOutlet weak var lblchoosdatetitle: UILabel!
     @IBOutlet weak var reserveTableView: UITableView!
     @IBOutlet weak var reserveTableHeight: NSLayoutConstraint!
     @IBOutlet weak var tblView: UITableView!
@@ -40,18 +45,26 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
     @IBOutlet weak var topBannerView: UIView!
     var myDatePicker: SMDatePicker = SMDatePicker()
     
+    @IBOutlet weak var lblreservationTitle: UILabel!
     var startDatemyDate = Date()
     var endDatemyDate = Date()
     var startMiliSecond = 0
     var endMiliSecond = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.btncontactlisttitle.setTitle("O ELÍGE DE LA LISTA DE CONTACTOS".localized, for: .normal)
+        self.txtsearch.placeholder = "Escribe para buscar ...".localized
+        self.lblchooseyourguesttitle.text = "ESCOGE TUS INVITADOS:".localized
+        self.lblreservationTitle.text = "RESERVACIÓN".localized
+        self.lblupdatetitle.text = "A C T U A L I Z A R".localized
+        self.lblchoosdatetitle.text = "ELÍGE UNA FECHA".localized
+        self.lblsavechangestitle.text = "GUARDAR CAMBIOS".localized
         txtsearch.delegate = self
         self.reserveTableView.isScrollEnabled = false
-        setMDCTxtFieldDesign(txtfiled: txtEvent, Placeholder: "NOMBRE DEL EVENTO", imageIcon: UIImage(named: "ic-piñata")!)
+        setMDCTxtFieldDesign(txtfiled: txtEvent, Placeholder: "NOMBRE DEL EVENTO".localized, imageIcon: UIImage(named: "ic-piñata")!)
         
-        setMDCTxtFieldDesign(txtfiled: txttime, Placeholder: "HORA", imageIcon: UIImage(named: "ic-calendar-2")!)
-        setMDCTxtFieldDesign(txtfiled: txtdate, Placeholder: "FECHA", imageIcon: UIImage(named: "ic-calendar-1")!)
+        setMDCTxtFieldDesign(txtfiled: txttime, Placeholder: "HORA".localized, imageIcon: UIImage(named: "ic-calendar-2")!)
+        setMDCTxtFieldDesign(txtfiled: txtdate, Placeholder: "FECHA".localized, imageIcon: UIImage(named: "ic-calendar-1")!)
         
         self.navigationBarHidShow(isTrue: true)
         self.tblView.register(UINib.init(nibName: "RecordDetailCell", bundle: nil), forCellReuseIdentifier: "RecordDetailCell")

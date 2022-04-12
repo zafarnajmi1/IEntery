@@ -36,6 +36,7 @@
 		1C3C17EF278DD42600F40D0E /* EventDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C17EE278DD42600F40D0E /* EventDetailModel.swift */; };
 		1C3C17F1278DD82900F40D0E /* getAllInvitationsAgainstEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C17F0278DD82900F40D0E /* getAllInvitationsAgainstEventModel.swift */; };
 		1C3D169D27A32AC0001D8293 /* NotificationsSaveLocaly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3D169C27A32AC0001D8293 /* NotificationsSaveLocaly.swift */; };
+		1C3F4AC32804945F0068A7DF /* InvitationAcceptAndRejectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3F4AC22804945F0068A7DF /* InvitationAcceptAndRejectVC.swift */; };
 		1C4117F427A1CC2A0064918F /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4117F327A1CC2A0064918F /* NotificationModel.swift */; };
 		1C4117F627A1E3FC0064918F /* CreateNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4117F527A1E3FC0064918F /* CreateNotificationModel.swift */; };
 		1C41280227D7D95F00A31B88 /* ProviderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C41280127D7D95F00A31B88 /* ProviderModels.swift */; };
@@ -125,6 +126,7 @@
 		1C567C2226BC50BB000CCA7C /* NewPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C567C2126BC50BB000CCA7C /* NewPasswordVC.swift */; };
 		1C567C2426BC569B000CCA7C /* SendEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C567C2326BC569B000CCA7C /* SendEmailVC.swift */; };
 		1C567C2626BC7A01000CCA7C /* ManagerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C567C2526BC7A01000CCA7C /* ManagerTextField.swift */; };
+		1C5AB1BD27FF2D7200CF93DF /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5AB1BC27FF2D7200CF93DF /* LanguageVC.swift */; };
 		1C5AB43E26F0E8BA00BFA663 /* CompanyVerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5AB43D26F0E8BA00BFA663 /* CompanyVerificationCodeVC.swift */; };
 		1C5AB44026F0EA5400BFA663 /* VerificationOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5AB43F26F0EA5400BFA663 /* VerificationOptionsVC.swift */; };
 		1C5B355526CAB306000DA340 /* EmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B355326CAB306000DA340 /* EmployeeCell.swift */; };
@@ -307,9 +309,6 @@
 		1C07B92B26E01A30006A81B9 /* ContractDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDetailVC.swift; sourceTree = "<group>"; };
 		1C07B92D26E025ED006A81B9 /* UpdateContractVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateContractVC.swift; sourceTree = "<group>"; };
 		1C2C19D627EBAE4B002600C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1C2C19D827EBAEAE002600C2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		1C2C19D927EBAEB5002600C2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
-		1C2C19DA27EBAEB8002600C2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1C2FDA4026F243AF0037AD0B /* GeneralQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralQRCodeVC.swift; sourceTree = "<group>"; };
 		1C2FDA4226F25CDF0037AD0B /* QRScanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanVC.swift; sourceTree = "<group>"; };
 		1C30FCAA273D999400929A2D /* ContractHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractHistoryVC.swift; sourceTree = "<group>"; };
@@ -329,9 +328,17 @@
 		1C378EE627B440DD0040DED7 /* LogOutPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutPopUpVC.swift; sourceTree = "<group>"; };
 		1C378EE827B449800040DED7 /* InvitationUserDeleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationUserDeleteModel.swift; sourceTree = "<group>"; };
 		1C397EA327C5395400C16E60 /* GetContractorByUserIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContractorByUserIdModel.swift; sourceTree = "<group>"; };
+		1C3993C527FCA83E009C5243 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		1C3993C627FCA861009C5243 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		1C3C17EE278DD42600F40D0E /* EventDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModel.swift; sourceTree = "<group>"; };
 		1C3C17F0278DD82900F40D0E /* getAllInvitationsAgainstEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getAllInvitationsAgainstEventModel.swift; sourceTree = "<group>"; };
 		1C3D169C27A32AC0001D8293 /* NotificationsSaveLocaly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSaveLocaly.swift; sourceTree = "<group>"; };
+		1C3F4AC22804945F0068A7DF /* InvitationAcceptAndRejectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAcceptAndRejectVC.swift; sourceTree = "<group>"; };
+		1C4004AE27F8683A000BFAA6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1C4004B027F86847000BFAA6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Home.strings; sourceTree = "<group>"; };
+		1C4004B127F8684A000BFAA6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Contract.strings; sourceTree = "<group>"; };
+		1C4004B227F86B0F000BFAA6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
+		1C4004B327F86BDF000BFAA6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Contract.strings; sourceTree = "<group>"; };
 		1C4117F327A1CC2A0064918F /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		1C4117F527A1E3FC0064918F /* CreateNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNotificationModel.swift; sourceTree = "<group>"; };
 		1C41280127D7D95F00A31B88 /* ProviderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderModels.swift; sourceTree = "<group>"; };
@@ -408,6 +415,7 @@
 		1C567C2126BC50BB000CCA7C /* NewPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordVC.swift; sourceTree = "<group>"; };
 		1C567C2326BC569B000CCA7C /* SendEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailVC.swift; sourceTree = "<group>"; };
 		1C567C2526BC7A01000CCA7C /* ManagerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTextField.swift; sourceTree = "<group>"; };
+		1C5AB1BC27FF2D7200CF93DF /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		1C5AB43D26F0E8BA00BFA663 /* CompanyVerificationCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyVerificationCodeVC.swift; sourceTree = "<group>"; };
 		1C5AB43F26F0EA5400BFA663 /* VerificationOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationOptionsVC.swift; sourceTree = "<group>"; };
 		1C5B355326CAB306000DA340 /* EmployeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeCell.swift; sourceTree = "<group>"; };
@@ -450,8 +458,6 @@
 		1C9A2AFC26DEC8E000EB6DAD /* ContractsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsListVC.swift; sourceTree = "<group>"; };
 		1C9A2AFE26DEC93E00EB6DAD /* ContractorsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractorsListVC.swift; sourceTree = "<group>"; };
 		1C9CFCCF27F204C5008E2C6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
-		1C9CFCD227F20526008E2C6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
-		1C9CFCD427F20575008E2C6E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Home.strings; sourceTree = "<group>"; };
 		1CA48F9E27973FE100C95067 /* EventUpdateInvitationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUpdateInvitationModel.swift; sourceTree = "<group>"; };
 		1CB18B18275E74D40089AF62 /* FCMTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMTokenModel.swift; sourceTree = "<group>"; };
 		1CB18B1A275E802A0089AF62 /* SixDigitCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixDigitCodeModel.swift; sourceTree = "<group>"; };
@@ -493,9 +499,6 @@
 		1CB2F4C426BB211200E1F79F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		1CB2F4C826BB270000E1F79F /* VerificationCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeVC.swift; sourceTree = "<group>"; };
 		1CB5764D27F4BC6000B043A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Contract.storyboard; sourceTree = "<group>"; };
-		1CB5765027F4BC9600B043A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Contract.strings; sourceTree = "<group>"; };
-		1CB5765227F4BCA100B043A2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Contract.strings; sourceTree = "<group>"; };
-		1CB5765427F4BD1700B043A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1CD221D126F8FB5200D7828B /* DictioneryToJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictioneryToJson.swift; sourceTree = "<group>"; };
 		1CD86BB626E272BF0047568F /* PayRollVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayRollVC.swift; sourceTree = "<group>"; };
 		1CD86BB826E279D40047568F /* PayRollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayRollCell.swift; sourceTree = "<group>"; };
@@ -678,6 +681,7 @@
 				1CE1A23D270B5309005A84A4 /* InvitarVC.swift */,
 				1C35B7FD2777386400A10096 /* UserNotRegisterPopUpVC.swift */,
 				1C35B7FF27773D2200A10096 /* PreRegisterVC.swift */,
+				1C3F4AC22804945F0068A7DF /* InvitationAcceptAndRejectVC.swift */,
 			);
 			path = InvitationVC;
 			sourceTree = "<group>";
@@ -1130,6 +1134,7 @@
 				1C567C1F26BC4D29000CCA7C /* MethodVC.swift */,
 				1C567C2126BC50BB000CCA7C /* NewPasswordVC.swift */,
 				1C567C2326BC569B000CCA7C /* SendEmailVC.swift */,
+				1C5AB1BC27FF2D7200CF93DF /* LanguageVC.swift */,
 			);
 			path = AuthPart;
 			sourceTree = "<group>";
@@ -1594,6 +1599,7 @@
 				1C925E61278751C50080EB1A /* CreateEventModel.swift in Sources */,
 				1C5CADBD26BDD44F0079392C /* BiomatricLoginVC.swift in Sources */,
 				1C5649E826F5111D00686DAA /* LoginModel.swift in Sources */,
+				1C3F4AC32804945F0068A7DF /* InvitationAcceptAndRejectVC.swift in Sources */,
 				1C76E69D2742C25D0056B7DA /* OrderHistoryVC.swift in Sources */,
 				1CDD965A26C70B3C00FA6725 /* NotificationsCell.swift in Sources */,
 				1C4DE8D4277380AF00A7BB87 /* GetContractByUserModel.swift in Sources */,
@@ -1632,6 +1638,7 @@
 				1CFC11D92706460000526EEE /* NewInvitationCell.swift in Sources */,
 				1C07B92C26E01A30006A81B9 /* ContractDetailVC.swift in Sources */,
 				1CB2F4C526BB211200E1F79F /* LoginVC.swift in Sources */,
+				1C5AB1BD27FF2D7200CF93DF /* LanguageVC.swift in Sources */,
 				1C07B92526E00F2F006A81B9 /* CreateContractVC.swift in Sources */,
 				1C2FDA4126F243AF0037AD0B /* GeneralQRCodeVC.swift in Sources */,
 				1C3625C127B2CEB4000C61E0 /* NewNotificationCell.swift in Sources */,
@@ -1745,7 +1752,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				1C2C19D627EBAE4B002600C2 /* en */,
-				1C2C19DA27EBAEB8002600C2 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1754,8 +1760,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				1C9CFCCF27F204C5008E2C6E /* Base */,
-				1C9CFCD227F20526008E2C6E /* en */,
-				1C9CFCD427F20575008E2C6E /* es */,
+				1C4004B027F86847000BFAA6 /* es */,
+				1C4004B227F86B0F000BFAA6 /* en */,
 			);
 			name = Home.storyboard;
 			sourceTree = "<group>";
@@ -1764,8 +1770,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				1CB2F44126BB05C900E1F79F /* Base */,
-				1C2C19D927EBAEB5002600C2 /* es */,
-				1CB5765427F4BD1700B043A2 /* en */,
+				1C3993C527FCA83E009C5243 /* en */,
+				1C3993C627FCA861009C5243 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1774,7 +1780,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1CB2F44926BB05CC00E1F79F /* Base */,
-				1C2C19D827EBAEAE002600C2 /* es */,
+				1C4004AE27F8683A000BFAA6 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1783,8 +1789,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				1CB5764D27F4BC6000B043A2 /* Base */,
-				1CB5765027F4BC9600B043A2 /* en */,
-				1CB5765227F4BCA100B043A2 /* es */,
+				1C4004B127F8684A000BFAA6 /* es */,
+				1C4004B327F86BDF000BFAA6 /* en */,
 			);
 			name = Contract.storyboard;
 			sourceTree = "<group>";

@@ -10,6 +10,8 @@ import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class InformationVC: BaseController {
     var extraData : ExtradataModelData?
     
+    @IBOutlet weak var lblupdattitle: UILabel!
+    @IBOutlet weak var lblinfotitle: UILabel!
     //MARK:- here are the iboutlet
     @IBOutlet weak var txtaddress: MDCOutlinedTextField!
     
@@ -32,15 +34,16 @@ class InformationVC: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setMDCTxtFieldDesign(txtfiled: txtaddress, Placeholder: "ADDRESS 1", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtaddress2, Placeholder: "ADDRESS 2", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtstate, Placeholder: "STATE", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtcountery, Placeholder: "COUNTRY", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtpostcode, Placeholder: "POST CODE", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtphonenumber, Placeholder: "HOME NUMBER", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtArabicName, Placeholder: "ARABIC NAME", imageIcon: UIImage())
-        setMDCTxtFieldDesign(txtfiled: txtblood, Placeholder: "BLOOD TYPE", imageIcon: UIImage())
+        self.lblupdattitle.text = "ACTUALIZAR DATOS".localized
+        self.lblinfotitle.text = "Información".localized
+        setMDCTxtFieldDesign(txtfiled: txtaddress, Placeholder: "ADDRESS 1".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtaddress2, Placeholder: "ADDRESS 2".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtstate, Placeholder: "STATE".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtcountery, Placeholder: "COUNTRY".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtpostcode, Placeholder: "POST CODE".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtphonenumber, Placeholder: "HOME NUMBER".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtArabicName, Placeholder: "ARABIC NAME".localized, imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtblood, Placeholder: "BLOOD TYPE".localized, imageIcon: UIImage())
         getExtraDataApi()
     }
     

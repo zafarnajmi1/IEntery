@@ -15,7 +15,7 @@ class SplashVC: UIViewController {
         super.viewDidLoad()
         
         self.navigationBarHidShow(isTrue: true)
-        moveOnLogin()
+        moveOnLang()
         //fatalError()
         if let token = Messaging.messaging().fcmToken {
            print("FCM Token", token)
@@ -30,9 +30,14 @@ class SplashVC: UIViewController {
 
     //MARK:- This is funtion helps to move on other Screen
     
-    func moveOnLogin() {
+    func moveOnLang() {
+//        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier:"LoginVC") as? LoginVC
+//        self.navigationController?.pushViewController(vc!, animated: true)
+        
+        
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier:"LoginVC") as? LoginVC
+        let vc = storyBoard.instantiateViewController(withIdentifier:"LanguageVC") as? LanguageVC
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     

@@ -106,8 +106,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="CreateAction:" destination="zmV-P7-zA4" eventType="touchUpInside" id="jxO-Iq-I4I"/>
-                                    <action selector="addContractors:" destination="3lB-vp-m5e" eventType="touchUpInside" id="0Jr-Zi-DUR"/>
+                                    <action selector="addContractors:" destination="3lB-vp-m5e" eventType="touchUpInside" id="QdB-Sb-CUP"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWe-by-LRx">
@@ -169,9 +168,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnaddbuttontitle" destination="6gm-Ie-LBL" id="tpG-li-bfT"/>
                         <outlet property="innerSearch" destination="wdI-oC-5GQ" id="5Sv-XC-jNb"/>
                         <outlet property="searchView" destination="KWe-by-LRx" id="2NH-Ri-x21"/>
                         <outlet property="tblView" destination="ez6-F1-WG1" id="Oq0-dC-V8h"/>
+                        <outlet property="txtseacrh" destination="jYs-MM-IHB" id="TPt-Ng-r7p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llB-nY-tyy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -309,6 +310,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblcreatecontractortitle" destination="F3p-m3-dbh" id="6Uf-gp-Gv5"/>
                         <outlet property="stripView" destination="nia-G3-Eup" id="YOZ-Ub-jsN"/>
                         <outlet property="txtcompany" destination="Nd4-Ho-Zi1" id="0hH-TS-hmj"/>
                         <outlet property="txtendDate" destination="zcn-ln-Ex5" id="bg8-2L-cpp"/>
@@ -682,6 +684,19 @@
                             <constraint firstItem="YhZ-ER-h9h" firstAttribute="leading" secondItem="E3s-nO-Tab" secondAttribute="leading" id="neP-EZ-lfT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblactive" destination="bqA-hd-San" id="3sf-gM-54w"/>
+                        <outlet property="lblbusinesstitle" destination="2eI-kC-HD4" id="KHd-pX-YTd"/>
+                        <outlet property="lblcompanytitle" destination="vSF-Jk-XtC" id="IuZ-9E-NNZ"/>
+                        <outlet property="lblcontractstarttitle" destination="60p-XF-bxG" id="wuV-fu-iuC"/>
+                        <outlet property="lbldetaillbltitle" destination="XAF-eB-Vrz" id="T3I-Sd-b8n"/>
+                        <outlet property="lblendcontrarcttitle" destination="ECK-nh-cB5" id="Pth-Ub-cOd"/>
+                        <outlet property="lblgenrateqrtitle" destination="yRs-If-YbY" id="SWc-mz-Nvj"/>
+                        <outlet property="lblnumberofemployeetitle" destination="yKA-Gn-mqI" id="zKo-bD-BQr"/>
+                        <outlet property="lblnumberofvehicletitle" destination="cFj-M0-XkL" id="dwu-9g-dAh"/>
+                        <outlet property="lbltypegrouptitle" destination="sRo-c9-2Rf" id="gCE-Rf-lTi"/>
+                        <outlet property="lblupdatetitle" destination="kpq-ku-1eT" id="15M-Iw-IzR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYr-b8-QvS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -895,6 +910,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblactive" destination="1OA-gk-MMl" id="YaR-T8-45z"/>
+                        <outlet property="lblbottomupdatetitle" destination="UV4-7x-ZF8" id="WOF-hq-S6E"/>
+                        <outlet property="lblcompanytitle" destination="OQI-aS-yit" id="Si1-Pf-81r"/>
+                        <outlet property="lblmaxicotitle" destination="OnX-cT-X6p" id="g8b-5U-P7V"/>
+                        <outlet property="lblupdatetitle" destination="QLt-mD-Tnr" id="2U0-jr-OLp"/>
                         <outlet property="txtendDate" destination="fAq-75-l8W" id="Vab-JN-sQE"/>
                         <outlet property="txtstartDate" destination="VjQ-kE-NQR" id="TJc-3U-G61"/>
                     </connections>
@@ -1070,6 +1090,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblcontracttitle" destination="iQv-gi-has" id="Jf5-e5-OGu"/>
                         <outlet property="txtCompany" destination="7bq-cu-Lv7" id="jAs-Hr-0Fl"/>
                         <outlet property="txtDutyManager" destination="Yyv-bs-taG" id="sPS-Sz-PbO"/>
                         <outlet property="txtEmail" destination="aYK-xa-z0a" id="b1o-tp-vS9"/>
@@ -1331,6 +1352,13 @@
                     </view>
                     <connections>
                         <outlet property="img" destination="lDh-4O-u2Z" id="73e-4B-Mhh"/>
+                        <outlet property="lblactive" destination="CSX-3Y-3ar" id="Db0-Nb-d2Q"/>
+                        <outlet property="lblcompanytitle" destination="5o4-bV-asW" id="MEC-EM-a2k"/>
+                        <outlet property="lbldetailtitle" destination="6xW-0p-kZd" id="m1Z-BC-Dcu"/>
+                        <outlet property="lblemailtitle" destination="a5V-l3-0oD" id="IZI-jH-C0s"/>
+                        <outlet property="lblmanagertitle" destination="u2J-II-zV7" id="nuL-BP-F6d"/>
+                        <outlet property="lblnumbertitle" destination="PDz-tZ-6c1" id="GrS-GJ-UYv"/>
+                        <outlet property="lblupdatetitle" destination="wvn-XR-44P" id="RwN-Lx-Q8E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7H-4i-ojk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1627,6 +1655,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblactive" destination="vqY-fa-mpV" id="xew-H6-2oA"/>
+                        <outlet property="lblcontractortitle" destination="i6f-8M-NmH" id="k8D-Ma-oDb"/>
                         <outlet property="txtCompany" destination="7ZR-Ix-MvG" id="3VK-J6-b7q"/>
                         <outlet property="txtDutyManager" destination="SSh-hy-oPi" id="8j4-Up-s1r"/>
                         <outlet property="txtEmail" destination="tFs-II-WeZ" id="bEJ-3t-eaU"/>
@@ -2287,8 +2317,13 @@
                     </view>
                     <connections>
                         <outlet property="lblbusinessname" destination="QvX-P2-i2d" id="Zi7-0q-HCu"/>
+                        <outlet property="lblcimissionstitle" destination="0bx-mD-YSb" id="fM4-CI-rHR"/>
                         <outlet property="lblcontractnumber" destination="hD8-fP-I8l" id="kba-Pf-otQ"/>
+                        <outlet property="lblcumpnaytitle" destination="6pz-K6-KBS" id="xaA-Mg-M9H"/>
                         <outlet property="lblendDate" destination="oyP-HE-P1C" id="ab7-vt-Tfx"/>
+                        <outlet property="lblendofcontracttitle" destination="U0b-i9-KDs" id="rs0-xo-KU8"/>
+                        <outlet property="lblhomecontracttitle" destination="m00-zv-7WH" id="abT-pK-lRh"/>
+                        <outlet property="lblinformationtitle" destination="6zf-5G-6Xf" id="YM6-hb-jDp"/>
                         <outlet property="lblstartDate" destination="Twh-bW-Gj5" id="LXc-X7-sZP"/>
                         <outlet property="lblstatus" destination="hf9-GZ-SAp" id="8tq-rf-HWj"/>
                         <outlet property="lblusername" destination="RLM-0i-kgs" id="tlU-TI-Ki4"/>
@@ -2774,14 +2809,24 @@
                     </view>
                     <connections>
                         <outlet property="lblcompany" destination="eUs-gN-EWZ" id="9el-7G-QLS"/>
+                        <outlet property="lblcompanytitle" destination="5vS-Aw-9Lb" id="pHY-sT-ehg"/>
                         <outlet property="lbldeliveryDiscription" destination="2G1-YS-BNf" id="yqh-X3-77n"/>
                         <outlet property="lbldeliverycompany" destination="OUq-aW-ZPe" id="oKC-e9-t1X"/>
+                        <outlet property="lbldeliverycompanytitle" destination="Ycn-Xg-Ikf" id="ru8-hF-ebQ"/>
                         <outlet property="lbldeliverydate" destination="7FK-lM-8Ba" id="9Uo-9c-nTC"/>
+                        <outlet property="lbldeliverydatetitle" destination="b9n-3o-ZvW" id="Q4y-Ih-6Vc"/>
                         <outlet property="lbldeliveryproduct" destination="9aX-vK-4n2" id="xev-gA-1Bp"/>
+                        <outlet property="lbldeliverytitle" destination="hMY-Ew-wAL" id="fiQ-bJ-k22"/>
+                        <outlet property="lbldescriptiontitle" destination="KDq-N4-zi1" id="pK4-ZV-lzV"/>
                         <outlet property="lblemployee" destination="3Ta-kl-rpI" id="YWO-9V-LBR"/>
+                        <outlet property="lblemployeetitle" destination="Vhp-Po-5xm" id="6fJ-VN-MRS"/>
+                        <outlet property="lblinformationtitle" destination="xZS-ds-Yda" id="LCf-zy-hi3"/>
+                        <outlet property="lblproducttitle" destination="3n0-rf-cKJ" id="Gi2-PF-ht1"/>
                         <outlet property="lblrecieverDate" destination="qtn-lE-h9N" id="17L-0R-BWt"/>
                         <outlet property="lblrecieverusername" destination="6XR-Zw-dvu" id="UN8-da-dDB"/>
                         <outlet property="lblstatus" destination="CsO-YS-Ety" id="j2s-2p-uu0"/>
+                        <outlet property="lblsupliretitle" destination="BPr-fN-OA0" id="5Bg-dT-i2l"/>
+                        <outlet property="lbluserdeliverytitle" destination="FxB-mg-eEy" id="rW8-2c-nSl"/>
                         <outlet property="lblvihicl" destination="oHt-zQ-Fyf" id="Adq-oT-eTN"/>
                         <outlet property="recieverView" destination="tCE-hc-p4F" id="REo-0E-41f"/>
                         <outlet property="statusView" destination="sVU-78-nVZ" id="hzi-EU-5up"/>

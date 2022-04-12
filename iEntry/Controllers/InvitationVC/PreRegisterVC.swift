@@ -11,6 +11,8 @@ import DropDown
 import FlagPhoneNumber
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class PreRegisterVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate{
+    @IBOutlet weak var btncancel: UIButton!
+    @IBOutlet weak var lbluserdatatitle: UILabel!
     var phoneNumberCode = ""
     var callback : ((_ number:String, _ name:String)->Void)? = nil
     @IBOutlet weak var btnaccept: UIButton!
@@ -52,13 +54,15 @@ class PreRegisterVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate{
         super.viewDidLoad()
         view.isOpaque = false
         view.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 0.2935282726)
-        setMDCTxtFieldDesign(txtfiled: txtname, Placeholder: "NOMBRE", imageIcon: UIImage(named: "ic-user")!)
-        setMDCTxtFieldDesign(txtfiled: txtemail, Placeholder: "Email", imageIcon: UIImage(named: "ic-invitation")!)
+        setMDCTxtFieldDesign(txtfiled: txtname, Placeholder: "NOMBRE".localized, imageIcon: UIImage(named: "ic-user")!)
+        setMDCTxtFieldDesign(txtfiled: txtemail, Placeholder: "Email".localized, imageIcon: UIImage(named: "ic-invitation")!)
         
         
-        setMDCTxtFieldDesign(txtfiled: phoneNumberTextField, Placeholder: "CELULAR", imageIcon: UIImage(named: "mobile-alt-solid")!)
+        setMDCTxtFieldDesign(txtfiled: phoneNumberTextField, Placeholder: "CELULAR".localized, imageIcon: UIImage(named: "mobile-alt-solid")!)
         
-        
+        self.lbluserdatatitle.text = "D A T O S DE U S U A R I O".localized
+        self.btncancel.setTitle("CANCELAR".localized, for: .normal)
+        self.btnaccept.setTitle("ENVIAR".localized, for: .normal)
         self.navigationBarHidShow(isTrue: true)
         mainView.roundViewWithCustomRadius(radius: 8)
         btnaccept.roundButtonWithCustomRadius(radius: 6)

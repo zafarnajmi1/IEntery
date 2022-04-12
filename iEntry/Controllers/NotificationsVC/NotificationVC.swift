@@ -44,6 +44,7 @@ class NotificationVC: BaseController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getNotificationApi()
+        
     }
 //    @IBAction func backAction(_ sender: UIButton) {
 //        self.navigationController?.popViewController(animated: true)
@@ -168,7 +169,7 @@ extension NotificationVC :  UITableViewDelegate,UITableViewDataSource {
 }
 extension NotificationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "you have no Notification"
+        let text = "you have no Notification".localized
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray
@@ -178,7 +179,7 @@ extension NotificationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        let text = "Try Again!"
+        let text = "Try Again!".localized
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4712097049, green: 0.7777811885, blue: 0.758687973, alpha: 1)

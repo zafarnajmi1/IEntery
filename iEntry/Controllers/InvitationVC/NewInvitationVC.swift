@@ -18,7 +18,7 @@ class NewInvitationVC: BaseController,IndicatorInfoProvider {
         self.tblView.reloadData()
     }
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "INVITACIONES")
+        return IndicatorInfo(title: "INVITACIONES".localized)
     }
     //MARK:- here are the iboutlet
     @IBOutlet weak var tblView: UITableView!
@@ -92,12 +92,39 @@ extension NewInvitationVC : UITableViewDelegate,UITableViewDataSource {
         cell?.lblhostName.text = self.invitationdata?[indexPath.row].guest?.name
         //cell?.lblhostName.text = self.invitationdata?[indexPath.row].zone?.company?.name
         cell?.lbldate.text = self.getFormattedMilisecondstoDate(seconds: "\(self.invitationdata?[indexPath.row].startDate ?? 0)", formatter: "")
+        
+        if self.invitationdata?[indexPath.row].event == nil {
+            cell?.eventView.isHidden = true
+        } else{
+            cell?.eventView.isHidden = false
+        }
+          
+        if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_UNATTENDED" {
+                cell?.lblstatus.text = self.invitationdata?[indexPath.row].status?.name ?? ""
+                cell?.statusView.backgroundColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
+                cell?.lblstatus.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
+        } else  if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_ACCEPTED" {
+            cell?.lblstatus.text = self.invitationdata?[indexPath.row].status?.name ?? ""
+            cell?.statusView.backgroundColor = #colorLiteral(red: 0.04716654867, green: 0.249147892, blue: 0.1248098537, alpha: 1)
+            cell?.lblstatus.textColor = #colorLiteral(red: 0.04335165769, green: 0.2412434816, blue: 0.1210812852, alpha: 1)
+    } else  if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_REJECTED" {
+        cell?.lblstatus.text = self.invitationdata?[indexPath.row].status?.name ?? ""
+        cell?.statusView.backgroundColor = #colorLiteral(red: 0.618992269, green: 0.005741298664, blue: 0.00775064528, alpha: 1)
+        cell?.lblstatus.textColor = #colorLiteral(red: 0.6229569912, green: 0.005496537313, blue: 0.00703322608, alpha: 1)
+}
+        
+        
+        
+        
+        
         cell?.callBack = { istrue in
             if istrue {
-            let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
-            
-                self.navigationController?.pushViewController(vc!, animated: true)
+                
+                
+//            let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+//            let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
+//
+//                self.navigationController?.pushViewController(vc!, animated: true)
             
             }  else {
                 
@@ -107,12 +134,24 @@ extension NewInvitationVC : UITableViewDelegate,UITableViewDataSource {
                 vc?.date = self.getMilisecondstoDate(seconds: "\(self.invitationdata?[indexPath.row].startDate ?? 0)", formatter: "")
                 vc?.time = self.getMilisecondstoTime(seconds: "\(self.invitationdata?[indexPath.row].startDate ?? 0)", formatter: "")
                 vc?.eventid = self.invitationdata?[indexPath.row].id ?? ""
-                vc?.eventname = self.invitationdata?[indexPath.row].event ?? ""
+                vc?.eventname = self.invitationdata?[indexPath.row].event?.name ?? ""
+                
                     self.navigationController?.pushViewController(vc!, animated: true)
             }
         }
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+            let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier:"InvitationAcceptAndRejectVC") as? InvitationAcceptAndRejectVC
+                vc?.modalPresentationStyle = .overFullScreen
+
+                self.present(vc!, animated: false, completion: nil)
+                
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
             let deleteAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
@@ -131,7 +170,7 @@ extension NewInvitationVC : UITableViewDelegate,UITableViewDataSource {
 }
 extension NewInvitationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "you have no Invitation"
+        let text = "you have no Invitation".localized
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray
@@ -141,7 +180,7 @@ extension NewInvitationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        let text = "Try Again!"
+        let text = "Try Again!".localized
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4712097049, green: 0.7777811885, blue: 0.758687973, alpha: 1)

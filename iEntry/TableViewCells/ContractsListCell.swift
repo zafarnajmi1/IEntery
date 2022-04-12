@@ -9,7 +9,12 @@ import UIKit
 
 class ContractsListCell: UITableViewCell {
     //MARK:- here are the IBOutlet
+    @IBOutlet weak var lblstatrdatetitle: UILabel!
     
+    @IBOutlet weak var lbldetailtitle: UILabel!
+    @IBOutlet weak var lblbusinesstitle: UILabel!
+    @IBOutlet weak var lblenddatetitle: UILabel!
+    @IBOutlet weak var lbltypeofmaxicogrouptitle: UILabel!
     @IBOutlet weak var lblcompanyName: UILabel!
     @IBOutlet weak var lblendDate: UILabel!
     @IBOutlet weak var lblstartDate: UILabel!
@@ -34,6 +39,10 @@ class ContractsListCell: UITableViewCell {
         mainView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         mainView.layer.shadowOpacity = 1.0
         mainView.layer.masksToBounds = false
+        self.lblbusinesstitle.text = "Empresa".localized
+        self.lblstatrdatetitle.text = "Inicio de contrato".localized
+        self.lblenddatetitle.text = "Fin de contrato".localized
+        self.lbltypeofmaxicogrouptitle.text = "Grupo Tepeyac Mexico".localized
     }
     
     

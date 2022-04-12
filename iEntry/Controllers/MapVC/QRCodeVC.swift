@@ -10,10 +10,12 @@ import XLPagerTabStrip
 class QRCodeVC: BaseController, IndicatorInfoProvider {
 
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "CÓDIGO QR")
+        return IndicatorInfo(title: "CÓDIGO QR".localized)
     }
     
     
+    @IBOutlet weak var btnscantitle: UIButton!
+    @IBOutlet weak var lblmaptitle: UILabel!
     var contractdata : GetContractorByUserIdModelData?
     
     @IBOutlet weak var lblprofessional: UILabel!
@@ -33,7 +35,8 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.lblmaptitle.text = "MAPA A LA COMPAÑIA".localized
+        self.btnscantitle.setTitle("ESCANEAR CÓDIGO QR".localized, for: .normal)
         if isfromContract == true {
             self.mpView.isHidden = false
         } else {
@@ -49,7 +52,48 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
         self.lblusername.text = ShareData.shareInfo.obj?.name
         self.lbltime.text = self.getCurrentTime()
         self.lbldate.text = self.getCurrentDate()
-        self.lblprofessional.text = ShareData.shareInfo.obj?.userType?.name ?? ""
+        
+        if ShareData.shareInfo.obj?.userType?.name == "EMPLOYEE" {
+            if myDefaultLanguage == .en {
+            self.lblprofessional.text = "EMPLOYEE"
+            } else {
+                self.lblprofessional.text = "EMPLEADO"
+            }
+        } else if ShareData.shareInfo.obj?.userType?.name == "GUEST"  {
+            if myDefaultLanguage == .en {
+            self.lblprofessional.text = "GUEST"
+            } else {
+                self.lblprofessional.text = "INVITADO"
+            }
+        }else if ShareData.shareInfo.obj?.userType?.name == "CONTRACTOR_IN_CHARGE"  {
+            if myDefaultLanguage == .en {
+            self.lblprofessional.text = "CONTRACTOR IN CHARGE"
+            } else {
+                self.lblprofessional.text = "CONTRATISTA A CARGO"
+            }
+        }
+        else if ShareData.shareInfo.obj?.userType?.name == "CONTRACTORS_EMPLOYEE"  {
+            if myDefaultLanguage == .en {
+            self.lblprofessional.text = "CONTRACTORS EMPLOYEE"
+            } else {
+                self.lblprofessional.text = "EMPLEADO DE CONTRATISTA"
+            }
+        }
+        else if ShareData.shareInfo.obj?.userType?.name == "PROVIDER_IN_CHARGE"  {
+            if myDefaultLanguage == .en {
+            self.lblprofessional.text = "PROVIDER IN CHARGE"
+            } else {
+                self.lblprofessional.text = "PROVEEDOR A CARGO"
+            }
+        }
+        else if ShareData.shareInfo.obj?.userType?.name == "PROVIDER_EMPLOYEE"  {
+            if myDefaultLanguage == .en {
+            self.lblprofessional.text = "PROVIDER EMPLOYEE"
+            } else {
+                self.lblprofessional.text = "EMPLEADO DE PROVEEDOR"
+            }
+        }
+        
     }
     
     func generateQRCode(from string: String) -> UIImage? {

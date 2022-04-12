@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -215,11 +215,16 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="eSo-Hb-iZw"/>
             <connections>
+                <outlet property="lblbusinesstitle" destination="s2w-Eq-qeJ" id="wOz-Xw-lv9"/>
                 <outlet property="lblcompanyName" destination="Iof-1o-zeM" id="gz4-hu-hBc"/>
                 <outlet property="lblcontractNumber" destination="c3i-UX-KmD" id="oer-98-77e"/>
+                <outlet property="lbldetailtitle" destination="aBY-PD-hXB" id="wcS-rl-OI5"/>
                 <outlet property="lblendDate" destination="RSc-Px-ZxD" id="eY9-Rg-Ymv"/>
+                <outlet property="lblenddatetitle" destination="EMt-vg-lPU" id="87f-H0-AZH"/>
                 <outlet property="lblstartDate" destination="ZbG-hm-lRw" id="Auj-FQ-3bS"/>
+                <outlet property="lblstatrdatetitle" destination="xLx-sI-Ckb" id="PvH-25-ZVU"/>
                 <outlet property="lblstatsu" destination="FVE-B7-avM" id="jpo-as-vCW"/>
+                <outlet property="lbltypeofmaxicogrouptitle" destination="F7n-1a-v1k" id="f14-yg-aWz"/>
                 <outlet property="lblusername" destination="JoS-Br-MUQ" id="14Z-k2-e7v"/>
                 <outlet property="mainView" destination="rq2-PP-cST" id="PBm-gt-eas"/>
                 <outlet property="statusView" destination="h3F-dv-6dL" id="J7q-M6-qqF"/>

@@ -21,8 +21,8 @@ class InvitationVC: UIViewController {
     @IBOutlet weak var tabsView: UIView!
 //    @IBOutlet weak var sigmentedController: UISegmentedControl!
     let segmentedControl = HMSegmentedControl(sectionTitles: [
-        "MIS INVITACIONES",
-        "HISTORIAL",
+        "MIS INVITACIONES".localized,
+        "HISTORIAL".localized,
         
     ])
     @IBOutlet weak var oneContainer: UIView!

@@ -20,7 +20,7 @@ class ContractHistoryVC: BaseController,IndicatorInfoProvider {
     }
     //MARK:- tab delegate
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "HISTORIAL CONTRATOS")
+        return IndicatorInfo(title: "HISTORIAL CONTRATOS".localized)
     }
     //MARK:- here are the iboutlet
     @IBOutlet weak var tblView: UITableView!
@@ -101,19 +101,33 @@ extension ContractHistoryVC: UITableViewDelegate,UITableViewDataSource {
         cell?.lblstartDate.text = getMilisecondstoDate(seconds: "\(self.contractListdata[indexPath.row].starDate ?? 0)", formatter: "")
         cell?.lblendDate.text = getMilisecondstoDate(seconds: "\(self.contractListdata[indexPath.row].endDate ?? 0)", formatter: "")
         cell?.lblcompanyName.text = self.contractListdata[indexPath.row].company?.name
-        cell?.lblcontractNumber.text = "Contrato #\(indexPath.row)"
+        cell?.lblcontractNumber.text = "Contrato".localized + "#\(indexPath.row)"
         if self.contractListdata[indexPath.row].status?.name == "CONTRACT_ACTIVE" {
         cell?.statusView.backgroundColor = #colorLiteral(red: 0.3941653073, green: 0.6643448472, blue: 0.6202048659, alpha: 1)
         cell?.lblstatsu.textColor = #colorLiteral(red: 0.3941653073, green: 0.6643448472, blue: 0.6202048659, alpha: 1)
-        cell?.lblstatsu.text = self.contractListdata[indexPath.row].status?.name
+            
+            if myDefaultLanguage == .en {
+                 cell?.lblstatsu.text = self.contractListdata[indexPath.row].status?.name
+            } else {
+                cell?.lblstatsu.text = "CONTRATO ACTIVO"
+            }
         } else if self.contractListdata[indexPath.row].status?.name == "CONTRACT_FINISH" {
             cell?.statusView.backgroundColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
             cell?.lblstatsu.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
+            if myDefaultLanguage == .en {
             cell?.lblstatsu.text = self.contractListdata[indexPath.row].status?.name
+            } else {
+                cell?.lblstatsu.text = "CONTRATO FINALIZADO"
+            }
             } else if self.contractListdata[indexPath.row].status?.name == "CONTRACT_CANCEL" {
                 cell?.statusView.backgroundColor = #colorLiteral(red: 0.9991626143, green: 0.1742511094, blue: 0.3347000182, alpha: 1)
                 cell?.lblstatsu.textColor = #colorLiteral(red: 0.9991626143, green: 0.1742511094, blue: 0.3347000182, alpha: 1)
+                
+                if myDefaultLanguage == .en {
                 cell?.lblstatsu.text = self.contractListdata[indexPath.row].status?.name
+                } else {
+                    cell?.lblstatsu.text =  "CONTRATO CANCELADO"
+                }
                 }
         
         cell?.callBack = { Istrue in
@@ -150,7 +164,7 @@ extension ContractHistoryVC: UITableViewDelegate,UITableViewDataSource {
 
 extension ContractHistoryVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "you have no Contracts"
+        let text = "you have no Contracts".localized
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray
@@ -160,7 +174,7 @@ extension ContractHistoryVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        let text = "Try Again!"
+        let text = "Try Again!".localized
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4712097049, green: 0.7777811885, blue: 0.758687973, alpha: 1)

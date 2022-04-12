@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,6 +34,9 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMPAÑIA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WR-wh-qqg">
                                 <rect key="frame" x="20" y="10" width="81.5" height="17.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17.5" id="zL2-xF-IUl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" red="0.19249105450000001" green="0.50745886559999998" blue="0.46338623759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -57,7 +60,7 @@
                                     <fragment content="IBL | Intelligence Bereau Laboratory">
                                         <attributes>
                                             <color key="NSColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" metaFont="system" size="12"/>
+                                            <font key="NSFont" metaFont="cellTitle"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -71,36 +74,54 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENCARGADO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meT-mO-Ehk">
                                 <rect key="frame" x="20" y="55" width="96.5" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="i0Y-ZF-vuP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" red="0.19249105450000001" green="0.50745886559999998" blue="0.46338623759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luis Enrique Cornejo Arreola" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Je4-hy-JSy">
                                 <rect key="frame" x="20" y="80" width="171" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="iYq-G0-mcv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CORREO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMX-fv-Lea">
                                 <rect key="frame" x="20" y="103" width="63.5" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="Eox-Wr-etr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" red="0.19249105450000001" green="0.50745886559999998" blue="0.46338623759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aitzel.2125@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm3-uR-UAq">
                                 <rect key="frame" x="20" y="128" width="135.5" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="FwN-r2-qBo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="442-568-89-41" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhh-gh-tAG">
                                 <rect key="frame" x="20" y="176" width="85.5" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="umG-6k-IH0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.43916493649999999" green="0.43924486639999999" blue="0.43915987010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NÚMERO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4k-wl-vss">
                                 <rect key="frame" x="20" y="151" width="67.5" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="cji-bt-cBH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" red="0.19249105450000001" green="0.50745886559999998" blue="0.46338623759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -171,6 +192,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="lblactive" destination="bIt-hx-G2t" id="y1I-kg-hpe"/>
                 <outlet property="mainView" destination="l6K-Wv-hzM" id="Y54-D2-QLf"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="145.98214285714286"/>

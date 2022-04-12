@@ -84,7 +84,8 @@
 "MAPA" = "MAP";
 "Rol" = "Rol";
 "Fechas de Contrato" = "Contract Dates";
-"Inicio" = "Inicio";
+"Inicio" = "Start";
+"OPCIONES" = "OPTIONS";
 "Fin" = "End";
 
 //MARK:- SchedualVC
@@ -170,3 +171,183 @@
 "CANCELAR EVENTO" = "CANCEL EVENT";
 "ACTUALIZAR EVENTO" = "UPDATE EVENT";
 "D E T A L L E S" = "D E T A I L S";
+"FECHA" = "DATE";
+"Fecha: " = "Fecha: ";
+//MARK:- AcceptOrRejectPopUpVC
+"CANCELAR EVENTO" = "CANCEL EVENT";
+
+//MARK:- GenralQRCodeVC
+
+"Valido por los siguientes 30 segundos." = "Valid for the next 30 seconds.";
+"ESCANEAR CÓDIGO QR" = "SCAN QR CODE";
+"VOLVER A GENERAR" = "REGENERATE";
+
+//MARK:- QRCodeVC
+"MAPA A LA COMPAÑIA" = "MAP TO THE COMPANY";
+"ESCANEAR CÓDIGO QR" = "SCAN QR CODE";
+//MARK:- CompanyVerificationVC
+"TOKEN DE ACCESO" = "ACCESS TOKENS";
+"VOLVER A GENERAR" = "REGENERATE";
+
+//MARK:UpdateEventVC
+"A C T U A L I Z A R" = "TO UPDATE";
+"NOMBRE DEL EVENTO" = "NAME OF THE EVENT";
+"ELÍGE UNA FECHA" = "CHOOSE A DATE";
+"HORA" = "HOUR";
+"FECHA" = "DATE";
+"ESCOGE TUS INVITADOS:" = "CHOOSE YOUR GUESTS:";
+"Escribe para buscar ..." = "Type to search...";
+"O ELÍGE DE LA LISTA DE CONTACTOS" = "OR CHOOSE FROM THE CONTACT LIST";
+"GUARDAR CAMBIOS" = "SAVE CHANGES";
+
+
+//MARK:- CancelEventinvitationVc
+"CANCELAR INVITACIÓN" = "CANCEL INVITATION";
+
+//MARK:- InvitationPopUpVC
+"I N V  IT A C I Ó N" = "INVITATION";
+"Ingrese el número de invitados que llegarán" = "Enter the number of guests who will arrive";
+"ZONAS" = "ZONES";
+"NO INIVITADOS" = "NOT INVITED";
+
+//MARK:- UpdateProfileVC
+"Información personal" =  "Personal information";
+"Contraseña" = "Password";
+"Correo" = "Mail";
+"Celular" = "Cell phone";
+"Fecha de cumpleaños" = "Birthday date";
+"Género" = "Gender";
+"Información extra" = "Extra information";
+"ADDESS 1" = "ADDRESS 1";
+"ADDESS 2" = "ADDRESS 2";
+"STATE" = "STATE";
+"COUNTRY" = "COUNTRY";
+"POST CODE" = "POST CODE";
+"HOME NUMBER" = "HOME NUMBER";
+"ARABIC NAME" = "ARABIC NAME";
+"BLOOD TYPE" = "BLOOD TYPE";
+"Idiomas" = "Languages";
+"Español" = "Spanish";
+"Ingles" = "English";
+"Tipo de Acceso" = "Tipo de Acceso";
+"Use biometrics storate in the phone" = "Use biometrics store in the phone";
+"DESVINCULAR DISPOSITIVO" = "UNPAIR DEVICE";
+
+//MARK:- UserPersonalVC
+"Información" = "Information";
+"Masculino" = "Male";
+"CONTRASEÑA" = "PASSWORD";
+"CORREO" = "MAIL";
+"NO CELULAR" = "NOT CELLULAR";
+"CUMPLEAÑOS" = "BIRTHDAY";
+"ACTUALIZAR DATOS" = "UPDATE DATA";
+
+//MARK:- InvitorVC
+"INVITAR" = "INVITE";
+//MARK:- ContactListVc
+"L I S T A  D E  C O N T A C T O S" = "CONTACT LIST";
+//MARK:- NewinvitationVc
+"INVITACIONES" = "INVITATIONS";
+"Empresa" = "Business";
+"Anfitrión" = "Host";
+"Invitaciones" = "Invitations";
+
+//MARK:- UserNotRegisterPopUpVC
+"USUARIO NO ENCONTRADO" = "USER NOT FOUND";
+"No sé encontró asociado ningún celular correo en nuestros servidores, para poder invitarlo es necesario proporcionar ciertos datos para nuestros registros." = "I don't know any associated cell phone mail on our servers, in order to invite you it is necessary to provide certain data for our records.";
+//MARK:- PreRegisteruservc
+"D A T O S DE U S U A R I O" = "USER DATA";
+
+//MARK:- LogoutPopUpVc
+"CERRAR SESIÓN" = "CERRAR SESIÓN";
+"Estás apunto de cerrar sesión, se desvinculará el dispositivo en el que esta la sesión activa. ¿Deseas continuar?" = "You are about to log out, the device on which the session is active will be unlinked. Do you want to continue?";
+//MARK:- NoOFInvitationVc
+"D A T O S E X T R A" = "D A T O S E X T R A";
+"Ingrese el número de invitados permitidos por invitación" = "Enter the number of guests allowed per invitation";
+//MARK:- NewNotification
+"TÍTULO" = "QUALIFICATION";
+"TIPO DE NOTIFICACIÓN" = "TYPE OF NOTIFICATION";
+"TIPO" = "TYPE";
+"DE" = "FROM";
+"ALCANCE" = "SCOPE";
+"MENSAJE" = "MESSAGE";
+"N U E V A  N O T I F I C A CI O N" = "N E W N O T I F I C A T I O N";
+"ENVIAR" = "SEND";
+"MIS INVITACIONES" = "MY INVITATIONS";
+"HISTORIAL" = "RECORD";
+
+//MARK:- ContractHistoryVc
+"HISTORIAL CONTRATOS" = "CONTRACT HISTORY";
+//MARK:- ContractListCell
+"Grupo Tepeyac Mexico" = "Tepeyac Mexico Group";
+"Inicio de contrato" = "Start of contract";
+"Fin de contrato" = "End of contract";
+
+"VER DETALLES" = "SEE DETAILS";
+"AGREGAR CONTRATISTA +" = "ADD CONTRACTOR +";
+"Escribe no celular / email para invitar" =  "Write no cell phone / email to invite";
+"CONTRATISTA" = "CONTRACTOR";
+"CREAR CONTRATO" = "CREAR CONTRATO";
+
+//MARK:- ContractDetailVC
+"D E T A L L E S" = "DETAILS";
+"Grupo Tepeyac Mexico" = "Tepeyac Mexico Group";
+"No. de empleados" = "No. of employees";
+"No. vehículos" = "Number of vehicles";
+
+//MARK:- UpdateContractVC
+"INICIO DE CONTRATO" = "Start of contract";
+"FIN DE CONTRATO" = "End of contract";
+"A C T U A L I Z A R C O N T R A T O" = "UPDATE CONTRACT";
+"CONTRATOS" = "CONTRATOS";
+
+//MARK:- ProviderDetail
+"INFORMACIÓN DEL PROVEEDOR" = "INFORMACIÓN DEL PROVEEDOR";
+"Vehículo" = "Vehicle";
+"INFORMACIÓN DE ENTREGA" = "DELIVERY INFORMATION";
+"Producto" = "Product";
+"Descripción" = "Description";
+"INFORMACIÓN DEL PROVEEDOR" = "SUPPLIER INFORMATION";
+"Recibido por" = "Received by";
+"Fecha de entrega" = "Deadline";
+
+//MARK:- ContractinformationVc
+"I N F O R M A C I Ó N" = "INFORMATION";
+"Contratista encargado" = "commissioning contractor";
+"Inicio Contrato" = "Home Contract";
+"Fin Contrato" = "End of contract";
+//MARK:- AddcontractVc
+"ACRÓNIMO" = "ACRONYM";
+"ENCARGADO" = "DUTY MANAGER";
+"A G R E G A R                          C O N T R A T I S T A" = "A G R E G A R C O N T R A T I S T";
+
+//AMRK:-  ContractorDetailVC
+"D E T A L L E S" = "DETAILS";
+"NÚMERO" = "NUMBER";
+
+//MARK:-  UpdateContractorVc
+"ESTATUS" = "STATUS";
+
+//MARK:- CurrentOrderVc
+"ORDENES EN CURSO" = "ORDERS IN PROGRESS";
+//MARK:- Currentordercell
+"INFORMACIÓN DEL PROVEEDOR" = "SUPPLIER INFORMATION";
+"Compañia" = "Company";
+"INFORMACIÓN DE ENTREGA" = "DELIVERY INFORMATION";
+"ETA" = "ETA";
+//MARK:- OrderhistoryVc
+"HISTORIAL ORDENES" = "ORDER HISTORY";
+
+//MARK:-  OrderHistoryCell
+"INFORMACIÓN DEL PROVEEDOR" = "INFORMACIÓN DEL PROVEEDOR";
+"INFORMACIÓN DE RECIBIDO" = "RECEIVED INFORMATION";
+
+//Custom Message
+"you have no Contracts" = "you have no Contracts";
+"Try Again!" = "Try Again!";
+"you have no Contracts" = "you have no Contracts";
+"you have no Invitation" = "you have no Invitation";
+"you have no Notification" = "you have no Notification";
+"you have no Events Invitations" = "you have no Events Invitations";
+"you have no Events" = "you have no Events";
+"Contrato" = "Contract";

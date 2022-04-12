@@ -8,14 +8,21 @@
 import UIKit
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class PopUpNumberOFInvitationVC: BaseController {
+    @IBOutlet weak var lblextradatadetail: UILabel!
+    @IBOutlet weak var btncancel: UIButton!
+    @IBOutlet weak var btnaccept: UIButton!
+    @IBOutlet weak var lbldetail: UILabel!
     @IBOutlet weak var txtnumber: MDCOutlinedTextField!
     var callBack: ((_ number:String) ->Void)? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         view.isOpaque = false
         view.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 0.2935282726)
-        setMDCTxtFieldDesign(txtfiled: txtnumber, Placeholder: "NO INIVITADOS", imageIcon: UIImage())
-        
+        setMDCTxtFieldDesign(txtfiled: txtnumber, Placeholder: "NO INIVITADOS".localized, imageIcon: UIImage())
+        btncancel.setTitle("CANCELAR".localized, for: .normal)
+        btnaccept.setTitle("ENVIAR".localized, for:.normal)
+        self.lblextradatadetail.text = "D A T O S E X T R A".localized
+        self.lbldetail.text = "Ingrese el número de invitados permitidos por invitación".localized
     }
     
 

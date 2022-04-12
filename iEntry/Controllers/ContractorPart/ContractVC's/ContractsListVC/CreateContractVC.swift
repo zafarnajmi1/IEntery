@@ -8,6 +8,7 @@
 import UIKit
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class CreateContractVC: BaseController {
+    @IBOutlet weak var lblcreatecontractortitle: UILabel!
     //MARK:- here are iboutlet
     @IBOutlet weak var stripView: UIView!
     @IBOutlet weak var txtendDate: MDCOutlinedTextField!
@@ -17,10 +18,12 @@ class CreateContractVC: BaseController {
         super.viewDidLoad()
 
         self.navigationBarHidShow(isTrue: true)
-        setMDCTxtFieldDesign(txtfiled: txtcompany, Placeholder: "COMPAÑIA", imageIcon: UIImage(named: "sort-down-solid")!)
-        setMDCTxtFieldDesign(txtfiled: txtstartDate, Placeholder: "INICIO DE CONTRATO", imageIcon: UIImage(named: "ic-calendar-2")!)
-        setMDCTxtFieldDesign(txtfiled: txtendDate, Placeholder: "FIN DE CONTRATO", imageIcon: UIImage(named: "ic-calendar-2")!)
+        setMDCTxtFieldDesign(txtfiled: txtcompany, Placeholder: "COMPAÑIA".localized, imageIcon: UIImage(named: "sort-down-solid")!)
+        setMDCTxtFieldDesign(txtfiled: txtstartDate, Placeholder: "INICIO DE CONTRATO".localized, imageIcon: UIImage(named: "ic-calendar-2")!)
+        setMDCTxtFieldDesign(txtfiled: txtendDate, Placeholder: "FIN DE CONTRATO".localized, imageIcon: UIImage(named: "ic-calendar-2")!)
         self.stripView.roundViiew()
+    
+        self.lblcreatecontractortitle.text = "CREAR CONTRATO".localized
     }
     
 

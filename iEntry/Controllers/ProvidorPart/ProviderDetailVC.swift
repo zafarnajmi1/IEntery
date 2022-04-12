@@ -9,14 +9,19 @@ import UIKit
 
 class ProviderDetailVC: BaseController {
     
+    @IBOutlet weak var lblsupliretitle: UILabel!
     var isfromcurrentorder = false
     var ordersdata :ProviderModelsData?
+    @IBOutlet weak var lbldeliverytitle: UILabel!
     @IBOutlet weak var lblcompany: UILabel!
     @IBOutlet weak var lblemployee: UILabel!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var lblstatus: UILabel!
     @IBOutlet weak var lblvihicl: UILabel!
     
+    @IBOutlet weak var lblproducttitle: UILabel!
+    @IBOutlet weak var lbluserdeliverytitle: UILabel!
+    @IBOutlet weak var lblinformationtitle: UILabel!
     
     
     @IBOutlet weak var lbldeliverydate: UILabel!
@@ -26,14 +31,30 @@ class ProviderDetailVC: BaseController {
     
     @IBOutlet weak var lbldeliveryDiscription: UILabel!
     
+    @IBOutlet weak var lbldeliverydatetitle: UILabel!
+    @IBOutlet weak var lblcompanytitle: UILabel!
     
     @IBOutlet weak var recieverView: UIView!
     
+    @IBOutlet weak var lbldescriptiontitle: UILabel!
+    @IBOutlet weak var lblemployeetitle: UILabel!
     
+    @IBOutlet weak var lbldeliverycompanytitle: UILabel!
     @IBOutlet weak var lblrecieverDate: UILabel!
     @IBOutlet weak var lblrecieverusername: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.lblinformationtitle.text = "INFORMACIÓN DEL PROVEEDOR".localized
+        self.lblcompanytitle.text = "Compañia".localized
+        self.lblemployeetitle.text = "Empleado".localized
+        self.lbldeliverytitle.text = "INFORMACIÓN DE ENTREGA".localized
+        self.lbldeliverycompanytitle.text = "Compañia".localized
+        self.lblproducttitle.text = "Producto".localized
+        self.lbldescriptiontitle.text = "Descripción".localized
+        self.lblsupliretitle.text = "INFORMACIÓN DEL PROVEEDOR".localized
+        self.lbldeliverydatetitle.text = "Fecha de entrega".localized
+        self.lbluserdeliverytitle.text = "Recibido por".localized
         self.navigationBarHidShow(isTrue: true)
         if isfromcurrentorder == true  {
             recieverView.isHidden = true

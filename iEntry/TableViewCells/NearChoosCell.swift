@@ -22,6 +22,11 @@ class NearChoosCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         viewDesign()
+        if myDefaultLanguage == .en {
+            self.lblactive.text = "ACTIVE"
+        } else {
+            self.lblactive.text = "ACTIVO"
+        }
     }
     
     //MARK:- design set here

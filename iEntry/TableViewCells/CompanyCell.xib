@@ -266,6 +266,7 @@
                 <outlet property="lblenddatetitle" destination="QbG-U5-3gv" id="Psi-cq-Dak"/>
                 <outlet property="lblmap" destination="ugX-3J-wzG" id="2Vb-JR-sN0"/>
                 <outlet property="lblownername" destination="afb-Vi-0I1" id="VAa-An-W2u"/>
+                <outlet property="lblqrcodetitle" destination="Qhu-YX-wzd" id="YQa-n4-54i"/>
                 <outlet property="lblrole" destination="AVk-6M-Of7" id="67D-w8-C6j"/>
                 <outlet property="lblstartDate" destination="7Ol-hH-9EV" id="yQ9-RI-3mI"/>
                 <outlet property="lblstartdatetitle" destination="vsh-3e-19a" id="QbX-wj-Hxd"/>

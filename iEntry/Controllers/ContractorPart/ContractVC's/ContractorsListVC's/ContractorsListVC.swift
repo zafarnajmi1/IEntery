@@ -8,9 +8,11 @@
 import UIKit
 import XLPagerTabStrip
 class ContractorsListVC: UIViewController, IndicatorInfoProvider {
+    @IBOutlet weak var txtseacrh: UITextField!
+    @IBOutlet weak var btnaddbuttontitle: UIButton!
     //MARK:- tab delegate
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "CONTRATISTA")
+        return IndicatorInfo(title: "CONTRATISTA".localized)
     }
     //MARK:- here are the iboutlet
     @IBOutlet weak var searchView: UIView!
@@ -22,6 +24,8 @@ class ContractorsListVC: UIViewController, IndicatorInfoProvider {
         self.tblView.register(UINib.init(nibName: "ContractorsListCell", bundle: nil), forCellReuseIdentifier: "ContractorsListCell")
         searchView.shadowAndRoundcorner(cornerRadius: Float(searchView.layer.frame.height) / 2, shadowColor: #colorLiteral(red: 0.8430451751, green: 0.843190372, blue: 0.843035996, alpha: 1), shadowRadius: 3.0, shadowOpacity: 1)
         innerSearch.roundCorners([.topRight,.bottomRight], radius: 25)
+        self.btnaddbuttontitle.setTitle("AGREGAR CONTRATISTA +".localized, for: .normal)
+        self.txtseacrh.placeholder = "Escribe no celular / email para invitar".localized
     }
     
     @IBAction func addContractors(_ sender: UIButton) {

@@ -8,9 +8,26 @@
 import UIKit
 import SDWebImage
 class UserProfileVC: BaseController {
+    @IBOutlet weak var lblspanishtitle: UILabel!
     
-    //MARK:- here are the iboutlet 
+    @IBOutlet weak var lbldevicetitle: UILabel!
+    @IBOutlet weak var lblbiomatrictitle: UILabel!
+    @IBOutlet weak var lblaccetypetitle: UILabel!
+    @IBOutlet weak var lblpostcodetitle: UILabel!
+    @IBOutlet weak var lblcountrytitl: UILabel!
+    @IBOutlet weak var lbladdresstwotitle: UILabel!
+    @IBOutlet weak var lblextradatatitle: UILabel!
+    @IBOutlet weak var lblgendertitle: UILabel!
+    //MARK:- here are the iboutlet
+    @IBOutlet weak var lblnametitle: UILabel!
     
+    @IBOutlet weak var lblhomenumertitle: UILabel!
+    @IBOutlet weak var lblstatetitle: UILabel!
+    @IBOutlet weak var lbladdressonetitle: UILabel!
+    @IBOutlet weak var lbldateofBirhTitle: UILabel!
+    @IBOutlet weak var lblpasswordtitle: UILabel!
+    @IBOutlet weak var lblinformationpersonaltitle: UILabel!
+    @IBOutlet weak var lblpersonalinfotitle: UILabel!
     @IBOutlet weak var lbltypeAccess: UILabel!
     @IBOutlet weak var hideshowtype: UIImageView!
     @IBOutlet weak var lblname: UILabel!
@@ -20,6 +37,8 @@ class UserProfileVC: BaseController {
     @IBOutlet weak var lblpostalCode: UILabel!
     @IBOutlet weak var lbllanguage: UILabel!
     
+    @IBOutlet weak var lblbloodtitle: UILabel!
+    @IBOutlet weak var lblmailtitle: UILabel!
     @IBOutlet weak var lblBloodGroup: UILabel!
     @IBOutlet weak var lblarabicname: UILabel!
     @IBOutlet weak var lblhomenumber: UILabel!
@@ -31,9 +50,12 @@ class UserProfileVC: BaseController {
     @IBOutlet weak var lblDOB: UILabel!
     @IBOutlet weak var lblemail: UILabel!
     
+    @IBOutlet weak var lblenglishtitle: UILabel!
+    @IBOutlet weak var lblphonetitle: UILabel!
     @IBOutlet weak var spanishView: UIView!
     @IBOutlet weak var btnswitch: UISwitch!
     
+    @IBOutlet weak var lblarabicnametitle: UILabel!
     
     @IBOutlet weak var frechView: UIView!
     @IBOutlet weak var englishView: UIView!
@@ -45,6 +67,72 @@ class UserProfileVC: BaseController {
     var istypeAccess =  true
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+//        if ShareData.shareInfo.saveLanguage == "en" {
+//            englishAction(UIButton())
+//        } else {
+//            espanission(UIButton())
+//        }
+//
+        
+        
+        if ShareData.shareInfo.saveLanguage == "en" {
+            //englishAction(UIButton())
+            
+            isfrench = false
+            isespainssion = false
+             isenglish = true
+        
+                englishimg.image = UIImage(named: "ic-check-2")
+                frenchimg.image = UIImage(named: "")
+                espainimg.image = UIImage(named: "")
+                ShareData.shareInfo.saveLanguage = "en"
+                myDefaultLanguage = .en
+        } else {
+            //espanission(UIButton())
+            
+            isfrench = false
+            isespainssion = true
+             isenglish = false
+        
+                englishimg.image = UIImage(named: "")
+                frenchimg.image = UIImage(named: "")
+                espainimg.image = UIImage(named: "ic-check-2")
+            ShareData.shareInfo.saveLanguage = "es"
+            myDefaultLanguage = .es
+        }
+        
+        
+        
+        self.lblpersonalinfotitle.text = "Información personal".localized
+        
+        self.lblinformationpersonaltitle.text = "Información personal".localized
+        
+        self.lblnametitle.text = "Nombre".localized
+        self.lblpasswordtitle.text = "Contraseña".localized
+        self.lblmailtitle.text = "Correo".localized
+        self.lblphonetitle.text = "Celular".localized
+        self.lbldateofBirhTitle.text = "Fecha de cumpleaños".localized
+        
+        self.lblgendertitle.text = "Género".localized
+        self.lblextradatatitle.text = "Información extra".localized
+        
+        self.lbladdressonetitle.text = "ADDESS 1".localized
+        self.lbladdresstwotitle.text = "ADDESS 2".localized
+        self.lblstatetitle.text = "STATE".localized
+        self.lblcountrytitl.text = "COUNTRY".localized
+        self.lblpostcodetitle.text = "POST CODE".localized
+        self.lblhomenumertitle.text = "HOME NUMBER".localized
+        self.lblarabicnametitle.text = "ARABIC NAME".localized
+        self.lblbloodtitle.text = "BLOOD TYPE".localized
+        self.lbllanguage.text = "Idiomas".localized
+        
+        self.lblspanishtitle.text = "Español".localized
+        self.lblenglishtitle.text = "Ingles".localized
+        self.lblaccetypetitle.text = "Tipo de Acceso".localized
+        self.lblbiomatrictitle.text = "Use biometrics store in the phone".localized
+        self.lbldevicetitle.text = "DESVINCULAR DISPOSITIVO".localized
         if ShareData.shareInfo.isBiomatric == true {
             btnswitch.isOn = true
         } else {
@@ -53,12 +141,15 @@ class UserProfileVC: BaseController {
         self.navigationBarHidShow(isTrue: true)
         mainView.roundCorners([.topLeft,.topRight], radius: 20)
         userimg.roundViiew()
-        englishAction(UIButton())
+        //englishAction(UIButton())
        // setDate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        
         getUserInfo()
     }
     
@@ -186,6 +277,15 @@ class UserProfileVC: BaseController {
         englishimg.image = UIImage(named: "ic-check-2")
         frenchimg.image = UIImage(named: "")
         espainimg.image = UIImage(named: "")
+        ShareData.shareInfo.saveLanguage = "en"
+        myDefaultLanguage = .en
+        view.setNeedsLayout()
+        view.setNeedsDisplay()
+        self.view.layoutIfNeeded()
+        //self.navigationController?.popViewController(animated: true)
+         viewDidLoad()
+        
+        
     }
     
     @IBAction func espanission(_ sender: UIButton) {
@@ -196,6 +296,15 @@ class UserProfileVC: BaseController {
             englishimg.image = UIImage(named: "")
             frenchimg.image = UIImage(named: "")
             espainimg.image = UIImage(named: "ic-check-2")
+        ShareData.shareInfo.saveLanguage = "es"
+        myDefaultLanguage = .es
+        view.setNeedsLayout()
+        view.setNeedsDisplay()
+        self.view.layoutIfNeeded()
+        
+        viewDidLoad()
+        //self.navigationController?.popViewController(animated: true)
+        
         
     }
     

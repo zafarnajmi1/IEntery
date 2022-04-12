@@ -10,7 +10,10 @@ import SMDatePicker
 import DropDown
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelegate{
-
+    @IBOutlet weak var lblenternumberofguesttitle: UILabel!
+    
+    @IBOutlet weak var btncancel: UIButton!
+    @IBOutlet weak var lblinvitationtitle: UILabel!
     var invitationlist = [InvitationsHistoryModel]()
     var callBack : ((_ number:String)->Void)? = nil
     @IBOutlet weak var btnaccept: UIButton!
@@ -34,16 +37,24 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
     var isfromHistory = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.lblenternumberofguesttitle.text = "Ingrese el número de invitados que llegarán".localized
+        self.lblinvitationtitle.text = "I N V  IT A C I Ó N".localized
         txtnumberInvitayion.keyboardType = .numberPad
-        setMDCTxtFieldDesign(txtfiled: txttime, Placeholder: "HORA", imageIcon: UIImage(named: "ic-calendar-2")!)
-        setMDCTxtFieldDesign(txtfiled: txtdate, Placeholder: "FECHA", imageIcon: UIImage(named: "ic-calendar-1")!)
+        setMDCTxtFieldDesign(txtfiled: txttime, Placeholder: "HORA".localized, imageIcon: UIImage(named: "ic-calendar-2")!)
+        setMDCTxtFieldDesign(txtfiled: txtdate, Placeholder: "FECHA".localized, imageIcon: UIImage(named: "ic-calendar-1")!)
         
             self.lblname.text = name
             self.lblnumber.text = phone
         
-        setMDCTxtFieldDesign(txtfiled: txtZone, Placeholder: "ZONAS", imageIcon: UIImage(named: "sort-down-solid")!)
+        setMDCTxtFieldDesign(txtfiled: txtZone, Placeholder: "ZONAS".localized, imageIcon: UIImage(named: "sort-down-solid")!)
         
-        setMDCTxtFieldDesign(txtfiled: txtnumberInvitayion, Placeholder: "NO INIVITADOS", imageIcon: UIImage())
+        setMDCTxtFieldDesign(txtfiled: txtnumberInvitayion, Placeholder: "NO INIVITADOS".localized, imageIcon: UIImage())
+        
+        
+        self.btncancel.setTitle("CANCELAR".localized, for: .normal)
+        self.btnaccept.setTitle("ENVIAR".localized, for: .normal)
         self.navigationBarHidShow(isTrue: true)
         mainView.roundViewWithCustomRadius(radius: 8)
         btnaccept.roundButtonWithCustomRadius(radius: 6)

@@ -15,6 +15,7 @@ class CompanyCell: UITableViewCell {
     @IBOutlet weak var qrCodeView: UIView!
     @IBOutlet weak var mapView: UIView!
     
+    @IBOutlet weak var lblqrcodetitle: UILabel!
     @IBOutlet weak var lblcontractdate: UILabel!
     @IBOutlet weak var lblrole: UILabel!
     @IBOutlet weak var lblownername: UILabel!
@@ -37,12 +38,15 @@ class CompanyCell: UITableViewCell {
         self.selectionStyle = .none
         viewDesign()
         
-        self.lblmap.text = "MAPA".localized
-        self.lblemployee.text = "Empleado".localized
-        self.lblrole.text = "Rol".localized
-        self.lblcontractdate.text = "Fechas de Contrato".localized
-        self.lblstartdatetitle.text = "Inicio".localized
-        self.lblenddatetitle.text = "Fin".localized
+//        self.lblmap.text = "MAPA".localized
+//        self.lblemployee.text = "Empleado".localized
+//        self.lblrole.text = "Rol".localized
+//        self.lblcontractdate.text = "Fechas de Contrato".localized
+//        self.lblstartdatetitle.text = "Inicio".localized
+//        self.lblenddatetitle.text = "Fin".localized
+//        self.lblqrcodetitle.text = "OPCIONES".localized
+        
+        updatelanguage()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -77,5 +81,16 @@ class CompanyCell: UITableViewCell {
     
     @IBAction func moreDetailAction(_ sender: UIButton) {
         moreDetailcallBack?(true)
+    }
+    
+    
+    func updatelanguage() {
+        self.lblmap.text = "MAPA".localized
+        self.lblemployee.text = "Empleado".localized
+        self.lblrole.text = "Rol".localized
+        self.lblcontractdate.text = "Fechas de Contrato".localized
+        self.lblstartdatetitle.text = "Inicio".localized
+        self.lblenddatetitle.text = "Fin".localized
+        self.lblqrcodetitle.text = "OPCIONES".localized
     }
 }
