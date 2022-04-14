@@ -75,6 +75,27 @@ class NewInvitationVC: BaseController,IndicatorInfoProvider {
     }
     
     
+    func updateInvitationApi(_ indx:Int, option:Int){
+        showLoader()
+        userhandler.updateInvitation(id:self.invitationdata?[indx].id ?? "" , option: option, Success: {response in
+            self.hidLoader()
+            if response?.success == true {
+                //self.alert(message: response?.message ?? "")
+                self.getInvitationAfterDate()
+            } else {
+                self.alert(message: response?.message ?? "")
+            }
+            
+        }, Failure: {erorr in
+            self.hidLoader()
+            self.alert(message: erorr.message)
+        })
+        
+        
+    }
+    
+    
+    
     
 }
 //MARK:-  tableview delegate 
@@ -100,20 +121,18 @@ extension NewInvitationVC : UITableViewDelegate,UITableViewDataSource {
         }
           
         if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_UNATTENDED" {
-                cell?.lblstatus.text = self.invitationdata?[indexPath.row].status?.name ?? ""
+                cell?.lblstatus.text = "INVITATION UNATTENDED"
                 cell?.statusView.backgroundColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
                 cell?.lblstatus.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
         } else  if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_ACCEPTED" {
-            cell?.lblstatus.text = self.invitationdata?[indexPath.row].status?.name ?? ""
+            cell?.lblstatus.text = "INVITATION ACCEPTED"
             cell?.statusView.backgroundColor = #colorLiteral(red: 0.04716654867, green: 0.249147892, blue: 0.1248098537, alpha: 1)
             cell?.lblstatus.textColor = #colorLiteral(red: 0.04335165769, green: 0.2412434816, blue: 0.1210812852, alpha: 1)
     } else  if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_REJECTED" {
-        cell?.lblstatus.text = self.invitationdata?[indexPath.row].status?.name ?? ""
+        cell?.lblstatus.text = "INVITATION REJECTED"
         cell?.statusView.backgroundColor = #colorLiteral(red: 0.618992269, green: 0.005741298664, blue: 0.00775064528, alpha: 1)
         cell?.lblstatus.textColor = #colorLiteral(red: 0.6229569912, green: 0.005496537313, blue: 0.00703322608, alpha: 1)
 }
-        
-        
         
         
         
@@ -143,12 +162,23 @@ extension NewInvitationVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_UNATTENDED" {
             let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier:"InvitationAcceptAndRejectVC") as? InvitationAcceptAndRejectVC
                 vc?.modalPresentationStyle = .overFullScreen
+        vc?.acceptInvition = { option in
+            
+            //vc?.dismiss(animated: true, completion: nil)
+            if option == 38 {
+                self.updateInvitationApi(indexPath.row, option: option)
+            } else {
+                self.updateInvitationApi(indexPath.row, option: option)
+            }
+            
+        }
 
                 self.present(vc!, animated: false, completion: nil)
+        }
                 
     }
     
@@ -170,7 +200,13 @@ extension NewInvitationVC : UITableViewDelegate,UITableViewDataSource {
 }
 extension NewInvitationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "you have no Invitation".localized
+        
+        var text = ""
+        if myDefaultLanguage == .en {
+          text = "you have no Invitation".localized
+        } else {
+            text = "no tienes invitación".localized
+        }
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray
@@ -180,7 +216,12 @@ extension NewInvitationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        let text = "Try Again!".localized
+        var text = ""
+        if myDefaultLanguage == .en {
+         text = "Try Again!".localized
+        } else {
+            text = "¡Intentar otra vez!".localized
+        }
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4712097049, green: 0.7777811885, blue: 0.758687973, alpha: 1)

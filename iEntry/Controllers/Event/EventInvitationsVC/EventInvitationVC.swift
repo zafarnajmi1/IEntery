@@ -45,8 +45,8 @@ class EventInvitationVC: BaseController,IndicatorInfoProvider {
         self.showLoader()
         let timeInMiliSecDate = Date()
         let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
-        
-        let dic : [String:Any] = ["date":timeInMiliSec,"userId":ShareData.shareInfo.obj?.id ?? ""]
+        //userId
+        let dic : [String:Any] = ["date":timeInMiliSec,"hostId":ShareData.shareInfo.obj?.id ?? ""]
         userhandler.getEventsinvitatinsAftereDate(params: dic, Success: {response in
             self.hidLoader()
             if response?.success == true {
@@ -120,7 +120,12 @@ extension EventInvitationVC : UITableViewDelegate,UITableViewDataSource {
 }
 extension EventInvitationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "you have no Events Invitations".localized
+        var text = ""
+        if myDefaultLanguage == .en {
+            text = "you have no Events Invitations".localized
+        } else {
+            text = "no tienes invitaciones a eventos".localized
+        }
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray
@@ -130,7 +135,12 @@ extension EventInvitationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        let text = "Try Again!".localized
+        var text = ""
+        if myDefaultLanguage == .en {
+         text = "Try Again!".localized
+        } else {
+            text = "¡Intentar otra vez!".localized
+        }
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4712097049, green: 0.7777811885, blue: 0.758687973, alpha: 1)

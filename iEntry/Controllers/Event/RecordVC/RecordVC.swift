@@ -45,8 +45,9 @@ class RecordVC: BaseController,IndicatorInfoProvider {
         self.showLoader()
         let timeInMiliSecDate = Date()
         let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+        //userId
         //* 1 * 24 * 60 * 60 * 1000
-        let dic : [String:Any] = ["date":timeInMiliSec, "userId":ShareData.shareInfo.obj?.id ?? ""]
+        let dic : [String:Any] = ["date":timeInMiliSec, "hostId":ShareData.shareInfo.obj?.id ?? ""]
         userhandler.getEventsBeforeDate(params: dic, Success: {response in
             self.hidLoader()
             if response?.success == true {
@@ -112,7 +113,12 @@ extension RecordVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        let text = "Try Again!".localized
+        var text = ""
+        if myDefaultLanguage == .en {
+         text = "Try Again!".localized
+        } else {
+            text = "¡Intentar otra vez!".localized
+        }
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4712097049, green: 0.7777811885, blue: 0.758687973, alpha: 1)

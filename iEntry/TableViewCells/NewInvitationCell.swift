@@ -32,10 +32,10 @@ class NewInvitationCell: UITableViewCell {
     var callBack: ((_ done: Bool) -> (Void))? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.lblemployeetitle.text = "Empresa".localized
+        self.lblemployeetitle.text = "Compañia".localized
         
         self.lblhosttitle.text = "Anfitrión".localized
-        self.lblinvitationdatetitle.text = "Invitaciones".localized
+        self.lblinvitationdatetitle.text = "Fecha y Hora".localized
         self.lblgenratetitle.text = "GENERAR QR".localized
         self.lblmaptitle.text = "EVENTO".localized
         self.selectionStyle = .none

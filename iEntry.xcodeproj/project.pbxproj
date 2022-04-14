@@ -67,6 +67,7 @@
 		1C4A5B4F26FCE363009F7DE9 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4A5B4E26FCE363009F7DE9 /* PushNotificationManager.swift */; };
 		1C4A5B5026FCE363009F7DE9 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4A5B4E26FCE363009F7DE9 /* PushNotificationManager.swift */; };
 		1C4A5B5126FCE363009F7DE9 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4A5B4E26FCE363009F7DE9 /* PushNotificationManager.swift */; };
+		1C4AABE92805D464002E1019 /* UpdateInvitationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4AABE82805D464002E1019 /* UpdateInvitationModel.swift */; };
 		1C4B072926D40F4A00B20607 /* InvitationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4B072826D40F4A00B20607 /* InvitationVC.swift */; };
 		1C4B072B26D4107D00B20607 /* NewInvitationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4B072A26D4107D00B20607 /* NewInvitationVC.swift */; };
 		1C4B072D26D410E400B20607 /* InvitationRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4B072C26D410E400B20607 /* InvitationRecordVC.swift */; };
@@ -353,6 +354,7 @@
 		1C4488D627593D1400464ACB /* CreateExtraUserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExtraUserDataModel.swift; sourceTree = "<group>"; };
 		1C44F2E727A83DF800E098F8 /* ExtradataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtradataModel.swift; sourceTree = "<group>"; };
 		1C45597627DF9F3800049F79 /* ProviderUserByIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderUserByIdModel.swift; sourceTree = "<group>"; };
+		1C469A3A280727F80005E0E4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1C473A73279F20CD00C1F040 /* PopUpNumberOFInvitationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpNumberOFInvitationVC.swift; sourceTree = "<group>"; };
 		1C48898F26DFD59D00C7BC94 /* ContractorsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractorsListCell.swift; sourceTree = "<group>"; };
 		1C48899026DFD59D00C7BC94 /* ContractorsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContractorsListCell.xib; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 		1C4A3D3F26D01C4800D4FCF4 /* CancelEventInvitationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelEventInvitationVC.swift; sourceTree = "<group>"; };
 		1C4A5B4A26FCE20D009F7DE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C4A5B4E26FCE363009F7DE9 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		1C4AABE82805D464002E1019 /* UpdateInvitationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInvitationModel.swift; sourceTree = "<group>"; };
 		1C4B072826D40F4A00B20607 /* InvitationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationVC.swift; sourceTree = "<group>"; };
 		1C4B072A26D4107D00B20607 /* NewInvitationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInvitationVC.swift; sourceTree = "<group>"; };
 		1C4B072C26D410E400B20607 /* InvitationRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationRecordVC.swift; sourceTree = "<group>"; };
@@ -669,9 +672,18 @@
 			path = MapVC;
 			sourceTree = "<group>";
 		};
+		1C4AABE72805D43F002E1019 /* UpdateInvitation */ = {
+			isa = PBXGroup;
+			children = (
+				1C4AABE82805D464002E1019 /* UpdateInvitationModel.swift */,
+			);
+			path = UpdateInvitation;
+			sourceTree = "<group>";
+		};
 		1C4B072726D40F2400B20607 /* InvitationVC */ = {
 			isa = PBXGroup;
 			children = (
+				1C4AABE72805D43F002E1019 /* UpdateInvitation */,
 				1C4DE8D5277388B000A7BB87 /* InvitationsModel */,
 				1C4A3D3926CFF9D300D4FCF4 /* ContactListVC.swift */,
 				1C4B072826D40F4A00B20607 /* InvitationVC.swift */,
@@ -1655,6 +1667,7 @@
 				1CB2F43B26BB05C900E1F79F /* AppDelegate.swift in Sources */,
 				1C567C2626BC7A01000CCA7C /* ManagerTextField.swift in Sources */,
 				1C4C13A826C4691300351F3C /* CreateEventVC.swift in Sources */,
+				1C4AABE92805D464002E1019 /* UpdateInvitationModel.swift in Sources */,
 				1C4117F627A1E3FC0064918F /* CreateNotificationModel.swift in Sources */,
 				1C54CB752784BF0D0089BD86 /* EventInvitationsModels.swift in Sources */,
 				1C53FAE826C2ECDA00849C95 /* MenuVC.swift in Sources */,
@@ -1752,6 +1765,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1C2C19D627EBAE4B002600C2 /* en */,
+				1C469A3A280727F80005E0E4 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

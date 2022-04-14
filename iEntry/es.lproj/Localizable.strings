@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
+
+/*  Localizable.strings
   iEntry
 
   Created by ZAFAR on 24/03/2022.
-  
-*/
+  */
+
 //MARK:- Login Screen
 "NOMBRE DE USUARIO" = "NOMBRE DE USUARIO";
 "CONTRASEÑA" = "CONTRASEÑA";
@@ -290,7 +290,7 @@
 "No. de empleados" = "No. de empleados";
 "No. vehículos" = "No. vehículos";
 
-/MARK:- UpdateContractVC
+//MARK:- UpdateContractVC
 "INICIO DE CONTRATO" = "INICIO DE CONTRATO";
 "FIN DE CONTRATO" = "FIN DE CONTRATO";
 "A C T U A L I Z A R C O N T R A T O" = "A C T U A L I Z A R C O N T R A T O";
@@ -334,7 +334,7 @@
 //MARK:-  OrderHistoryCell
 "INFORMACIÓN DEL PROVEEDOR" = "INFORMACIÓN DEL PROVEEDOR";
 "INFORMACIÓN DE RECIBIDO" = "INFORMACIÓN DE RECIBIDO";
-/Custom Message
+//Custom Message
 "you have no Contracts" = "no tienes contratos";
 "Try Again!" = "¡Intentar otra vez!";
 "you have no Contracts" = "no tienes contratos";
@@ -344,3 +344,4 @@
 "you have no Events" = "no tienes eventos";
 "Contrato" = "Contrato";
 
+"Fecha y Hora" = "Fecha y Hora";

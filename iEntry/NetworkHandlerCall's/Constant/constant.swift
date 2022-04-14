@@ -71,14 +71,14 @@ class Constant {
         static let searchUserbyPhone = "user-service/get-by-phone-number/"
         //"user-service/user/get-by-phone-number/"
         
-        static let getEventafterDate = "event-service/get-all/by-user-id/after-date"
+        static let getEventafterDate = "event-service/get-all/by-host-id/after-date" //"event-service/get-all/by-user-id/after-date"
         
-         static let getBeforeDateEvent =  "event-service/get-all/by-user-id/before-date"
+         static let getBeforeDateEvent = "event-service/get-all/by-host-id/before-date" //"event-service/get-all/by-user-id/before-date"
         
         
         static let getcommenAreas = "event-service/reservation/get-all-free-common-areas-by-dates"
         
-        static let getEventInvitationAfterDate = "event-service/get-all-invitations/by-user-id/after-date"
+        static let getEventInvitationAfterDate = "event-service/get-all/by-host-id/before-date" //"event-service/get-all-invitations/by-user-id/after-date"
         
         
         static let createEvent = "event-service/create"
@@ -101,6 +101,8 @@ class Constant {
         static let getAllUsersList = "user-company-service/get-all-only-user-data/by-company-id/"
         static let createNotificationWithUsers = "notification-service/user-notification/create/by-employees-ids"
         static let deleteInvitation = "event-service/delete-invitation-by-invitation-id/"
+        
+        static let updateInvitation = "invitation-service/validate-invitation/"
         
         
         //MARK:- Contractor Endpoints

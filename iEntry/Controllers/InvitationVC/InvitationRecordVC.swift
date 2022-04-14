@@ -85,23 +85,34 @@ extension InvitationRecordVC : UITableViewDelegate,UITableViewDataSource {
 }
 extension InvitationRecordVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "you have no Invitation".localized
+        var text = ""
+        if myDefaultLanguage == .en {
+         text = "you have no Invitation".localized
+        } else {
+            text = "no tienes invitación".localized
+        }
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray
         ]
         
-        return NSAttributedString(string: text, attributes: attribs)
+        return NSAttributedString(string: text.localized, attributes: attribs)
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        let text = "Try Again!".localized
+        var text = ""
+        if myDefaultLanguage == .en {
+         text = "Try Again!".localized
+        } else {
+            text = "¡Intentar otra vez!".localized
+        }
+         
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4712097049, green: 0.7777811885, blue: 0.758687973, alpha: 1)
             ] as [NSAttributedString.Key : Any] as [NSAttributedString.Key : Any]
         
-        return NSAttributedString(string: text, attributes: attribs)
+        return NSAttributedString(string: text.localized, attributes: attribs)
     }
     
     func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!){

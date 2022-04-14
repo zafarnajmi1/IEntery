@@ -1069,6 +1069,32 @@ class userhandler {
          })
      }
     
+    
+    //Update invitation
+    class func updateInvitation(id:String,option:Int,Success: @escaping (UpdateInvitationModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.updateInvitation + "\(id)/option/\(option)"
+        
+         Networkhandler.PutRequest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(UpdateInvitationModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    
+    
 }
 
 

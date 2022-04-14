@@ -7439,6 +7439,10 @@
                             <constraint firstItem="foS-Wu-pzP" firstAttribute="bottom" secondItem="0cE-v3-gKy" secondAttribute="bottom" id="vm2-VH-BFV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnaccept" destination="xay-jm-5ay" id="Npg-A1-gDf"/>
+                        <outlet property="btncancel" destination="L5i-Ve-ld1" id="itO-Db-ynF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQF-YS-23U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

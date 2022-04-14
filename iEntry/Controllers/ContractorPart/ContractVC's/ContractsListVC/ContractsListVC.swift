@@ -196,7 +196,12 @@ extension ContractsListVC: UITableViewDelegate,UITableViewDataSource {
 }
 extension ContractsListVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "you have no Contracts".localized
+        var text = ""
+        if myDefaultLanguage == .en {
+          text = "you have no Contracts".localized
+        } else {
+            text = "you have no Contracts".localized
+        }
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 19),
             NSAttributedString.Key.foregroundColor: UIColor.darkGray
@@ -206,7 +211,12 @@ extension ContractsListVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        let text = "Try Again!".localized
+        var text = ""
+        if myDefaultLanguage == .en {
+         text = "Try Again!".localized
+        } else {
+            text = "¡Intentar otra vez!".localized
+        }
         let attribs = [
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18),
             NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4712097049, green: 0.7777811885, blue: 0.758687973, alpha: 1)
