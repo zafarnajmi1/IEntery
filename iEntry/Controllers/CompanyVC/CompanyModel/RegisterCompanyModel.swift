@@ -11,7 +11,7 @@ struct CompanyRegisterModel : Codable {
     let data : CompanyRegisterData?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ struct CompanyRegisterModel : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -30,7 +30,7 @@ struct CompanyRegisterModel : Codable {
         data = try values.decodeIfPresent(CompanyRegisterData.self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 
@@ -120,7 +120,7 @@ struct CompanyRistriction : Codable {
     let data : CompanyRistrictionData?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -129,7 +129,7 @@ struct CompanyRistriction : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -139,7 +139,7 @@ struct CompanyRistriction : Codable {
         data = try values.decodeIfPresent(CompanyRistrictionData.self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 
@@ -155,7 +155,13 @@ struct CompanyRistrictionData : Codable {
     let extraDataEvent : Bool?
     let extraDataEmployee : Bool?
     let biocrValidation : Bool?
-
+    let driveService : Bool?
+    let emailService : Bool?
+    let eventValidation :Bool?
+    let isOnuEvent :Bool?
+    let sharePdfInMobileApp :Bool?
+    let smsService: Bool?
+    
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
@@ -165,6 +171,12 @@ struct CompanyRistrictionData : Codable {
         case extraDataEvent = "extraDataEvent"
         case extraDataEmployee = "extraDataEmployee"
         case biocrValidation = "biocrValidation"
+        case driveService = "driveService"
+        case emailService = "emailService"
+        case eventValidation = "eventValidation"
+        case isOnuEvent = "isOnuEvent"
+        case sharePdfInMobileApp = "sharePdfInMobileApp"
+        case smsService = "smsService"
     }
 
     init(from decoder: Decoder) throws {
@@ -176,6 +188,12 @@ struct CompanyRistrictionData : Codable {
         extraDataEvent = try values.decodeIfPresent(Bool.self, forKey: .extraDataEvent)
         extraDataEmployee = try values.decodeIfPresent(Bool.self, forKey: .extraDataEmployee)
         biocrValidation = try values.decodeIfPresent(Bool.self, forKey: .biocrValidation)
+        driveService = try values.decodeIfPresent(Bool.self, forKey: .driveService)
+        emailService = try values.decodeIfPresent(Bool.self, forKey: .emailService)
+        eventValidation = try values.decodeIfPresent(Bool.self, forKey: .eventValidation)
+        isOnuEvent = try values.decodeIfPresent(Bool.self, forKey: .isOnuEvent)
+        sharePdfInMobileApp = try values.decodeIfPresent(Bool.self, forKey: .sharePdfInMobileApp)
+        smsService = try values.decodeIfPresent(Bool.self, forKey: .smsService)
     }
 
 }

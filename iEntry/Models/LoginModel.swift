@@ -6,13 +6,27 @@
 //
 
 import Foundation
+
+
+
+//struct BaseStruct<T : Codable> : Codable {
+//    let code : Int?
+//    let data : T?
+//    let success : Bool?
+//    let message : String?
+//     
+//    let status : String?
+//}
+
+
 struct LoginModel : Codable {
+    
     
     let code : Int?
     let data : LoginDataModel?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -21,7 +35,7 @@ struct LoginModel : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -31,9 +45,10 @@ struct LoginModel : Codable {
         data = try values.decodeIfPresent(LoginDataModel.self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
+    
 
 }
 
@@ -46,7 +61,7 @@ struct LoginDataModel : Codable {
     let userImages : [String]?
     let name : String?
     let phoneNumber : String?
-    let dob : String?
+    let dob : Int?
     let email : String?
     let password : String?
     let deviceId : String?
@@ -85,7 +100,7 @@ struct LoginDataModel : Codable {
         userImages = try values.decodeIfPresent([String].self, forKey: .userImages)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
-        dob = try values.decodeIfPresent(String.self, forKey: .dob)
+        dob = try values.decodeIfPresent(Int.self, forKey: .dob)
         email = try values.decodeIfPresent(String.self, forKey: .email)
         password = try values.decodeIfPresent(String.self, forKey: .password)
         deviceId = try values.decodeIfPresent(String.self, forKey: .deviceId)
@@ -153,7 +168,7 @@ struct CheckUserModel : Codable {
     let data : Bool?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -162,7 +177,7 @@ struct CheckUserModel : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -172,7 +187,7 @@ struct CheckUserModel : Codable {
         data = try values.decodeIfPresent(Bool.self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 
@@ -216,9 +231,15 @@ struct Father : Codable {
 
 
 struct Company : Codable {
+    
+    
+    
     let id : String?
     let status : Status?
     let acronym : String?
+    let path : String?
+    let driveId : String?
+    let image : String?
     let name : String?
     let address : String?
     let latitud : Double?
@@ -232,6 +253,9 @@ struct Company : Codable {
         case id = "id"
         case status = "status"
         case acronym = "acronym"
+        case path = "path"
+        case driveId = "driveId"
+        case image = "image"
         case name = "name"
         case address = "address"
         case latitud = "latitud"
@@ -246,6 +270,9 @@ struct Company : Codable {
         id = try values.decodeIfPresent(String.self, forKey: .id)
         status = try values.decodeIfPresent(Status.self, forKey: .status)
         acronym = try values.decodeIfPresent(String.self, forKey: .acronym)
+        path = try values.decodeIfPresent(String.self, forKey: .path)
+        driveId = try values.decodeIfPresent(String.self, forKey: .driveId)
+        image = try values.decodeIfPresent(String.self, forKey: .image)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         address = try values.decodeIfPresent(String.self, forKey: .address)
         latitud = try values.decodeIfPresent(Double.self, forKey: .latitud)
@@ -254,6 +281,45 @@ struct Company : Codable {
         createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
         updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
     }
+
+//    let id : String?
+//    let status : Status?
+//    let acronym : String?
+//    let name : String?
+//    let address : String?
+//    let latitud : Double?
+//    let longitud : Double?
+//    let ip : String?
+//    let createdAt : Int?
+//    let updatedAt : Int?
+//
+//    enum CodingKeys: String, CodingKey {
+//
+//        case id = "id"
+//        case status = "status"
+//        case acronym = "acronym"
+//        case name = "name"
+//        case address = "address"
+//        case latitud = "latitud"
+//        case longitud = "longitud"
+//        case ip = "ip"
+//        case createdAt = "createdAt"
+//        case updatedAt = "updatedAt"
+//    }
+//
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        id = try values.decodeIfPresent(String.self, forKey: .id)
+//        status = try values.decodeIfPresent(Status.self, forKey: .status)
+//        acronym = try values.decodeIfPresent(String.self, forKey: .acronym)
+//        name = try values.decodeIfPresent(String.self, forKey: .name)
+//        address = try values.decodeIfPresent(String.self, forKey: .address)
+//        latitud = try values.decodeIfPresent(Double.self, forKey: .latitud)
+//        longitud = try values.decodeIfPresent(Double.self, forKey: .longitud)
+//        ip = try values.decodeIfPresent(String.self, forKey: .ip)
+//        createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
+//        updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
+//    }
 
 }
 
@@ -326,10 +392,10 @@ struct RoleTasks : Codable {
 
 
 struct Role : Codable {
+    
     let id : String?
     let name : String?
-    let roleTasks : [RoleTasks]?
-    let company : Company?
+    let roleTasks : [String]?
     let createdAt : Int?
     let updatedAt : Int?
 
@@ -338,7 +404,6 @@ struct Role : Codable {
         case id = "id"
         case name = "name"
         case roleTasks = "roleTasks"
-        case company = "company"
         case createdAt = "createdAt"
         case updatedAt = "updatedAt"
     }
@@ -347,11 +412,38 @@ struct Role : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
-        roleTasks = try values.decodeIfPresent([RoleTasks].self, forKey: .roleTasks)
-        company = try values.decodeIfPresent(Company.self, forKey: .company)
+        roleTasks = try values.decodeIfPresent([String].self, forKey: .roleTasks)
         createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
         updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
     }
+    
+    
+//    let id : String?
+//    let name : String?
+//    let roleTasks : [RoleTasks]?
+//    let company : Company?
+//    let createdAt : Int?
+//    let updatedAt : Int?
+//
+//    enum CodingKeys: String, CodingKey {
+//
+//        case id = "id"
+//        case name = "name"
+//        case roleTasks = "roleTasks"
+//        case company = "company"
+//        case createdAt = "createdAt"
+//        case updatedAt = "updatedAt"
+//    }
+//
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        id = try values.decodeIfPresent(String.self, forKey: .id)
+//        name = try values.decodeIfPresent(String.self, forKey: .name)
+//        roleTasks = try values.decodeIfPresent([RoleTasks].self, forKey: .roleTasks)
+//        company = try values.decodeIfPresent(Company.self, forKey: .company)
+//        createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
+//        updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
+//    }
 
 }
 
@@ -444,7 +536,7 @@ struct User : Codable {
     let extraData : ExtraData?
     let name : String?
     let phoneNumber : String?
-    let dob : String?
+     let dob : Int?
     let email : String?
     let deviceId : String?
     let firebaseId : String?
@@ -479,7 +571,7 @@ struct User : Codable {
         extraData = try values.decodeIfPresent(ExtraData.self, forKey: .extraData)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
-        dob = try values.decodeIfPresent(String.self, forKey: .dob)
+        dob = try values.decodeIfPresent(Int.self, forKey: .dob)
         email = try values.decodeIfPresent(String.self, forKey: .email)
         deviceId = try values.decodeIfPresent(String.self, forKey: .deviceId)
         firebaseId = try values.decodeIfPresent(String.self, forKey: .firebaseId)
@@ -496,7 +588,7 @@ struct SendEmailModel: Codable {
     let data : Bool?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -505,7 +597,7 @@ struct SendEmailModel: Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -515,7 +607,7 @@ struct SendEmailModel: Codable {
         data = try values.decodeIfPresent(Bool.self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 

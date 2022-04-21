@@ -11,8 +11,10 @@ import DZNEmptyDataSet
 class SchedualVC: BaseController,IndicatorInfoProvider {
     //MARK:- this funtion is delegate of tab
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "PROGRAMADOS".localized)
+        return IndicatorInfo(title: "PROXIMOS".localized)
     }
+    //PROXIMOS
+    //PROGRAMADOS
     fileprivate func  emptyDataSetUp() {
         self.tblView.emptyDataSetSource = self
         self.tblView.emptyDataSetDelegate = self
@@ -89,7 +91,21 @@ extension SchedualVC: UITableViewDelegate,UITableViewDataSource {
         cell?.lblendDate.isHidden = true
         cell?.lbltitleEnddate.isHidden = true 
         cell?.lblreservation.text = self.eventdata?[indexPath.row].reservation?.zone?.name
+        cell?.lbldurationmin.text = "\(self.eventdata?[indexPath.row].duration ?? 0) MIN"
         
+        if self.eventdata?[indexPath.row].status?.name ==  "EVENT_IN_VALIDATION" {
+                cell?.lblstatus.text = "EVENT IN VALIDATION"
+                cell?.statusView.backgroundColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
+                cell?.lblstatus.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
+        } else  if self.eventdata?[indexPath.row].status?.name ==  "EVENT_APPROVED" {
+            cell?.lblstatus.text = "EVENT APPROVED"
+            cell?.statusView.backgroundColor = #colorLiteral(red: 0.04716654867, green: 0.249147892, blue: 0.1248098537, alpha: 1)
+            cell?.lblstatus.textColor = #colorLiteral(red: 0.04335165769, green: 0.2412434816, blue: 0.1210812852, alpha: 1)
+    } else  if self.eventdata?[indexPath.row].status?.name ==  "EVENT_CANCEL" {
+        cell?.lblstatus.text = "EVENT CANCEL"
+        cell?.statusView.backgroundColor = #colorLiteral(red: 0.618992269, green: 0.005741298664, blue: 0.00775064528, alpha: 1)
+        cell?.lblstatus.textColor = #colorLiteral(red: 0.6229569912, green: 0.005496537313, blue: 0.00703322608, alpha: 1)
+}
         
         cell?.callBack = { Istrue in
             if Istrue {

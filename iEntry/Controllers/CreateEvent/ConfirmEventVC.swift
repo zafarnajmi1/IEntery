@@ -16,6 +16,8 @@ class ConfirmEventVC: BaseController {
     
     
     
+    @IBOutlet weak var lblduration: UILabel!
+    @IBOutlet weak var lblmint: UILabel!
     @IBOutlet weak var lblthetitle: UILabel!
     @IBOutlet weak var lbldatestitle: UILabel!
     @IBOutlet weak var lblnumbertitle: UILabel!
@@ -42,6 +44,7 @@ class ConfirmEventVC: BaseController {
     var eventid = ""
     var usersIDsarr = [String]()
     var guestNumber = 0
+    var duration = ""
     var isNewReservation = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +71,8 @@ class ConfirmEventVC: BaseController {
         self.lblreservationtitle.text = "RESERVACIONES".localized
         self.btncancel.setTitle("CANCELAR".localized, for: .normal)
         self.btnconfirm.setTitle("CONFIMRMAR".localized, for: .normal)
-        
+        self.lblmint.text = "\(duration) MIN"
+        self.lblduration.text = "DURACIÓN".localized
     
     }
     
@@ -102,24 +106,11 @@ class ConfirmEventVC: BaseController {
     
     func createEventApi(){
         self.showLoader()
-        /*
-         {
-             "user":{
-                 "id": "36932667-041e-43e6-bede-edac0d7935ab"
-             },
-             "reservation":{
-                 "zone":{
-                     "id": "0155968c-3f84-476a-a343-2bd2e96d9f4b"
-                 }
-             },
-             "name": "Holiday Party",
-             "description": "",
-             "startDate": 1640368800000,
-             "endDate": 1640390400000
-         }**/
+        
         let userDic = ["id":ShareData.shareInfo.obj?.id ?? ""]
+        let hostDic = ["id":ShareData.shareInfo.obj?.id ?? ""]
         let reservation = ["zone":["id":resevationid]]
-        let dic : [String:Any] = ["name":name,"reservation":reservation,"user":userDic,"description":"","startDate":startDate,"endDate":endDate]
+        let dic : [String:Any] = ["name":name,"reservation":reservation,"user":userDic,"host":hostDic,"description":"","startDate":startDate,"endDate":endDate,"duration":duration,"visitPurpose":"Other description."]
         userhandler.createEvent(params: dic, Success: {response in
             self.hidLoader()
             if response?.success == true {
@@ -144,23 +135,12 @@ class ConfirmEventVC: BaseController {
     func updateEventapi(){
        self.showLoader()
         
-        /*{
-         "id": "c1643699-559f-4f39-8f1f-e160a98a650c",
-         "name": "New Name",
-         "comment": "New Comment",
-         "wasApprove": true,
-         "reservation":{
-             "zone":{
-                 "id": "a2f76bb5-bac9-4a53-9b0b-5a8a976a8859"
-             }
-         }
-     }*/
         var dic : [String:Any] = [:]
         if isNewReservation == true {
         let reservation = ["zone":["id":resevationid]]
-         dic  = ["id":eventid,"name":name,"wasApprove":true,"comment":"new one", "reservation":reservation,"startDate":startDate,"endDate":endDate]
+            dic  = ["id":eventid,"name":name,"wasApprove":true,"comment":"new one", "reservation":reservation,"startDate":startDate,"endDate":endDate,"duration":duration,"visitPurpose":"Other description."]
         } else {
-            dic  = ["id":eventid,"name":name,"wasApprove":true,"comment":"new one"]
+            dic  = ["id":eventid,"name":name,"wasApprove":true,"comment":"new one","visitPurpose":"Other description."]
         }
         
         userhandler.updateEvent(param: dic, Success: {response in
@@ -179,7 +159,22 @@ class ConfirmEventVC: BaseController {
     
     func updateInvidationUsers() {
        // self.showLoader()
-        let dic : [String:Any] = ["eventId":eventid,"usersIds":usersIDsarr,"guestNumber":guestNumber]
+        
+        
+        var mainArr = [[String:Any]]()
+        for item in 0..<usersIDsarr.count {
+            
+                mainArr.append(["guest":["id":usersIDsarr[item]],"guestNumber":guestNumber])
+                //usersIDsarr.append("\(item.guestid)")
+            
+        }
+        
+        
+        
+        let dic : [String:Any] = ["eventId":eventid,"userInvitations":mainArr]
+        
+        
+        
         userhandler.sendInvitation(params: dic, Success: {response in
             self.hidLoader()
             

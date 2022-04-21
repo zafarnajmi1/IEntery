@@ -110,6 +110,19 @@ class LoginVC: BaseController {
     func LoginApiCall() {
         self.showLoader()
         let dic = ["email":txtemail.text!,"password":txtpassword.text!]
+        
+        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
+            TokenManager.shareToken.token()
+        } else {
+            
+            if  TokenManager.shareToken.parsingToken() == true  {
+                
+            } else {
+                TokenManager.shareToken.token()
+            }
+        }
+        
+        
         loginVM.loginApiCall(params: dic, Success: { response,trycath  in
             self.hidLoader()
             if response?.success == true {
@@ -120,7 +133,7 @@ class LoginVC: BaseController {
                 ShareData.shareInfo.password = self.txtpassword.text
                 ShareData.shareInfo.Email = self.txtemail.text
                 
-                if response?.data?.userType?.name?.lowercased() == "employee" {
+                if response?.data?.userType?.id == 1 {
                     ShareData.shareInfo.userRole = .employees
                     self.moveOnEmployeeRole()
                     
@@ -134,10 +147,14 @@ class LoginVC: BaseController {
                 }else if response?.data?.userType?.id == 5{
                                 ShareData.shareInfo.userRole = .provider
                                 self.providorRole()
-                            } else if response?.data?.userType?.id == 6{
-                                ShareData.shareInfo.userRole = .provideremployee
+                            
+                
+                
+                } else if response?.data?.userType?.id == 6{
+                    ShareData.shareInfo.userRole = .provideremployee
                                 self.providorRole()
-                            }
+                           
+                }
                 
                 
                 
@@ -154,7 +171,7 @@ class LoginVC: BaseController {
     }
     
     func sendfcmToken() {
-        userhandler.sendFCMToken(fcmtoken: ShareData.shareInfo.token ?? "", Success: {response in
+        userhandler.sendFCMToken(fcmtoken: ShareData.shareInfo.fcmToken ?? "", Success: {response in
             if response?.success == true {
                 
             } else {

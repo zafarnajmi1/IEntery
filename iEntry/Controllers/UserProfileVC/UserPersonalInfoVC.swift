@@ -8,7 +8,8 @@
 import UIKit
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import DropDown
-class UserPersonalInfoVC: BaseController {
+import SMDatePicker
+class UserPersonalInfoVC: BaseController ,UITextFieldDelegate,SMDatePickerDelegate{
     //MARK:- here are the iboutlet
     @IBOutlet weak var lblupdatetitle: UILabel!
     @IBOutlet weak var lblinformationtitle: UILabel!
@@ -24,6 +25,8 @@ class UserPersonalInfoVC: BaseController {
     //@IBOutlet weak var userimg: UIImageView!
     @IBOutlet weak var mainView: UIView!
     var MainDrowpDown = DropDown()
+    var timeInMiliSec = 0
+    var myDatePicker: SMDatePicker = SMDatePicker()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lblinformationtitle.text = "Información".localized
@@ -42,10 +45,11 @@ class UserPersonalInfoVC: BaseController {
         setMDCTxtFieldDesign(txtfiled: ttxphoneNumber, Placeholder: "NO CELULAR".localized, imageIcon: UIImage(named: "mobile-alt-solid")!)
         setMDCTxtFieldDesign(txtfiled: txtDob, Placeholder: "CUMPLEAÑOS".localized, imageIcon: UIImage(named: "ic-calendar-1")!)
         //setMDCTxtFieldDesign(txtfiled: txtCURP, Placeholder: "CURP", imageIcon: UIImage())
+        txtDob.delegate = self
     }
 
     func configData(){
-        txtDob.text = ShareData.shareInfo.obj?.dob
+        txtDob.text = "\(ShareData.shareInfo.obj?.dob ?? 0)"
         ttxphoneNumber.text = ShareData.shareInfo.obj?.phoneNumber
         txtemail.text = ShareData.shareInfo.obj?.email
         txtpassword.text = ShareData.shareInfo.obj?.password
@@ -56,12 +60,120 @@ class UserPersonalInfoVC: BaseController {
         //ShareData.shareInfo.contractData?.company?.id
     }
     
+    //MARK:- textfield delegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == txtDob {
+            self.datePickerConfig(DatePickerMood:.date)
+            myDatePicker.showPickerInView(view, animated: true)
+        }
+    }
+    
+    
+    
+    //MARK:- general datepicker funtion
+    func datePickerConfig(DatePickerMood:UIDatePicker.Mode) {
+        myDatePicker.delegate = self
+        myDatePicker.maximumDate = Date()
+        myDatePicker.toolbarBackgroundColor = UIColor.white
+        myDatePicker.pickerBackgroundColor = UIColor.white
+        myDatePicker.pickerMode = DatePickerMood
+        // Customize title
+        myDatePicker.title = ""
+        myDatePicker.titleFont = UIFont.systemFont(ofSize: 16)
+        myDatePicker.titleColor = UIColor.white
+        if #available(iOS 13.4, *) {
+            myDatePicker.picker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
+        myDatePicker.picker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        
+        let cancel = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(canceleDatePicker))
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action:#selector(onClickDoneButton))
+        myDatePicker.leftButtons = [ cancel]
+        myDatePicker.rightButtons = [doneButton]
+    }
+    @objc func canceleDatePicker() {
+       /// myDatePicker.hidePicker(true)
+        myDatePicker.pressedCancel(self)
+    }
+
+    //Toolbar done button function
+    @objc func onClickDoneButton() {
+        myDatePicker.hidePicker(true)
+        
+    }
+    
+
+    @objc func datePickerValueChanged(_ picker : UIDatePicker) {
+        if picker.datePickerMode == .date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
+            let stringDate = dateFormatter.string(from: picker.date)
+            let timeInMiliSecDate = picker.date
+             timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+            print(timeInMiliSec)
+            self.txtDob.text = stringDate
+            
+        }
+    }
+    
+    
+    // //MARK:- datepicker delegates
+    func  datePickerWillAppear(_ picker: SMDatePicker){
+        print(picker.pickerDate)
+        if picker.pickerMode == .date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
+            let stringDate = dateFormatter.string(from: picker.pickerDate)
+            let timeInMiliSecDate = picker.pickerDate
+             timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+            print(timeInMiliSec)
+            self.txtDob.text = stringDate
+        }
+    }
+    
+    func datePickerDidAppear(_ picker: SMDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
+        let stringDate = dateFormatter.string(from: picker.pickerDate)
+        
+    }
+
+    private func  datePicker(picker: SMDatePicker, didPickDate date: NSDate) {
+        print(date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
+        let stringDate = dateFormatter.string(from: picker.pickerDate)
+        
+    }
+    func  datePickerDidCancel(_ picker: SMDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
+        let stringDate = dateFormatter.string(from: picker.pickerDate)
+        
+    }
+
+    func  datePickerWillDisappear(_ picker: SMDatePicker) {
+        print(picker.pickerDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
+        let stringDate = dateFormatter.string(from: picker.pickerDate)
+        
+    }
+    func  datePickerDidDisappear(_ picker: SMDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
+        let stringDate = dateFormatter.string(from: picker.pickerDate)
+        
+    }
+
     
     func updateuserApi(){
         showLoader()
 
         
-        let dic :[String:Any] = ["id":ShareData.shareInfo.obj?.id ?? "","name":txtname.text!,"phoneNumber":ttxphoneNumber.text!,"dob":txtDob.text ?? "","email":txtemail.text!,"password":txtpassword.text ?? "","deviceId":"","firebaseId":"ASDKJS-438h3D_ASJD!)RKASDJA","secret":"RTWUFGOLRDXALQ5R","gender":["id": txtgender.text!.lowercased() == "male" ? "1":"2"],"userType":["id":ShareData.shareInfo.obj?.userType?.id ?? 0],"status":["id":ShareData.shareInfo.obj?.status?.id ?? 0]]
+        let dic :[String:Any] = ["id":ShareData.shareInfo.obj?.id ?? "","name":txtname.text!,"phoneNumber":ttxphoneNumber.text!,"dob":self.timeInMiliSec,"email":txtemail.text!,"password":txtpassword.text ?? "","deviceId":"","firebaseId":"ASDKJS-438h3D_ASJD!)RKASDJA","secret":"RTWUFGOLRDXALQ5R","gender":["id": txtgender.text!.lowercased() == "male" ? "1":"2"],"userType":["id":ShareData.shareInfo.obj?.userType?.id ?? 0],"status":["id":ShareData.shareInfo.obj?.status?.id ?? 0]]
         
         userhandler.updateuser(companyid: ShareData.shareInfo.contractData?.company?.id ?? "", param: dic, Success: {response in
             self.hidLoader()

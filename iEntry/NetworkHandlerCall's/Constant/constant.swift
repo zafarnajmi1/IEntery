@@ -78,14 +78,15 @@ class Constant {
         
         static let getcommenAreas = "event-service/reservation/get-all-free-common-areas-by-dates"
         
-        static let getEventInvitationAfterDate = "event-service/get-all/by-host-id/before-date" //"event-service/get-all-invitations/by-user-id/after-date"
+        static let getEventInvitationAfterDate = "event-service/get-all/after-date"//"event-service/get-all/by-host-id/before-date" //"event-service/get-all-invitations/by-user-id/after-date"
         
         
         static let createEvent = "event-service/create"
         static let getEventDetailById = "event-service/get-by-id/"
         static let getAllInvitationAgainstEvent = "event-service/get-all-invitations/by-event-id/"
         
-        static let sendInvitation = "event-service/create-invitations"
+        static let sendInvitation = "event-service/create-user-invitations"
+        //create-invitations"
         
         static let cancelEvent = "event-service/cancel-event/"
         static let notification = "notification-service/get-all/by-user-id/by-company-id/after-date-created"
@@ -95,7 +96,8 @@ class Constant {
        
       static let updateEvent = "event-service/update"
         static let getUserbyID = "user-service/get-by-id/"
-        static let updateUser = "user-service/update/by-company-id/"
+        static let updateUser = "user-service/update"
+        ///by-company-id/"
         
         static let getNotificationTypes = "notification-service/notification-type/get-all"
         static let getAllUsersList = "user-company-service/get-all-only-user-data/by-company-id/"
@@ -125,6 +127,7 @@ class Constant {
         static let getorderbyuserid = "order-service/get-by-id/"
        static let providerEmployeeOrder = "order-service/provider-employee/get-all/by-provider-employee-id/"
         static let getprovideremployeebyuserid = "provider-employee-service/get-by-user-id/"
+         static let token = "token"
         
     }
     

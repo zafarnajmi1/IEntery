@@ -21,7 +21,6 @@ class EventInvitation: BaseController,UITextFieldDelegate {
     var invitationlist = [InvitationsHistoryModel]()
     
     var eventid = ""
-   
     var guestNumber = 0
     //MARK:- here are the ibOUtlet
     @IBOutlet weak var lblnumberofInvitation: UILabel!
@@ -237,13 +236,19 @@ class EventInvitation: BaseController,UITextFieldDelegate {
         self.showLoader()
         
         self.usersIDsarr.removeAll()
+        var mainArr = [[String:Any]]()
         for item in self.checkRegisterUser {
             if item.isregister == true {
-                usersIDsarr.append("\(item.guestid)")
+                mainArr.append(["guest":["id":item.guestid],"guestNumber":guestNumber])
+                //usersIDsarr.append("\(item.guestid)")
             }
         }
         
-        let dic : [String:Any] = ["eventId":eventid,"usersIds":usersIDsarr,"guestNumber":guestNumber]
+        
+        
+        let dic : [String:Any] = ["eventId":eventid,"userInvitations":mainArr]
+        //
+        //usersIds
         userhandler.sendInvitation(params: dic, Success: {response in
             self.hidLoader()
             

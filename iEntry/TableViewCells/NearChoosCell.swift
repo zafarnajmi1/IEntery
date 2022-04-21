@@ -11,6 +11,7 @@ class NearChoosCell: UITableViewCell {
     //MARK:- here are the IBOutlet
     
     
+    @IBOutlet weak var iscommenareaicon: UIImageView!
     @IBOutlet weak var lblname: UILabel!
     @IBOutlet weak var lblvenu: UILabel!
     

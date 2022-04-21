@@ -11,7 +11,7 @@ struct GetallInvitationModel : Codable {
     let data : [GetallInvitationModelData]?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ struct GetallInvitationModel : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -30,7 +30,7 @@ struct GetallInvitationModel : Codable {
         data = try values.decodeIfPresent([GetallInvitationModelData].self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 
@@ -146,7 +146,7 @@ struct Guest : Codable {
     let gender : Gender?
     let name : String?
     let phoneNumber : String?
-    let dob : String?
+     let dob : Int?
     let email : String?
     let deviceId : String?
     let firebaseId : String?
@@ -179,7 +179,7 @@ struct Guest : Codable {
         gender = try values.decodeIfPresent(Gender.self, forKey: .gender)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
-        dob = try values.decodeIfPresent(String.self, forKey: .dob)
+        dob = try values.decodeIfPresent(Int.self, forKey: .dob)
         email = try values.decodeIfPresent(String.self, forKey: .email)
         deviceId = try values.decodeIfPresent(String.self, forKey: .deviceId)
         firebaseId = try values.decodeIfPresent(String.self, forKey: .firebaseId)
@@ -196,7 +196,7 @@ struct Manager : Codable {
     let gender : Gender?
     let name : String?
     let phoneNumber : String?
-    let dob : String?
+     let dob : Int?
     let email : String?
     let deviceId : String?
     let firebaseId : String?
@@ -229,7 +229,7 @@ struct Manager : Codable {
         gender = try values.decodeIfPresent(Gender.self, forKey: .gender)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
-        dob = try values.decodeIfPresent(String.self, forKey: .dob)
+        dob = try values.decodeIfPresent(Int.self, forKey: .dob)
         email = try values.decodeIfPresent(String.self, forKey: .email)
         deviceId = try values.decodeIfPresent(String.self, forKey: .deviceId)
         firebaseId = try values.decodeIfPresent(String.self, forKey: .firebaseId)
@@ -247,7 +247,7 @@ struct Host : Codable {
     let gender : Gender?
     let name : String?
     let phoneNumber : String?
-    let dob : String?
+     let dob : Int?
     let email : String?
     let deviceId : String?
     let firebaseId : String?
@@ -280,7 +280,7 @@ struct Host : Codable {
         gender = try values.decodeIfPresent(Gender.self, forKey: .gender)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
-        dob = try values.decodeIfPresent(String.self, forKey: .dob)
+        dob = try values.decodeIfPresent(Int.self, forKey: .dob)
         email = try values.decodeIfPresent(String.self, forKey: .email)
         deviceId = try values.decodeIfPresent(String.self, forKey: .deviceId)
         firebaseId = try values.decodeIfPresent(String.self, forKey: .firebaseId)

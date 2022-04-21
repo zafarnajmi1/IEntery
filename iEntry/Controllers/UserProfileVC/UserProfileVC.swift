@@ -164,7 +164,7 @@ class UserProfileVC: BaseController {
         self.lblgender.text = ShareData.shareInfo.obj?.gender?.name
         self.lblpassword.text = "*********" //ShareData.shareInfo.obj?.user?.password
         self.lblcountery.text = ShareData.shareInfo.obj?.extraData?.country
-        self.lblDOB.text = ShareData.shareInfo.obj?.dob
+        self.lblDOB.text = "\(ShareData.shareInfo.obj?.dob ?? 0)"
         self.lbladdress1.text = ShareData.shareInfo.obj?.extraData?.address1
         self.lbladdress2.text =  ShareData.shareInfo.obj?.extraData?.address2
        

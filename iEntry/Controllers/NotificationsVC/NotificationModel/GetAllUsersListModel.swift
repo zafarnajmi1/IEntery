@@ -11,7 +11,7 @@ struct GetAllUsersListModel : Codable {
     let data : [GetAllUsersListModelData]?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ struct GetAllUsersListModel : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -30,7 +30,7 @@ struct GetAllUsersListModel : Codable {
         data = try values.decodeIfPresent([GetAllUsersListModelData].self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 
@@ -43,7 +43,7 @@ struct GetAllUsersListModelData : Codable {
     let gender : Gender?
     let name : String?
     let phoneNumber : String?
-    let dob : String?
+     let dob : Int?
     let email : String?
     var isSelected = false 
     enum CodingKeys: String, CodingKey {
@@ -66,7 +66,7 @@ struct GetAllUsersListModelData : Codable {
         gender = try values.decodeIfPresent(Gender.self, forKey: .gender)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
-        dob = try values.decodeIfPresent(String.self, forKey: .dob)
+        dob = try values.decodeIfPresent(Int.self, forKey: .dob)
         email = try values.decodeIfPresent(String.self, forKey: .email)
     }
 

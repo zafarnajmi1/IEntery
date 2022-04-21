@@ -13,6 +13,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
     //MARK:- here are iboutlet
     @IBOutlet weak var lblupdatetitle: UILabel!
     
+    @IBOutlet weak var txtmint: MDCOutlinedTextField!
     @IBOutlet weak var lblsavechangestitle: UILabel!
     @IBOutlet weak var btncontactlisttitle: UIButton!
     @IBOutlet weak var lbladdress: UILabel!
@@ -57,7 +58,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         self.lblchooseyourguesttitle.text = "ESCOGE TUS INVITADOS:".localized
         self.lblreservationTitle.text = "RESERVACIÓN".localized
         self.lblupdatetitle.text = "A C T U A L I Z A R".localized
-        self.lblchoosdatetitle.text = "ELÍGE UNA FECHA".localized
+        self.lblchoosdatetitle.text = "NUEVA FECHA DEL EVENTO".localized
         self.lblsavechangestitle.text = "GUARDAR CAMBIOS".localized
         txtsearch.delegate = self
         self.reserveTableView.isScrollEnabled = false
@@ -65,6 +66,8 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         
         setMDCTxtFieldDesign(txtfiled: txttime, Placeholder: "HORA".localized, imageIcon: UIImage(named: "ic-calendar-2")!)
         setMDCTxtFieldDesign(txtfiled: txtdate, Placeholder: "FECHA".localized, imageIcon: UIImage(named: "ic-calendar-1")!)
+        
+        setMDCTxtFieldDesign(txtfiled: txtmint, Placeholder: "DURACIÓN".localized, imageIcon: UIImage())
         
         self.navigationBarHidShow(isTrue: true)
         self.tblView.register(UINib.init(nibName: "RecordDetailCell", bundle: nil), forCellReuseIdentifier: "RecordDetailCell")
@@ -153,7 +156,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         
         self.reservationName =  eventdata?.reservation?.zone?.name ?? ""
         self.reservationId = eventdata?.reservation?.zone?.id ?? ""
-       
+        self.txtmint.text = "\(eventdata?.duration ?? 0)"
        getallCommenAreasApi(startdate:self.eventDetaildata?.startDate ?? 0,endDate:self.eventDetaildata?.endDate ?? 0)
         
       
@@ -360,9 +363,10 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         vc?.startDate = "\(startMiliSecond)"
         vc?.endDate = "\(endMiliSecond)"
         vc?.resevationid = reservationId
+        vc?.duration = self.txtmint.text ?? ""
         vc?.reservationName = reservationName
         vc?.eventid = self.eventDetaildata?.id ?? ""
-        if self.invitationsData?.count != 0 {
+        if self.invitationsData?.count != 0 || self.invitationsData?.count != nil{
              vc?.guestNumber = self.invitationsData?[0].guestNumber ?? 0
         } else {
             vc?.guestNumber = 1

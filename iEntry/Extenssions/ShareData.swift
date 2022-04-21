@@ -18,6 +18,49 @@ class ShareData {
     
     
     
+    var companyRistriction :CompanyRistrictionData?
+    
+    func savecompanyRistriction(company:CompanyRistrictionData?){
+        companyRistriction = company
+        setcompanyStriction(user: companyRistriction!)
+    }
+    
+    
+    func setcompanyStriction(user:CompanyRistrictionData?) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            UserDefaults.resetStandardUserDefaults()
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "companyStriction")
+           
+        }
+
+    }
+
+    var companyRistrictiondata: CompanyRistrictionData? {
+        get {
+            return UserDefaults.standard.retrieve(object: CompanyRistrictionData.self, fromKey: "companyStriction")
+        }
+        set {
+            
+            UserDefaults.standard.save(customObject: companyRistriction, inKey: "companyStriction")
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     var providerEmployeeGetByUserid : ProviderUserByIdModelData?
@@ -530,6 +573,7 @@ class ShareData {
             
         }
     }
+    
     var token: String? {
         get {
             return UserDefaults.standard.string(forKey: "token")
@@ -540,6 +584,7 @@ class ShareData {
             
         }
     }
+    
     
     var lat: String? {
         get {

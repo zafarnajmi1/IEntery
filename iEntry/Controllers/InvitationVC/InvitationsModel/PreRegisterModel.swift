@@ -11,7 +11,7 @@ struct PreRegisterModel : Codable {
     let data : PreRegisterModelData?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ struct PreRegisterModel : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -30,7 +30,7 @@ struct PreRegisterModel : Codable {
         data = try values.decodeIfPresent(PreRegisterModelData.self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 
@@ -44,7 +44,7 @@ struct PreRegisterModelData : Codable {
     let extraData : String?
     let name : String?
     let phoneNumber : String?
-    let dob : String?
+     let dob : Int?
     let email : String?
     let password : String?
     let deviceId : String?
@@ -81,7 +81,7 @@ struct PreRegisterModelData : Codable {
         extraData = try values.decodeIfPresent(String.self, forKey: .extraData)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)
-        dob = try values.decodeIfPresent(String.self, forKey: .dob)
+        dob = try values.decodeIfPresent(Int.self, forKey: .dob)
         email = try values.decodeIfPresent(String.self, forKey: .email)
         password = try values.decodeIfPresent(String.self, forKey: .password)
         deviceId = try values.decodeIfPresent(String.self, forKey: .deviceId)

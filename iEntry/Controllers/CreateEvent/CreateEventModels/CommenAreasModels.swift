@@ -11,7 +11,7 @@ struct CommenAreasModels : Codable {
     let data : [CommenAreasModelsData]?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ struct CommenAreasModels : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -30,7 +30,7 @@ struct CommenAreasModels : Codable {
         data = try values.decodeIfPresent([CommenAreasModelsData].self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 
@@ -38,6 +38,7 @@ struct CommenAreasModels : Codable {
 
 class CommenAreasModelsData : Codable {
     var zoneId : String?
+    var isCommonArea:Bool?
     var name : String?
     var status : Status?
     var isSelected = false
@@ -46,6 +47,7 @@ class CommenAreasModelsData : Codable {
         case zoneId = "zoneId"
         case name = "name"
         case status = "status"
+        case isCommonArea = "isCommonArea"
     }
 
     required init(from decoder: Decoder) throws {
@@ -53,6 +55,7 @@ class CommenAreasModelsData : Codable {
         zoneId = try values.decodeIfPresent(String.self, forKey: .zoneId)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         status = try values.decodeIfPresent(Status.self, forKey: .status)
+        isCommonArea = try values.decodeIfPresent(Bool.self, forKey: .isCommonArea)
     }
 
 }

@@ -9,10 +9,12 @@ import UIKit
 import FSCalendar
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import SMDatePicker
+import CoreAudio
 class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UITextFieldDelegate, SMDatePickerDelegate {
     @IBOutlet weak var lblcompany: UILabel!
     @IBOutlet weak var lblreservationtitle: UILabel!
     
+    @IBOutlet weak var txtmint: MDCOutlinedTextField!
     @IBOutlet weak var lblagreetitle: UILabel!
     @IBOutlet weak var lblreservationbottomtitle: UILabel!
     @IBOutlet weak var lbladdress: UILabel!
@@ -102,6 +104,9 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
         fcCalaender.scope = .month
         fcCalaender.appearance.headerMinimumDissolvedAlpha = 0
         setMDCTxtFieldDesign(txtfiled: txtEnterEvent, Placeholder: "NOMBRE DE TU EVENTO", imageIcon: trailingImage)
+        
+        setMDCTxtFieldDesign(txtfiled: txtmint, Placeholder: "DURACIÓN", imageIcon:UIImage())
+        
         setMDCTxtFieldDesign(txtfiled: txttime, Placeholder: "HORA", imageIcon: UIImage(named: "ic-calendar-2")!)
         setMDCTxtFieldDesign(txtfiled: txtdate, Placeholder: "FECHA", imageIcon: UIImage(named: "ic-calendar-1")!)
         stripView.roundViiew()
@@ -148,7 +153,7 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
         vc?.resevationid = reservationId
         vc?.reservationName = reservationName
         vc?.isfromupdate = false 
-        
+        vc?.duration = txtmint.text ?? ""
         vc?.modalPresentationStyle = .overFullScreen
         vc?.callBack = { Ok , eventid in
             if Ok == true {
@@ -411,8 +416,12 @@ extension CreateEventVC :  UITableViewDelegate,UITableViewDataSource {
         cell?.lblname.text = self.commenAreasdata?[indexPath.row].name
         cell?.lblvenu.text = self.commenAreasdata?[indexPath.row].name
         cell?.lblactive.text = self.commenAreasdata?[indexPath.row].status?.name
-        
-        
+        if self.commenAreasdata?[indexPath.row].isCommonArea == true {
+            cell?.iscommenareaicon.isHidden = false
+        } else {
+            cell?.iscommenareaicon.isHidden = true
+        }
+    
         if self.commenAreasdata?[indexPath.row].isSelected == true {
             cell?.mainView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         } else {

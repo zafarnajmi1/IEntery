@@ -436,7 +436,7 @@ class userhandler {
     
     class func getEventsAfterDate(params:[String:Any],Success: @escaping (EventModule?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.getEventafterDate
-        
+        print("EventsUrl:",url)
          Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
 
              do {
@@ -504,14 +504,15 @@ class userhandler {
     
     //MARK:- getInvitations by user id after Date
     
-    class func getEventsinvitatinsAftereDate(params:[String:Any],Success: @escaping (EventInvitationsModels?) -> Void, Failure: @escaping(NetworkError) -> Void){
-     let url = Constant.MainUrl + Constant.URLs.getEventInvitationAfterDate
+    //EventInvitationsModels
+    class func getEventsinvitatinsAftereDate(miliseconds:Int,Success: @escaping (EventModule?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.getEventInvitationAfterDate + "/\(miliseconds)/to-validate"
         print("UrleventInvitation", url)
-         Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
                  print(successResponse)
-                 let responseModel = try JSONDecoder().decode(EventInvitationsModels.self, from: successResponse.data!)
+                 let responseModel = try JSONDecoder().decode(EventModule.self, from: successResponse.data!)
                  Success(responseModel)
              }
              catch {
@@ -769,7 +770,7 @@ class userhandler {
      }
     //MARK:- Update user
     class func updateuser(companyid:String,param:[String:Any],Success: @escaping (LoginModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
-     let url = Constant.MainUrl + Constant.URLs.updateUser + companyid
+     let url = Constant.MainUrl + Constant.URLs.updateUser //+ companyid
         
          Networkhandler.PutRequest(url: url, parameters: param,success: {(successResponse)  in
 
@@ -1092,6 +1093,27 @@ class userhandler {
      }
     
     
+    
+    //MARK:- token
+    class func getToken(parms:[String:Any],Success: @escaping (tokenModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.token
+        print("token",url,parms)
+         Networkhandler.PostRequest2(url: url, parameters: parms,success: {(successResponse)  in
+
+             do {
+                 print("token response ",successResponse)
+                 let responseModel = try JSONDecoder().decode(tokenModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
     
     
     

@@ -18,6 +18,8 @@ class SchedualCell: UITableViewCell {
     @IBOutlet weak var lbleventName: UILabel!
     @IBOutlet weak var lblhostName: UILabel!
     
+    @IBOutlet weak var lbldurationtitle: UILabel!
+    @IBOutlet weak var lbldurationmin: UILabel!
     @IBOutlet weak var lblqrCodeTitle: UILabel!
     @IBOutlet weak var lblmoredetail: UILabel!
     @IBOutlet weak var lblreservationtitle: UILabel!
@@ -27,6 +29,7 @@ class SchedualCell: UITableViewCell {
     @IBOutlet weak var lblstatus: UILabel!
     @IBOutlet weak var lblplace: UILabel!
     
+    @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var lblinvitations: UILabel!
     @IBOutlet weak var lblstartDate: UILabel!
     
@@ -54,7 +57,7 @@ class SchedualCell: UITableViewCell {
         self.lblreservationtitle.text = "Reservación".localized
         self.lblmoredetail.text = "MAS DETALLES".localized
         self.lblqrCodeTitle.text = "GENERAR QR".localized
-        
+        self.lbldurationtitle.text = "Duración".localized
     }
 
     

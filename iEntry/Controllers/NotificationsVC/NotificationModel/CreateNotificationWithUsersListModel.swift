@@ -11,7 +11,7 @@ struct CreateNotificationWithUsersListModel : Codable {
     let data : [CreateNotificationWithUsersListModelData]?
     let success : Bool?
     let message : String?
-    let timestamp : String?
+     
     let status : String?
 
     enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ struct CreateNotificationWithUsersListModel : Codable {
         case data = "data"
         case success = "success"
         case message = "message"
-        case timestamp = "timestamp"
+         
         case status = "status"
     }
 
@@ -30,7 +30,7 @@ struct CreateNotificationWithUsersListModel : Codable {
         data = try values.decodeIfPresent([CreateNotificationWithUsersListModelData].self, forKey: .data)
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        timestamp = try values.decodeIfPresent(String.self, forKey: .timestamp)
+        
         status = try values.decodeIfPresent(String.self, forKey: .status)
     }
 

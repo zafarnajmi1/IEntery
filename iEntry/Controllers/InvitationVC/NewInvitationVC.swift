@@ -162,7 +162,7 @@ extension NewInvitationVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_UNATTENDED" {
+      if self.invitationdata?[indexPath.row].status?.name ==  "INVITATION_UNATTENDED" {
             let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier:"InvitationAcceptAndRejectVC") as? InvitationAcceptAndRejectVC
                 vc?.modalPresentationStyle = .overFullScreen

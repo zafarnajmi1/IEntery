@@ -73,8 +73,8 @@ class HomeVC: ButtonBarPagerTabStripViewController {
     //MARK:- this funtion of tabbar for XLpager
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        let child_1 = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EventInvitationVC") as? EventInvitationVC
-        let child_2 = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "SchedualVC") as? SchedualVC
+        let child_1 = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "SchedualVC") as? SchedualVC
+        let child_2 = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EventInvitationVC") as? EventInvitationVC
         let child_3 = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "RecordVC")  as? RecordVC
        
         
@@ -88,9 +88,26 @@ class HomeVC: ButtonBarPagerTabStripViewController {
 
     }
     @IBAction func addEventAction(_ sender: UIButton) {
+
+        
+        
         let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier:"CreateEventVC") as? CreateEventVC
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = storyBoard.instantiateViewController(withIdentifier:"CreateEventPopUpVC") as? CreateEventPopUpVC
+        vc?.modalPresentationStyle = .overFullScreen
+        vc?.callBack = { [self] istrue in
+            vc?.dismiss(animated: true, completion: nil)
+            if istrue == true  {
+                
+                    let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier:"CreateEventVC") as? CreateEventVC
+                    self.navigationController?.pushViewController(vc!, animated: true)
+                
+            } else {
+                
+            }
+        }
+        self.present(vc!, animated: false, completion: nil)
+        
     }
     
     @IBAction func filteAction(_ sender: UIButton) {

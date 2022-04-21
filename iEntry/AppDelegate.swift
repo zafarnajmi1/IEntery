@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyBz2BKmTH4eXG9iFzrPxocKtySr83bvIT0")
         if let token = Messaging.messaging().fcmToken {
            print("FCM Token", token)
-            ShareData.shareInfo.token = token
+            ShareData.shareInfo.fcmToken = token
         }
         
         if ShareData.shareInfo.saveLanguage == "en" {
@@ -38,9 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
+        
+        
         return true
     }
 
+    
+    
     
     
     

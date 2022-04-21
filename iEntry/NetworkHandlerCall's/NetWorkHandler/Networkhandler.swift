@@ -63,7 +63,10 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
             var request = URLRequest(url: newurl)
            request.httpMethod = HTTPMethod.post.rawValue
            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-           request.setValue("\(ShareData.shareInfo.token ?? "")",forHTTPHeaderField: "Authorization")
+        let bearer = "Bearer "
+        let newtoken = ShareData.shareInfo.token ?? ""
+        let  token = bearer + newtoken
+        request.setValue("\( token )",forHTTPHeaderField: "Authorization")
            request.httpBody = jsonData
           
 //               var request = URLRequest(url:  URL(string: url)!)
@@ -200,14 +203,23 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
             if let userToken = ShareData.shareInfo.token {
                 Headers = [
                     "Accept": "application/json",
-                    "Token"  : userToken ,
-                    "Content-Type" : "application/json"//"Authorization"
+                    "Authorization" : "Bearer " +  userToken,
+                    "Content-Type" : "application/json",//"Authorization"
+                    "Accept": "application/json",
+                    "Content-type": "multipart/form-data",
+                    "Content-Type" :"application/x-www-form-urlencoded"
                 ]
             } else {
                 Headers = [
                     "Accept": "application/json",
-                    "Content-Type" : "application/json"
-
+                    "Content-Type" : "application/json",
+                    "Content-Type": "application/json",
+                       "Accept": "application/json",
+                       "Content-type": "multipart/form-data",
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Content-type": "multipart/form-data",
+                    "Content-Type" :"application/x-www-form-urlencoded"
                     //"application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type"
                 ]
 
@@ -286,7 +298,10 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                 var request = URLRequest(url: newurl)
                request.httpMethod = HTTPMethod.put.rawValue
                request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-               request.setValue("\(ShareData.shareInfo.token ?? "")",forHTTPHeaderField: "Authorization")
+            let bearer = "Bearer "
+            let newtoken = ShareData.shareInfo.token ?? ""
+            let  token = bearer + newtoken
+               request.setValue("\(token)",forHTTPHeaderField: "Authorization")
                request.httpBody = jsonData
         
         
@@ -358,11 +373,14 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
         if let userToken = ShareData.shareInfo.token  {
             Headers = [
                 "Accept": "application/json",
-                "Bearer" : userToken
+                "Authorization" : "Bearer " +  userToken,
             ]
         } else {
             Headers = [
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+               "Accept": "application/json",
+               "Content-type": "multipart/form-data"
             ]
         }
         print(Headers)
@@ -435,7 +453,7 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
             if let userToken = ShareData.shareInfo.token {
                 Headers = [
                     "Accept": "application/json",
-                    "Authorization"  : userToken   //"Authorization"
+                    "Authorization"  : "Bearer " + userToken   //"Authorization"
                 ]
             } else {
                 Headers = [
@@ -521,7 +539,7 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                         if let userToken = ShareData.shareInfo.token {
                             Headers = [
                                 "Accept": "application/json",
-                                "Token" : userToken,
+                                "Authorization" : "Bearer " +  userToken,
                                 "Content-type": "multipart/form-data"
                             ]
                         }else
@@ -621,7 +639,7 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                                 if let userToken = ShareData.shareInfo.token {
                                     Headers = [
                                         "Accept": "application/json",
-                                        "Token" : userToken,
+                                        "Authorization" : "Bearer " +  userToken,
                                         "Content-type": "multipart/form-data"
                                     ]
                                 }else
@@ -719,7 +737,7 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                 if let userToken = ShareData.shareInfo.token {
                     Headers = [
                         "Accept": "application/json",
-                        "Token" : userToken,
+                        "Authorization" : "Bearer " +  userToken,
                         "Content-type": "multipart/form-data"
                     ]
                 }else

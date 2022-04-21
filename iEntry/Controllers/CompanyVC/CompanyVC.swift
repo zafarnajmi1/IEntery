@@ -21,14 +21,14 @@ class CompanyVC: BaseController {
     @IBOutlet weak var lbladdress: UILabel!
     @IBOutlet weak var lblcompanyName: UILabel!
     var contractData : GetContractByUserModelData? = nil
+    var getCompanydata :CompanyRistrictionData?
     override func viewDidLoad() {
         super.viewDidLoad()
         topBanerView.shadowAndRoundcorner(cornerRadius: 8, shadowColor: #colorLiteral(red: 0.7293313146, green: 0.7294581532, blue: 0.7293233275, alpha: 1), shadowRadius: 4, shadowOpacity: 1)
         moreView.shadowAndRoundcorner(cornerRadius: 8, shadowColor: #colorLiteral(red: 0.7293313146, green: 0.7294581532, blue: 0.7293233275, alpha: 1), shadowRadius: 5, shadowOpacity: 1)
         navigationBarHidShow(isTrue: true)
         self.tblView.register(UINib.init(nibName: "CompanyCell", bundle: nil), forCellReuseIdentifier: "CompanyCell")
-//        self.lblcompanyName.text = "" //ShareData.shareInfo.obj?.company?.name
-//        self.lbladdress.text = "" //ShareData.shareInfo.obj?.company?.address
+            
         self.lblcontract.text = "C O N T R A C T".localized
         self.lbledittitle.text = "ACTUALIZAR DATOS".localized
     }
@@ -40,22 +40,7 @@ class CompanyVC: BaseController {
         self.lblcontract.text = "C O N T R A C T".localized
         self.lbledittitle.text = "ACTUALIZAR DATOS".localized
     }
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        //self.tblHeight.constant = tblView.contentSize.height
-//    }
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        self.tblHeight.constant = 400//tblView.contentSize.height
-//    }
-  
-    
-   
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        self.lblcontract.text = "C O N T R A C T".localized
-//        self.lbledittitle.text = "ACTUALIZAR DATOS".localized
-//    }
+
     
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -85,6 +70,7 @@ class CompanyVC: BaseController {
         userhandler.getContractByUserID(id: ShareData.shareInfo.obj?.id ?? "", Success: {response in
             self.hidLoader()
             if response?.success == true {
+                
                 ShareData.shareInfo.companyid = response?.data?.company?.id ?? ""
                 ShareData.shareInfo.saveContract(contract: response?.data)
                 UserDefaults.standard.save(customObject: response?.data, inKey: "UserContractWithCompany")
@@ -93,6 +79,7 @@ class CompanyVC: BaseController {
                 self.lbladdress.text = self.contractData?.company?.address
                // self.tblHeight.constant = 400
                 self.tblView.reloadData()
+                self.getCompanyRistrictionbyID()
             } else {
                 self.hidLoader()
                 self.alert(message: response?.message ?? "")
@@ -146,7 +133,25 @@ class CompanyVC: BaseController {
         print("manageSchedual")
     }
     
-
+    func getCompanyRistrictionbyID(){
+            //self.showLoader()
+        //ShareData.shareInfo.obj?.company?.id ?? ""
+        userhandler.getCompanyristrictionByID(id: contractData?.company?.id ?? "", Success: {response  in
+                self.hidLoader()
+                if response?.success == true {
+                    self.getCompanydata = response?.data
+                    
+                    ShareData.shareInfo.savecompanyRistriction(company: response?.data)
+                    
+                    
+                } else {
+                    //self.alert(message: response?.message ?? "")
+                }
+            }, Failure: {error in
+                self.hidLoader()
+                //self.alert(message: error.message)
+            })
+        }
     
     
 }

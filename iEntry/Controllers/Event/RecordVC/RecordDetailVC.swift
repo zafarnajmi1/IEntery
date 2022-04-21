@@ -21,7 +21,9 @@ class RecordDetailVC: BaseController {
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var bannerIMg: UIImageView!
     @IBOutlet weak var topBannerView: UIView!
+    @IBOutlet weak var lbldurstion: UILabel!
     
+    @IBOutlet weak var lbldurationtitle: UILabel!
     @IBOutlet weak var btnmore: UIButton!
     @IBOutlet weak var lblnumberofInvitations: UILabel!
     @IBOutlet weak var lblreservationDate: UILabel!
@@ -50,6 +52,7 @@ class RecordDetailVC: BaseController {
         self.lblthetitle.text = "EL".localized
         self.lblatTitle.text = "A LAS".localized
         self.lblreservationtitle.text = "RESERVACIONES".localized
+        self.lbldurationtitle.text = "DURACIÓN".localized
         if isfromHistory == true {
             btnmore.isHidden = true
         } else {
@@ -65,8 +68,7 @@ class RecordDetailVC: BaseController {
         self.lbladress.text =  ShareData.shareInfo.conractWithCompany?.company?.address
         self.lblcompanyname.text =  ShareData.shareInfo.conractWithCompany?.company?.name
         
-        
-        
+        self.lbldurstion.text = "\(self.eventdata?.duration ?? 0) MIN"
         self.lblhostname.text =  self.eventdata?.name
         self.lblreservation.text =  self.eventdata?.reservation?.zone?.name
         

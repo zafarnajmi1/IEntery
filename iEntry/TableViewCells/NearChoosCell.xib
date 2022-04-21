@@ -29,7 +29,7 @@
                         <rect key="frame" x="2" y="11" width="383" height="92"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sala de juntas A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0G-5G-OUP">
-                                <rect key="frame" x="15" y="10" width="117.5" height="17.5"/>
+                                <rect key="frame" x="38" y="10" width="117.5" height="17.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17.5" id="8dG-RB-Ir3"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alberca principal, 3 m. Activo" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvy-JF-vN8">
-                                <rect key="frame" x="15" y="35.5" width="197" height="34.5"/>
+                                <rect key="frame" x="38" y="35.5" width="197" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="197" id="0v7-eu-Tnm"/>
                                     <constraint firstAttribute="height" constant="34.5" id="WKl-dH-acY"/>
@@ -55,24 +55,33 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xmm-87-iwH">
-                                <rect key="frame" x="15" y="70" width="39" height="12"/>
+                                <rect key="frame" x="38" y="70" width="39" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.46706312890000001" green="0.77778965229999997" blue="0.75871366259999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plant" translatesAutoresizingMaskIntoConstraints="NO" id="QTD-QH-Gev">
+                                <rect key="frame" x="8" y="10" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="5fT-Yc-xjp"/>
+                                    <constraint firstAttribute="height" constant="18" id="TaY-33-cSo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xmm-87-iwH" firstAttribute="top" secondItem="hvy-JF-vN8" secondAttribute="bottom" id="4MB-kj-8Aq"/>
+                            <constraint firstItem="hvy-JF-vN8" firstAttribute="leading" secondItem="x0G-5G-OUP" secondAttribute="leading" id="6ZM-nr-4y9"/>
                             <constraint firstAttribute="bottom" secondItem="MfO-aR-Umi" secondAttribute="bottom" constant="8.5" id="C95-1l-X0q"/>
+                            <constraint firstItem="x0G-5G-OUP" firstAttribute="leading" secondItem="QTD-QH-Gev" secondAttribute="trailing" constant="12" id="FNG-Ja-X3K"/>
                             <constraint firstItem="MfO-aR-Umi" firstAttribute="top" secondItem="mGA-HE-U8a" secondAttribute="top" constant="8.5" id="Gvp-Qb-Ctl"/>
+                            <constraint firstItem="QTD-QH-Gev" firstAttribute="leading" secondItem="mGA-HE-U8a" secondAttribute="leading" constant="8" id="J4Z-HT-qij"/>
+                            <constraint firstItem="QTD-QH-Gev" firstAttribute="centerY" secondItem="x0G-5G-OUP" secondAttribute="centerY" id="KhK-4E-KHc"/>
                             <constraint firstAttribute="bottom" secondItem="Xmm-87-iwH" secondAttribute="bottom" constant="10" id="OqQ-cA-qqY"/>
-                            <constraint firstItem="Xmm-87-iwH" firstAttribute="leading" secondItem="mGA-HE-U8a" secondAttribute="leading" constant="15" id="Zmf-JO-CsU"/>
                             <constraint firstItem="MfO-aR-Umi" firstAttribute="centerY" secondItem="mGA-HE-U8a" secondAttribute="centerY" id="avg-63-0Io"/>
                             <constraint firstItem="x0G-5G-OUP" firstAttribute="top" secondItem="mGA-HE-U8a" secondAttribute="top" constant="10" id="c67-RC-P0h"/>
+                            <constraint firstItem="Xmm-87-iwH" firstAttribute="leading" secondItem="hvy-JF-vN8" secondAttribute="leading" id="hKf-36-Ik7"/>
                             <constraint firstItem="hvy-JF-vN8" firstAttribute="top" secondItem="x0G-5G-OUP" secondAttribute="bottom" constant="8" id="hLj-S5-bfG"/>
-                            <constraint firstItem="hvy-JF-vN8" firstAttribute="leading" secondItem="mGA-HE-U8a" secondAttribute="leading" constant="15" id="lFm-dn-LE9"/>
-                            <constraint firstItem="x0G-5G-OUP" firstAttribute="leading" secondItem="mGA-HE-U8a" secondAttribute="leading" constant="15" id="pyT-wO-Wdw"/>
                             <constraint firstAttribute="trailing" secondItem="MfO-aR-Umi" secondAttribute="trailing" constant="15" id="vFz-Mm-SsS"/>
                         </constraints>
                     </view>
@@ -87,6 +96,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="img" destination="MfO-aR-Umi" id="Vyk-vy-UUA"/>
+                <outlet property="iscommenareaicon" destination="QTD-QH-Gev" id="aOH-Ou-bUi"/>
                 <outlet property="lblactive" destination="Xmm-87-iwH" id="de5-Sa-8Cn"/>
                 <outlet property="lblname" destination="x0G-5G-OUP" id="zsW-13-Yni"/>
                 <outlet property="lblvenu" destination="hvy-JF-vN8" id="afE-Ku-edb"/>
@@ -97,5 +107,6 @@
     </objects>
     <resources>
         <image name="iEntry_corporate" width="214" height="214"/>
+        <image name="plant" width="24" height="24"/>
     </resources>
 </document>

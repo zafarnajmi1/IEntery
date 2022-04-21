@@ -19,9 +19,19 @@ class SplashVC: UIViewController {
         //fatalError()
         if let token = Messaging.messaging().fcmToken {
            print("FCM Token", token)
-            ShareData.shareInfo.token = token
+            ShareData.shareInfo.fcmToken = token
         }
         
+        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
+            TokenManager.shareToken.token()
+        } else {
+
+            if  TokenManager.shareToken.parsingToken() == true  {
+
+            } else {
+                TokenManager.shareToken.token()
+            }
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
