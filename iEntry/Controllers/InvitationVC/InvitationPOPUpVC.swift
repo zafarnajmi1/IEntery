@@ -91,8 +91,9 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
         let zondic: [String:Any] = ["id":self.zondid]
         let managerdic : [String:Any] = ["id":ShareData.shareInfo.obj?.id ?? ""]
         let guestdic : [String:Any] = ["id": self.guestid]
-        let dic : [String:Any] = ["guestNumber":txtnumberInvitayion.text!, "startDate":timeInMiliSec, "manager":managerdic,"guest":guestdic,"zone":zondic]
+        let dic : [String:Any] = ["guestNumber":txtnumberInvitayion.text!, "startDate":timeInMiliSec, "host":managerdic,"guest":guestdic,"zone":zondic]
         print(dic)
+        //manager
         userhandler.createInvitation(params: dic, Success: {[self]response in
             self.hidLoader()
             if response?.success == true {

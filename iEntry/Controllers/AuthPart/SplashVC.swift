@@ -21,7 +21,7 @@ class SplashVC: UIViewController {
            print("FCM Token", token)
             ShareData.shareInfo.fcmToken = token
         }
-        
+        TokenManager.shareToken.token()
         if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
             TokenManager.shareToken.token()
         } else {

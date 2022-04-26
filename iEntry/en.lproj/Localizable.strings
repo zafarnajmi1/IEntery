@@ -7,68 +7,94 @@
 */
 
 
-//MARK:- Login Screen
+/*  Localizable.strings
+  iEntry
 
+  Created by ZAFAR on 24/03/2022.
+  */
+
+//MARK:- Login Screen
 "NOMBRE DE USUARIO" = "USERNAME";
 "CONTRASEÑA" = "PASSWORD";
 "INICIAR SESIÓN" = "LOG IN";
-"¿Has olvidado tu" = "have you forgotten";
+"¿Has olvidado tu" = "¿Forget your";
 "contraseña?" = "password?";
 
 //MARK:- Verification Code Screen
 "BIENVENIDO !!!" = "WELCOME !!!";
-"para continuar necesitamos saber algunos datos personales pero antes necesitamos confirmar tu cuenta. En cuestión de segundos te llegará un mensaje de texto que se leerá solo." = "To continue we need to know some personal information but first we need to confirm your account. In a matter of seconds, you will receive a text message that will read itself.";
+"para continuar necesitamos saber algunos datos personales pero antes necesitamos confirmar tu cuenta. En cuestión de segundos te llegará un mensaje de texto que se leerá solo." = " to continue we need to know some personal information but first we need to confirm your account. In a matter of seconds you will receive a text message that will read itself.";
 "Tiempo de vida del mensaje:" = "Message lifetime:";
-"Nunca llevo el mensaje, enviarlo nuevamente" = "I never get the message, send it again";
+"Nunca llevo el mensaje, enviarlo nuevamente" = "Message never arrives, send it again.";
+
 
 //MARK:- Change Password (Forgot PAssword)
-"INGRESE NUEVA CONTRASEÑA PARA CONTINUAR" = "ENTER NEW PASSWORD TO CONTINUE";
+"INGRESE NUEVA CONTRASEÑA PARA CONTINUAR" = "FILL NEW PASSWORD TO CONTINUE";
 "PASSWORD" = "PASSWORD";
-"ENTRAR" = "GET IN";
-
+"ENTRAR" = "ENTER";
 
 //MARK:-  Permission VC
-"TE GUSTARÍA INICIAR SESIÓN CON TU HUELLA Y/O ESCANER FACIAL*?" = "WOULD YOU LIKE TO LOG IN WITH YOUR FINGERPRINT AND/OR FACIAL SCAN*?";
-"SÍ, CONTINUAR" = "YES CONTINUE";
-"no, con contraseña" = "no, with password";
-"*Sujeto a disponibilidad de hardware" = "*Subject to hardware availability";
+//"TE GUSTARÍA INICIAR SESIÓN CON TU HUELLA Y/O ESCANER FACIAL*?"
+
+"RECONOCIMIENTO FACIAL INSTEAD OF ESCANER FACIAL"=
+"WOULD YOU LIKE TO LOG IN WITH FINGERPRINT OR FACERECOGNITION*?";
+"SÍ, CONTINUAR" = "YES, CONTINUE";
+"NO, CON CONTRASEÑA" = "NO, JUST PASSWORD";
+
+//"no, con contraseña"
+"*Sujeto a disponibilidad de hardware" = "*Dependo of the hardware";
 
 
 //MARK:- Password Recovery
+
 "RECUPERACIÓN DE CONTRASEÑA" = "PASSWORD RECOVERY";
-"un breves momentos te llegará un mensaje de recuperación para poder ingresar una nueva contraseña." = "a few moments you will receive a recovery message to enter a new password.";
+"en breves momentos te llegará un mensaje de recuperación para poder ingresar una nueva contraseña." = " in a few moments you will receive a recovery message to be able to enter a new password.";
 "Time alive for this message:" = "Time alive for this message:";
 "The message never came, send another message" = "The message never came, send another message";
 
 //MARK:- Enter Email VC
-"INGRESE CORREO DEL LA CUENTA A RECUPERAR CONTRASEÑA" = "ENTER EMAIL OF THE ACCOUNT TO RECOVER PASSWORD";
+"INGRESE CORREO DEL LA CUENTA PARA RECUPERAR LA CONTRASEÑA" = "ENTER YOUR EMAIL TO RECOVER THE PASSWORD";
+//"INGRESE CORREO DEL LA CUENTA A RECUPERAR CONTRASEÑA"
 "CANCELAR" = "CANCEL";
-"ACEPTAR" = "AGREE";
-
+"ACEPTAR" = "ACCE¨T";
 
 //MARK:- MethodVC
-"SELECCIONE EL MÉTODO CON EL CUAL DESEA RECUPERAR LA CONTRASEÑA:" = "SELECT THE METHOD WITH WHICH YOU WANT TO RECOVER THE PASSWORD:";
-"NVIAR SMS AL CELULAR VINCULADO " = "SEND SMS TO PAIRED CELL PHONE ";
-"ENVIAR CÓDIGO AL CORREO DE LA CUENTA" = "SEND CODE TO ACCOUNT EMAIL";
-
+"SELECCIONE EL MÉTODO CON EL CUAL DESEA RECUPERAR LA CONTRASEÑA:" = "CHOOSE THE METHOD WHICH YOU WISH RECOVER YOUR PASSWORD:";
+"ENVIAR SMS AL CELULAR VINCULADO " = "SEND SMS";
+"ENVIAR CÓDIGO AL CORREO DE LA CUENTA" = "SEND EMAIL";
 
 //MARK:- NewPassword Screen
-"INGRESE CONTRASEÑA NUEVA" = "ENTER NEW PASSWORD";
+"INGRESE NUEVA CONTRASEÑA" = "FILL YOUR NEW PASSWORD";
+
+//"INGRESE CONTRASEÑA NUEVA"
+
 //MARK:- SendEmailVC
-"RECUPERACIÓN DE CONTRASEÑA" = "PASSWORD RECOVERY";
-"RECUPERACIÓN DE CONTRASEÑA verifica en tu correo registrado, debió de haberte llegado un mensaje con un código, por favor introducelo, sino lo encuentras en tu bandeja de entrada verifica en la sección de SPAM" = "RECOVERY OF PASSWORD check your registered email, you should have received a message with a code, please enter it, if you do not find it in your inbox check the SPAM section";
+"RECUPERACIÓN DE CONTRASEÑA" = " PASSWORD RECOVERY ";
+"RECUPERACIÓN DE CONTRASEÑA verifica en tu correo registrado, debió de haberte llegado un mensaje con un código, por favor introducelo, sino lo encuentras en tu bandeja de entrada verifica en la sección de SPAM" = "PASSWORD RECOVERY check your registered email, you should have received a message with a code, please enter it, if you do not find it in your inbox check the SPAM section";
+
+
+
+//MARK:- BiomatricLoginVC
+
+"NOMBRE DE USUARIO" = "USERNAME";
+ 
 
 //MARK:- ThumnilVC
-"Biometric credentials" = "Biometric credentials";
-"Log in using yout biometric credential" = "Log in using you biometric credential";
-"Use password App" = "Use password App";
-
+//Here is in English -> Spanish “Credenciales Biométricas”
+//"Biometric credentials"
+"Credenciales Biométricas"= "Biometric credentials";
+//Here is in English -> Spanish “Iniciar sesión usando credenciales biométricas”
+//"Log in using your biometric credential"
+"Iniciar sesión usando credenciales biométricas"
+= "Log in using your biometric credential";
+//Here is in English -> Spanish “Usar contraseña de la aplicación”
+//"Use password App"
+"Usar contraseña de la aplicación" = "Use password App";
 
 //MARK:- Menu VC
 "NOTIFICACIONES" = "NOTIFICATIONS";
 "CONTRATOS" = "CONTRACTS";
 "PERFIL" = "PROFILE";
-"ORDENES DE COMPRA" = "PURCHASE ORDERS";
+"ORDENES DE COMPRA" = "ORDERS";
 "COMPAÑIA" = "COMPANY";
 "EVENTOS" = "EVENTS";
 "INVITACIONES" = "INVITATIONS";
@@ -78,281 +104,309 @@
 //MARK:- Company VC
 "C O N T R A C T" = "C O N T R A C T";
 "ACTUALIZAR DATOS" = "UPDATE DATA";
-
 //MARK:- CompanyCell
 "Empleado" = "Employee";
 "MAPA" = "MAP";
-"Rol" = "Rol";
-"Fechas de Contrato" = "Contract Dates";
+"Rol" = "Role";
+"Fechas de Contrato" = "Contract dates";
 "Inicio" = "Start";
 "OPCIONES" = "OPTIONS";
 "Fin" = "End";
 
 //MARK:- SchedualVC
-"PROGRAMADOS" = "SCHEDULED";
+"PROGRAMADOS" = "INCOMING";
 //MARK:- SchedualCell
-"Nombre del evento" = "Nombre del evento";
+"Nombre del evento" = "Event name";
 "Anfitrión" = "Host";
 "Lugar" = "Place";
 "Invitaciones" = "Invitations";
 "Reservación" = "Reservation";
-"GENERAR QR" = "GENERATE QR";
-
+"MAS DETALLES" = "SEE DETAILS";
+"GENERAR QR" = "GENERATE QR CODE";
 
 //MARK:- RecodrVc
-"HISTORIAL" = "RECORD";
-
+"HISTORIAL" = "RECORDS";
 //MARK:- CreateEventVc
-"C R E A R E V E N T O" = "C R E A R E V E N T";
-"ELÍGE UN HORARIO" = "CHOOSE A SCHEDULE";
+//"C R E A R     E V E N T O" -> to know where is the difference //between words
+"C R E A R   E V E N T O" = "C R E A T E   E V E N T";
+"ELÍGE UN HORARIO" = "CHOOSE AND SCHEDULE";
 "ELÍGE LA AREA COMÚN A RESERVAR:" = "CHOOSE THE COMMON AREA TO BOOK:";
 "RESERVACIONES" = "RESERVATIONS";
-
-
-//MARK:-ConfirmEventVC
 "AGREGAR EVENTO" = "ADD EVENT";
 "NOMBRE" = "NAME";
 "FECHAS" = "DATES";
-"EL" = "EL";
+"EL" = "FROM";
 "A LAS" = "AT";
-"CONFIMRMAR" = "CONFIRM";
-
+"CONFIMRMAR" = "CONFIMRM";
 //MARK:- EventInvitation
-"I N V I T A C I O N E S  D E L E V E N T O" = "L E V E N T I N V I T A T I O N S";
-"Escribe no celular / email para invitar" = "Write no cell phone / email to invite";
-"O ELIGE EN BASE A TU LISTA DE CONTACTOS" = "OR CHOOSE BASED ON YOUR CONTACT LIST";
+//" I N V I T A C I O N E S    D E L    E V E N T O " -> to know //where is the difference between words
+" I N V I T A C I O N E S    D E L    E V E N T O " = "E V E N T   I N V I T A T I O N S";
+"Escribe no celular / email para invitar" = "TYPE phone number/ email to invite";
+"O ELIGE EN BASE A TU LISTA DE CONTACTOS" = "CHOOSE FROM YOUR CONTACT LIST";
 "Invitaciones" = "Invitations";
-"TERMINAR" = "END UP";
-
+"TERMINAR" = "FINISH";
 
 //MARK:-  RecordDetailCell
-"Nombre:" = "Name:";
-"Celular:" = "Cell phone:";
 
+"Nombre:" = "Name:";
+"Celular:" = "Phone number:";
 //MARK:- VerificationOptionsVC
 "CÓDIGO QR" = "QR CODE";
-"TOKEN" = "TOKENS";
-"O P C I O N E S" = "OP T I O N S";
+"TOKEN" = "TOKEN";
+"O P C I O N E S" = "O P T I O N S";
 //MARK:- CompanyMapVC
 "DIRECCIÓN" = "ADDRESS";
 //MARK:- NotificationsVC
 "N O T I F I C A C I O N E S" = "N O T I F I C A T I O N S";
 
 //MARK:- AddProfileDataVc
-"I N F O R M A C I Ó N" = "INFORMATION";
-"ACRONYM" = "ACRONYM";
-"ADDRESS" = "ADDRESS";
-"Aditional information employee" = "Additional information employee";
-"Event Approval" = "Event Approval";
-"BIOCR Validation" = "BIOCR Validation";
-"ACTUALIZAR" = "TO UPDATE";
+"I N F O R M A C I Ó N" = "I N F O R M A T I O N";
+//Here is in English -> Spanish “Información adicional del //empleado”
+"ACRÓNIMO" = "ACRONYM";
+//Here is in English -> Spanish “Información adicional del //empleado”
+"DIRECCIÓN" = "ADDRESS";
+//Here is in English -> Spanish “Información adicional del //empleado”
+"Información adicional del empleado" = "Aditional information employee";
+//Here is in English -> Spanish “Aprobación de evento”
+"Aprobación de evento" = "Event Approval";
+//Here is in English -> Spanish “Validación por BIOCR”
+"Validación por BIOCR " = "BIOCR Validation";
+"ACTUALIZAR" = "UPDATE";
 
 //MARK:- ImagePopUpVc
-"C A M B I A R I M A G E" = "C A M B I A R I M A G E";
+//" C A M B I A R    I M A G E N" -> to know where is the //difference between words
+" C A M B I A R    I M A G E N" = "C H A N G E   I M A G E";
 "TOMAR FOTO" = "TAKE PHOTO";
-"SELECCIONAR DE IMAGENES" = "SELECT FROM IMAGES";
-
+//"SELECCIONAR DE IMÁGENES"
+"SELECCIONAR DE IMÁGENES" = "CHOOSE FROM IMAGES";
 //MARK:- AddEmployeeVc
 "NOMBRE" = "NAME";
-"CORREO" = "MAIL";
-"CELULAR" = "CELL PHONE";
+"CORREO" = "EMAIL";
+"CELULAR" = "PHONE NUMBER";
 "CONTRASEÑA" = "PASSWORD";
 "GÉNERO" = "GENDER";
-"STATUS" = "STATUS";
+//Here is in English -> Spanish “ESTATUS”
+"ESTATUS"= "STATUS";
 //MARK:- AddVehicleVC
-"BRAND" = "BRAND";
-"SUB-BRAND" = "SUB-BRAND";
-"COLOR" = "COLOUR";
-"MODEL" = "MODEL";
-"PLATES" = "PLATES";
-"VEHICLE TYPE" = "VEHICLE TYPE";
-"DRIVER" = "DRIVER";
+//Here is in English -> Spanish “MARCA”
+"MARCA"= "BRAND";
+//Here is in English -> Spanish “SUB-MARCA”
+"SUB-MARCA " = "SUB-BRAND";
+"COLOR" = "COLOR";
+
+//Here is in English -> Spanish “MODELO”
+"MODELO" = "MODEL";
+//Here is in English -> Spanish “PLACAS”
+"PLACAS" = "PLATES";
+//Here is in English -> Spanish “TIPO DE VEHÍCULO”
+"TIPO DE VEHÍCULO" = "VEHICLE TYPE";
+//Here is in English -> Spanish “CONDUCTOR”
+"CONDUCTOR" = "DRIVER";
 //MARK:- RecordDetailVC
 "CANCELAR EVENTO" = "CANCEL EVENT";
 "ACTUALIZAR EVENTO" = "UPDATE EVENT";
 "D E T A L L E S" = "D E T A I L S";
 "FECHA" = "DATE";
-"Fecha: " = "Fecha: ";
+"Fecha: " = "Date: ";
 //MARK:- AcceptOrRejectPopUpVC
 "CANCELAR EVENTO" = "CANCEL EVENT";
-
 //MARK:- GenralQRCodeVC
 
-"Valido por los siguientes 30 segundos." = "Valid for the next 30 seconds.";
+"Valido por los siguientes 30 segundos." = "Expiry time in 30 segundos.";
 "ESCANEAR CÓDIGO QR" = "SCAN QR CODE";
-"VOLVER A GENERAR" = "REGENERATE";
+"VOLVER A GENERAR" = "GENERATE IT AGAIN";
 
 //MARK:- QRCodeVC
-"MAPA A LA COMPAÑIA" = "MAP TO THE COMPANY";
+"MAPA A LA COMPAÑIA" = "MAP TO COMPANY";
 "ESCANEAR CÓDIGO QR" = "SCAN QR CODE";
 //MARK:- CompanyVerificationVC
-"TOKEN DE ACCESO" = "ACCESS TOKENS";
-"VOLVER A GENERAR" = "REGENERATE";
-
+"TOKEN DE ACCESO" = "ACCESS TOKEN";
+"VOLVER A GENERAR" = "GENERATE IT AGAIN";
 //MARK:UpdateEventVC
-"A C T U A L I Z A R" = "TO UPDATE";
-"NOMBRE DEL EVENTO" = "NAME OF THE EVENT";
+"A C T U A L I Z A R" = "U P D A T E";
+"NOMBRE DEL EVENTO" = "EVENT NAME";
 "ELÍGE UNA FECHA" = "CHOOSE A DATE";
-"HORA" = "HOUR";
+"HORA" = "TIME";
 "FECHA" = "DATE";
 "ESCOGE TUS INVITADOS:" = "CHOOSE YOUR GUESTS:";
-"Escribe para buscar ..." = "Type to search...";
-"O ELÍGE DE LA LISTA DE CONTACTOS" = "OR CHOOSE FROM THE CONTACT LIST";
+"Escribe para buscar ..." = "Type to search ...";
+"O ELÍGE DE LA LISTA DE CONTACTOS" = "CHOOSE FROM YOUR CONTACT LIST";
 "GUARDAR CAMBIOS" = "SAVE CHANGES";
-
 
 //MARK:- CancelEventinvitationVc
 "CANCELAR INVITACIÓN" = "CANCEL INVITATION";
 
 //MARK:- InvitationPopUpVC
-"I N V  IT A C I Ó N" = "INVITATION";
-"Ingrese el número de invitados que llegarán" = "Enter the number of guests who will arrive";
-"ZONAS" = "ZONES";
-"NO INIVITADOS" = "NOT INVITED";
+"I N V I T A C I Ó N" = "I N V I T A T I O N";
+"Ingrese el número de invitados que llegarán" = "Fill the guest number";
+"ZONAS" = "ZOEAS";
+"NO INIVITADOS" = "GUEST NUMBER";
 
 //MARK:- UpdateProfileVC
-"Información personal" =  "Personal information";
+"Información personal" = "Personal information";
 "Contraseña" = "Password";
-"Correo" = "Mail";
-"Celular" = "Cell phone";
-"Fecha de cumpleaños" = "Birthday date";
+"Correo" = "Email";
+"Celular" = "Phone number";
+"Fecha de cumpleaños" = "Day of birthday";
 "Género" = "Gender";
 "Información extra" = "Extra information";
-"ADDESS 1" = "ADDRESS 1";
-"ADDESS 2" = "ADDRESS 2";
-"STATE" = "STATE";
-"COUNTRY" = "COUNTRY";
-"POST CODE" = "POST CODE";
-"HOME NUMBER" = "HOME NUMBER";
-"ARABIC NAME" = "ARABIC NAME";
-"BLOOD TYPE" = "BLOOD TYPE";
+//Here is in English -> Spanish “DIRECCIÓN 1”
+"DIRECCIÓN 1" = "ADDESS 1";
+//Here is in English -> Spanish “DIRECCIÓN 2”
+"DIRECCIÓN 2" = "ADDESS 2";
+//Here is in English -> Spanish “ESTADO”
+"ESTADO" = "STATE";
+//Here is in English -> Spanish “PAÍS”
+"PAÍS" = "COUNTRY";
+//Here is in English -> Spanish “CÓDIGO POSTAL”
+"CÓDIGO POSTAL" = "POST CODE";
+//Here is in English -> Spanish “NÚMERO DE CASA”
+"NÚMERO DE CASA" = "HOME NUMBER";
+//Here is in English -> Spanish “NOMBRE DE ARABIA”
+"NOMBRE DE ARABIA" = "ARABIC NAME";
+//Here is in English -> Spanish “TIPO DE SANGRE”
+"TIPO DE SANGRE" = "BLOOD TYPE";
 "Idiomas" = "Languages";
 "Español" = "Spanish";
 "Ingles" = "English";
-"Tipo de Acceso" = "Tipo de Acceso";
-"Use biometrics storate in the phone" = "Use biometrics store in the phone";
-"DESVINCULAR DISPOSITIVO" = "UNPAIR DEVICE";
+"Tipo de Acceso" = "Access Type";
+//“Usa los biométricos almacenados en el dispositivo”
+//"Use biometrics storate in the phone"
+"Usa los biométricos almacenados en el dispositivo" = "Use biometrics storate in the phone";
+"DESVINCULAR DISPOSITIVO" = "UNLINK DEVICE";
+
 
 //MARK:- UserPersonalVC
-"Información" = "Information";
+"Información" = "Informatin";
 "Masculino" = "Male";
 "CONTRASEÑA" = "PASSWORD";
-"CORREO" = "MAIL";
-"NO CELULAR" = "NOT CELLULAR";
+"CORREO" = "EMAIL";
+"NO CELULAR" = "PHONE NUMBER";
 "CUMPLEAÑOS" = "BIRTHDAY";
 "ACTUALIZAR DATOS" = "UPDATE DATA";
 
 //MARK:- InvitorVC
 "INVITAR" = "INVITE";
+
 //MARK:- ContactListVc
-"L I S T A  D E  C O N T A C T O S" = "CONTACT LIST";
+//“L I S T A    D E    C O N T A C T O S " -> to know where is //the difference between words
+"L I S T A    D E    C O N T A C T O S" = "C O N T A C   L I S T";
 //MARK:- NewinvitationVc
 "INVITACIONES" = "INVITATIONS";
-"Empresa" = "Business";
+"Empresa" = "Company";
 "Anfitrión" = "Host";
 "Invitaciones" = "Invitations";
-
 //MARK:- UserNotRegisterPopUpVC
-"USUARIO NO ENCONTRADO" = "USER NOT FOUND";
-"No sé encontró asociado ningún celular correo en nuestros servidores, para poder invitarlo es necesario proporcionar ciertos datos para nuestros registros." = "I don't know any associated cell phone mail on our servers, in order to invite you it is necessary to provide certain data for our records.";
+"USUARIO NO ENCONTRADO" = "USUAR NOT FOUND";
+"No sé encontró asociado ningún celular correo en nuestros servidores, para poder invitarlo es necesario proporcionar ciertos datos para nuestros registros." = " We did not find any cell phone or email registered on our servers, in order to invite you it is necessary to provide certain information for our records.";
+
+
 //MARK:- PreRegisteruservc
-"D A T O S DE U S U A R I O" = "USER DATA";
+//“D A T O S     DE    U S U A R I O " -> to know where is the //difference between words
+"D A T O S     DE    U S U A R I O" = "U S E R   D A T A";
 
 //MARK:- LogoutPopUpVc
-"CERRAR SESIÓN" = "CERRAR SESIÓN";
-"Estás apunto de cerrar sesión, se desvinculará el dispositivo en el que esta la sesión activa. ¿Deseas continuar?" = "You are about to log out, the device on which the session is active will be unlinked. Do you want to continue?";
+"CERRAR SESIÓN" = "LOG OUT";
+"Estás a punto de cerrar sesión, se desvinculará el dispositivo en el que esta la sesión activa. ¿Deseas continuar?" = " You are about to log out, the device on which the session is active will be unlinked. Do you want to continue?";
 //MARK:- NoOFInvitationVc
-"D A T O S E X T R A" = "D A T O S E X T R A";
-"Ingrese el número de invitados permitidos por invitación" = "Enter the number of guests allowed per invitation";
+//“D A T O S     E X T R A " -> to know where is the difference //between words
+"D A T O S     E X T R A" = "E X T R A   D A T A";
+"Ingrese el número de invitados permitidos por invitación" = "Ingrese el número de invitados permitidos por invitación";
 //MARK:- NewNotification
-"TÍTULO" = "QUALIFICATION";
-"TIPO DE NOTIFICACIÓN" = "TYPE OF NOTIFICATION";
+"TÍTULO" = "TITLE";
+"TIPO DE NOTIFICACIÓN" = "NOTIFICATION TYPE";
 "TIPO" = "TYPE";
-"DE" = "FROM";
-"ALCANCE" = "SCOPE";
+"DE" = "AT";
+"ALCANCE" = "SEND TO";
 "MENSAJE" = "MESSAGE";
-"N U E V A  N O T I F I C A CI O N" = "N E W N O T I F I C A T I O N";
+"N U E V A  N O T I F I C A CI O N" = "S E N D   N O T I F I C A T I O N";
 "ENVIAR" = "SEND";
 "MIS INVITACIONES" = "MY INVITATIONS";
-"HISTORIAL" = "RECORD";
-
+"HISTORIAL" = "RECORDS";
 //MARK:- ContractHistoryVc
-"HISTORIAL CONTRATOS" = "CONTRACT HISTORY";
+"HISTORIAL CONTRATOS" = "CONTRACTS RECORD";
 //MARK:- ContractListCell
-"Grupo Tepeyac Mexico" = "Tepeyac Mexico Group";
+"Grupo Tepeyac Mexico" = "Grupo Tepeyac Mexico";
 "Inicio de contrato" = "Start of contract";
 "Fin de contrato" = "End of contract";
-
 "VER DETALLES" = "SEE DETAILS";
 "AGREGAR CONTRATISTA +" = "ADD CONTRACTOR +";
-"Escribe no celular / email para invitar" =  "Write no cell phone / email to invite";
+"Escribe no celular / email para invitar" =  "Type phone number / email to invite";
 "CONTRATISTA" = "CONTRACTOR";
-"CREAR CONTRATO" = "CREAR CONTRATO";
+"CREAR CONTRATO" = "CREATE CONTRACT";
 
 //MARK:- ContractDetailVC
-"D E T A L L E S" = "DETAILS";
-"Grupo Tepeyac Mexico" = "Tepeyac Mexico Group";
-"No. de empleados" = "No. of employees";
-"No. vehículos" = "Number of vehicles";
+"D E T A L L E S" = "D E T A I L S";
+"Grupo Tepeyac Mexico" = "Grupo Tepeyac Mexico";
+"No. de empleados" = "Employees number";
+"No. vehículos" = "Vehicle number";
 
 //MARK:- UpdateContractVC
-"INICIO DE CONTRATO" = "Start of contract";
-"FIN DE CONTRATO" = "End of contract";
-"A C T U A L I Z A R C O N T R A T O" = "UPDATE CONTRACT";
-"CONTRATOS" = "CONTRATOS";
+"INICIO DE CONTRATO" = "START OF CONTRACT";
+"FIN DE CONTRATO" = "END OF CONTRACT";
+
+//“A C T U A L I Z A R     C O N T R A T O " -> to know where is //the difference between words
+"A C T U A L I Z A R     C O N T R A T O " = "U P D A T E   C O N T R A C T";
+"CONTRATOS" = "CONTRACTS";
 
 //MARK:- ProviderDetail
-"INFORMACIÓN DEL PROVEEDOR" = "INFORMACIÓN DEL PROVEEDOR";
+"INFORMACIÓN DEL PROVEEDOR" = "SUPPLIER INFORMATION";
 "Vehículo" = "Vehicle";
 "INFORMACIÓN DE ENTREGA" = "DELIVERY INFORMATION";
 "Producto" = "Product";
 "Descripción" = "Description";
-"INFORMACIÓN DEL PROVEEDOR" = "SUPPLIER INFORMATION";
-"Recibido por" = "Received by";
-"Fecha de entrega" = "Deadline";
+"INFORMACIÓN DEL PROVEEDOR" = " SUPPLIER INFORMATION";
+"Recibido por" = "Received by ";
+"Fecha de entrega" = "Delivery date";
 
 //MARK:- ContractinformationVc
-"I N F O R M A C I Ó N" = "INFORMATION";
-"Contratista encargado" = "commissioning contractor";
-"Inicio Contrato" = "Home Contract";
-"Fin Contrato" = "End of contract";
+"I N F O R M A C I Ó N" = "I N F O R M A T I O N";
+"Contratista encargado" = "Contractor in charge";
+"Inicio Contrato" = "Start Contract";
+"Fin Contrato" = "End Contract";
 //MARK:- AddcontractVc
 "ACRÓNIMO" = "ACRONYM";
-"ENCARGADO" = "DUTY MANAGER";
-"A G R E G A R                          C O N T R A T I S T A" = "A G R E G A R C O N T R A T I S T";
+"ENCARGADO" = "MANAGER";
+"A G R E G A R                          C O N T R A T I S T A" = "A D D                          C O N T R A C T O R";
 
 //AMRK:-  ContractorDetailVC
-"D E T A L L E S" = "DETAILS";
+"D E T A L L E S" = "D E T A I L S";
 "NÚMERO" = "NUMBER";
-
 //MARK:-  UpdateContractorVc
 "ESTATUS" = "STATUS";
-
 //MARK:- CurrentOrderVc
-"ORDENES EN CURSO" = "ORDERS IN PROGRESS";
+"ORDENES EN CURSO" = "ORDER IN COURSE";
 //MARK:- Currentordercell
-"INFORMACIÓN DEL PROVEEDOR" = "SUPPLIER INFORMATION";
-"Compañia" = "Company";
-"INFORMACIÓN DE ENTREGA" = "DELIVERY INFORMATION";
+"INFORMACIÓN DEL PROVEEDOR" = "SUPPLIER INFORMATION ";
+"Compañia" = "Compañia";
+"INFORMACIÓN DE ENTREGA" = "DELIVERY DATE";
 "ETA" = "ETA";
 //MARK:- OrderhistoryVc
-"HISTORIAL ORDENES" = "ORDER HISTORY";
+"HISTORIAL ORDENES" = "ORDER RECORD";
 
 //MARK:-  OrderHistoryCell
-"INFORMACIÓN DEL PROVEEDOR" = "INFORMACIÓN DEL PROVEEDOR";
-"INFORMACIÓN DE RECIBIDO" = "RECEIVED INFORMATION";
-
+"INFORMACIÓN DEL PROVEEDOR" = " SUPPLIER INFORMATION ";
+"INFORMACIÓN DE RECIBIDO" = "MORE INFORMATION";
 //Custom Message
-"you have no Contracts" = "you have no Contracts";
-"Try Again!" = "Try Again!";
-"you have no Contracts" = "you have no Contracts";
-"you have no Invitation" = "you have no Invitation";
-"you have no Notification" = "you have no Notification";
-"you have no Events Invitations" = "you have no Events Invitations";
-"you have no Events" = "you have no Events";
+//Here is in English -> Spanish “No tienes contractos”
+"No tienes contractos" = "There are no contracts";
+//Here is in English -> Spanish “Inténtalo nuevamente”
+"Inténtalo nuevamente" = "¡Try it again!";
+//Here is in English -> Spanish “No tienes contratos”
+"No tienes contratos" = " There are no contracts";
+//Here is in English -> Spanish “No tienes invitaciones”
+"No tienes invitaciones" = " There are no invitations";
+//Here is in English -> Spanish “No tienes notificaciones”
+"No tienes notificaciones" = " There are no notifications";
+//Here is in English -> Spanish “No tienes invitaciones de //eventos”
+"No tienes invitaciones de eventos" = " There are no event invitations";
+//Here is in English -> Spanish “No tienes eventos”
+"No tienes eventos" = " There are no events";
 "Contrato" = "Contract";
+
 "Fecha y Hora" = "Date and Time";
 "Duración" = "Duration";
 "NUEVA FECHA DEL EVENTO" = "NEW EVENT DATE";
-"!SIN EVENTOS¡" = "NO EVENTS!";
-"CLICK AQUÍ PARA AGREGAR UNO NUEVO Ó EN EL + BOTÓN" = "CLICK HERE TO ADD A NEW ONE OR ON THE + BUTTON";
+"!SIN EVENTOS¡" = "!NO EVENTS¡";
+"CLICK AQUÍ PARA AGREGAR UNO NUEVO Ó EN EL + BOTÓN" = "CLICK HERE TO ADD A NEW EVENT OR IN THE + BOTÓN";
+

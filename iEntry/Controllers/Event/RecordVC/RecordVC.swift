@@ -47,8 +47,8 @@ class RecordVC: BaseController,IndicatorInfoProvider {
         let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
         //userId
         //* 1 * 24 * 60 * 60 * 1000
-        let dic : [String:Any] = ["date":timeInMiliSec, "hostId":ShareData.shareInfo.obj?.id ?? ""]
-        userhandler.getEventsBeforeDate(params: dic, Success: {response in
+        //let dic : [String:Any] = ["date":timeInMiliSec, "hostId":ShareData.shareInfo.obj?.id ?? ""]
+        userhandler.getEventsBeforeDate(beforedate:timeInMiliSec, Success: {response in
             self.hidLoader()
             if response?.success == true {
                 self.eventdata = response?.data ?? []
@@ -83,7 +83,7 @@ extension RecordVC: UITableViewDelegate,UITableViewDataSource {
         cell?.lblhostName.text = self.eventdata?[indexPath.row].user?.name
         cell?.lbleventName.text = self.eventdata?[indexPath.row].name
         cell?.lblplace.text = self.eventdata?[indexPath.row].reservation?.zone?.name
-        cell?.lblinvitations.text = "\(self.eventdata?[indexPath.row].invitationNo ?? 0)"
+        cell?.lblinvitations.text = "\(self.eventdata?[indexPath.row].userInvitationNo ?? 0)"
         cell?.lblstartDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].startDate) ?? 0)", formatter: "")
         cell?.lblendDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].endDate) ?? 0)", formatter: "")
         cell?.lblstatus.text = self.eventdata?[indexPath.row].reservation?.zone?.company?.status?.name

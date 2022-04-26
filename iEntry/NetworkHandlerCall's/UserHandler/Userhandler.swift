@@ -211,8 +211,9 @@ class userhandler {
    
     
     class func sendFCMToken(fcmtoken:String,Success: @escaping (FCMTokenModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
-        let url = Constant.MainUrl + "authentication-service/set-firebase-id/\(fcmtoken)/user-id/\(ShareData.shareInfo.obj?.id ?? "")"
-        
+        let url = Constant.MainUrl + "authentication-service/set-firebase-id/\(fcmtoken)/user-id/"
+        //"/user-id/\(ShareData.shareInfo.obj?.id ?? "")"
+        print("firabse url ", url)
          Networkhandler.PutRequest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
@@ -434,10 +435,10 @@ class userhandler {
     
     //MARK:- getEvent by user id after Date
     
-    class func getEventsAfterDate(params:[String:Any],Success: @escaping (EventModule?) -> Void, Failure: @escaping(NetworkError) -> Void){
-     let url = Constant.MainUrl + Constant.URLs.getEventafterDate
+    class func getEventsAfterDate(afterdate:Int,Success: @escaping (EventModule?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.getEventafterDate + "/\(afterdate)"
         print("EventsUrl:",url)
-         Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
                  print(successResponse)
@@ -456,10 +457,10 @@ class userhandler {
     
     //MARK:- getEvent by user id Before Date
     
-    class func getEventsBeforeDate(params:[String:Any],Success: @escaping (EventModule?) -> Void, Failure: @escaping(NetworkError) -> Void){
-     let url = Constant.MainUrl + Constant.URLs.getBeforeDateEvent
+    class func getEventsBeforeDate(beforedate:Int,Success: @escaping (EventModule?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.getBeforeDateEvent + "/\(beforedate)"
         print("belfore Date Url :", url)
-         Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
                  print(successResponse)
@@ -641,10 +642,10 @@ class userhandler {
     
     //MARK:- get Notification After Date
     
-    class func getNotificationAfterDate(params:[String:Any],Success: @escaping (NotificationModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
-     let url = Constant.MainUrl + Constant.URLs.notification
+    class func getNotificationAfterDate(afterdate:Int,Success: @escaping (NotificationModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.notification + "/\(afterdate)"
         
-         Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
                  print(successResponse)

@@ -44,17 +44,19 @@ class NewInvitationVC: BaseController,IndicatorInfoProvider {
 
     func getInvitationAfterDate() {
         
-        let stringurl = Constant.MainUrl + "invitation-service/get-all/by-guest-id/\(ShareData.shareInfo.obj?.id ?? "")/date-after"
-        let url = URL(string: stringurl)
+        
+        
         let timeInMiliSecDate = Date()
         let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+        let stringurl = Constant.MainUrl + "invitation-service/get-all/by-guest-id/date-after/\(timeInMiliSec)"
+        let url = URL(string: stringurl)
         var request = URLRequest(url: url!)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = HTTPMethod.get.rawValue
         //request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
         
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(ShareData.shareInfo.token ?? "")",forHTTPHeaderField: "Authorization")
-        request.httpBody = "\(timeInMiliSec)".data(using: .utf8)
+        request.setValue("Bearer \(ShareData.shareInfo.token ?? "")",forHTTPHeaderField: "Authorization")
+        //request.httpBody = "\(timeInMiliSec)".data(using: .utf8)
 
         AF.request(request).responseJSON { response in
                 print("all data ",response)

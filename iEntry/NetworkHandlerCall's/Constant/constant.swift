@@ -83,8 +83,8 @@ class Constant {
         
         static let createEvent = "event-service/create"
         static let getEventDetailById = "event-service/get-by-id/"
-        static let getAllInvitationAgainstEvent = "event-service/get-all-invitations/by-event-id/"
-        
+        static let getAllInvitationAgainstEvent = "event-service/get-all-user-invitations/by-event-id/"
+        //get-all-user-invitations/by-event-id
         static let sendInvitation = "event-service/create-user-invitations"
         //create-invitations"
         

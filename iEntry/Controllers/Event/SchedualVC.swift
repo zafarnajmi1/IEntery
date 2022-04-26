@@ -50,8 +50,8 @@ class SchedualVC: BaseController,IndicatorInfoProvider {
         let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
        
         //userId
-        let dic : [String:Any] = ["date":timeInMiliSec, "hostId":ShareData.shareInfo.obj?.id ?? ""]
-        userhandler.getEventsAfterDate(params: dic, Success: {response in
+        //let dic : [String:Any] = ["date":timeInMiliSec, "hostId":ShareData.shareInfo.obj?.id ?? ""]
+        userhandler.getEventsAfterDate(afterdate: timeInMiliSec, Success: {response in
             self.hidLoader()
             if response?.success == true {
                 self.eventdata = response?.data ?? []
@@ -85,7 +85,7 @@ extension SchedualVC: UITableViewDelegate,UITableViewDataSource {
         cell?.lblhostName.text =  self.eventdata?[indexPath.row].user?.name
         cell?.lbleventName.text = self.eventdata?[indexPath.row].name
         cell?.lblplace.text = self.eventdata?[indexPath.row].reservation?.zone?.name
-        cell?.lblinvitations.text = "\(self.eventdata?[indexPath.row].invitationNo ?? 0)"
+        cell?.lblinvitations.text = "\(self.eventdata?[indexPath.row].userInvitationNo ?? 0)"
         cell?.lblstartDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].startDate) ?? 0)", formatter: "")
         //cell?.lblendDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].endDate) ?? 0)", formatter: "")
         cell?.lblendDate.isHidden = true

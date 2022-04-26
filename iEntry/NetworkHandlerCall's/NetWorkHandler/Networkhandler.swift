@@ -298,6 +298,8 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                 var request = URLRequest(url: newurl)
                request.httpMethod = HTTPMethod.put.rawValue
                request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+            //request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            //"Content-Type" :"application/x-www-form-urlencoded"
             let bearer = "Bearer "
             let newtoken = ShareData.shareInfo.token ?? ""
             let  token = bearer + newtoken

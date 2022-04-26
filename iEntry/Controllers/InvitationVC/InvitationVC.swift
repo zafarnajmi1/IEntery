@@ -10,8 +10,6 @@ import HMSegmentedControl
 class InvitationVC: UIViewController {
     //MARK:- here are iboutlet
     @IBOutlet weak var Bannerim: UIImageView!
-//    @IBOutlet weak var oneView: UIView!
-//    @IBOutlet weak var twoView: UIView!
     @IBOutlet weak var twoContainer: UIView!
     
     @IBOutlet weak var inerView: UIView!

@@ -38,23 +38,15 @@ class EventInvitationVC: BaseController,IndicatorInfoProvider {
         self.lnlnoeventtitle.text = "!SIN EVENTOS¡".localized
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getallInviationsAfterDate()
     }
-    ///get-all/by-guest-id/{guestId}/date-after
     
-    
-    
-    /////get-all-invitations/by-user-id/after-date   for invitations.
     func getallInviationsAfterDate() {
         self.showLoader()
-        let timeInMiliSecDate = Date()
-        let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
-        //userId
-        let dic : [String:Any] = ["date":timeInMiliSec,"hostId":ShareData.shareInfo.obj?.id ?? ""]
-        userhandler.getEventsinvitatinsAftereDate(miliseconds:timeInMiliSec, Success: {response in
+        
+        userhandler.getEventsinvitatinsAftereDate(miliseconds:startDay(), Success: {response in
             self.hidLoader()
             if response?.success == true {
                 self.eventdata = response?.data
@@ -93,7 +85,7 @@ extension EventInvitationVC : UITableViewDelegate,UITableViewDataSource {
         cell?.lblhostName.text =  self.eventdata?[indexPath.row].user?.name
         cell?.lbleventName.text = self.eventdata?[indexPath.row].name
         cell?.lblplace.text = self.eventdata?[indexPath.row].reservation?.zone?.name
-        cell?.lblinvitations.text = "\(self.eventdata?[indexPath.row].invitationNo ?? 0)"
+        cell?.lblinvitations.text = "\(self.eventdata?[indexPath.row].userInvitationNo ?? 0)"
         cell?.lblstartDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].startDate) ?? 0)", formatter: "")
         //cell?.lblendDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].endDate) ?? 0)", formatter: "")
         cell?.lblendDate.isHidden = true

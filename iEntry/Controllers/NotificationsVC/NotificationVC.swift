@@ -97,7 +97,7 @@ class NotificationVC: BaseController {
         
         
             
-        userhandler.getNotificationAfterDate(params: dic, Success: {response in
+        userhandler.getNotificationAfterDate(afterdate: sectimeInMili, Success: {response in
             self.hidLoader()
             if response?.success == true {
                 self.notificationdata = response?.data
