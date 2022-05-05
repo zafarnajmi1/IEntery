@@ -21,15 +21,15 @@ class SplashVC: UIViewController {
            print("FCM Token", token)
             ShareData.shareInfo.fcmToken = token
         }
-        TokenManager.shareToken.token()
+        TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
         if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
-            TokenManager.shareToken.token()
+            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
         } else {
 
             if  TokenManager.shareToken.parsingToken() == true  {
 
             } else {
-                TokenManager.shareToken.token()
+                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
             }
         }
     }

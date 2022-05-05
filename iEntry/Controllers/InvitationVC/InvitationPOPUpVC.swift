@@ -30,6 +30,9 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
     @IBOutlet weak var mainView: UIView!
     var getAllZonedata : [GetAllZonesModelData]? = nil
     var MainDrowpDown = DropDown()
+    
+    let timeInMiliSecDate = Date()
+    var timeInMiliSec = 0
     var zondid = ""
     var guestid = ""
      var name = ""
@@ -38,7 +41,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.timeInMiliSec =  Int(timeInMiliSecDate.timeIntervalSince1970 * 1000)
         self.lblenternumberofguesttitle.text = "Ingrese el número de invitados que llegarán".localized
         self.lblinvitationtitle.text = "I N V  IT A C I Ó N".localized
         txtnumberInvitayion.keyboardType = .numberPad
@@ -84,8 +87,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
     
     func createInvitationApi() {
         self.showLoader()
-        let timeInMiliSecDate = Date()
-        let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+        
         print(timeInMiliSec)
         
         let zondic: [String:Any] = ["id":self.zondid]
@@ -227,8 +229,8 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
         }
         myDatePicker.picker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         
-        let cancel = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(canceleDatePicker))
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action:#selector(onClickDoneButton))
+        let cancel = UIBarButtonItem(title: "Cancel".localized, style: .done, target: self, action: #selector(canceleDatePicker))
+        let doneButton = UIBarButtonItem(title: "Done".localized, style: .done, target: self, action:#selector(onClickDoneButton))
         myDatePicker.leftButtons = [ cancel]
         myDatePicker.rightButtons = [doneButton]
     }
@@ -249,6 +251,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
             let stringDate = dateFormatter.string(from: picker.date)
+            self.timeInMiliSec =  Int(picker.date.timeIntervalSince1970 * 1000)
             self.txtdate.text = stringDate
             
         } else {
@@ -268,6 +271,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
             let stringDate = dateFormatter.string(from: picker.pickerDate)
+            self.timeInMiliSec =  Int(picker.pickerDate.timeIntervalSince1970 * 1000)
             self.txtdate.text = stringDate
         } else {
             let dateFormatter = DateFormatter()

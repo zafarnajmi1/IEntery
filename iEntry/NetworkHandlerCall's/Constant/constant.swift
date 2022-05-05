@@ -60,7 +60,7 @@ class Constant {
         
        static let CreateExtraDataUser = "extra-data-service/create"
        static let updateExtraDataUser = "extra-data-service/update"
-       static let getSixDigitCode = "authentication-service/get-verification-code/by-user-id/"
+       static let getSixDigitCode = "authentication-service/get-verification-code/by-user-id" ///"authentication-service/get-verification-code/by-user-id/"
         
       
        static let userContractcompanyservice = "user-company-service/get-by-user-id/"
@@ -89,7 +89,7 @@ class Constant {
         //create-invitations"
         
         static let cancelEvent = "event-service/cancel-event/"
-        static let notification = "notification-service/get-all/by-user-id/by-company-id/after-date-created"
+        static let notification = "notification-service/get-all/by-user-id/by-company-id/after-date-created" //"notification-service/get-all/by-user-id/by-company-id/after-date-created"
         static let createNotification = "notification-service/create"
        static let getExtraData = "extra-data-service/get-by-user-id/"
        static let updateExtraData = "extra-data-service/update"
@@ -109,8 +109,8 @@ class Constant {
         
         //MARK:- Contractor Endpoints
         
-        static let incomingContractList = "contract-service/contractor/get-all/incoming-active"
-        static let contractHirotyList = "contract-service/contractor/get-all/records"
+        static let incomingContractList = "contract-service/contractor/get-all/incoming-active/" //"contract-service/contractor/get-all/incoming-active"
+        static let contractHirotyList = "contract-service/contractor/get-all/records/"
         
         static let getContractorByUserId = "contractor-service/get-by-user-id/"
         static let getallIncomingContractorEmployee = "contract-service/contractor-employee/get-all/incoming-active"
@@ -119,7 +119,7 @@ class Constant {
         
         static let getContractorEmployeeByUserID = "contractor-employee-service/get-by-user-id/"
         
-        
+        ///contractor/get-all/incoming-active/
         //MARK:- Provider Endpoint
         
         static let getproviderbyuserid = "provider-service/get-by-user-id/"

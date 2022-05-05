@@ -40,8 +40,8 @@ class TokenManager {
     
     
     
-    func token(){
-        let dic: [String:Any] =  ["email":"luis.cornejo.2610@gmail.com","password":"root"]
+    func token(email:String,password:String){
+        let dic: [String:Any] =  ["email":email,"password":password]
 
         var Headers : HTTPHeaders
 

@@ -80,7 +80,14 @@ extension EventInvitationVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SchedualCell") as? SchedualCell
-        cell?.qrView.isHidden = true
+        
+        if ShareData.shareInfo.companyRistrictiondata?.isOnuEvent == true  {
+            cell?.qrView.isHidden = false
+            cell?.mapView.isHidden = false
+        } else {
+            cell?.qrView.isHidden = true
+            cell?.mapView.isHidden = true
+        }
         cell?.lblstatus.text = self.eventdata?[indexPath.row].status?.name
         cell?.lblhostName.text =  self.eventdata?[indexPath.row].user?.name
         cell?.lbleventName.text = self.eventdata?[indexPath.row].name
@@ -109,15 +116,15 @@ extension EventInvitationVC : UITableViewDelegate,UITableViewDataSource {
         
         cell?.callBack = { Istrue in
             if Istrue {
-                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
-                self.navigationController?.pushViewController(vc!, animated: true)
+//                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+//                let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
+//                self.navigationController?.pushViewController(vc!, animated: true)
             }
             
             if !Istrue {
-                    let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
-                    let vc = storyBoard.instantiateViewController(withIdentifier:"GeneralQRCodeVC") as? GeneralQRCodeVC
-                    self.navigationController?.pushViewController(vc!, animated: true)
+//                    let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+//                    let vc = storyBoard.instantiateViewController(withIdentifier:"GeneralQRCodeVC") as? GeneralQRCodeVC
+//                    self.navigationController?.pushViewController(vc!, animated: true)
             }
         }
         

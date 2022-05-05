@@ -9,6 +9,7 @@ import UIKit
 
 class RecordDetailVC: BaseController {
     //MARK:- here are iboutlet
+    @IBOutlet weak var noinvitationView: UIView!
     @IBOutlet weak var lblreservationtitle: UILabel!
     @IBOutlet weak var lblatTitle: UILabel!
     @IBOutlet weak var lblthetitle: UILabel!
@@ -178,6 +179,13 @@ class RecordDetailVC: BaseController {
                 self.lblnumberofInvitations.text = "\(self.invitationsData?.count ?? 0)" + "Invitations".localized
                 self.tblView.reloadData()
                 self.tblHeight.constant = self.tblView.contentSize.height
+                if self.invitationsData?.count == 0 {
+                    self.noinvitationView.isHidden = false
+                    self.tblView.isHidden = true
+                } else {
+                    self.noinvitationView.isHidden = true
+                    self.tblView.isHidden = false
+                }
             } else {
                 self.alert(message: response?.message ?? "")
             }

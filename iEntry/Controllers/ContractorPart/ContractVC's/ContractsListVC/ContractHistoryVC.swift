@@ -65,7 +65,7 @@ class ContractHistoryVC: BaseController,IndicatorInfoProvider {
            url = Constant.MainUrl + Constant.URLs.getallRecordContractorEmployee
        }
         
-        userhandler.getAllIncomingContractList(params: dic, newurl: url, Success: {response in
+        userhandler.getAllIncomingContractList(milisecond:Int (Date().timeIntervalSince1970 * 1000), newurl: url, Success: {response in
             self.hidLoader()
             if response?.success == true {
                 self.contractListdata = response?.data ?? []

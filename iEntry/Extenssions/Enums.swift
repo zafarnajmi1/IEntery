@@ -11,6 +11,7 @@ enum StoryBoards : String {
     case Main = "Main"
     case Home = "Home"
     case Contract = "Contract"
+    case ONUEvent = "ONUEvent"
 }
 
 

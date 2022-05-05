@@ -45,7 +45,7 @@ struct ExtradataModelData : Codable {
     let bloodType : String?
     let contractorName : String?
     let note : String?
-    let wasVaccinated : String?
+    let wasVaccinated : Bool?
     let address1 : String?
     let address2 : String?
 
@@ -76,7 +76,7 @@ struct ExtradataModelData : Codable {
         bloodType = try values.decodeIfPresent(String.self, forKey: .bloodType)
         contractorName = try values.decodeIfPresent(String.self, forKey: .contractorName)
         note = try values.decodeIfPresent(String.self, forKey: .note)
-        wasVaccinated = try values.decodeIfPresent(String.self, forKey: .wasVaccinated)
+        wasVaccinated = try values.decodeIfPresent(Bool.self, forKey: .wasVaccinated)
         address1 = try values.decodeIfPresent(String.self, forKey: .address1)
         address2 = try values.decodeIfPresent(String.self, forKey: .address2)
     }

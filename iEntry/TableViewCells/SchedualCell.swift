@@ -56,14 +56,14 @@ class SchedualCell: UITableViewCell {
         self.lbltitleEnddate.text = "Fin".localized
         self.lblreservationtitle.text = "Reservación".localized
         self.lblmoredetail.text = "MAS DETALLES".localized
-        self.lblqrCodeTitle.text = "GENERAR QR".localized
+        //self.lblqrCodeTitle.text = "GENERAR QR".localized
         self.lbldurationtitle.text = "Duración".localized
     }
 
     
     func viewDesign() {
         mapView.roundViewWithCustomRadius(radius: 5)
-        qrView.roundViewWithCustomRadius(radius: 8)
+        qrView.roundViewWithCustomRadius(radius: 5)
         mainView.layer.cornerRadius = 8
         mainView.layer.shadowColor = #colorLiteral(red: 0.423489809, green: 0.4235547483, blue: 0.4234756231, alpha: 1)
         mainView.layer.shadowRadius = 4.0

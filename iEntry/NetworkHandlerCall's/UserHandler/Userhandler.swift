@@ -234,7 +234,7 @@ class userhandler {
     
     
     class func getSixDigitCode(Success: @escaping (SixDigitCodeModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
-        let url = Constant.MainUrl + Constant.URLs.getSixDigitCode + "\(ShareData.shareInfo.obj?.id! ?? "")"
+        let url = Constant.MainUrl + Constant.URLs.getSixDigitCode //+ "\(ShareData.shareInfo.obj?.id! ?? "")"
         
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
@@ -644,7 +644,7 @@ class userhandler {
     
     class func getNotificationAfterDate(afterdate:Int,Success: @escaping (NotificationModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.notification + "/\(afterdate)"
-        
+        print("url",url)
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
@@ -892,15 +892,15 @@ class userhandler {
     
     //MARK:- get All ContractLists
     
-    class func getAllIncomingContractList(params:[String:Any],newurl:String,Success: @escaping (IncomingContractListModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+    class func getAllIncomingContractList(milisecond:Int,newurl:String,Success: @escaping (IncomingContractListModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
         var url = ""
         
-            url = newurl //Constant.MainUrl + Constant.URLs.incomingContractList
+            url = newurl + "\(milisecond)" //Constant.MainUrl + Constant.URLs.incomingContractList
        
          //url = Constant.MainUrl + Constant.URLs.contractHirotyList
         
         print("page url :", url)
-         Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
                  print(successResponse)

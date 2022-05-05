@@ -105,20 +105,19 @@ class LoginVC: BaseController {
         
     }
     
-    
     //MARK:- Caling Login Api
     func LoginApiCall() {
         self.showLoader()
         let dic = ["email":txtemail.text!,"password":txtpassword.text!]
-        
+        TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
         if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
-            TokenManager.shareToken.token()
+            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
         } else {
             
             if  TokenManager.shareToken.parsingToken() == true  {
                 
             } else {
-                TokenManager.shareToken.token()
+                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
             }
         }
         
