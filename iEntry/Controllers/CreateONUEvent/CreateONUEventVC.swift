@@ -35,6 +35,7 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
     var getAllZonedata : [GetAllZonesModelData]? = nil
     var MainDrowpDown = DropDown()
     var zondid = ""
+    var param = eventDic()
     override func viewDidLoad() {
         super.viewDidLoad()
         txtdate.delegate = self
@@ -119,22 +120,52 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
         MainDrowpDown.show()
     }
     @IBAction func sendAction(_ sender: UIButton) {
-        let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier:"ONUEventInvitationVC") as? ONUEventInvitationVC
-        self.navigationController?.pushViewController(vc!, animated: true)
+        
+        if checData() {
+            
+            self.param.dic?.updateValue(txtname.text ?? "", forKey: "name")
+            self.param.dic?.updateValue(txtduration.text ?? "", forKey: "duration")
+            self.param.dic?.updateValue(timeInMiliSec, forKey: "startDate")
+            self.param.dic?.updateValue(timeInMiliSec, forKey: "endDate")
+            self.param.dic?.updateValue(txtpurpose.text ?? "", forKey: "visitPurpose")
+            self.param.dic?.updateValue(txtaccompainment.text ?? "", forKey: "accompanied")
+            self.param.dic?.updateValue(txtunitsection.text ?? "", forKey: "unitSection")
+            self.param.dic?.updateValue(self.zondid, forKey: "zonid")
+            
+            let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier:"ONUEventInvitationVC") as? ONUEventInvitationVC
+            vc?.param = self.param
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
         
     }
     
     
     func checData() -> Bool {
+         if txtname.text == "" {
+            self.alert(message: "Please Enter The Name")
+            return false
+        } else
         if txtdate.text == "" {
             self.alert(message: "Please Select The Date")
             return false
             
-        } else if txthours.text == "" {
+        } else if txtduration.text == "" {
+            self.alert(message: "Please Enter The Duration")
+            return false
+        }else if txthours.text == "" {
             self.alert(message: "Please Select The Time")
             return false
-        } else if txtzone.text == "" {
+        } else if txtunitsection.text == "" {
+            self.alert(message: "Please Enter Unit Section")
+            return false
+        }else if txtpurpose.text == "" {
+            self.alert(message: "Please Enter The Purpose")
+            return false
+        }else if txtaccompainment.text == "" {
+            self.alert(message: "Please Enter The compainment")
+            return false
+        }else if txtzone.text == "" {
             self.alert(message: "Please Select The Zone")
             return false
         }
@@ -279,3 +310,9 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
         
     }
 }
+
+struct eventDic {
+    var dic:[String:Any]?
+    var invitationDic:[String:Any]?
+}
+

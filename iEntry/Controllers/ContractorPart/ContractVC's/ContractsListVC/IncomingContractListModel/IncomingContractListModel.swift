@@ -74,6 +74,7 @@ struct Contractor : Codable {
     let contractorCompanyName : String?
     let createdAt : Int?
     let updatedAt : Int?
+    let company : Company?
 
     enum CodingKeys: String, CodingKey {
 
@@ -84,6 +85,7 @@ struct Contractor : Codable {
         case contractorCompanyName = "contractorCompanyName"
         case createdAt = "createdAt"
         case updatedAt = "updatedAt"
+        case company = "company"
     }
 
     init(from decoder: Decoder) throws {
@@ -95,6 +97,7 @@ struct Contractor : Codable {
         contractorCompanyName = try values.decodeIfPresent(String.self, forKey: .contractorCompanyName)
         createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
         updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
+        company = try values.decodeIfPresent(Company.self, forKey: .company)
     }
 
 }

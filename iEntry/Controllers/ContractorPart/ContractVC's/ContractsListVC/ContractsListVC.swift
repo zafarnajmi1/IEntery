@@ -10,6 +10,7 @@ import XLPagerTabStrip
 import DZNEmptyDataSet
 class ContractsListVC: BaseController,IndicatorInfoProvider {
     var contractoEmplyeeData:GetContractorEmployeeByUserIDModelData?
+    var contractdata : GetContractorByUserIdModelData?
     var contractListdata = [IncomingContractListModelData]()
     fileprivate func  emptyDataSetUp() {
         self.tblView.emptyDataSetSource = self
@@ -36,6 +37,7 @@ class ContractsListVC: BaseController,IndicatorInfoProvider {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getContractList()
+        
     }
     
     func getcontractorEmployeeApi(){

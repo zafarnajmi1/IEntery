@@ -252,6 +252,10 @@ class UserProfileVC: BaseController {
             defaults.set(nil, forKey: "providerEmployeeData")
             defaults.set(nil, forKey: "contractorEmployeeData")
             defaults.set(nil, forKey: "invitation")
+            ShareData.shareInfo.password = nil
+            ShareData.shareInfo.Email = nil
+            ShareData.shareInfo.token = nil
+            ShareData.shareInfo.fcmToken = nil
                     
         }
         vc?.modalPresentationStyle = .overFullScreen

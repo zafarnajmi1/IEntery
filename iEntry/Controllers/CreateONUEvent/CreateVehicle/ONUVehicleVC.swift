@@ -6,21 +6,33 @@
 //
 
 import UIKit
+import DropDown
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class ONUVehicleVC: BaseController {
-
+    var param = eventDic()
+    var vehiclListdata : [GetVehicleListModelData]?
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var tblViewHeight: NSLayoutConstraint!
     @IBOutlet weak var txtvehicle: MDCOutlinedTextField!
+    var MainDrowpDown = DropDown()
+    var selectVehicle = [SelectedVehicleListData]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.getVehicleListApi()
         setMDCTxtFieldDesign(txtfiled: txtvehicle, Placeholder: "VEHÍCULOS".localized, imageIcon: UIImage(named: "sort-down-solid")!)
         
         self.tblView.register(UINib.init(nibName: "ONUVehicleCell", bundle: nil), forCellReuseIdentifier: "ONUVehicleCell")
     }
     
     @IBAction func selectionVehicleAction(_ sender: UIButton) {
+        
+        var  vehicleList = [String]()
+     for item in self.vehiclListdata ?? [] {
+         vehicleList.append(item.vehicle?.brand ?? "")
+     }
+        dropDownConfig(txtField: txtvehicle
+                       , data: vehicleList)
+        
     }
     
     @IBAction func registerVehicleAction(_ sender: UIButton) {
@@ -28,9 +40,11 @@ class ONUVehicleVC: BaseController {
         
         let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier:"CreateVehicleVC") as? CreateVehicleVC
-        
+        vc?.callBack = {
+            vc?.dismiss(animated: true, completion: nil)
+            self.getVehicleListApi()
+        }
         vc?.modalPresentationStyle = .overFullScreen
-        
         self.present(vc!, animated: false, completion: nil)
     }
     
@@ -48,7 +62,47 @@ class ONUVehicleVC: BaseController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func getVehicleListApi(){
+        self.showLoader()
+        userhandler.getVehicleListByCompanyID(Success: {response in
+            self.hidLoader()
+            if response?.success == true {
+                self.vehiclListdata = response?.data
+            } else {
+                self.alert(message: response?.message ?? "")
+            }
+        }, Failure: {error in
+            self.hidLoader()
+            self.alert(message: error.message)
+        })
+    }
     
+    //MARK:- this is general funtion that will use to appear the dropdown
+    func dropDownConfig(txtField : UITextField, data:[String]) {
+        MainDrowpDown.anchorView = txtField
+        MainDrowpDown.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        MainDrowpDown.selectionBackgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        MainDrowpDown.dataSource =  data
+        DropDown.appearance().textColor = #colorLiteral(red: 0.5527616143, green: 0.5568413734, blue: 0.5609211326, alpha: 1)
+        DropDown.appearance().selectedTextColor = UIColor.red
+        //DropDown.appearance().textFont = UIFont(name: "JosefinSans-Regular", size: 18)!
+        self.MainDrowpDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+            
+            cell.optionLabel.textAlignment = .left
+            
+        }
+        
+        MainDrowpDown.bottomOffset = CGPoint(x: 0, y: txtField.bounds.height)
+        MainDrowpDown.selectionAction = { [self](index: Int, item: String) in
+            print(item)
+
+            self.txtvehicle.text = item
+            self.selectVehicle.append(SelectedVehicleListData(id:self.vehiclListdata?[index].vehicle?.id ?? "" , place: vehiclListdata?[index].vehicle?.plate ?? "", brand: vehiclListdata?[index].vehicle?.brand ?? "", sub_brand: vehiclListdata?[index].vehicle?.brand ?? "", vin: vehiclListdata?[index].vehicle?.plate ?? ""))
+            self.tblView.reloadData()
+        }
+        MainDrowpDown.show()
+    }
     
 }
 extension ONUVehicleVC: UITableViewDelegate,UITableViewDataSource {
@@ -56,13 +110,28 @@ extension ONUVehicleVC: UITableViewDelegate,UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.selectVehicle.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ONUVehicleCell") as? ONUVehicleCell
+        
+        cell?.lblvin.text = self.selectVehicle[indexPath.row].vin
+        cell?.lblbrand.text = self.selectVehicle[indexPath.row].brand
+        cell?.lblsubbrand.text = self.selectVehicle[indexPath.row].brand
+        cell?.lblplate.text = self.selectVehicle[indexPath.row].place
+        
         return cell!
     }
     
     
+}
+
+
+struct SelectedVehicleListData {
+    var id:String?
+    var place:String?
+    var brand:String?
+    var sub_brand :String?
+    var vin:String?
 }

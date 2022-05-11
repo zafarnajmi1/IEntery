@@ -40,7 +40,7 @@ class TokenManager {
     
     
     
-    func token(email:String,password:String){
+    func token(email:String,password:String, token:@escaping (String)->Void?){
         let dic: [String:Any] =  ["email":email,"password":password]
 
         var Headers : HTTPHeaders
@@ -62,6 +62,7 @@ class TokenManager {
                     self.tokenModeldata = responseModel
                     print(responseModel)
                     ShareData.shareInfo.token = self.tokenModeldata?.access_token
+                    token(self.tokenModeldata?.access_token ?? "")
                 }
                 catch {
                     print("Response Error")

@@ -107,21 +107,42 @@ class LoginVC: BaseController {
     
     //MARK:- Caling Login Api
     func LoginApiCall() {
-        self.showLoader()
+        
         let dic = ["email":txtemail.text!,"password":txtpassword.text!]
-        TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
+        
+        ShareData.shareInfo.Email = txtemail.text ?? ""
+        ShareData.shareInfo.password = txtpassword.text ?? ""
+        
+        TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: {
+            accessToken in
+                ShareData.shareInfo.token = accessToken
+        })
+        
+        
         if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
-            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
+            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: {
+                accessToken in
+                    ShareData.shareInfo.token = accessToken
+            })
+            
+             
         } else {
             
             if  TokenManager.shareToken.parsingToken() == true  {
                 
             } else {
-                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
+                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: { accessToken in
+                    ShareData.shareInfo.token = accessToken
+                    
+                })
             }
         }
         
+        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
+            return
+        }
         
+        self.showLoader()
         loginVM.loginApiCall(params: dic, Success: { response,trycath  in
             self.hidLoader()
             if response?.success == true {

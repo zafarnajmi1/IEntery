@@ -21,17 +21,25 @@ class SplashVC: UIViewController {
            print("FCM Token", token)
             ShareData.shareInfo.fcmToken = token
         }
-        TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
-        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
-            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
-        } else {
-
-            if  TokenManager.shareToken.parsingToken() == true  {
-
-            } else {
-                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "")
-            }
-        }
+        TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: { accessToken in
+            ShareData.shareInfo.token = accessToken
+        })
+        
+//        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
+//            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: { accessToken in
+//                ShareData.shareInfo.token = accessToken
+//            })
+//        } else {
+//
+//            if  TokenManager.shareToken.parsingToken() == true  {
+//
+//            } else {
+//                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: {
+//                    accessToken in
+//                        ShareData.shareInfo.token = accessToken
+//                })
+//            }
+//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -113,9 +113,9 @@ class Constant {
         static let contractHirotyList = "contract-service/contractor/get-all/records/"
         
         static let getContractorByUserId = "contractor-service/get-by-user-id/"
-        static let getallIncomingContractorEmployee = "contract-service/contractor-employee/get-all/incoming-active"
+        static let getallIncomingContractorEmployee = "contract-service/contractor-employee/get-all/incoming-active/"
         
-        static let getallRecordContractorEmployee = "contract-service/contractor-employee/get-all/records"
+        static let getallRecordContractorEmployee = "contract-service/contractor-employee/get-all/records/"
         
         static let getContractorEmployeeByUserID = "contractor-employee-service/get-by-user-id/"
         
@@ -125,9 +125,11 @@ class Constant {
         static let getproviderbyuserid = "provider-service/get-by-user-id/"
         static let getorderrecordbyuserid = "order-service/provider/get-all/by-provider-id/"
         static let getorderbyuserid = "order-service/get-by-id/"
-       static let providerEmployeeOrder = "order-service/provider-employee/get-all/by-provider-employee-id/"
+        static let providerEmployeeOrder = "order-service/provider-employee/get-all/by-provider-employee-id/"
         static let getprovideremployeebyuserid = "provider-employee-service/get-by-user-id/"
-         static let token = "token"
+        static let token = "token"
+        static let getVehicleList = "vehicle-company-service/get-all-by-company-id"
+        static let createVehicle = "vehicle-service/create-for-company"
         
     }
     

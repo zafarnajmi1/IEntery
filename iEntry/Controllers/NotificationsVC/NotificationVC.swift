@@ -88,7 +88,7 @@ class NotificationVC: BaseController {
             
         }else if ShareData.shareInfo.userRole == .contractoremplyee {
             //contractorEmployeeId
-            dic = ["userId":ShareData.shareInfo.contractorEmployeedataValueGetByUserid?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid.company?.id ?? "","date":sectimeInMili]
+            dic = ["userId":ShareData.shareInfo.contractorEmployeedataValueGetByUserid?.id ?? "", "companyId":ShareData.shareInfo.contractorEmployeedataValueGetByUserid?.contractor?.company?.id ?? "","date":sectimeInMili]
             
         } else if ShareData.shareInfo.userRole == .employees{
             

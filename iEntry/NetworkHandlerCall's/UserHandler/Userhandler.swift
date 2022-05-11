@@ -924,7 +924,7 @@ class userhandler {
     //MARK: Get Contractor By user ID
     class func getContractorByUserIDs(userid:String,Success: @escaping (GetContractorByUserIdModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.getContractorByUserId + userid
-        
+          print("contractorEmplye Url :", url)
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
@@ -949,7 +949,7 @@ class userhandler {
     //MARK: Get Contractor Employee By user ID
     class func getContractorEmployeeByUserIDs(userid:String,Success: @escaping (GetContractorEmployeeByUserIDModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.getContractorEmployeeByUserID + userid
-        
+        print("ContractorEmp:",url)
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
@@ -1117,7 +1117,50 @@ class userhandler {
      }
     
     
+    //MARK: Get Contractor Employee By user ID
+    class func getVehicleListByCompanyID(Success: @escaping (GetVehicleListModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.getVehicleList
+        print("ContractorEmp:",url)
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(GetVehicleListModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
     
+    
+    
+    //MARK:- Create Vehicle
+    class func createVehicle(parms:[String:Any],Success: @escaping (CreateVehicleModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.createVehicle
+        print("token",url,parms)
+         Networkhandler.PostRequest(url: url, parameters: parms,success: {(successResponse)  in
+
+             do {
+                 print("token response ",successResponse)
+                 let responseModel = try JSONDecoder().decode(CreateVehicleModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
 }
 
 

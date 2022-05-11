@@ -20,7 +20,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     var usersIDsarr = [String]()
     var checkRegisterUser = [checkUserExistModel]()
     var invitationlist = [InvitationsHistoryModel]()
-    
+    var param = eventDic()
     var eventid = ""
     var guestNumber = 0
     //MARK:- here are the ibOUtlet
@@ -85,11 +85,31 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
              }
          }
      }
+    
+    
+    func checkData() ->Bool{
+        if txtvistorcomments.text == "COMENTARIOS PARA VISITANTES." || txtvistorcomments.text == "" {
+            self.alert(message: "Please Enter The Commnets")
+            return false
+        } else if self.checkRegisterUser.count < 1 {
+            self.alert(message: "Please Invite At Least One Person")
+            return false
+        }
+        return true
+    }
+    
     @IBAction func endupAction(_ sender: UIButton) {
-        let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier:"ONUVehicleVC") as? ONUVehicleVC
-        self.navigationController?.pushViewController(vc!, animated: true)
         
+        if checkData() {
+            
+                self.param.dic?.updateValue(txtvistorcomments.text ?? "", forKey: "visitorComment")
+            
+                let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier:"ONUVehicleVC") as? ONUVehicleVC
+                vc?.param = self.param
+                self.navigationController?.pushViewController(vc!, animated: true)
+            
+        }
         
         
 //        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
@@ -216,8 +236,12 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
                    do {
                                // setting a value for a key
                        let newPerson = checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "")
-                               
-                       checkRegisterUser.append(newPerson)
+                       
+                            if !self.checkRegisterUser.contains(where: { $0.phoneemail == response?.data?.phoneNumber ?? "" }){
+                                       
+                                        checkRegisterUser.append(newPerson)
+                                  }
+                       
                                let encodedData = try NSKeyedArchiver.archivedData(withRootObject: checkRegisterUser, requiringSecureCoding: false)
                                UserDefaults.standard.set(encodedData, forKey: "contactList")
                                
@@ -331,6 +355,24 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
                 
                 
                 
+                let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier:"ONURegisterUserVC") as? ONURegisterUserVC
+                //vc?.number = self.checkRegisterUser[indexPath.row].phoneemail
+//                vc?.callback = {number, name in
+//                    for item in self.checkRegisterUser {
+//                        if item.phoneemail == number {
+//                            self.checkRegisterUser[indexPath.row].isregister = true
+//                            self.checkRegisterUser[indexPath.row].name = name
+//
+//                        }
+//                    }
+//                    self.tblView.reloadData()
+//                }
+                vc?.modalPresentationStyle = .overFullScreen
+                
+                self.present(vc!, animated: false, completion: nil)
+                
+                
             } else {
                     let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
                     let vc = storyBoard.instantiateViewController(withIdentifier:"UserNotRegisterPopUpVC") as? UserNotRegisterPopUpVC
@@ -382,3 +424,4 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [deleteAction])
         }
 }
+

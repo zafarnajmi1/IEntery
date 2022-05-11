@@ -9,6 +9,10 @@ import UIKit
 
 class ONUVehicleCell: UITableViewCell {
 
+    @IBOutlet weak var lblplate: UILabel!
+    @IBOutlet weak var lblvin: UILabel!
+    @IBOutlet weak var lblsubbrand: UILabel!
+    @IBOutlet weak var lblbrand: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
