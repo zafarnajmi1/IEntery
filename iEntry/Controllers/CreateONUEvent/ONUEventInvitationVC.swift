@@ -91,7 +91,8 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
         if txtvistorcomments.text == "COMENTARIOS PARA VISITANTES." || txtvistorcomments.text == "" {
             self.alert(message: "Please Enter The Commnets")
             return false
-        } else if self.checkRegisterUser.count < 1 {
+        }
+        else if self.checkRegisterUser.count < 1 {
             self.alert(message: "Please Invite At Least One Person")
             return false
         }
@@ -102,11 +103,12 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
         
         if checkData() {
             
-                self.param.dic?.updateValue(txtvistorcomments.text ?? "", forKey: "visitorComment")
-            
+            self.param.dic.updateValue(txtvistorcomments.text ?? "", forKey: "visitorComment")
+                
                 let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier:"ONUVehicleVC") as? ONUVehicleVC
                 vc?.param = self.param
+                vc?.param.checkRegisterUser =  self.checkRegisterUser
                 self.navigationController?.pushViewController(vc!, animated: true)
             
         }
@@ -126,6 +128,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     @IBAction func backAction(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.tblHeight.constant =  self.tblView.contentSize.height
@@ -283,8 +286,6 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
             }
         }
         
-        
-        
         let dic : [String:Any] = ["eventId":eventid,"userInvitations":mainArr]
         //
         //usersIds
@@ -357,39 +358,83 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
                 
                 let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier:"ONURegisterUserVC") as? ONURegisterUserVC
-                //vc?.number = self.checkRegisterUser[indexPath.row].phoneemail
-//                vc?.callback = {number, name in
-//                    for item in self.checkRegisterUser {
-//                        if item.phoneemail == number {
-//                            self.checkRegisterUser[indexPath.row].isregister = true
-//                            self.checkRegisterUser[indexPath.row].name = name
-//
-//                        }
-//                    }
-//                    self.tblView.reloadData()
-//                }
+                vc?.number = self.checkRegisterUser[indexPath.row].phoneemail
+                vc?.name = self.checkRegisterUser[indexPath.row].name
+                //vc?.email = self.checkRegisterUser[indexPath.row].name
+                vc?.isAlreadyRegister = true
+                vc?.callBack = {name,email,phone,organization,pickupSite, numberofCompanoin,bzbadge,ispdfShare in
+                    for item in self.checkRegisterUser {
+                        if item.phoneemail == phone {
+                            self.checkRegisterUser[indexPath.row].isregister = true
+                            self.checkRegisterUser[indexPath.row].name = name
+
+                        }
+                    }
+                    
+                    self.param.invitationDic.updateValue(numberofCompanoin, forKey: "guestNumber")
+                    self.param.invitationDic.updateValue(ispdfShare, forKey: "sharePdf")
+                    self.param.invitationDic.updateValue(organization, forKey: "organization")
+                    self.param.invitationDic.updateValue(pickupSite, forKey: "placeToPickUp")
+                    self.param.invitationDic.updateValue(bzbadge, forKey: "gzBadge")
+                    
+                    self.tblView.reloadData()
+                }
                 vc?.modalPresentationStyle = .overFullScreen
                 
                 self.present(vc!, animated: false, completion: nil)
                 
                 
             } else {
-                    let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
-                    let vc = storyBoard.instantiateViewController(withIdentifier:"UserNotRegisterPopUpVC") as? UserNotRegisterPopUpVC
-                    vc?.number = self.checkRegisterUser[indexPath.row].phoneemail
-                    vc?.callback = {number, name in
-                        for item in self.checkRegisterUser {
-                            if item.phoneemail == number {
-                                self.checkRegisterUser[indexPath.row].isregister = true
-                                self.checkRegisterUser[indexPath.row].name = name
-                              
-                            }
-                        }
-                        self.tblView.reloadData()
-                    }
-                    vc?.modalPresentationStyle = .overFullScreen
-                    
-                    self.present(vc!, animated: false, completion: nil)
+                
+                
+                let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+                                let vc = storyBoard.instantiateViewController(withIdentifier:"ONUUserNotRegisterPopUpVC") as? ONUUserNotRegisterPopUpVC
+                                    
+                                    vc?.callBack = {
+                                        vc?.dismiss(animated: true, completion: nil)
+                                        
+                                        
+                                        
+                                        
+                                        let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+                                        let vc = storyBoard.instantiateViewController(withIdentifier:"ONURegisterUserVC") as? ONURegisterUserVC
+                                        
+                                        vc?.isAlreadyRegister = false
+                                        vc?.callBack = {name,email,phone,organization,pickupSite, numberofCompanoin,bzbadge,ispdfShare in
+                                            
+                                            for item in self.checkRegisterUser {
+                                                
+                                                if item.phoneemail == phone {
+                                                    self.checkRegisterUser[indexPath.row].isregister = true
+                                                    self.checkRegisterUser[indexPath.row].name = name
+
+                                                }
+                                            }
+                                            
+                                            self.param.invitationDic.updateValue(numberofCompanoin, forKey: "guestNumber")
+                                            self.param.invitationDic.updateValue(ispdfShare, forKey: "sharePdf")
+                                            self.param.invitationDic.updateValue(organization, forKey: "organization")
+                                            self.param.invitationDic.updateValue(pickupSite, forKey: "placeToPickUp")
+                                            self.param.invitationDic.updateValue(bzbadge, forKey: "gzBadge")
+                                            
+                                            self.tblView.reloadData()
+                                        }
+                                        vc?.modalPresentationStyle = .overFullScreen
+                                        
+                                        self.present(vc!, animated: false, completion: nil)
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    }
+                                    vc?.modalPresentationStyle = .overFullScreen
+                
+                                    self.present(vc!, animated: false, completion: nil)
+                
+                
+
             }
         
     }

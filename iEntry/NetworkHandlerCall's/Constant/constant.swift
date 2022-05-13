@@ -130,6 +130,7 @@ class Constant {
         static let token = "token"
         static let getVehicleList = "vehicle-company-service/get-all-by-company-id"
         static let createVehicle = "vehicle-service/create-for-company"
+        static let vehicleInvitation = "event-service/create-vehicle-invitations"
         
     }
     
@@ -146,7 +147,7 @@ class Constant {
         
         static let serverErrorCode = 5000
         static let serverNotAvailable = "Server Not Available"
-        static let serverError = "Server Not Availabe, Please Try Later."
+        static let serverError = "Server Not Available, Please Try Later."
         
         static let timout = 4001
         static let timoutError = "Network Time Out, Please Try Again."

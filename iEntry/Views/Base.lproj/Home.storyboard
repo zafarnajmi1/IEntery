@@ -4714,7 +4714,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y65-7p-58a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="1451"/>
+            <point key="canvasLocation" x="-259" y="1452"/>
         </scene>
         <!--InvitationVC-->
         <scene sceneID="azt-H3-PTS">

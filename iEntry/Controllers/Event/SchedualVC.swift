@@ -123,9 +123,12 @@ extension SchedualVC: UITableViewDelegate,UITableViewDataSource {
             }
             
             if !Istrue {
-//                    let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
-//                    let vc = storyBoard.instantiateViewController(withIdentifier:"GeneralQRCodeVC") as? GeneralQRCodeVC
-//                    self.navigationController?.pushViewController(vc!, animated: true)
+                
+                    let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier:"CancelEventVC") as? CancelEventVC
+                vc?.modalPresentationStyle = .overFullScreen
+                
+                self.present(vc!, animated: false, completion: nil)
             }
         }
         

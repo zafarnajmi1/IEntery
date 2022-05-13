@@ -1161,6 +1161,32 @@ class userhandler {
              Failure(Error)
          })
      }
+    
+    
+    
+    
+    
+    //MARK:- Vehicle Invitation
+    
+    class func sendvehicleInvitation(params:[String:Any],Success: @escaping (VehicleInvitationModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.vehicleInvitation
+        
+         Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(VehicleInvitationModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
 }
 
 

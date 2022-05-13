@@ -74,6 +74,7 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
         setMDCTxtFieldDesign(txtfiled: txtaccompainment, Placeholder: "ACOMPAÑAMIENTO".localized, imageIcon: UIImage())
         setMDCTxtFieldDesign(txtfiled: txtpurpose, Placeholder: "PROPOSITO DE LA VISITA".localized, imageIcon: UIImage())
         setMDCTxtFieldDesign(txtfiled: txtunitsection, Placeholder: "UNIDAD / SECCIÓN".localized, imageIcon: UIImage())
+        txtduration.keyboardType = .numberPad
        
     }
 
@@ -123,14 +124,14 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
         
         if checData() {
             
-            self.param.dic?.updateValue(txtname.text ?? "", forKey: "name")
-            self.param.dic?.updateValue(txtduration.text ?? "", forKey: "duration")
-            self.param.dic?.updateValue(timeInMiliSec, forKey: "startDate")
-            self.param.dic?.updateValue(timeInMiliSec, forKey: "endDate")
-            self.param.dic?.updateValue(txtpurpose.text ?? "", forKey: "visitPurpose")
-            self.param.dic?.updateValue(txtaccompainment.text ?? "", forKey: "accompanied")
-            self.param.dic?.updateValue(txtunitsection.text ?? "", forKey: "unitSection")
-            self.param.dic?.updateValue(self.zondid, forKey: "zonid")
+            self.param.dic.updateValue(txtname.text ?? "", forKey: "name")
+            self.param.dic.updateValue(txtduration.text ?? "", forKey: "duration")
+            self.param.dic.updateValue(timeInMiliSec, forKey: "startDate")
+            self.param.dic.updateValue(timeInMiliSec, forKey: "endDate")
+            self.param.dic.updateValue(txtpurpose.text ?? "", forKey: "visitPurpose")
+            self.param.dic.updateValue(txtaccompainment.text ?? "", forKey: "accompanied")
+            self.param.dic.updateValue(txtunitsection.text ?? "", forKey: "unitSection")
+            self.param.dic.updateValue(self.zondid, forKey: "zonid")
             
             let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier:"ONUEventInvitationVC") as? ONUEventInvitationVC
@@ -312,7 +313,8 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
 }
 
 struct eventDic {
-    var dic:[String:Any]?
-    var invitationDic:[String:Any]?
+    var dic:[String:Any] = [:]
+    var invitationDic:[String:Any] = [:]
+    var checkRegisterUser = [checkUserExistModel]()
 }
 

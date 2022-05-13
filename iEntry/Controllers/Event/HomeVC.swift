@@ -89,19 +89,19 @@ class HomeVC: ButtonBarPagerTabStripViewController {
     }
     @IBAction func addEventAction(_ sender: UIButton) {
         
-        //if ShareData.shareInfo.companyRistrictiondata?.isOnuEvent == true {
+        if ShareData.shareInfo.companyRistrictiondata?.isOnuEvent == true {
             let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier:"CreateONUEventVC") as? CreateONUEventVC
             self.navigationController?.pushViewController(vc!, animated: true)
             
             
-//        } else {
-//
-//                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
-//                let vc = storyBoard.instantiateViewController(withIdentifier:"CreateEventVC") as? CreateEventVC
-//                self.navigationController?.pushViewController(vc!, animated: true)
-//
-//        }
+        } else {
+
+                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier:"CreateEventVC") as? CreateEventVC
+                self.navigationController?.pushViewController(vc!, animated: true)
+
+        }
         ////////////////
 //        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
 //        let vc = storyBoard.instantiateViewController(withIdentifier:"CreateEventPopUpVC") as? CreateEventPopUpVC

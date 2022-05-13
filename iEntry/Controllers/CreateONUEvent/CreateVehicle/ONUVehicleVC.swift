@@ -10,6 +10,7 @@ import DropDown
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class ONUVehicleVC: BaseController {
     var param = eventDic()
+    @IBOutlet weak var lblvehicleCounts: UILabel!
     var vehiclListdata : [GetVehicleListModelData]?
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var tblViewHeight: NSLayoutConstraint!
@@ -51,6 +52,8 @@ class ONUVehicleVC: BaseController {
     @IBAction func continueAction(_ sender: UIButton) {
         let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier:"TransportRequiredVC") as? TransportRequiredVC
+        vc?.param =  self.param
+        vc?.selectVehicle = self.selectVehicle
         self.navigationController?.pushViewController(vc!, animated: true)
         
     }

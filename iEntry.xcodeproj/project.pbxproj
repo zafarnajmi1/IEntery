@@ -44,6 +44,8 @@
 		1C425457280E8AAE00DA3EDD /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C425456280E8AAE00DA3EDD /* TokenManager.swift */; };
 		1C428975282ACCF200E05443 /* GetVehicleListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C428974282ACCF200E05443 /* GetVehicleListModel.swift */; };
 		1C428977282AFC3A00E05443 /* CreateVehicleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C428976282AFC3A00E05443 /* CreateVehicleModel.swift */; };
+		1C4358CE282D770E00CF1970 /* UserAlreadyExistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4358CD282D770E00CF1970 /* UserAlreadyExistVC.swift */; };
+		1C4358D2282D834400CF1970 /* CancelEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4358D1282D834300CF1970 /* CancelEventVC.swift */; };
 		1C437BA2278605AB00D20C00 /* InvitationsHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C437BA1278605AB00D20C00 /* InvitationsHistoryModel.swift */; };
 		1C438ACC27834C8900073F60 /* getUserIsExistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C438ACB27834C8900073F60 /* getUserIsExistModel.swift */; };
 		1C4488CA27591BF300464ACB /* GetGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4488C927591BF300464ACB /* GetGenderModel.swift */; };
@@ -91,6 +93,8 @@
 		1C4E1A1326E1369100B0D235 /* AddContractorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E1A1226E1369100B0D235 /* AddContractorVC.swift */; };
 		1C4E1A1526E144DC00B0D235 /* ContractorDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E1A1426E144DC00B0D235 /* ContractorDetailVC.swift */; };
 		1C4E41A927D93892004320FA /* ProviderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E41A827D93892004320FA /* ProviderDetailVC.swift */; };
+		1C4EE4BD282C417C00853FEA /* ONUUserNotRegisterPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4EE4BC282C417C00853FEA /* ONUUserNotRegisterPopUpVC.swift */; };
+		1C4EE4BF282C4B9C00853FEA /* VehicleInvitationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4EE4BE282C4B9C00853FEA /* VehicleInvitationModel.swift */; };
 		1C4F4D682719EBA900158769 /* GenerateTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F4D672719EBA900158769 /* GenerateTokenModel.swift */; };
 		1C4F4D6A271A07D500158769 /* SelectCompanyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F4D69271A07D500158769 /* SelectCompanyVC.swift */; };
 		1C4F4D6D271A08AC00158769 /* SelectCompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4F4D6B271A08AC00158769 /* SelectCompanyCell.swift */; };
@@ -362,6 +366,8 @@
 		1C425456280E8AAE00DA3EDD /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		1C428974282ACCF200E05443 /* GetVehicleListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVehicleListModel.swift; sourceTree = "<group>"; };
 		1C428976282AFC3A00E05443 /* CreateVehicleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVehicleModel.swift; sourceTree = "<group>"; };
+		1C4358CD282D770E00CF1970 /* UserAlreadyExistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlreadyExistVC.swift; sourceTree = "<group>"; };
+		1C4358D1282D834300CF1970 /* CancelEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelEventVC.swift; sourceTree = "<group>"; };
 		1C437BA1278605AB00D20C00 /* InvitationsHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsHistoryModel.swift; sourceTree = "<group>"; };
 		1C438ACB27834C8900073F60 /* getUserIsExistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getUserIsExistModel.swift; sourceTree = "<group>"; };
 		1C4488C927591BF300464ACB /* GetGenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenderModel.swift; sourceTree = "<group>"; };
@@ -406,6 +412,8 @@
 		1C4E1A1226E1369100B0D235 /* AddContractorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContractorVC.swift; sourceTree = "<group>"; };
 		1C4E1A1426E144DC00B0D235 /* ContractorDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractorDetailVC.swift; sourceTree = "<group>"; };
 		1C4E41A827D93892004320FA /* ProviderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderDetailVC.swift; sourceTree = "<group>"; };
+		1C4EE4BC282C417C00853FEA /* ONUUserNotRegisterPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONUUserNotRegisterPopUpVC.swift; sourceTree = "<group>"; };
+		1C4EE4BE282C4B9C00853FEA /* VehicleInvitationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleInvitationModel.swift; sourceTree = "<group>"; };
 		1C4F4D672719EBA900158769 /* GenerateTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateTokenModel.swift; sourceTree = "<group>"; };
 		1C4F4D69271A07D500158769 /* SelectCompanyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCompanyVC.swift; sourceTree = "<group>"; };
 		1C4F4D6B271A08AC00158769 /* SelectCompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCompanyCell.swift; sourceTree = "<group>"; };
@@ -715,6 +723,8 @@
 			isa = PBXGroup;
 			children = (
 				1C49BCB5282977A800360BB7 /* ONURegisterUserVC.swift */,
+				1C4EE4BC282C417C00853FEA /* ONUUserNotRegisterPopUpVC.swift */,
+				1C4358CD282D770E00CF1970 /* UserAlreadyExistVC.swift */,
 			);
 			path = ONURegistreUser;
 			sourceTree = "<group>";
@@ -738,6 +748,7 @@
 				1C4ADF7F2819AC5600396F10 /* ONUEvent.storyboard */,
 				1C5B83F6281D291D00A95CF1 /* TransportRequiredVC.swift */,
 				1CF656BB2829AA480023EBF3 /* ONUInvitationSentVC.swift */,
+				1C4358D1282D834300CF1970 /* CancelEventVC.swift */,
 			);
 			path = CreateONUEvent;
 			sourceTree = "<group>";
@@ -945,6 +956,7 @@
 				1C428973282ACC8C00E05443 /* GetListVehicleModel */,
 				1C5C5163281C7A1B009CD4AA /* ONUVehicleVC.swift */,
 				1C5B83F4281D243100A95CF1 /* CreateVehicleVC.swift */,
+				1C4EE4BE282C4B9C00853FEA /* VehicleInvitationModel.swift */,
 			);
 			path = CreateVehicle;
 			sourceTree = "<group>";
@@ -1721,6 +1733,7 @@
 				1C567C2026BC4D29000CCA7C /* MethodVC.swift in Sources */,
 				1C567C1826BC2E17000CCA7C /* ChangePasswordVC.swift in Sources */,
 				1CB18B19275E74D40089AF62 /* FCMTokenModel.swift in Sources */,
+				1C4EE4BF282C4B9C00853FEA /* VehicleInvitationModel.swift in Sources */,
 				1C4488D727593D1400464ACB /* CreateExtraUserDataModel.swift in Sources */,
 				1C4488CA27591BF300464ACB /* GetGenderModel.swift in Sources */,
 				1CFC11DD2706500400526EEE /* InvitationRecordCell.swift in Sources */,
@@ -1736,6 +1749,7 @@
 				1C5D44E726CC49AF00E8ADE1 /* AcceptORRejectionPopUpVC.swift in Sources */,
 				1C5FA39626E90D2600512F15 /* constant.swift in Sources */,
 				1C3C17F1278DD82900F40D0E /* getAllInvitationsAgainstEventModel.swift in Sources */,
+				1C4358D2282D834400CF1970 /* CancelEventVC.swift in Sources */,
 				1C53FAF726C3202300849C95 /* SchedualCell.swift in Sources */,
 				1C4A3D3D26D00FB200D4FCF4 /* ContactListCell.swift in Sources */,
 				1C6E21C927397C40006EDFDE /* InformationVC.swift in Sources */,
@@ -1758,6 +1772,7 @@
 				1C567C1A26BC3743000CCA7C /* PermissionVC.swift in Sources */,
 				1C8F20B426E1534A009BBFA8 /* UpdateContractorVC.swift in Sources */,
 				1C33D44E273EC3F80094B63F /* ContractInformationVC.swift in Sources */,
+				1C4EE4BD282C417C00853FEA /* ONUUserNotRegisterPopUpVC.swift in Sources */,
 				1C4F4D682719EBA900158769 /* GenerateTokenModel.swift in Sources */,
 				1C5AB43E26F0E8BA00BFA663 /* CompanyVerificationCodeVC.swift in Sources */,
 				1C49BCB6282977A800360BB7 /* ONURegisterUserVC.swift in Sources */,
@@ -1775,6 +1790,7 @@
 				1C4C13A126C444CE00351F3C /* menuCell.swift in Sources */,
 				1CB2F44526BB05C900E1F79F /* iEntry.xcdatamodeld in Sources */,
 				1C53FADF26C2EC5D00849C95 /* ZSideMenuManager.swift in Sources */,
+				1C4358CE282D770E00CF1970 /* UserAlreadyExistVC.swift in Sources */,
 				1C4B072D26D410E400B20607 /* InvitationRecordVC.swift in Sources */,
 				1C5D44E426CC437800E8ADE1 /* RecordDetailCell.swift in Sources */,
 				1CE1A241270B5A07005A84A4 /* InvitarCell.swift in Sources */,
