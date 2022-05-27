@@ -8,11 +8,16 @@
 import UIKit
 
 class ONUInvitationSentVC: BaseController {
-
+    @IBOutlet weak var lbltitlecancel: UILabel!
+    
+    @IBOutlet weak var btnaccepttitle: UIButton!
+    @IBOutlet weak var lbldetailtitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.lbltitlecancel.text = "INVITACIÓN YA HA SIDO CREADA".localized
+        self.lbldetailtitle.text = "La invitación ha sido creada, si deseas cambiar algún dato, debes eliminarla y volver a invitar a esa persona.".localized
+        self.btnaccepttitle.setTitle("ACEPTAR".localized, for: .normal)
     }
     
 

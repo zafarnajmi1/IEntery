@@ -12,6 +12,7 @@ class CurrentOrderVC: BaseController,IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "ORDENES EN CURSO".localized)
     }
+    @IBOutlet weak var emptyView: UIView!
     
     var providerdata : ProviderUserByIdModelData?
     var contractdata : GetContractorByUserIdModelData?
@@ -94,6 +95,15 @@ class CurrentOrderVC: BaseController,IndicatorInfoProvider {
             if response?.success == true {
                 self.ordersdata = response?.data ?? []
                 self.tblView.reloadData()
+            
+                self.tblView.isHidden = false
+                self.emptyView.isHidden = true
+                if self.ordersdata.count == 0 {
+                    self.tblView.isHidden = true
+                    self.emptyView.isHidden = false 
+                }
+            
+            
             } else {
                 self.alert(message: response?.message ?? "")
             }

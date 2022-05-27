@@ -14,6 +14,7 @@ class RecordVC: BaseController,IndicatorInfoProvider {
         return IndicatorInfo(title: "HISTORIAL".localized)
     }
     
+    @IBOutlet weak var emptyView: UIView!
     fileprivate func  emptyDataSetUp() {
         self.tblView.emptyDataSetSource = self
         self.tblView.emptyDataSetDelegate = self
@@ -22,13 +23,22 @@ class RecordVC: BaseController,IndicatorInfoProvider {
     }
     
     //MARK:- here are iboutlete
-    @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var tblView: UITableView!{
+        didSet {
+            if ShareData.shareInfo.companyRistrictiondata?.isOnuEvent == true {
+                self.tblView.register(UINib.init(nibName: "ONUEventCell", bundle: nil), forCellReuseIdentifier: "ONUEventCell")
+                
+            } else {
+                self.tblView.register(UINib.init(nibName: "SchedualCell", bundle: nil), forCellReuseIdentifier: "SchedualCell")
+            }
+        }
+    }
     
     var eventdata : [EventModuleData]? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tblView.register(UINib.init(nibName: "SchedualCell", bundle: nil), forCellReuseIdentifier: "SchedualCell")
+        //self.tblView.register(UINib.init(nibName: "SchedualCell", bundle: nil), forCellReuseIdentifier: "SchedualCell")
         
     }
     
@@ -52,8 +62,14 @@ class RecordVC: BaseController,IndicatorInfoProvider {
             self.hidLoader()
             if response?.success == true {
                 self.eventdata = response?.data ?? []
+                
+                self.tblView.isHidden = false
+                self.emptyView.isHidden = true
                 if self.eventdata?.count == 0 {
-                    self.emptyDataSetUp()
+                    self.emptyView.isHidden = false
+                    self.tblView.isHidden = true 
+                    
+                    //self.emptyDataSetUp()
                 }
                 self.tblView.reloadData()
             } else {
@@ -76,22 +92,83 @@ extension RecordVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SchedualCell") as? SchedualCell
-        cell?.mapView.isHidden = true
-        cell?.qrView.isHidden  = true
+        if ShareData.shareInfo.companyRistrictiondata?.isOnuEvent == true {
+            
+            
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ONUEventCell") as? ONUEventCell
+            cell?.qrView.isHidden = true
+                cell?.mapView.isHidden = true
+//            if ShareData.shareInfo.companyRistrictiondata?.isOnuEvent == true  {
+//                cell?.qrView.isHidden = false
+//                cell?.mapView.isHidden = false
+//            } else {
+//                cell?.qrView.isHidden = true
+//                cell?.mapView.isHidden = true
+//            }
+//            //
+            cell?.lblstatus.text = self.eventdata?[indexPath.row].status?.name
+            cell?.lblhostName.text =  self.eventdata?[indexPath.row].user?.name
+            cell?.lbleventName.text = self.eventdata?[indexPath.row].name
+            cell?.lblplace.text = self.eventdata?[indexPath.row].reservation?.zone?.name
+            //cell?.lblinvitations.text = "\(self.eventdata?[indexPath.row].userInvitationNo ?? 0)"
+            cell?.lblstartDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].startDate) ?? 0)", formatter: "")
+            //cell?.lblendDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].endDate) ?? 0)", formatter: "")
+            //cell?.lblendDate.isHidden = true
+            //cell?.lbltitleEnddate.isHidden = true
+            cell?.lblreservation.text = self.eventdata?[indexPath.row].reservation?.zone?.name
+            cell?.lbldurationmin.text = "\(self.eventdata?[indexPath.row].duration ?? 0) MIN"
+            
+            if self.eventdata?[indexPath.row].status?.name ==  "EVENT_IN_VALIDATION" {
+                    cell?.lblstatus.text = "EVENT IN VALIDATION"
+                    cell?.statusView.backgroundColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
+                    cell?.lblstatus.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
+            } else  if self.eventdata?[indexPath.row].status?.name ==  "EVENT_APPROVED" {
+                cell?.lblstatus.text = "EVENT APPROVED"
+                cell?.statusView.backgroundColor = #colorLiteral(red: 0.04716654867, green: 0.249147892, blue: 0.1248098537, alpha: 1)
+                cell?.lblstatus.textColor = #colorLiteral(red: 0.04335165769, green: 0.2412434816, blue: 0.1210812852, alpha: 1)
+        } else  if self.eventdata?[indexPath.row].status?.name ==  "EVENT_CANCEL" {
+            cell?.lblstatus.text = "EVENT CANCEL"
+            cell?.statusView.backgroundColor = #colorLiteral(red: 0.618992269, green: 0.005741298664, blue: 0.00775064528, alpha: 1)
+            cell?.lblstatus.textColor = #colorLiteral(red: 0.6229569912, green: 0.005496537313, blue: 0.00703322608, alpha: 1)
+            cell?.qrView.isHidden = true
+        } else if self.eventdata?[indexPath.row].status?.name == "EVENT_DECLINED" {
+            cell?.lblstatus.text = "EVENT DECLINED"
+            cell?.statusView.backgroundColor = #colorLiteral(red: 0.001493786694, green: 0.3966483176, blue: 0.579593122, alpha: 1)
+            cell?.lblstatus.textColor = #colorLiteral(red: 0.001493786694, green: 0.3966483176, blue: 0.579593122, alpha: 1)
+        }
+            
+            
+            
+          
+            return cell!
+            
+            
+            
+            
+            
+        } else {
         
-        cell?.lblhostName.text = self.eventdata?[indexPath.row].user?.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SchedualCell") as? SchedualCell
+        
+       
+            cell?.qrView.isHidden = true
+            cell?.mapView.isHidden = true
+        
+        cell?.lblstatus.text = self.eventdata?[indexPath.row].status?.name
+        cell?.lblhostName.text =  self.eventdata?[indexPath.row].user?.name
         cell?.lbleventName.text = self.eventdata?[indexPath.row].name
         cell?.lblplace.text = self.eventdata?[indexPath.row].reservation?.zone?.name
         cell?.lblinvitations.text = "\(self.eventdata?[indexPath.row].userInvitationNo ?? 0)"
         cell?.lblstartDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].startDate) ?? 0)", formatter: "")
-        cell?.lblendDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].endDate) ?? 0)", formatter: "")
-        cell?.lblstatus.text = self.eventdata?[indexPath.row].reservation?.zone?.company?.status?.name
+        //cell?.lblendDate.text = self.getFormattedMilisecondstoDate(seconds: "\((self.eventdata?[indexPath.row].endDate) ?? 0)", formatter: "")
+        cell?.lblendDate.isHidden = true
+        cell?.lbltitleEnddate.isHidden = true
         cell?.lblreservation.text = self.eventdata?[indexPath.row].reservation?.zone?.name
         cell?.lbldurationmin.text = "\(self.eventdata?[indexPath.row].duration ?? 0) MIN"
         
-        if self.eventdata?[indexPath.row].status?.name ==  "EVENT_DECLINED" {
-                cell?.lblstatus.text = "EVENT DECLINED"
+        if self.eventdata?[indexPath.row].status?.name ==  "EVENT_IN_VALIDATION" {
+                cell?.lblstatus.text = "EVENT IN VALIDATION"
                 cell?.statusView.backgroundColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
                 cell?.lblstatus.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
         } else  if self.eventdata?[indexPath.row].status?.name ==  "EVENT_APPROVED" {
@@ -104,15 +181,35 @@ extension RecordVC: UITableViewDelegate,UITableViewDataSource {
         cell?.lblstatus.textColor = #colorLiteral(red: 0.6229569912, green: 0.005496537313, blue: 0.00703322608, alpha: 1)
 }
         
+//        cell?.callBack = { Istrue in
+//            if Istrue {
+////                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+////                let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
+////                self.navigationController?.pushViewController(vc!, animated: true)
+//            }
+//
+//            if !Istrue {
+//
+//                    let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+//                    let vc = storyBoard.instantiateViewController(withIdentifier:"CancelEventVC") as? CancelEventVC
+//                vc?.callBack = {
+//                    self.cancelEventApi(eventid:self.eventdata?[indexPath.row].id ?? "" )
+//                }
+//                vc?.modalPresentationStyle = .overFullScreen
+//
+//                self.present(vc!, animated: false, completion: nil)
+//            }
+//        }
         
         cell?.moreDetailcallBack = { Istrue in
             let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier:"RecordDetailVC") as? RecordDetailVC
-            vc?.isfromHistory = true
+            vc?.isfromHistory = false
             vc?.eventdata = self.eventdata?[indexPath.row]
             self.navigationController?.pushViewController(vc!, animated: true)
         }
         return cell!
+    }
     }
     
     

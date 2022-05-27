@@ -28,9 +28,7 @@ class InformationVC: BaseController {
     
     @IBOutlet weak var txtblood: MDCOutlinedTextField!
     
-    
-    
-    
+    @IBOutlet weak var btnupdate: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +42,29 @@ class InformationVC: BaseController {
         setMDCTxtFieldDesign(txtfiled: txtphonenumber, Placeholder: "HOME NUMBER".localized, imageIcon: UIImage())
         setMDCTxtFieldDesign(txtfiled: txtArabicName, Placeholder: "ARABIC NAME".localized, imageIcon: UIImage())
         setMDCTxtFieldDesign(txtfiled: txtblood, Placeholder: "BLOOD TYPE".localized, imageIcon: UIImage())
+        
+        if ShareData.shareInfo.userRole == .contractoremplyee || ShareData.shareInfo.userRole == .provideremployee {
+            self.txtcountery.isUserInteractionEnabled = false
+            self.txtstate.isUserInteractionEnabled = false
+            self.txtblood.isUserInteractionEnabled = false
+            self.txtaddress.isUserInteractionEnabled = false
+            self.txtaddress2.isUserInteractionEnabled = false
+            self.txtphonenumber.isUserInteractionEnabled = false
+            self.txtpostcode.isUserInteractionEnabled = false
+            self.txtArabicName.isUserInteractionEnabled = false
+            self.btnupdate.isUserInteractionEnabled = false
+        } else {
+            self.txtcountery.isUserInteractionEnabled = true
+            self.txtstate.isUserInteractionEnabled = true
+            self.txtblood.isUserInteractionEnabled = true
+            self.txtaddress.isUserInteractionEnabled = true
+            self.txtaddress2.isUserInteractionEnabled = true
+            self.txtphonenumber.isUserInteractionEnabled = true
+            self.txtpostcode.isUserInteractionEnabled = true
+            self.txtArabicName.isUserInteractionEnabled = true
+            self.btnupdate.isUserInteractionEnabled = true
+        }
+        
         getExtraDataApi()
     }
     

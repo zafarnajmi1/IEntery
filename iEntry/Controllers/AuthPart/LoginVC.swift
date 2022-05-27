@@ -108,7 +108,7 @@ class LoginVC: BaseController {
     //MARK:- Caling Login Api
     func LoginApiCall() {
         
-        let dic = ["email":txtemail.text!,"password":txtpassword.text!]
+        //let dic = ["email":txtemail.text!,"password":txtpassword.text!]
         
         ShareData.shareInfo.Email = txtemail.text ?? ""
         ShareData.shareInfo.password = txtpassword.text ?? ""
@@ -116,32 +116,86 @@ class LoginVC: BaseController {
         TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: {
             accessToken in
                 ShareData.shareInfo.token = accessToken
+                 self.loginCall()
         })
         
         
-        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
-            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: {
-                accessToken in
-                    ShareData.shareInfo.token = accessToken
-            })
-            
-             
-        } else {
-            
-            if  TokenManager.shareToken.parsingToken() == true  {
-                
-            } else {
-                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: { accessToken in
-                    ShareData.shareInfo.token = accessToken
-                    
-                })
-            }
-        }
+//        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
+//            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: {
+//                accessToken in
+//                    ShareData.shareInfo.token = accessToken
+//            })
+//
+//
+//        } else {
+//
+//            if  TokenManager.shareToken.parsingToken() == true  {
+//
+//            } else {
+//                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: { accessToken in
+//                    ShareData.shareInfo.token = accessToken
+//
+//                })
+//            }
+//        }
+//
+//        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
+//            return
+//        }
+//
+//        self.showLoader()
+//        loginVM.loginApiCall(params: dic, Success: { response,trycath  in
+//            self.hidLoader()
+//            if response?.success == true {
+//
+//                ShareData.shareInfo.saveUser(user: response?.data)
+//                UserDefaults.standard.save(customObject: response?.data, inKey: "user")
+//                self.sendfcmToken()
+//                ShareData.shareInfo.password = self.txtpassword.text
+//                ShareData.shareInfo.Email = self.txtemail.text
+//
+//                if response?.data?.userType?.id == 1 {
+//                    ShareData.shareInfo.userRole = .employees
+//                    self.moveOnEmployeeRole()
+//
+//                }  else if response?.data?.userType?.id == 3 {
+//                    ShareData.shareInfo.userRole = .contractor
+//                    self.ContractorRole()
+//                } else if response?.data?.userType?.id == 4 {
+//                    ShareData.shareInfo.userRole = .contractoremplyee
+//                    self.ContractorRole()
+//
+//                }else if response?.data?.userType?.id == 5{
+//                                ShareData.shareInfo.userRole = .provider
+//                                self.providorRole()
+//
+//
+//
+//                } else if response?.data?.userType?.id == 6{
+//                    ShareData.shareInfo.userRole = .provideremployee
+//                                self.providorRole()
+//
+//                }
+//
+//
+//
+//
+//            } else {
+//                self.hidLoader()
+//                self.alert(message: trycath ?? "somthing is wrong")
+//            }
+//        }, Failure: {error in
+//            self.hidLoader()
+//            self.alert(message: error.message)
+//        })
         
-        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
-            return
-        }
+    }
+    
+    
+    
+    func loginCall() {
         
+        let dic = ["email":txtemail.text!,"password":txtpassword.text!]
         self.showLoader()
         loginVM.loginApiCall(params: dic, Success: { response,trycath  in
             self.hidLoader()
@@ -189,6 +243,8 @@ class LoginVC: BaseController {
         })
         
     }
+    
+    
     
     func sendfcmToken() {
         userhandler.sendFCMToken(fcmtoken: ShareData.shareInfo.fcmToken ?? "", Success: {response in

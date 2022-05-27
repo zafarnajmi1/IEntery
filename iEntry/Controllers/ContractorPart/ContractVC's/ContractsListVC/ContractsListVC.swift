@@ -9,6 +9,7 @@ import UIKit
 import XLPagerTabStrip
 import DZNEmptyDataSet
 class ContractsListVC: BaseController,IndicatorInfoProvider {
+    @IBOutlet weak var emptyView: UIView!
     var contractoEmplyeeData:GetContractorEmployeeByUserIDModelData?
     var contractdata : GetContractorByUserIdModelData?
     var contractListdata = [IncomingContractListModelData]()
@@ -95,8 +96,13 @@ class ContractsListVC: BaseController,IndicatorInfoProvider {
                 self.contractListdata = response?.data ?? []
                 
                 ShareData.shareInfo.saveContractList(contract:response?.data ?? [])
+                
+                self.tblView.isHidden = false
+                self.emptyView.isHidden = true
                 if self.contractListdata.count == 0 {
-                    self.emptyDataSetUp()
+                    self.tblView.isHidden = true
+                    self.emptyView.isHidden = false 
+                    //self.emptyDataSetUp()
                 }
                 self.tblView.reloadData()
             } else {

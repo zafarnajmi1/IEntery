@@ -149,12 +149,13 @@ class checkUserExistModel:NSObject, NSCoding{
     var name : String
     var phoneemail : String
     var guestid : String
-    
-    init(name:String,phone:String,isregister:Bool,guestid:String) {
+    var registertype : Int
+    init(name:String,phone:String,isregister:Bool,guestid:String,registertype:Int) {
         self.name = name
         self.phoneemail = phone
         self.isregister = isregister
         self.guestid = guestid
+        self.registertype = registertype
     }
     
     required init(coder decoder: NSCoder) {
@@ -162,11 +163,13 @@ class checkUserExistModel:NSObject, NSCoding{
         self.phoneemail = decoder.decodeObject(forKey: "phoneemail") as? String ?? ""
             self.isregister = decoder.decodeObject(forKey: "isregister") as? Bool ?? false
         self.guestid = decoder.decodeObject(forKey: "guestid") as? String ?? ""
+        self.registertype = decoder.decodeObject(forKey: "registertype") as? Int ?? 0
         }
     func encode(with coder: NSCoder) {
         coder.encode(name, forKey: "name")
         coder.encode(phoneemail, forKey: "phoneemail")
         coder.encode(isregister,forKey: "isregister")
         coder.encode(guestid,forKey: "guestid")
+        coder.encode(registertype,forKey: "registertype")
     }
 }

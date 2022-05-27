@@ -210,35 +210,35 @@ extension UIView {
     }
 }
 
-class MyMultilineTextField: MDCMultilineTextField {
-
-    private var controller: MDCTextInputControllerOutlinedTextArea?
-    private var placeholderText: String
-
-    init(placeholder: String) {
-        self.placeholderText = placeholder
-
-        super.init(frame: .zero)
-        initialize()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func initialize() {
-        translatesAutoresizingMaskIntoConstraints = false
-        clearButtonMode = .whileEditing
-
-        controller = MDCTextInputControllerOutlinedTextArea(textInput: self)
-        controller?.placeholderText = placeholderText
-    }
-    
-    
-    
-    
-
-}
+//class MyMultilineTextField: MDCMultilineTextField {
+//
+//    private var controller: MDCTextInputControllerOutlinedTextArea?
+//    private var placeholderText: String
+//
+//    init(placeholder: String) {
+//        self.placeholderText = placeholder
+//
+//        super.init(frame: .zero)
+//        initialize()
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//    private func initialize() {
+//        translatesAutoresizingMaskIntoConstraints = false
+//        clearButtonMode = .whileEditing
+//
+//        controller = MDCTextInputControllerOutlinedTextArea(textInput: self)
+//        controller?.placeholderText = placeholderText
+//    }
+//
+//
+//
+//
+//
+//}
 
 extension UserDefaults {
 

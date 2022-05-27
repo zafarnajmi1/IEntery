@@ -11,7 +11,9 @@ import DropDown
 import SMDatePicker
 class UserPersonalInfoVC: BaseController ,UITextFieldDelegate,SMDatePickerDelegate{
     //MARK:- here are the iboutlet
+    @IBOutlet weak var btndropdown: UIButton!
     @IBOutlet weak var lblupdatetitle: UILabel!
+    @IBOutlet weak var btnupdate: UIButton!
     @IBOutlet weak var lblinformationtitle: UILabel!
     @IBOutlet weak var bottomView: UIView!
     //@IBOutlet weak var txtCURP: MDCOutlinedTextField!
@@ -58,6 +60,31 @@ class UserPersonalInfoVC: BaseController ,UITextFieldDelegate,SMDatePickerDelega
         txtname.text = ShareData.shareInfo.obj?.name
         
         //ShareData.shareInfo.contractData?.company?.id
+        
+        if ShareData.shareInfo.userRole == .contractoremplyee || ShareData.shareInfo.userRole == .provideremployee{
+            btndropdown.isUserInteractionEnabled = false
+            txtDob.isUserInteractionEnabled = false
+            ttxphoneNumber.isUserInteractionEnabled = false
+            txtemail.isUserInteractionEnabled = false
+            txtpassword.isUserInteractionEnabled = false
+            txtgender.isUserInteractionEnabled = false
+            //@IBOutlet weak var txtactive: MDCOutlinedTextField!
+            txtname.isUserInteractionEnabled = false
+            btnupdate.isUserInteractionEnabled = false
+        } else {
+            txtDob.isUserInteractionEnabled = true
+            ttxphoneNumber.isUserInteractionEnabled = true
+            txtemail.isUserInteractionEnabled = true
+            txtpassword.isUserInteractionEnabled = true
+            txtgender.isUserInteractionEnabled = true
+            //@IBOutlet weak var txtactive: MDCOutlinedTextField!
+            txtname.isUserInteractionEnabled = true
+            btnupdate.isUserInteractionEnabled = true
+            btndropdown.isUserInteractionEnabled = true
+        }
+        
+        
+        
     }
     
     //MARK:- textfield delegate

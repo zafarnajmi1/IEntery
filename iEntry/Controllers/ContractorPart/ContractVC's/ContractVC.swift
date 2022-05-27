@@ -90,9 +90,13 @@ class ContractVC: ButtonBarPagerTabStripViewController {
         let child_4 = UIStoryboard(name: StoryBoards.Home.rawValue, bundle: nil).instantiateViewController(withIdentifier: "CompanyVerificationCodeVC")  as? CompanyVerificationCodeVC
         
             ///UIStoryboard(name: StoryBoards.Contract.rawValue, bundle: nil).instantiateViewController(withIdentifier: "ContractorsListVC")  as? ContractorsListVC
-       
+        if ShareData.shareInfo.userRole == .contractoremplyee {
+            return [child_1!, child_2!,child_3!]
+        } else {
+            return [child_1!, child_2!,child_3!,child_4!]
+        }
         
-        return [child_1!, child_2!,child_3!,child_4!]
+        
     }
     
     //MARK:- here getting current index 

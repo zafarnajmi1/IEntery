@@ -9,19 +9,32 @@ import UIKit
 import DropDown
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class ONUVehicleVC: BaseController {
+    @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var lblcanceltitle: UILabel!
     var param = eventDic()
+    @IBOutlet weak var btnaddvehicletitle: UIButton!
     @IBOutlet weak var lblvehicleCounts: UILabel!
+    @IBOutlet weak var lblnexttitle: UILabel!
     var vehiclListdata : [GetVehicleListModelData]?
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var tblViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var btncanceltitle: UIButton!
     @IBOutlet weak var txtvehicle: MDCOutlinedTextField!
+    @IBOutlet weak var lblcreateEventtitle: UILabel!
     var MainDrowpDown = DropDown()
+    @IBOutlet weak var lblvehicletitle: UILabel!
     var selectVehicle = [SelectedVehicleListData]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblcreateEventtitle.text = "CREAR EVENTO".localized
+        self.btnaddvehicletitle.setTitle("DA DE ALTA UN NUEVO VEHÍCULO".localized, for: .normal)
+        self.lblcanceltitle.text = "ANTERIOR".localized
+        self.lblnexttitle.text = "SIGUIENTE".localized
+        self.tblView.isHidden = true
+        self.emptyView.isHidden = false
         self.getVehicleListApi()
         setMDCTxtFieldDesign(txtfiled: txtvehicle, Placeholder: "VEHÍCULOS".localized, imageIcon: UIImage(named: "sort-down-solid")!)
-        
+        self.lblvehicletitle.text = "VEHÍCULOS".localized
         self.tblView.register(UINib.init(nibName: "ONUVehicleCell", bundle: nil), forCellReuseIdentifier: "ONUVehicleCell")
     }
     
@@ -101,7 +114,15 @@ class ONUVehicleVC: BaseController {
             print(item)
 
             self.txtvehicle.text = item
+            if !self.selectVehicle.contains(where: { $0.id == self.vehiclListdata?[index].vehicle?.id ?? "" }) {
+                
             self.selectVehicle.append(SelectedVehicleListData(id:self.vehiclListdata?[index].vehicle?.id ?? "" , place: vehiclListdata?[index].vehicle?.plate ?? "", brand: vehiclListdata?[index].vehicle?.brand ?? "", sub_brand: vehiclListdata?[index].vehicle?.brand ?? "", vin: vehiclListdata?[index].vehicle?.plate ?? ""))
+                
+                self.tblView.isHidden = false
+                self.emptyView.isHidden = true
+            }
+            
+            self.lblvehicleCounts.text = "\(self.selectVehicle.count) Vehículos"
             self.tblView.reloadData()
         }
         MainDrowpDown.show()

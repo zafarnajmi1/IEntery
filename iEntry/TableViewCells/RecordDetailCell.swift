@@ -9,6 +9,7 @@ import UIKit
 
 class RecordDetailCell: UITableViewCell {
     //MARK:- here are the IBOutlet
+    @IBOutlet weak var userimg: UIImageView!
     @IBOutlet weak var lblcellphoneTitle: UILabel!
     @IBOutlet weak var lblnametitle: UILabel!
     @IBOutlet weak var mainView: UIView!

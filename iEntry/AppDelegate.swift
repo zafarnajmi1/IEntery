@@ -12,6 +12,7 @@ import GoogleMaps
 import GooglePlaces
 import Firebase
 
+@available(iOS 13.0, *)
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -11,6 +11,7 @@ import DZNEmptyDataSet
 class ContractHistoryVC: BaseController,IndicatorInfoProvider {
     
     
+    @IBOutlet weak var emptyView: UIView!
     var contractListdata = [IncomingContractListModelData]()
     fileprivate func  emptyDataSetUp() {
         self.tblView.emptyDataSetSource = self
@@ -70,8 +71,13 @@ class ContractHistoryVC: BaseController,IndicatorInfoProvider {
             if response?.success == true {
                 self.contractListdata = response?.data ?? []
                 ShareData.shareInfo.saveContractList(contract:response?.data ?? [])
+                
+                self.tblView.isHidden = false
+                self.emptyView.isHidden = true
                 if self.contractListdata.count == 0 {
-                    self.emptyDataSetUp()
+                    //self.emptyDataSetUp()
+                    self.emptyView.isHidden = false
+                    self.tblView.isHidden = true
                 }
                 self.tblView.reloadData()
             } else {

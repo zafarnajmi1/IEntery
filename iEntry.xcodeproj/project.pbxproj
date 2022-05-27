@@ -20,6 +20,9 @@
 		1C338CF427D14C2C0041BE2F /* GetContractorEmployeeByUserIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C338CF327D14C2C0041BE2F /* GetContractorEmployeeByUserIDModel.swift */; };
 		1C33D44E273EC3F80094B63F /* ContractInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C33D44D273EC3F80094B63F /* ContractInformationVC.swift */; };
 		1C344D292774EB290026743A /* GetAllZonesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C344D282774EB290026743A /* GetAllZonesModel.swift */; };
+		1C35548E282FBD290046623A /* ONUEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35548C282FBD290046623A /* ONUEventCell.swift */; };
+		1C35548F282FBD290046623A /* ONUEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C35548D282FBD290046623A /* ONUEventCell.xib */; };
+		1C355491282FDAFE0046623A /* ONUConfirmEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C355490282FDAFE0046623A /* ONUConfirmEventVC.swift */; };
 		1C35B7FC27772F9100A10096 /* PreRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35B7FB27772F9100A10096 /* PreRegisterModel.swift */; };
 		1C35B7FE2777386400A10096 /* UserNotRegisterPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35B7FD2777386400A10096 /* UserNotRegisterPopUpVC.swift */; };
 		1C35B80027773D2200A10096 /* PreRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35B7FF27773D2200A10096 /* PreRegisterVC.swift */; };
@@ -335,6 +338,9 @@
 		1C338CF327D14C2C0041BE2F /* GetContractorEmployeeByUserIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetContractorEmployeeByUserIDModel.swift; sourceTree = "<group>"; };
 		1C33D44D273EC3F80094B63F /* ContractInformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractInformationVC.swift; sourceTree = "<group>"; };
 		1C344D282774EB290026743A /* GetAllZonesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllZonesModel.swift; sourceTree = "<group>"; };
+		1C35548C282FBD290046623A /* ONUEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONUEventCell.swift; sourceTree = "<group>"; };
+		1C35548D282FBD290046623A /* ONUEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ONUEventCell.xib; sourceTree = "<group>"; };
+		1C355490282FDAFE0046623A /* ONUConfirmEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONUConfirmEventVC.swift; sourceTree = "<group>"; };
 		1C35B7FB27772F9100A10096 /* PreRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterModel.swift; sourceTree = "<group>"; };
 		1C35B7FD2777386400A10096 /* UserNotRegisterPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotRegisterPopUpVC.swift; sourceTree = "<group>"; };
 		1C35B7FF27773D2200A10096 /* PreRegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegisterVC.swift; sourceTree = "<group>"; };
@@ -749,6 +755,7 @@
 				1C5B83F6281D291D00A95CF1 /* TransportRequiredVC.swift */,
 				1CF656BB2829AA480023EBF3 /* ONUInvitationSentVC.swift */,
 				1C4358D1282D834300CF1970 /* CancelEventVC.swift */,
+				1C355490282FDAFE0046623A /* ONUConfirmEventVC.swift */,
 			);
 			path = CreateONUEvent;
 			sourceTree = "<group>";
@@ -895,6 +902,8 @@
 				1C4F4D6C271A08AC00158769 /* SelectCompanyCell.xib */,
 				1C3625BF27B2CEB4000C61E0 /* NewNotificationCell.swift */,
 				1C3625C027B2CEB4000C61E0 /* NewNotificationCell.xib */,
+				1C35548C282FBD290046623A /* ONUEventCell.swift */,
+				1C35548D282FBD290046623A /* ONUEventCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1452,6 +1461,7 @@
 				1C5C5169281C7EAE009CD4AA /* ONUVehicleCell.xib in Resources */,
 				1C4F4D6E271A08AC00158769 /* SelectCompanyCell.xib in Resources */,
 				1C5B355A26CAB320000DA340 /* VehiclesCell.xib in Resources */,
+				1C35548F282FBD290046623A /* ONUEventCell.xib in Resources */,
 				1C53FAF826C3202300849C95 /* SchedualCell.xib in Resources */,
 				1C9CFCCC27F204C5008E2C6E /* Home.storyboard in Resources */,
 				1CB2F4A426BB167200E1F79F /* Montserrat-Light.ttf in Resources */,
@@ -1697,6 +1707,7 @@
 				1C41280227D7D95F00A31B88 /* ProviderModels.swift in Sources */,
 				1C4DAEC326D56DBC0010E4F1 /* UserPersonalInfoVC.swift in Sources */,
 				1CB2F4C126BB1CAC00E1F79F /* Extenssions.swift in Sources */,
+				1C35548E282FBD290046623A /* ONUEventCell.swift in Sources */,
 				1C4C13A526C456D800351F3C /* FilterVC.swift in Sources */,
 				1C4488D3275929FC00464ACB /* GetZoneModel.swift in Sources */,
 				1C378EE327B414FB0040DED7 /* GetAllUsersListModel.swift in Sources */,
@@ -1712,6 +1723,7 @@
 				1C35B7FC27772F9100A10096 /* PreRegisterModel.swift in Sources */,
 				1C5CADBF26BDD46B0079392C /* ThumScaningVC.swift in Sources */,
 				1C4488CE2759218700464ACB /* GetAllCompaniesModel.swift in Sources */,
+				1C355491282FDAFE0046623A /* ONUConfirmEventVC.swift in Sources */,
 				1C5C5162281C633C009CD4AA /* ONUEventInvitationVC.swift in Sources */,
 				1C925E61278751C50080EB1A /* CreateEventModel.swift in Sources */,
 				1C5CADBD26BDD44F0079392C /* BiomatricLoginVC.swift in Sources */,
@@ -2039,6 +2051,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -2057,6 +2070,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6WJDQZK46C;
 				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				INFOPLIST_FILE = iEntry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2080,6 +2094,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6WJDQZK46C;
 				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				INFOPLIST_FILE = iEntry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

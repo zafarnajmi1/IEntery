@@ -401,28 +401,6 @@ PODS:
   - leveldb-library (1.22.1)
   - MaterialComponents/AnimationTiming (124.2.0)
   - MaterialComponents/Availability (124.2.0)
-  - MaterialComponents/Buttons (124.2.0):
-    - MaterialComponents/Elevation
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/Ripple
-    - MaterialComponents/Shadow
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/ShapeLibrary
-    - MaterialComponents/Shapes
-    - MaterialComponents/Typography
-    - MDFInternationalization
-    - MDFTextAccessibility
-  - MaterialComponents/Elevation (124.2.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/Ink (124.2.0):
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/Palettes (124.2.0)
   - MaterialComponents/private/Application (124.2.0)
   - MaterialComponents/private/Color (124.2.0):
     - MaterialComponents/Availability
@@ -454,11 +432,6 @@ PODS:
     - MaterialComponents/Availability
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - MaterialComponents/Ripple (124.2.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Availability
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
   - MaterialComponents/schemes/Color (124.2.0):
     - MaterialComponents/Availability
     - MaterialComponents/private/Color
@@ -475,8 +448,6 @@ PODS:
     - MaterialComponents/Typography
   - "MaterialComponents/schemes/Typography+BasicFontScheme (124.2.0)"
   - "MaterialComponents/schemes/Typography+Scheming (124.2.0)"
-  - MaterialComponents/Shadow (124.2.0):
-    - MaterialComponents/Availability
   - MaterialComponents/ShadowElevations (124.2.0)
   - MaterialComponents/ShadowLayer (124.2.0):
     - MaterialComponents/ShadowElevations
@@ -525,24 +496,6 @@ PODS:
   - "MaterialComponents/TextControls+OutlinedTextFieldsTheming (124.2.0)":
     - MaterialComponents/schemes/Container
     - "MaterialComponents/TextControls+OutlinedTextFields"
-  - MaterialComponents/TextFields (124.2.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Buttons
-    - MaterialComponents/Elevation
-    - MaterialComponents/Palettes
-    - MaterialComponents/private/Math
-    - MaterialComponents/Typography
-    - MDFInternationalization
-  - "MaterialComponents/TextFields+ColorThemer (124.2.0)":
-    - MaterialComponents/TextFields
-    - MaterialComponents/Themes
-  - "MaterialComponents/TextFields+Theming (124.2.0)":
-    - MaterialComponents/schemes/Container
-    - MaterialComponents/TextFields
-    - "MaterialComponents/TextFields+ColorThemer"
-  - MaterialComponents/Themes (124.2.0):
-    - MaterialComponents/schemes/Color
-    - MaterialComponents/schemes/Typography
   - MaterialComponents/Typography (124.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
@@ -606,7 +559,6 @@ DEPENDENCIES:
   - IBPCollectionViewCompositionalLayout
   - IQKeyboardManagerSwift
   - KRProgressHUD
-  - MaterialComponents/schemes/Color
   - "MaterialComponents/TextControls+FilledTextAreas"
   - "MaterialComponents/TextControls+FilledTextAreasTheming"
   - "MaterialComponents/TextControls+FilledTextFields"
@@ -615,9 +567,6 @@ DEPENDENCIES:
   - "MaterialComponents/TextControls+OutlinedTextAreasTheming"
   - "MaterialComponents/TextControls+OutlinedTextFields"
   - "MaterialComponents/TextControls+OutlinedTextFieldsTheming"
-  - MaterialComponents/TextFields
-  - "MaterialComponents/TextFields+ColorThemer"
-  - "MaterialComponents/TextFields+Theming"
   - NVActivityIndicatorView
   - NVActivityIndicatorView/Extended
   - PhoneNumberKit
@@ -742,6 +691,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   YPImagePicker: 6f410f475bd22fa8cd430495b54d4b2f15865c2d
 
-PODFILE CHECKSUM: 045abc045a3867950c141045ccedb2d148ca66bb
+PODFILE CHECKSUM: 2d9083a4e57ef6803689fe39ab6b4cbda166f259
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

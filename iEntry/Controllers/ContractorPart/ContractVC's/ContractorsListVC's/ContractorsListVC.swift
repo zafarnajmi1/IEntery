@@ -8,6 +8,7 @@
 import UIKit
 import XLPagerTabStrip
 class ContractorsListVC: UIViewController, IndicatorInfoProvider {
+    @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var txtseacrh: UITextField!
     @IBOutlet weak var btnaddbuttontitle: UIButton!
     //MARK:- tab delegate

@@ -17,12 +17,12 @@ pod 'MaterialComponents/TextControls+FilledTextFieldsTheming'
 pod 'MaterialComponents/TextControls+OutlinedTextAreasTheming'
 pod 'MaterialComponents/TextControls+OutlinedTextFieldsTheming'
 
-pod 'MaterialComponents/TextFields'
-pod 'MaterialComponents/TextFields+Theming'
-
-pod 'MaterialComponents/TextFields'
-pod 'MaterialComponents/TextFields+ColorThemer'
-pod 'MaterialComponents/schemes/Color'
+#pod 'MaterialComponents/TextFields'
+#pod 'MaterialComponents/TextFields+Theming'
+#
+#pod 'MaterialComponents/TextFields'
+#pod 'MaterialComponents/TextFields+ColorThemer'
+#pod 'MaterialComponents/schemes/Color'
 
 
 pod 'IQKeyboardManagerSwift'
@@ -61,4 +61,14 @@ pod 'Firebase/Storage'
 pod 'Firebase/Firestore'
 pod 'PhoneNumberKit'
 pod 'FlagPhoneNumber'
+
+post_install do |installer|
+       installer.pods_project.targets.each do |target|
+           target.build_configurations.each do |config|
+               config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+           end
+       end
+   end
+
+
 end

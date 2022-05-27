@@ -687,7 +687,7 @@ class userhandler {
     //MARK: Get Extra Data
     class func getExtraData(id:String,Success: @escaping (ExtradataModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.getExtraData + id
-        
+          print("extra data url",url)
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {

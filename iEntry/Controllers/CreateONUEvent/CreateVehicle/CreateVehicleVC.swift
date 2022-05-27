@@ -10,8 +10,11 @@ import MaterialComponents.MaterialTextControls_OutlinedTextFields
 
 class CreateVehicleVC: BaseController {
 
+    @IBOutlet weak var btnconfirmtitle: UIButton!
+    @IBOutlet weak var lbluserdatatitle: UILabel!
     @IBOutlet weak var txtvin: MDCOutlinedTextField!
     
+    @IBOutlet weak var btncanceltitle: UIButton!
     @IBOutlet weak var txtmarca: MDCOutlinedTextField!
     
     @IBOutlet weak var txtsubmarca: MDCOutlinedTextField!
@@ -25,7 +28,7 @@ class CreateVehicleVC: BaseController {
     var callBack: (()->Void)? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.lbluserdatatitle.text = "D A T O S  D E V E H Í C U L O".localized
         setMDCTxtFieldDesign(txtfiled: txtmarca, Placeholder: "MARCA".localized, imageIcon:UIImage())
         setMDCTxtFieldDesign(txtfiled: txtsubmarca, Placeholder: "SUB - MARCA".localized, imageIcon:UIImage())
         
@@ -38,7 +41,8 @@ class CreateVehicleVC: BaseController {
         
         setMDCTxtFieldDesign(txtfiled: txtvin, Placeholder: "VIN".localized, imageIcon:UIImage())
         
-        
+        self.btncanceltitle.setTitle("CANCELAR".localized, for: .normal)
+        self.btnconfirmtitle.setTitle("CONFIMRMAR".localized, for: .normal)
     }
     
     

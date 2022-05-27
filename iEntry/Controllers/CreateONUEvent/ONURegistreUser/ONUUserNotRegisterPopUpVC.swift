@@ -8,11 +8,21 @@
 import UIKit
 
 class ONUUserNotRegisterPopUpVC: BaseController {
+    @IBOutlet weak var lblinvitortitle: UILabel!
+    @IBOutlet weak var lbldetail: UILabel!
+   
+    @IBOutlet weak var btncanceltitle: UIButton!
+    @IBOutlet weak var btnaccepttitle: UIButton!
+    
     var callBack:(()->Void)? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.lblinvitortitle.text = "USUARIO NO ENCONTRADO".localized
         
+        self.lbldetail.text = "No sé encontró asociado ningún celular correo en nuestros servidores, para poder invitarlo es necesario proporcionar ciertos datos para nuestros registros.".localized
+        self.btncanceltitle.setTitle("CANCELAR".localized, for: .normal)
+        self.btnaccepttitle.setTitle("ACEPTAR".localized, for: .normal)
     }
     
 

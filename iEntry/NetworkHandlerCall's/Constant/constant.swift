@@ -78,7 +78,7 @@ class Constant {
         
         static let getcommenAreas = "event-service/reservation/get-all-free-common-areas-by-dates"
         
-        static let getEventInvitationAfterDate = "event-service/get-all/after-date"//"event-service/get-all/by-host-id/before-date" //"event-service/get-all-invitations/by-user-id/after-date"
+        static let getEventInvitationAfterDate = "event-service/get-all/by-host-id/after-date"//"event-service/get-all/by-host-id/before-date" //"event-service/get-all-invitations/by-user-id/after-date"
         
         
         static let createEvent = "event-service/create"

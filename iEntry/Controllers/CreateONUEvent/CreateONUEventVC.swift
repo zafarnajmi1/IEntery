@@ -10,7 +10,9 @@ import SMDatePicker
 import DropDown
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
-
+    @IBOutlet weak var lblgenratetitle: UILabel!
+    
+    @IBOutlet weak var lblscreenTitle: UILabel!
     @IBOutlet weak var txtname: MDCOutlinedTextField!
     
     
@@ -27,6 +29,7 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
     @IBOutlet weak var txtzone: MDCOutlinedTextField!
     @IBOutlet weak var txtunitsection: MDCOutlinedTextField!
     
+    @IBOutlet weak var lbldetailtitle: UILabel!
     var starttimeInMiliSecDate = 0
     var endtimeInMiliSecDate = 0
     let timeInMiliSecDate = Date()
@@ -38,8 +41,12 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
     var param = eventDic()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblscreenTitle.text = "CREAR EVENTO".localized
+        self.lbldetailtitle.text = "DETALLES".localized
+        self.lblgenratetitle.text = "SIGUIENTE".localized
         txtdate.delegate = self
         txthours.delegate = self
+        
         self.navigationBarHidShow(isTrue: true)
         
         let timeInMiliSecDate = Date()
@@ -57,7 +64,7 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
         
      starttimeInMiliSecDate = Int (Date().timeIntervalSince1970 * 1000)
      endtimeInMiliSecDate = Int (Date().timeIntervalSince1970 * 1000)
-        
+        timeInMiliSec = Int (Date().timeIntervalSince1970 * 1000)
         self.setUIView()
         self.getAllZonesApi()
     }
@@ -124,6 +131,7 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
         
         if checData() {
             
+            self.param.dic.updateValue( self.txtzone.text ?? "", forKey: "reservationname")
             self.param.dic.updateValue(txtname.text ?? "", forKey: "name")
             self.param.dic.updateValue(txtduration.text ?? "", forKey: "duration")
             self.param.dic.updateValue(timeInMiliSec, forKey: "startDate")

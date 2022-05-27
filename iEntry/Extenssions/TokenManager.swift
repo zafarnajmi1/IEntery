@@ -40,7 +40,7 @@ class TokenManager {
     
     
     
-    func token(email:String,password:String, token:@escaping (String)->Void?){
+    func token(email:String,password:String, token:@escaping (String)->Void){
         let dic: [String:Any] =  ["email":email,"password":password]
 
         var Headers : HTTPHeaders

@@ -15,6 +15,7 @@ class NotificationVC: BaseController {
         self.tblView.reloadData()
     }
     //MARK:- here are the iboutlet
+    @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var lblnotificationsTitle: UILabel!
     @IBOutlet weak var inerView: UIView!
     @IBOutlet weak var bottomView: UIView!
@@ -114,9 +115,11 @@ class NotificationVC: BaseController {
                 
                 self.notificationList.sort(by: {$0.createdAt > $1.createdAt})
                 
-                
+                self.tblView.isHidden = false
                 if self.notificationList.count == 0 {
-                    self.emptyDataSetUp()
+                    //self.emptyDataSetUp()
+                    self.emptyView.isHidden = false
+                    self.tblView.isHidden = true
                 }
                 self.tblView.reloadData()
             } else {

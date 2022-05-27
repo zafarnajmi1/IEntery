@@ -90,8 +90,12 @@ class OrdersVC: ButtonBarPagerTabStripViewController {
         
             ///UIStoryboard(name: StoryBoards.Contract.rawValue, bundle: nil).instantiateViewController(withIdentifier: "ContractorsListVC")  as? ContractorsListVC
        
+        if ShareData.shareInfo.userRole == .provideremployee {
+            return [child_1!, child_2!,child_3!]
+        } else {
+            return [child_1!, child_2!,child_3!,child_4!]
+        }
         
-        return [child_1!, child_2!,child_3!,child_4!]
     }
     //MARK:- getting here current index of tab
     override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {

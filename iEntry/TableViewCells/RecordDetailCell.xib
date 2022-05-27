@@ -61,7 +61,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 4427065909" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oow-lr-D4F">
-                                <rect key="frame" x="121" y="31.5" width="81" height="15"/>
+                                <rect key="frame" x="121" y="31.5" width="81" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -87,6 +87,7 @@
                             <constraint firstItem="Kr3-i2-rI5" firstAttribute="top" secondItem="Qpa-4D-Ck4" secondAttribute="bottom" constant="5" id="Avl-6R-SBH"/>
                             <constraint firstItem="K6q-BS-o4M" firstAttribute="leading" secondItem="Owc-QR-9rQ" secondAttribute="leading" id="Bnf-9x-i8M"/>
                             <constraint firstItem="oow-lr-D4F" firstAttribute="leading" secondItem="Kr3-i2-rI5" secondAttribute="trailing" constant="8" symbolic="YES" id="HYB-DZ-S5d"/>
+                            <constraint firstItem="dPF-NP-tuc" firstAttribute="centerY" secondItem="Qpa-4D-Ck4" secondAttribute="centerY" id="JEk-8s-efo"/>
                             <constraint firstAttribute="trailing" secondItem="Owc-QR-9rQ" secondAttribute="trailing" constant="20" id="LV9-ob-Itk"/>
                             <constraint firstAttribute="trailing" secondItem="dPF-NP-tuc" secondAttribute="trailing" constant="45" id="O04-pN-KXi"/>
                             <constraint firstItem="Qpa-4D-Ck4" firstAttribute="top" secondItem="YhD-vv-0Ij" secondAttribute="top" constant="14" id="Pus-t5-jlD"/>
@@ -97,6 +98,8 @@
                             <constraint firstItem="fYE-zz-BnS" firstAttribute="top" secondItem="YhD-vv-0Ij" secondAttribute="top" constant="14" id="fxp-dF-5J1"/>
                             <constraint firstItem="K6q-BS-o4M" firstAttribute="bottom" secondItem="Owc-QR-9rQ" secondAttribute="bottom" id="h0c-cV-EyW"/>
                             <constraint firstItem="Kr3-i2-rI5" firstAttribute="leading" secondItem="fYE-zz-BnS" secondAttribute="trailing" constant="10" id="iDK-im-SAA"/>
+                            <constraint firstItem="oow-lr-D4F" firstAttribute="top" secondItem="dPF-NP-tuc" secondAttribute="bottom" constant="2.5" id="k4L-sp-oaK"/>
+                            <constraint firstItem="oow-lr-D4F" firstAttribute="centerY" secondItem="Kr3-i2-rI5" secondAttribute="centerY" id="oRB-5N-091"/>
                             <constraint firstAttribute="bottom" secondItem="fYE-zz-BnS" secondAttribute="bottom" constant="14" id="ov7-DX-uRd"/>
                             <constraint firstItem="K6q-BS-o4M" firstAttribute="top" secondItem="Owc-QR-9rQ" secondAttribute="top" id="tdr-iX-QJV"/>
                             <constraint firstItem="dPF-NP-tuc" firstAttribute="top" secondItem="YhD-vv-0Ij" secondAttribute="top" constant="14" id="y4B-wf-r8P"/>
@@ -118,6 +121,7 @@
                 <outlet property="lblphone" destination="oow-lr-D4F" id="nrn-su-dfi"/>
                 <outlet property="mainView" destination="YhD-vv-0Ij" id="MsU-I5-YT5"/>
                 <outlet property="tick" destination="Owc-QR-9rQ" id="Y57-Ke-8JD"/>
+                <outlet property="userimg" destination="fYE-zz-BnS" id="PKM-X3-zwE"/>
             </connections>
             <point key="canvasLocation" x="73.913043478260875" y="10.379464285714285"/>
         </tableViewCell>

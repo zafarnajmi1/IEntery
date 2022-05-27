@@ -141,9 +141,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lblbrand" destination="I7y-Hp-zpd" id="0po-HO-iER"/>
+                <outlet property="lblbrandtitle" destination="zZg-fg-xV9" id="klA-vG-8o3"/>
                 <outlet property="lblplate" destination="vMH-bC-OZR" id="WYS-ma-Pza"/>
+                <outlet property="lblplatetitle" destination="uHN-cc-Bq3" id="2wn-MA-YKG"/>
                 <outlet property="lblsubbrand" destination="Dio-vf-6Ui" id="ogd-xr-po1"/>
+                <outlet property="lblsubmodeltitle" destination="rrG-Vf-T6V" id="LTb-UD-Ee4"/>
                 <outlet property="lblvin" destination="5rN-KD-rnH" id="TNa-S9-viP"/>
+                <outlet property="lblvintitle" destination="2QN-RS-7qF" id="sa3-lO-99A"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="66.964285714285708"/>
         </tableViewCell>

@@ -95,11 +95,11 @@ class InvitarVC: BaseController, UITextFieldDelegate {
              self.hidLoader()
              if response?.success == true {
                 if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                 self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? ""))
+                    self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 0))
                 }
              } else {
                 if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                 self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:""))
+                    self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:"", registertype: 0))
                 }
              }
              self.lbltotalInvitation.text = "\(checkRegisterUser.count)" + "Invitaciones".localized
@@ -140,7 +140,7 @@ class InvitarVC: BaseController, UITextFieldDelegate {
                         
                         
                         
-                        ShareData.shareInfo.contactListSaved(isregister: true, name: response?.data?.name ?? "", phoneemail: response?.data?.phoneNumber ?? "", guestid: response?.data?.id ?? "")
+                ShareData.shareInfo.contactListSaved(isregister: true, name: response?.data?.name ?? "", phoneemail: response?.data?.phoneNumber ?? "", guestid: response?.data?.id ?? "", registertype: 1)
                         
                         
                     
@@ -158,14 +158,14 @@ class InvitarVC: BaseController, UITextFieldDelegate {
 //                }
                
                 if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                    self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? ""))
+                    self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 0))
                     }
                 
                 
             } else {
                 if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                        ShareData.shareInfo.contactListSaved(isregister: false, name: name, phoneemail: phone, guestid: response?.data?.id ?? "")
-                        self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:""))
+                    ShareData.shareInfo.contactListSaved(isregister: false, name: name, phoneemail: phone, guestid: response?.data?.id ?? "", registertype: 0)
+                    self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:"", registertype: 0))
                 }
             }
             self.lbltotalInvitation.text = "\(checkRegisterUser.count)" + "Invitaciones".localized

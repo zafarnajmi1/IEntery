@@ -10,9 +10,11 @@ import UIKit
 class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var txtvistorcomments: UITextView!
     
+    @IBOutlet weak var lblscreentitle: UILabel!
     @IBOutlet weak var lblenduptitle: UILabel!
     @IBOutlet weak var btngetnumber: UIButton!
     
+    @IBOutlet weak var lblcanceltitle: UILabel!
     @IBOutlet weak var lblinvitationtitle: UILabel!
     var invitationsData : [getAllInvitationsAgainstEventModelData]? = nil
     var eventDetaildata : EventDetailModelData? = nil
@@ -26,6 +28,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     //MARK:- here are the ibOUtlet
     @IBOutlet weak var lblnumberofInvitation: UILabel!
     
+    @IBOutlet weak var lblvistortitle: UILabel!
     @IBOutlet weak var txtsearch: UITextField!
     @IBOutlet weak var searchButtonView: UIView!
     @IBOutlet weak var stripView: UIView!
@@ -36,7 +39,10 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         txtvistorcomments.delegate = self
-        txtvistorcomments.text = "COMENTARIOS PARA VISITANTES."
+        txtvistorcomments.text = "COMENTARIOS PARA VISITANTES.".localized
+        lblscreentitle.text = "CREAR EVENTO".localized
+        self.lblvistortitle.text = "VISITORS".localized
+        self.lblcanceltitle.text = "ANTERIOR".localized
         searchView.shadowAndRoundcorner(cornerRadius: Float(searchView.layer.frame.height) / 2, shadowColor: #colorLiteral(red: 0.8430451751, green: 0.843190372, blue: 0.843035996, alpha: 1), shadowRadius: 3.0, shadowOpacity: 1)
         
         searchButtonView.roundCorners([.topRight,.bottomRight], radius: 25)
@@ -49,6 +55,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
         self.txtsearch.placeholder = "Escribe no celular / email para invitar".localized
         self.btngetnumber.setTitle("O ELIGE EN BASE A TU LISTA DE CONTACTOS".localized, for: .normal)
         self.lblenduptitle.text = "TERMINAR".localized
+        self.lblenduptitle.text = "SIGUIENTE".localized
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -62,7 +69,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
 
         if textView.text.isEmpty {
             DispatchQueue.main.async {
-                textView.text = "COMENTARIOS PARA VISITANTES."
+                textView.text = "COMENTARIOS PARA VISITANTES.".localized
             }
         }
     }
@@ -88,11 +95,13 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     
     
     func checkData() ->Bool{
-        if txtvistorcomments.text == "COMENTARIOS PARA VISITANTES." || txtvistorcomments.text == "" {
-            self.alert(message: "Please Enter The Commnets")
-            return false
-        }
-        else if self.checkRegisterUser.count < 1 {
+//        if txtvistorcomments.text == "COMENTARIOS PARA VISITANTES." || txtvistorcomments.text == "" {
+//            self.alert(message: "Please Enter The Commnets")
+//            return false
+//        }
+//        else
+            
+            if self.checkRegisterUser.count < 1 {
             self.alert(message: "Please Invite At Least One Person")
             return false
         }
@@ -136,12 +145,24 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     
     @IBAction func searchaction(_ sender: UIButton) {
         if txtsearch.text == "" {
-            
+            self.alert(message: "Please Enter Email / Phone number")
             return
+        } else if txtsearch.text?.isValidEmail == true {
+            searchApi(phone:txtsearch.text!)
+            
+        } else if isValidPhone(phone: txtsearch.text ?? "") == true {
+            searchApi(phone:txtsearch.text!)
+        } else {
+            self.alert(message: "Please Enter Valid Email / Phone number")
         }
-        searchApi(phone:txtsearch.text!)
+        
+        
     }
-    
+    func isValidPhone(phone: String) -> Bool {
+            let phoneRegex = "^[0-9+]{0,1}+[0-9]{5,16}$"
+            let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+            return phoneTest.evaluate(with: phone)
+        }
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -153,7 +174,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
         if string == ""{
             self.checkRegisterUser.removeAll()
             for item in invitationsData ?? [] {
-                self.checkRegisterUser.append(checkUserExistModel(name: item.guest?.name ?? "", phone: item.guest?.phoneNumber ?? "", isregister: true, guestid: item.guest?.id ?? ""))
+                self.checkRegisterUser.append(checkUserExistModel(name: item.guest?.name ?? "", phone: item.guest?.phoneNumber ?? "", isregister: true, guestid: item.guest?.id ?? "", registertype: 2))
             }
             self.tblView.reloadData()
         }
@@ -176,7 +197,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-    
+   
     func searchApi(phone:String){
         //self.showLoader()
        self.checkRegisterUser.removeAll()
@@ -184,15 +205,18 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
             self.hidLoader()
             if response?.success == true {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? ""))
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 1))
                }
             }
             
-//            else {
-//               if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-//                self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: phone, isregister: false, guestid:""))
-//               }
-//            }
+            else {
+                let defaults = UserDefaults.standard
+                defaults.set(nil, forKey: "checkuserExist")
+                
+               if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone:phone, isregister: false, guestid:"", registertype: 0))
+               }
+            }
             //self.lbltotalInvitation.text = "\(checkRegisterUser.count) Invitaciones)"
             //self.filterData =  self.checkRegisterUser
             self.tblView.reloadData()
@@ -232,13 +256,13 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
                        
                        
                        
-                       ShareData.shareInfo.contactListSaved(isregister: true, name: response?.data?.name ?? "", phoneemail: response?.data?.phoneNumber ?? "", guestid: response?.data?.id ?? "")
+                   ShareData.shareInfo.contactListSaved(isregister: true, name: response?.data?.name ?? "", phoneemail: response?.data?.phoneNumber ?? "", guestid: response?.data?.id ?? "", registertype: 1)
                        
                        
                    
                    do {
                                // setting a value for a key
-                       let newPerson = checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "")
+                       let newPerson = checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 1)
                        
                             if !self.checkRegisterUser.contains(where: { $0.phoneemail == response?.data?.phoneNumber ?? "" }){
                                        
@@ -254,14 +278,14 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
                }
               
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? ""))
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "",registertype:1))
                    }
                
                
            } else {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                       ShareData.shareInfo.contactListSaved(isregister: false, name: name, phoneemail: phone, guestid: response?.data?.id ?? "")
-                       self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:""))
+                   ShareData.shareInfo.contactListSaved(isregister: false, name: name, phoneemail: phone, guestid: response?.data?.id ?? "", registertype: 1)
+                   self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:"", registertype: 1))
                }
            }
            self.lblnumberofInvitation.text = "\(checkRegisterUser.count) " + "Invitaciones".localized
@@ -327,13 +351,15 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
         
        
             let cell =  tableView.dequeueReusableCell(withIdentifier: "RecordDetailCell") as? RecordDetailCell
-            if self.checkRegisterUser[indexPath.row].isregister == true {
-                
-                cell?.tick.image = UIImage(named:"ic-check-2")
+            if self.checkRegisterUser[indexPath.row].registertype == 0 {
+                cell?.tick.image = UIImage(named:"exclamation-solid")
+               
+            } else if self.checkRegisterUser[indexPath.row].registertype == 1 {
+                cell?.tick.image = UIImage(named:"chevron-right-solid")
             } else {
-                cell?.tick.image = UIImage(named:"ic-cancel")
+                cell?.tick.image = UIImage(named:"ic-check-2")
             }
-            
+        cell?.userimg.image = UIImage(named: "ic-user-list")
             
             cell?.lblname.text = self.checkRegisterUser[indexPath.row].name
             cell?.lblphone.text = self.checkRegisterUser[indexPath.row].phoneemail
@@ -352,20 +378,19 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-            if self.checkRegisterUser[indexPath.row].isregister == true {
-                
+            if self.checkRegisterUser[indexPath.row].registertype == 1 {
                 
                 
                 let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier:"ONURegisterUserVC") as? ONURegisterUserVC
                 vc?.number = self.checkRegisterUser[indexPath.row].phoneemail
                 vc?.name = self.checkRegisterUser[indexPath.row].name
-                //vc?.email = self.checkRegisterUser[indexPath.row].name
+                vc?.email = ShareData.shareInfo.checkUserExist?.email ?? ""
                 vc?.isAlreadyRegister = true
                 vc?.callBack = {name,email,phone,organization,pickupSite, numberofCompanoin,bzbadge,ispdfShare in
                     for item in self.checkRegisterUser {
                         if item.phoneemail == phone {
-                            self.checkRegisterUser[indexPath.row].isregister = true
+                            self.checkRegisterUser[indexPath.row].registertype = 2
                             self.checkRegisterUser[indexPath.row].name = name
 
                         }
@@ -384,7 +409,7 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
                 self.present(vc!, animated: false, completion: nil)
                 
                 
-            } else {
+            } else if self.checkRegisterUser[indexPath.row].registertype == 0{
                 
                 
                 let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
@@ -398,7 +423,9 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
                                         
                                         let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
                                         let vc = storyBoard.instantiateViewController(withIdentifier:"ONURegisterUserVC") as? ONURegisterUserVC
-                                        
+                                        vc?.number = self.checkRegisterUser[indexPath.row].phoneemail
+                                        vc?.name = self.checkRegisterUser[indexPath.row].name
+                                        //vc?.email = ShareData.shareInfo.checkUserExist?.email ?? ""
                                         vc?.isAlreadyRegister = false
                                         vc?.callBack = {name,email,phone,organization,pickupSite, numberofCompanoin,bzbadge,ispdfShare in
                                             
@@ -435,6 +462,13 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
                 
                 
 
+            } else {
+                
+                let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier:"ONUInvitationSentVC") as? ONUInvitationSentVC
+                vc?.modalPresentationStyle = .overFullScreen
+
+                self.present(vc!, animated: false, completion: nil)
             }
         
     }

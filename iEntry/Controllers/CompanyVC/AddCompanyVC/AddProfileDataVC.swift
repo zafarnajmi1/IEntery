@@ -134,7 +134,7 @@ class AddProfileDataVC: BaseController {
                         
                     }
                     
-                    if self.getCompanydata?.biocrValidation == false {
+                    if self.getCompanydata?.biocrValidation == false{
                          self.isBioAcronmy = false
                         self.bioCrownAction(UIButton())
                         
@@ -187,9 +187,9 @@ class AddProfileDataVC: BaseController {
         userhandler.updateCompanyristrictionByID(param:dic,Success: {responce in
             self.hidLoader()
             if responce?.success == true {
-               
-                self.navigationController?.popViewController(animated: true)
                 self.alert(message: responce?.message ?? "")
+                self.navigationController?.popViewController(animated: true)
+                
                
             } else {
                 

@@ -9,48 +9,40 @@ import UIKit
 
 class TransportRequiredVC: BaseController,UITextViewDelegate {
     var param = eventDic()
+    @IBOutlet weak var lblnotitle: UILabel!
+    @IBOutlet weak var btncanceltitle: UIButton!
     var selectVehicle = [SelectedVehicleListData]()
+    @IBOutlet weak var btncreatetitle: UIButton!
+    @IBOutlet weak var lblvalidatecommentstitle: UILabel!
+    @IBOutlet weak var lblyestitle: UILabel!
     @IBOutlet weak var btnswitch: UISwitch!
     @IBOutlet weak var txtvalidationmsg: UITextView!
     var istraficRequired = false
     var eventid = ""
-    /*{
-     "user":{
-         "id": "36932667-041e-43e6-bede-edac0d7935ab"
-     },
-     "host":{
-         "id": "36932667-041e-43e6-bede-edac0d7935ab"
-     },
-     "reservation":{
-         "zone":{
-             "id": "0155968c-3f84-476a-a343-2bd2e96d9f4b"
-         }
-     },
-     "name": "Holiday Party II",
-     "visitPurpose": "Other description.",
-     "duration": 180,
-     "startDate": 1638040086000,
-     "endDate": 1638040086000, // Can be null, the server can calculate with the startDate and duration attributes //
-     "accompanied": "Only with one person", // Extra data ONU //
-     "unitSection": "UNITAD/IBL", // Extra data ONU //
-     "visitorComment": "No comments.", // Extra data ONU //
-     "validationComment": "No comments.", // Extra data ONU //
-     "requiredTransportation": false // Extra data ONU //
- }*/
-    
-    
-    
+    var startDate = 0
+    @IBOutlet weak var lbltransportrequiredtitle: UILabel!
+    var endDate = 0
+    @IBOutlet weak var lblcreatetitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.btncanceltitle.setTitle("ANTERIOR".localized, for: .normal)
+        self.btncreatetitle.setTitle("CREAR".localized, for: .normal)
+        self.lblcreatetitle.text = "CREAR EVENTO".localized
+        startDate = param.dic["startDate"]  as? Int ?? 0
+        endDate = param.dic["endDate"] as? Int ?? 0
+        
         txtvalidationmsg.delegate = self
-        txtvalidationmsg.text = "COMENTARIOS PARA VALIDATION."
+        txtvalidationmsg.text = "COMENTARIOS PARA VALIDATION.".localized
+        self.lblvalidatecommentstitle.text = "OPCIONES DE VALIDACIÓN".localized
+        self.lbltransportrequiredtitle.text = "TRANSPORTE REQUERIDO".localized
+        self.lblnotitle.text = "NO".localized
+        self.lblyestitle.text = "SÍ".localized
     }
     
 
     func textViewDidBeginEditing(_ textView: UITextView) {
 
-        if textView.text == "COMENTARIOS PARA VALIDATION." {
+        if textView.text == "COMENTARIOS PARA VALIDATION.".localized {
             textView.text = nil
         }
     }
@@ -59,7 +51,7 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
 
         if textView.text.isEmpty {
             DispatchQueue.main.async {
-                textView.text = "COMENTARIOS PARA VALIDATION."
+                textView.text = "COMENTARIOS PARA VALIDATION.".localized
             }
         }
     }
@@ -92,7 +84,37 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
         
         if checkData() {
             
-            createEventApi()
+            
+            
+            
+            let storyBoard = UIStoryboard.init(name: "ONUEvent", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier:"ONUConfirmEventVC") as? ONUConfirmEventVC
+            vc?.name = param.dic["name"] as? String ?? ""
+            vc?.startDate = startDate//param.dic["startDate"]  as? String ?? ""
+            vc?.endDate = endDate//param.dic["endDate"] as? String ?? ""
+            vc?.reservationName = param.dic["zonid"] as? String ?? ""
+            
+            vc?.duration = param.dic["duration"] as? String ?? ""
+            
+            vc?.visitPurpose = param.dic["visitPurpose"] as? String ?? ""
+            vc?.accompanied = param.dic["accompanied"] as? String ?? ""
+            vc?.unitSection = param.dic["unitSection"] as? String ?? ""
+            vc?.requiredTransportation = istraficRequired
+            vc?.validationComment = txtvalidationmsg.text ?? ""
+            vc?.reservationName = param.dic["reservationname"] as? String ?? ""
+            vc?.usercount = "\(param.checkRegisterUser.count)"
+            vc?.vehiclcount = "\(self.selectVehicle.count)"
+            vc?.modalPresentationStyle = .overFullScreen
+            
+            vc?.callBack = {
+                vc?.dismiss(animated: true, completion: nil)
+                self.createEventApi()
+            }
+            self.present(vc!, animated: false, completion: nil)
+            
+            
+            
+            
         }
         
     }
