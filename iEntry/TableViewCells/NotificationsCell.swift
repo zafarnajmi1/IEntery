@@ -11,14 +11,24 @@ class NotificationsCell: UITableViewCell {
     //MARK:- here are the IBOutlet
     @IBOutlet weak var mainView: UIView!
     
+    @IBOutlet weak var lblfileName: UILabel!
+    @IBOutlet weak var fileView: UIView!
     @IBOutlet weak var lblmeetingDate: UILabel!
     @IBOutlet weak var lbldetail: UILabel!
+    @IBOutlet weak var attachedimg: UIImageView!
     @IBOutlet weak var lblusername: UILabel!
     @IBOutlet weak var lbldate: UILabel!
     @IBOutlet weak var lbltitle: UILabel!
     @IBOutlet weak var img: UIImageView!
+    var callBack:(()->Void)? = nil
+    var imageshowCallBack :(()->Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+
+        self.attachedimg.isUserInteractionEnabled = true
+        self.attachedimg.addGestureRecognizer(tap)
         self.selectionStyle = .none
         mainView.shadowAndRoundcorner(cornerRadius: 8, shadowColor: #colorLiteral(red: 0.7293313146, green: 0.7294581532, blue: 0.7293233275, alpha: 1), shadowRadius: 4, shadowOpacity: 1)
     }
@@ -50,6 +60,19 @@ class NotificationsCell: UITableViewCell {
         }
         
         mainView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        
+        if obj.path == "notification_file" {
+            self.fileView.isHidden = false
+            self.attachedimg.isHidden = true
+            self.lblfileName.text = "Notification File"
+        } else if obj.path == "notification_image" {
+            self.fileView.isHidden = true
+            self.attachedimg.isHidden = false
+        }
+        
+        
+        
 //        if obj.notificationType == "" {
 //            img.image = UIImage(named: "ic-coin")
 //            mainView.backgroundColor = #colorLiteral(red: 0.9994603992, green: 0.8503835797, blue: 0.8489696383, alpha: 1)
@@ -59,6 +82,13 @@ class NotificationsCell: UITableViewCell {
     }
     
     
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        imageshowCallBack?()
+    }
+    
+    @IBAction func dowloadFileAction(_ sender: UIButton) {
+        callBack?()
+    }
     func getFormattedMilisecondstoDate(seconds: String , formatter:String) -> String{
 //    let milisecond = seconds
 //        let dateVar = Date.init(timeIntervalSinceNow: TimeInterval(milisecond)!/1000)

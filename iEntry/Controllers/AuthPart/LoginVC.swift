@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+let UUID = UIDevice.current.identifierForVendor?.uuidString
 class LoginVC: BaseController {
     
     //MARK:- Here are the outlets
@@ -19,17 +20,24 @@ class LoginVC: BaseController {
     
     @IBOutlet weak var btnforgot: UIButton!
     @IBOutlet weak var lblhaveyou: UILabel!
+    //let UUID = UIDevice.current.identifierForVendor?.uuidString
     var loginVM = LoginViewModel()
+    var isBioMatricCanceled = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.isTranslucent = false
-       
+//        KeychainService.saveUDID(token: "\(UUID)" as NSString)
+//        let savedUDID = KeychainService.loadUDID()
+          //print("UDID",savedUDID)
+        
         //MARK:- Provider employee
            //"john@gmail.com"
            //"WbxbE7q5LA90"
+        
         //MARK:- Provider
             //"Luis122@gmail.com"
             //"IdIxk3f89MTd"
+        
         //MARK:- Cpntractor employeee
          //"luis45@gmail.com"
         //"odq4JM26KVsv"
@@ -40,10 +48,33 @@ class LoginVC: BaseController {
         
         //MARK:- Company
           //"luis.cornejo.2610@gmail.com"
-        //"root"
-        self.txtemail.text = "luis.cornejo.2610@gmail.com"
-        self.txtpassword.text = "root"
+        //"rootroot"
+        
+        if ShareData.shareInfo.Email != nil {
+        self.txtemail.text = ShareData.shareInfo.Email
+        }
+        //"luis.cornejo.2610@gmail.com"
+       // self.txtpassword.text = "root"
         conFigUI()
+        
+        
+        if Network.isAvailable {
+            print("Internet connection OK")
+        } else {
+            print("Internet connection FAILED")
+            
+        }
+        
+    
+        if (ShareData.shareInfo.obj != nil) {
+            
+            if Network.isAvailable {
+                print("Internet connection OK")
+                self.txtemail.text = ShareData.shareInfo.Email
+               
+            }
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,14 +114,14 @@ class LoginVC: BaseController {
     
     func checkData() -> Bool {
         if txtemail.text == "" {
-            self.alert(message: "Please Enter Email")
+            AppUtility.showErrorMessage(message: "Please Enter Email")
             return false
             
         } else if txtpassword.text == "" {
-            self.alert(message: "Please Enter The Password")
+            AppUtility.showErrorMessage(message: "Please Enter The Password")
             return false
         } else if self.txtemail.text?.isValidEmail == false{
-            self.alert(message: "Please Enter Valid Email")
+            AppUtility.showErrorMessage(message: "Please Enter Valid Email")
             return false
         }
         return true
@@ -98,12 +129,58 @@ class LoginVC: BaseController {
     
     @IBAction func loginAction(_ sender: UIButton) {
         
-        if checkData() {
-            LoginApiCall()
+        if Network.isAvailable {
+            print("Internet connection OK")
+            if checkData() {
+                if ShareData.shareInfo.isBiomatric == true {
+                    
+                    LoginBiomatric()
+                } else {
+                    LoginApiCall()
+                }
+                    
+            }
+        } else {
+            print("Internet connection FAILED")
+            
+            if Network.isAvailable != true {
+                AppUtility.showErrorMessage(message: "No Internet Exist")
+                return
+            }
+            
         }
+        
+        
         //moveOnSelectRoleContractor()
         
     }
+    
+    func LoginBiomatric(){
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier:"ThumScaningVC") as? ThumScaningVC
+        vc?.modalPresentationStyle = .overFullScreen
+        vc?.callBack = { isok in
+            if isok {
+                print(isok)
+                ShareData.shareInfo.isBiomatric = isok
+                self.isBioMatricCanceled = false
+                vc?.dismiss(animated: true, completion: nil)
+                self.LoginApiCall()
+            } else {
+                print(isok)
+                ShareData.shareInfo.isBiomatric = isok
+                self.isBioMatricCanceled = true
+                DispatchQueue.main.async() {
+                    vc?.dismiss(animated: true, completion: nil)
+                }
+                
+            }
+            
+        }
+        self.present(vc!, animated: false, completion: nil)
+        //self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
     
     //MARK:- Caling Login Api
     func LoginApiCall() {
@@ -115,80 +192,16 @@ class LoginVC: BaseController {
         
         TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: {
             accessToken in
+            if !accessToken.isEmpty {
                 ShareData.shareInfo.token = accessToken
                  self.loginCall()
+            }else {
+                AppUtility.showErrorMessage(message: "email or password is wrong")
+            }
         })
         
         
-//        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
-//            TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: {
-//                accessToken in
-//                    ShareData.shareInfo.token = accessToken
-//            })
-//
-//
-//        } else {
-//
-//            if  TokenManager.shareToken.parsingToken() == true  {
-//
-//            } else {
-//                TokenManager.shareToken.token(email: ShareData.shareInfo.Email ?? "", password: ShareData.shareInfo.password ?? "", token: { accessToken in
-//                    ShareData.shareInfo.token = accessToken
-//
-//                })
-//            }
-//        }
-//
-//        if ShareData.shareInfo.token == "" || ShareData.shareInfo.token == nil {
-//            return
-//        }
-//
-//        self.showLoader()
-//        loginVM.loginApiCall(params: dic, Success: { response,trycath  in
-//            self.hidLoader()
-//            if response?.success == true {
-//
-//                ShareData.shareInfo.saveUser(user: response?.data)
-//                UserDefaults.standard.save(customObject: response?.data, inKey: "user")
-//                self.sendfcmToken()
-//                ShareData.shareInfo.password = self.txtpassword.text
-//                ShareData.shareInfo.Email = self.txtemail.text
-//
-//                if response?.data?.userType?.id == 1 {
-//                    ShareData.shareInfo.userRole = .employees
-//                    self.moveOnEmployeeRole()
-//
-//                }  else if response?.data?.userType?.id == 3 {
-//                    ShareData.shareInfo.userRole = .contractor
-//                    self.ContractorRole()
-//                } else if response?.data?.userType?.id == 4 {
-//                    ShareData.shareInfo.userRole = .contractoremplyee
-//                    self.ContractorRole()
-//
-//                }else if response?.data?.userType?.id == 5{
-//                                ShareData.shareInfo.userRole = .provider
-//                                self.providorRole()
-//
-//
-//
-//                } else if response?.data?.userType?.id == 6{
-//                    ShareData.shareInfo.userRole = .provideremployee
-//                                self.providorRole()
-//
-//                }
-//
-//
-//
-//
-//            } else {
-//                self.hidLoader()
-//                self.alert(message: trycath ?? "somthing is wrong")
-//            }
-//        }, Failure: {error in
-//            self.hidLoader()
-//            self.alert(message: error.message)
-//        })
-        
+
     }
     
     
@@ -204,50 +217,108 @@ class LoginVC: BaseController {
                 ShareData.shareInfo.saveUser(user: response?.data)
                 UserDefaults.standard.save(customObject: response?.data, inKey: "user")
                 self.sendfcmToken()
+                
                 ShareData.shareInfo.password = self.txtpassword.text
                 ShareData.shareInfo.Email = self.txtemail.text
+                self.getuserCompanyRestrictionApi()
+                //self.userDeviceLinkApi() // after testing i will remove this  function calling
+                print("UDID",UUID)
+                if response?.data?.deviceId == UUID || response?.data?.deviceId == "" || response?.data?.deviceId?.isEmpty == true || response?.data?.deviceId == nil {
+                   
+                    self.userDeviceLinkApi()
                 
-                if response?.data?.userType?.id == 1 {
-                    ShareData.shareInfo.userRole = .employees
-                    self.moveOnEmployeeRole()
+                     if response?.data?.status?.id == 2 {
+                        
+                        self.moveOnVerificationCode()
                     
-                }  else if response?.data?.userType?.id == 3 {
-                    ShareData.shareInfo.userRole = .contractor
-                    self.ContractorRole()
-                } else if response?.data?.userType?.id == 4 {
-                    ShareData.shareInfo.userRole = .contractoremplyee
-                    self.ContractorRole()
+                    } else if response?.data?.userType?.id == 1 {
+                        
+                        ShareData.shareInfo.userRole = .employees
+                        self.moveOnEmployeeRole()
+                        
+                    }  else if response?.data?.userType?.id == 3 {
+                        ShareData.shareInfo.userRole = .contractor
+                        self.ContractorRole()
+                    } else if response?.data?.userType?.id == 4 {
+                        ShareData.shareInfo.userRole = .contractoremplyee
+                        self.ContractorRole()
+                        
+                    }else if response?.data?.userType?.id == 5{
+                                    ShareData.shareInfo.userRole = .provider
+                                    self.providorRole()
+                                
+                    } else if response?.data?.userType?.id == 6{
+                        ShareData.shareInfo.userRole = .provideremployee
+                                    self.providorRole()
+                               
+                    }
                     
-                }else if response?.data?.userType?.id == 5{
-                                ShareData.shareInfo.userRole = .provider
-                                self.providorRole()
-                            
+                } else  if response?.data?.deviceId != UUID{
+                    
+                    AppUtility.showErrorMessage(message:"you can not login in other device, first must unlik the other device or log in the same device" )
+                    return
                 
-                
-                } else if response?.data?.userType?.id == 6{
-                    ShareData.shareInfo.userRole = .provideremployee
-                                self.providorRole()
-                           
+                    
                 }
-                
-                
-                
                 
             } else {
                 self.hidLoader()
-                self.alert(message: trycath ?? "somthing is wrong")
+                AppUtility.showErrorMessage(message: trycath ?? "somthing is wrong")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
         
+    }
+    
+    func getuserCompanyRestrictionApi(){
+        userhandler.getUserCompanyRistrictionData(Success: {response in
+            if response?.success == true {
+                ShareData.shareInfo.saveUserCompanyRestriction(user: response?.data)
+                if ShareData.shareInfo.userRestrictionObj?.biocrValidationExternal == true {
+                    self.checkUserSelfiApi()
+                } else {
+                    
+                }
+            } else {
+                
+            }
+        }, Failure: {error in
+            
+        })
+    }
+    
+    
+    
+    func checkUserSelfiApi(){
+        userhandler.getCheckUserSelfiImage(userid: ShareData.shareInfo.obj?.id ?? "", Success: {response in
+            if response?.success == true  {
+                
+            } else {
+                
+            }
+        }, Failure: {error in
+            
+        })
     }
     
     
     
     func sendfcmToken() {
         userhandler.sendFCMToken(fcmtoken: ShareData.shareInfo.fcmToken ?? "", Success: {response in
+            if response?.success == true {
+              
+            } else {
+                
+            }
+        }, Failure: {error in
+            
+        })
+    }
+
+    func userDeviceLinkApi(){
+        userhandler.LinkUserDevice(deviceID: UUID ?? "", Success: {response in
             if response?.success == true {
                 
             } else {
@@ -257,7 +328,7 @@ class LoginVC: BaseController {
             
         })
     }
-
+    
     
    
     
@@ -323,9 +394,17 @@ class LoginVC: BaseController {
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier:"VerificationCodeVC") as? VerificationCodeVC
         vc?.email = txtemail.text!
+        vc?.isfrom = false
         self.navigationController?.pushViewController(vc!, animated: true)
     
          
+    }
+    
+    
+    func scanThumb(){
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier:"ThumScaningVC") as? ThumScaningVC
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
 }
 

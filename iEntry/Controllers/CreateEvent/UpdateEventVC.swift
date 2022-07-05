@@ -209,11 +209,11 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
                 self.view.layoutIfNeeded()
                
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         } Failure: { error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         }
 
     }
@@ -221,8 +221,28 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
     
     @IBAction func searchAction(_ sender: UIButton) {
         
-        searchApi(phone:txtsearch.text!)
+        //searchApi(phone:txtsearch.text!, isphone: <#Bool#>)
+        
+        if txtsearch.text == "" {
+            AppUtility.showErrorMessage(message: "Please Enter Email / Phone number")
+            return
+        } else if txtsearch.text?.isValidEmail == true {
+            searchApi(phone:txtsearch.text!, isphone: false)
+            
+        } else if isValidPhone(phone: txtsearch.text ?? "") == true {
+            searchApi(phone:txtsearch.text!, isphone: true)
+        } else {
+            AppUtility.showErrorMessage(message: "Please Enter Valid Email / Phone number")
+        }
+        
+        
     }
+    func isValidPhone(phone: String) -> Bool {
+            let phoneRegex = "^[0-9+]{0,1}+[0-9]{5,16}$"
+            let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+            return phoneTest.evaluate(with: phone)
+        }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string != ""{
             //searchApi(phone:textField.text!+string)
@@ -241,10 +261,10 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
     }
     
     
-    func searchApi(phone:String){
+    func searchApi(phone:String,isphone:Bool){
         //self.showLoader()
        self.checkRegisterUser.removeAll()
-        userhandler.checkUserExist(phone: phone, Success: {[self]response in
+        userhandler.checkUserExist(phone: phone, isphone:isphone, Success: {[self]response in
             self.hidLoader()
             if response?.success == true {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
@@ -260,15 +280,15 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
             self.tblView.reloadData()
         }, Failure: {error in
             self.hidLoader()
-            //self.alert(message: error.message)
+            //AppUtility.showErrorMessage(message: error.message)
         })
     }
    
   
-   func checkUserExistApi(name:String,phone:String){
+    func checkUserExistApi(name:String,phone:String,isphone:Bool){
        //self.showLoader()
        
-       userhandler.checkUserExist(phone: phone, Success: {[self]response in
+       userhandler.checkUserExist(phone: phone, isphone: isphone, Success: {[self]response in
            self.hidLoader()
            if response?.success == true {
                DispatchQueue.main.async {
@@ -324,7 +344,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
            self.tblView.reloadData()
        }, Failure: {error in
            self.hidLoader()
-           self.alert(message: error.message)
+           AppUtility.showErrorMessage(message: error.message)
        })
    }
    
@@ -338,7 +358,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         vc?.callBack = { selectedNumbers in
             
             for item in selectedNumbers {
-                self.checkUserExistApi(name: item.name!,phone: item.number!)
+                self.checkUserExistApi(name: item.name!,phone: item.number!, isphone: true)
             }
         }
         self.navigationController?.pushViewController(vc!, animated: true)
@@ -350,7 +370,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         } else {
             
             if self.commenAreasdata.count == 0 {
-                self.alert(message: "No free reservarion areas")
+                AppUtility.showErrorMessage(message: "No free reservarion areas")
                 return
             }
         }
@@ -396,7 +416,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         }
         self.present(vc!, animated: false, completion: nil)
         } else {
-            self.alert(message: "Please select the contact number whom you want to send invitation")
+            AppUtility.showErrorMessage(message: "Please select the contact number whom you want to send invitation")
         }
     }
     
@@ -409,7 +429,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
                 
             }
         }, Failure: {error in
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
@@ -480,7 +500,9 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
             endDatemyDate = picker.date
             //getallCommenAreasApi(startdate:startDatemyDate,endDate:endDatemyDate)
         }
-        getallCommenAreasApi(startdate:Int (startDatemyDate.timeIntervalSince1970 * 1000), endDate: Int (endDatemyDate.timeIntervalSince1970 * 1000))
+        //Int (startDatemyDate.timeIntervalSince1970 * 1000)
+        //Int (endDatemyDate.timeIntervalSince1970 * 1000)
+        getallCommenAreasApi(startdate:StartDayMiliSeconds(newdate: startDatemyDate.startOfDay()!) ?? 0, endDate: StartDayMiliSeconds(newdate: endDatemyDate.startOfDay()!) ?? 0)
     }
     
     
@@ -630,7 +652,7 @@ extension UpdateEventVC : UITableViewDelegate,UITableViewDataSource {
             endDatemyDate = picker.pickerDate
             //getallCommenAreasApi(startdate:startDatemyDate,endDate:endDatemyDate)
         }
-        getallCommenAreasApi(startdate:Int (startDatemyDate.timeIntervalSince1970 * 1000), endDate: Int (endDatemyDate.timeIntervalSince1970 * 1000))
+        getallCommenAreasApi(startdate:StartDayMiliSeconds(newdate: startDatemyDate.startOfDay()!) ?? 0, endDate: StartDayMiliSeconds(newdate: endDatemyDate.startOfDay()!) ?? 0)
     }
     func datePickerDidAppear(_ picker: SMDatePicker) {
         let dateFormatter = DateFormatter()

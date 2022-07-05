@@ -9,7 +9,7 @@ import UIKit
 
 class GeneralQRCodeVC: BaseController {
 
-    @IBOutlet weak var btntimercounter: UIButton!
+    //@IBOutlet weak var btntimercounter: UIButton!
     @IBOutlet weak var lbloptiontitle: UILabel!
     @IBOutlet weak var btnScan: UIButton!
     @IBOutlet weak var mainView: UIView!
@@ -20,7 +20,7 @@ class GeneralQRCodeVC: BaseController {
     @IBOutlet weak var qrimg: UIImageView!
     @IBOutlet weak var userimg: UIImageView!
     
-    @IBOutlet weak var btnregenrateQRAction: UIButton!
+    //@IBOutlet weak var btnregenrateQRAction: UIButton!
     var invitationData : EventInvitationsModelsData?
     var name = ""
     var date = ""
@@ -32,8 +32,8 @@ class GeneralQRCodeVC: BaseController {
         super.viewDidLoad()
         self.lbloptiontitle.text = "O P C I O N E S".localized
         self.btnScan.setTitle("ESCANEAR CÓDIGO QR".localized, for: .normal)
-        self.btntimercounter.setTitle("Valido por los siguientes 30 segundos.".localized, for: .normal)
-        self.btnregenrateQRAction.setTitle("VOLVER A GENERAR".localized, for: .normal)
+        //self.btntimercounter.setTitle("Valido por los siguientes 30 segundos.".localized, for: .normal)
+       // self.btnregenrateQRAction.setTitle("VOLVER A GENERAR".localized, for: .normal)
 //        name = invitationData?.guest?.name ?? ""
 //        date = getMilisecondstoDate(seconds: "\(invitationData?.startDate ?? 0)", formatter: "")
 //        time = getMilisecondstoTime(seconds: "\(invitationData?.startDate ?? 0)", formatter: "")
@@ -46,7 +46,7 @@ class GeneralQRCodeVC: BaseController {
         mainView.shadowAndRoundcorner(cornerRadius: 5, shadowColor: #colorLiteral(red: 0.8626509309, green: 0.8627994061, blue: 0.8626416326, alpha: 1), shadowRadius: 2.0, shadowOpacity: 1)
         
         userimg.roundViiew()
-        btnregenrateQRAction.roundButtonWithCustomRadius(radius: 5)
+        //btnregenrateQRAction.roundButtonWithCustomRadius(radius: 5)
         navigationBarHidShow(isTrue: true)
         qrimg.image = generateQRCode(from: "\(name),\(date),\(eventname),\(eventid)")
     }
@@ -75,7 +75,6 @@ class GeneralQRCodeVC: BaseController {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-    @IBAction func ValidAction(_ sender: UIButton) {
-    }
+    
     
 }

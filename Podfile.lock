@@ -527,6 +527,9 @@ PODS:
   - SimpleAnimation (0.4.2)
   - SMDatePicker (0.1.0)
   - SteviaLayout (4.7.3)
+  - SwiftMessages (9.0.6):
+    - SwiftMessages/App (= 9.0.6)
+  - SwiftMessages/App (9.0.6)
   - Toast-Swift (5.0.1)
   - XLPagerTabStrip (9.0.0)
   - YPImagePicker (4.5.0):
@@ -574,6 +577,7 @@ DEPENDENCIES:
   - SideMenu
   - SimpleAnimation
   - SMDatePicker
+  - SwiftMessages
   - Toast-Swift
   - XLPagerTabStrip
   - YPImagePicker
@@ -631,6 +635,7 @@ SPEC REPOS:
     - SimpleAnimation
     - SMDatePicker
     - SteviaLayout
+    - SwiftMessages
     - Toast-Swift
     - XLPagerTabStrip
     - YPImagePicker
@@ -687,10 +692,11 @@ SPEC CHECKSUMS:
   SimpleAnimation: 5430010b9548f392e7459290acce01c9ceba7171
   SMDatePicker: b4843031e6b9a1c6f4fa894d212a5abe83154d0c
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   YPImagePicker: 6f410f475bd22fa8cd430495b54d4b2f15865c2d
 
-PODFILE CHECKSUM: 2d9083a4e57ef6803689fe39ab6b4cbda166f259
+PODFILE CHECKSUM: 603a81eb4e4c09683d9dfa8245d8453259b00a57
 
 COCOAPODS: 1.11.2

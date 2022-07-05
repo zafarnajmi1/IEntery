@@ -23,11 +23,53 @@ class InvitationVC: UIViewController {
         "HISTORIAL".localized,
         
     ])
+    
+    
+   
+    
     @IBOutlet weak var oneContainer: UIView!
     @IBOutlet weak var topBannerView: UIView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 43 })) != nil  {
+            
+        } else {
+            if let index = segmentedControl.sectionTitles?.firstIndex(of: "MIS INVITACIONES".localized) {
+                segmentedControl.sectionTitles?.remove(at: index)
+            }
+            
+        }
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 44 })) != nil {
+            
+        } else {
+            if let index = segmentedControl.sectionTitles?.firstIndex(of: "HISTORIAL".localized) {
+                segmentedControl.sectionTitles?.remove(at: index)
+            }
+            
+        }
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 43 })) != nil {
+            segmentedControl.selectedSegmentIndex = 0
+            twoContainer.alpha = 1
+            oneContainer.alpha = 0
+            
+        } else {
+            oneContainer.alpha = 0
+        }
+        
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 44 })) != nil {
+            segmentedControl.selectedSegmentIndex = 1
+            twoContainer.alpha = 0
+            oneContainer.alpha = 1
+            
+        } else {
+            twoContainer.alpha = 0
+        }
+        
+        
+        
         self.buttonView.roundViiew()
         self.inerView.roundViiew()
         topBannerView.shadowAndRoundcorner(cornerRadius: 8, shadowColor: #colorLiteral(red: 0.6744349003, green: 0.6745528579, blue: 0.6744274497, alpha: 1), shadowRadius: 3.0, shadowOpacity: 1.0)
@@ -40,6 +82,15 @@ class InvitationVC: UIViewController {
         segmentedControl.selectionIndicatorColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
         self.tabsView.addSubview(segmentedControl)
+        
+        
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 23 })) != nil {
+            buttonView.isHidden = false 
+        } else {
+            buttonView.isHidden = true
+        }
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,10 +98,35 @@ class InvitationVC: UIViewController {
 //        sigmentedController.backgroundColor = .clear
 //        sigmentedController.tintColor = .clear
     
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 42 })) != nil {
+            buttonView.isHidden = false
+        } else {
+            buttonView.isHidden = true
+        }
         
-        segmentedControl.selectedSegmentIndex = 0
-        twoContainer.alpha = 1
-        oneContainer.alpha = 0
+        
+//        segmentedControl.selectedSegmentIndex = 0
+//        twoContainer.alpha = 1
+//        oneContainer.alpha = 0
+//        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 43 })) != nil {
+//            segmentedControl.selectedSegmentIndex = 0
+//            twoContainer.alpha = 1
+//            oneContainer.alpha = 0
+//
+//        } else {
+//            oneContainer.alpha = 0
+//        }
+//
+//        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 44 })) != nil {
+//            segmentedControl.selectedSegmentIndex = 1
+//            twoContainer.alpha = 0
+//            oneContainer.alpha = 1
+//
+//        } else {
+//            twoContainer.alpha = 0
+//        }
+        
+        
 //        oneView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
 //        twoView.backgroundColor = .clear
         
@@ -73,21 +149,40 @@ class InvitationVC: UIViewController {
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            twoContainer.alpha = 1
-            oneContainer.alpha = 0
-//            oneView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
-//            twoView.backgroundColor = .clear
-            segmentedControl.selectedSegmentIndex = 0
+//            twoContainer.alpha = 1
+//            oneContainer.alpha = 0
+////            oneView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
+////            twoView.backgroundColor = .clear
+//            segmentedControl.selectedSegmentIndex = 0
+            
+            
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 43 })) != nil {
+                segmentedControl.selectedSegmentIndex = 0
+                twoContainer.alpha = 1
+                oneContainer.alpha = 0
+                
+            }
         case 1:
-            twoContainer.alpha = 0
-            oneContainer.alpha = 1
-//            oneView.backgroundColor = .clear
-//            twoView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
-            segmentedControl.selectedSegmentIndex = 1
+//            twoContainer.alpha = 0
+//            oneContainer.alpha = 1
+////            oneView.backgroundColor = .clear
+////            twoView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
+//            segmentedControl.selectedSegmentIndex = 1
+            
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 44 })) != nil {
+                segmentedControl.selectedSegmentIndex = 1
+                twoContainer.alpha = 0
+                oneContainer.alpha = 1
+                
+            }
         default:
             break
         
-        }}
+        }
+        
+        
+        
+    }
     
     
     @IBAction func Sigmnet(_ sender: UISegmentedControl) {

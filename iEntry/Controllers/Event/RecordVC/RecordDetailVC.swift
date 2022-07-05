@@ -135,13 +135,13 @@ class RecordDetailVC: BaseController {
     func cancelEventApi(){
         userhandler.CancelInvitation(id: self.eventdata?.id ?? "", Success: {response in
             if response?.success == true {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
                 self.navigationController?.popViewController(animated: true)
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
@@ -162,11 +162,11 @@ class RecordDetailVC: BaseController {
 //                self.lbldate.text = self.getMilisecondstoDate(seconds: "\(self.eventDetaildata?.endDate ?? 0)", formatter: "")
 //                self.lblreservationDate.text = "Fecha: " + self.getFormattedMilisecondstoDate(seconds: "\(self.eventDetaildata?.reservation?.toDate ?? 0)", formatter: "")
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
@@ -187,11 +187,11 @@ class RecordDetailVC: BaseController {
                     self.tblView.isHidden = false
                 }
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     

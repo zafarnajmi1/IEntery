@@ -69,8 +69,8 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
             let stringDate2 = dateFormatter2.string(from: timeInMiliSecEndDate)
             self.txttime.text = stringDate2
             
-         starttimeInMiliSecDate = Int (Date().timeIntervalSince1970 * 1000)
-         endtimeInMiliSecDate = Int (Date().timeIntervalSince1970 * 1000)
+         starttimeInMiliSecDate = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int (Date().timeIntervalSince1970 * 1000)
+         endtimeInMiliSecDate = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int (Date().timeIntervalSince1970 * 1000)
         
         getallCommenAreasApi(startdate: timeInMiliSecDate, endDate: timeInMiliSecEndDate)
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
@@ -132,17 +132,17 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
     @IBAction func addEventAction(_ sender: UIButton) {
         
         if self.commenAreasdata?.count == 0 {
-            self.alert(message: "There is no commen areas you are unable to create event!")
+            AppUtility.showErrorMessage(message: "There is no commen areas you are unable to create event!")
             return
         }
         
         if reservationId == "" {
-            self.alert(message: "please select the commen area")
+            AppUtility.showErrorMessage(message: "please select the commen area")
             return
         }
         
         if txtEnterEvent.text == "" {
-            self.alert(message: "please enter the event name")
+            AppUtility.showErrorMessage(message: "please enter the event name")
             return
         }
         let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
@@ -185,10 +185,10 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
         self.showLoader()
         
         let timeInMiliSecDate = startdate//Date()
-        let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+        let timeInMiliSec = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
         
         let timeInMiliSecEndDate = endDate//Date()
-        let secEndDatetimeInMili = Int (timeInMiliSecEndDate.timeIntervalSince1970 * 1000)
+        let secEndDatetimeInMili = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int (timeInMiliSecEndDate.timeIntervalSince1970 * 1000)
         
         //30 * 24 * 60 * 60 * 1000
         let dic : [String:Any] = ["startDate":timeInMiliSec,"endDate": secEndDatetimeInMili,"userId":ShareData.shareInfo.obj?.id ?? ""]
@@ -203,11 +203,11 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
                 self.view.layoutIfNeeded()
                
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         } Failure: { error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         }
 
     }
@@ -327,7 +327,7 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
             let stringDate = dateFormatter.string(from: picker.date)
             self.txtdate.text = stringDate
-            self.starttimeInMiliSecDate =  Int (picker.date.timeIntervalSince1970 * 1000)
+            self.starttimeInMiliSecDate =  StartDayMiliSeconds(newdate: picker.date.startOfDay()!) ?? 0//Int (picker.date.timeIntervalSince1970 * 1000)
             startdate = picker.date
             getallCommenAreasApi(startdate:startdate,endDate:endDate)
         } else {
@@ -335,7 +335,7 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
             dateFormatter.dateFormat = "HH:mm:ss"
             let stringDate = dateFormatter.string(from: picker.date)
             self.txttime.text = stringDate
-            self.endtimeInMiliSecDate =  Int (picker.date.timeIntervalSince1970 * 1000)
+            self.endtimeInMiliSecDate =  StartDayMiliSeconds(newdate: picker.date.startOfDay()!) ?? 0//Int (picker.date.timeIntervalSince1970 * 1000)
             endDate = picker.date
             getallCommenAreasApi(startdate:startdate,endDate:endDate)
         }
@@ -349,7 +349,7 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
             self.txtdate.text = stringDate
             
             self.startdate = picker.pickerDate
-            self.starttimeInMiliSecDate =  Int (picker.pickerDate.timeIntervalSince1970 * 1000)
+            self.starttimeInMiliSecDate = StartDayMiliSeconds(newdate: picker.pickerDate.startOfDay()!) ?? 0 //Int (picker.pickerDate.timeIntervalSince1970 * 1000)
             getallCommenAreasApi(startdate:startdate,endDate:endDate)
             print(starttimeInMiliSecDate)
         } else {
@@ -360,7 +360,7 @@ class CreateEventVC: BaseController, FSCalendarDelegate, FSCalendarDataSource,UI
             
             //let timeInMiliSecDate = picker.pickerDate
 //             endtimeInMiliSecDate = Int (timeInMiliSecDate.timeIntervalSince1970 * 1 * 24 * 60 * 60 * 1000)
-            self.endtimeInMiliSecDate =  Int (picker.pickerDate.timeIntervalSince1970 * 1000)
+            self.endtimeInMiliSecDate = StartDayMiliSeconds(newdate: picker.pickerDate.startOfDay()!) ?? 0 //Int (picker.pickerDate.timeIntervalSince1970 * 1000)
             self.endDate = picker.pickerDate
             getallCommenAreasApi(startdate:startdate,endDate:endDate)
         }

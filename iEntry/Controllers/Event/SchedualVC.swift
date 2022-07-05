@@ -23,6 +23,7 @@ class SchedualVC: BaseController,IndicatorInfoProvider {
         self.tblView.reloadData()
     }
     var eventdata : [EventModuleData]? = nil
+    
     //MARK:- here are iboutle 
     
     @IBOutlet weak var tblView: UITableView! {
@@ -43,9 +44,28 @@ class SchedualVC: BaseController,IndicatorInfoProvider {
         
     }
     
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getEventsBeforeDate()
+        
+        if Network.isAvailable {
+            print("Internet connection OK")
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 32 })) != nil {
+                self.getEventsBeforeDate()
+            } else {
+                self.emptyView.isHidden = false
+                self.tblView.isHidden = true
+            }
+            
+        } else {
+            print("Internet connection FAILED")
+            self.emptyView.isHidden = false
+            self.tblView.isHidden = true
+            
+        }
+        
         
     }
     override func viewDidLayoutSubviews() {
@@ -57,7 +77,7 @@ class SchedualVC: BaseController,IndicatorInfoProvider {
     func getEventsBeforeDate(){
         self.showLoader()
         let timeInMiliSecDate = Date()
-        let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+        let timeInMiliSec = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
        
         //userId
         //let dic : [String:Any] = ["date":timeInMiliSec, "hostId":ShareData.shareInfo.obj?.id ?? ""]
@@ -76,11 +96,11 @@ class SchedualVC: BaseController,IndicatorInfoProvider {
                 }
                 self.tblView.reloadData()
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 
@@ -90,18 +110,33 @@ class SchedualVC: BaseController,IndicatorInfoProvider {
         userhandler.CancelInvitation(id: eventid, Success: {response in
             if response?.success == true {
                 self.getEventsBeforeDate()
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
                // self.navigationController?.popViewController(animated: true)
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
     
-    
+    func downloadFile(eventid:String){
+        self.showLoader()
+        userhandler.downloadEventFile(eventid:eventid, Success: {response in
+            self.hidLoader()
+            if response?.success == true  {
+                
+                print("File Data:",response?.data)
+                self.saveBase64StringToPDF(response?.data ?? "", optionName: "Event\(randomNumber)")
+            } else {
+                self.hidLoader()
+            }
+        }, Failure: {error in
+            self.hidLoader()
+            print("image download error")
+        })
+    }
     
     
 }
@@ -130,6 +165,14 @@ extension SchedualVC: UITableViewDelegate,UITableViewDataSource {
 //                cell?.mapView.isHidden = true
 //            }
 //            //
+            
+            
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 35 })) != nil {
+                cell?.qrView.isHidden = false
+            } else {
+                cell?.qrView.isHidden = true
+            }
+            
             cell?.lblstatus.text = self.eventdata?[indexPath.row].status?.name
             cell?.lblhostName.text =  self.eventdata?[indexPath.row].user?.name
             cell?.lbleventName.text = self.eventdata?[indexPath.row].name
@@ -161,6 +204,7 @@ extension SchedualVC: UITableViewDelegate,UITableViewDataSource {
             
             cell?.callBack = { Istrue in
                 if Istrue {
+                    self.downloadFile(eventid:self.eventdata?[indexPath.row].id ?? "")
     //                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
     //                let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
     //                self.navigationController?.pushViewController(vc!, animated: true)
@@ -193,7 +237,11 @@ extension SchedualVC: UITableViewDelegate,UITableViewDataSource {
        
             cell?.qrView.isHidden = true
             cell?.mapView.isHidden = true
-        
+//            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 35 })) != nil {
+//                cell?.qrView.isHidden = false
+//            } else {
+//                cell?.qrView.isHidden = true
+//            }
         cell?.lblstatus.text = self.eventdata?[indexPath.row].status?.name
         cell?.lblhostName.text =  self.eventdata?[indexPath.row].user?.name
         cell?.lbleventName.text = self.eventdata?[indexPath.row].name

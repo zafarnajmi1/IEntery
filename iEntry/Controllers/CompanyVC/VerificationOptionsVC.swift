@@ -42,7 +42,22 @@ class VerificationOptionsVC: UIViewController {
         self.lbloptionsTitle.text = "O P C I O N E S".localized
         self.navigationBarHidShow(isTrue: true)
         
-        
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 3 })) != nil  {
+            
+        } else {
+            if let index = segmentedControl.sectionTitles?.firstIndex(of: "CÓDIGO QR".localized) {
+                segmentedControl.sectionTitles?.remove(at: index)
+            }
+            
+        }
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 4 })) != nil {
+            
+        } else {
+            if let index = segmentedControl.sectionTitles?.firstIndex(of: "TOKEN".localized) {
+                segmentedControl.sectionTitles?.remove(at: index)
+            }
+            
+        }
         segmentedControl.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.tabsView.frame.height)
         
         segmentedControl.selectionIndicatorLocation = .bottom
@@ -56,6 +71,22 @@ class VerificationOptionsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 4 })) != nil {
+            segmentedControl.selectedSegmentIndex = 1
+            twoContainer.alpha = 0
+            oneContainer.alpha = 1
+            
+        } else {
+            twoContainer.alpha = 0
+        }
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 3 })) != nil {
+            segmentedControl.selectedSegmentIndex = 0
+            twoContainer.alpha = 1
+            oneContainer.alpha = 0
+            
+        } else {
+            oneContainer.alpha = 0
+        }
 //        sigmentedController.backgroundColor = .clear
 //        sigmentedController.tintColor = .clear
     
@@ -73,19 +104,31 @@ class VerificationOptionsVC: UIViewController {
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            twoContainer.alpha = 1
-            oneContainer.alpha = 0
-//            oneView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
-//            twoView.backgroundColor = .clear
-            segmentedControl.selectedSegmentIndex = 0
+//            twoContainer.alpha = 1
+//            oneContainer.alpha = 0
+////            oneView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
+////            twoView.backgroundColor = .clear
+//            segmentedControl.selectedSegmentIndex = 0
             
-          
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 3 })) != nil {
+                segmentedControl.selectedSegmentIndex = 0
+                twoContainer.alpha = 1
+                oneContainer.alpha = 0
+                
+            }
         case 1:
-            twoContainer.alpha = 0
-            oneContainer.alpha = 1
-//            oneView.backgroundColor = .clear
-//            twoView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
-            segmentedControl.selectedSegmentIndex = 1
+//            twoContainer.alpha = 0
+//            oneContainer.alpha = 1
+////            oneView.backgroundColor = .clear
+////            twoView.backgroundColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
+//            segmentedControl.selectedSegmentIndex = 1
+            
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 4 })) != nil {
+                segmentedControl.selectedSegmentIndex = 1
+                twoContainer.alpha = 0
+                oneContainer.alpha = 1
+                
+            }
             
         default:
             break

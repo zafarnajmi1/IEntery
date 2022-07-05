@@ -49,7 +49,26 @@ class EventInvitationVC: BaseController,IndicatorInfoProvider {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getallInviationsAfterDate()
+        
+        
+        
+        if Network.isAvailable {
+            print("Internet connection OK")
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 32 })) != nil {
+                self.getallInviationsAfterDate()
+            } else {
+                self.noEventView.isHidden = false
+                self.tblView.isHidden = true
+            }
+        } else {
+            print("Internet connection FAILED")
+            self.noEventView.isHidden = false
+            self.tblView.isHidden = true
+        }
+        
+       
+        
+        
     }
     
     func getallInviationsAfterDate() {
@@ -69,26 +88,48 @@ class EventInvitationVC: BaseController,IndicatorInfoProvider {
                 }
                 self.tblView.reloadData()
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
+    
     func cancelEventApi(eventid:String){
         userhandler.CancelInvitation(id: eventid, Success: {response in
             if response?.success == true {
                 self.getallInviationsAfterDate()
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
                // self.navigationController?.popViewController(animated: true)
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
+    
+    
+
+    
+    func downloadFile(eventid:String){
+        self.showLoader()
+        userhandler.downloadEventFile(eventid:eventid, Success: {response in
+            self.hidLoader()
+            if response?.success == true  {
+                
+                print("File Data:",response?.data)
+                self.saveBase64StringToPDF(response?.data ?? "", optionName: "Event\(randomNumber)")
+            } else {
+                self.hidLoader()
+            }
+        }, Failure: {error in
+            self.hidLoader()
+            print("image download error")
+        })
+    }
+    
     
 }
 //MARK:-  tableview delegate
@@ -115,6 +156,11 @@ extension EventInvitationVC : UITableViewDelegate,UITableViewDataSource {
 //                cell?.mapView.isHidden = true
 //            }
 //            //
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 35 })) != nil {
+                cell?.qrView.isHidden = false
+            } else {
+                cell?.qrView.isHidden = true
+            }
             cell?.lblstatus.text = self.eventdata?[indexPath.row].status?.name
             cell?.lblhostName.text =  self.eventdata?[indexPath.row].user?.name
             cell?.lbleventName.text = self.eventdata?[indexPath.row].name
@@ -144,6 +190,9 @@ extension EventInvitationVC : UITableViewDelegate,UITableViewDataSource {
             
             cell?.callBack = { Istrue in
                 if Istrue {
+                    
+                    
+                    self.downloadFile(eventid:self.eventdata?[indexPath.row].id ?? "")
     //                let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
     //                let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
     //                self.navigationController?.pushViewController(vc!, animated: true)

@@ -148,8 +148,8 @@ class userhandler {
     
     class func getAllZone(params:[String:Any],Success: @escaping (GetAllZonesModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.getAllZone
-        
-         Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
+        print("All Zone URl", url, params)
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
                  print(successResponse)
@@ -188,8 +188,8 @@ class userhandler {
      }
     
     
-    class func updateExtradatauser(params:[String:Any],Success: @escaping (CreateExtraUserDataModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
-     let url = Constant.MainUrl + Constant.URLs.updateExtraDataUser
+    class func updateExtradatauser(params:[String:Any],id:String,Success: @escaping (CreateExtraUserDataModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.updateExtraDataUser + id
         print("url",url)
          Networkhandler.PutRequest(url: url, parameters: params,success: {(successResponse)  in
 
@@ -209,15 +209,18 @@ class userhandler {
      }
     
    
-    
+    //[8:39 pm] Luis Enrique Cornejo Arreola
+    //corporate-user-pre-prod-v1/authentication-service/set-firebase-id/{firebaseId}
+
+   
     class func sendFCMToken(fcmtoken:String,Success: @escaping (FCMTokenModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
-        let url = Constant.MainUrl + "authentication-service/set-firebase-id/\(fcmtoken)/user-id/"
+        let url = Constant.MainUrl + "authentication-service/set-firebase-id/\(fcmtoken)"
         //"/user-id/\(ShareData.shareInfo.obj?.id ?? "")"
         print("firabse url ", url)
          Networkhandler.PutRequest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
-                 print(successResponse)
+                 print("firebase save",successResponse)
                  let responseModel = try JSONDecoder().decode(FCMTokenModel.self, from: successResponse.data!)
                  Success(responseModel)
              }
@@ -252,6 +255,191 @@ class userhandler {
              Failure(Error)
          })
      }
+    //FirstAccessSixDigitCodeModel
+    
+    
+    class func getFirstAccessSixDigitCode(email:String,Success: @escaping (FirstAccessSixDigitCodeModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+        let url = Constant.MainUrl + Constant.URLs.sendEmail + email
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(FirstAccessSixDigitCodeModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    class func getFirstAccessSendSMSSixDigitCode(email:String,Success: @escaping (FirstAccessSixDigitCodeModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+        let url = Constant.MainUrl + Constant.URLs.sendFirstAccessSixDigitCode + email
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(FirstAccessSixDigitCodeModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+//    class func getUserImage(userid:String,Success: @escaping (DownloadNotificationImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+//        let url = Constant.MainUrl + Constant.URLs.getUserImage + userid
+//
+//         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+//
+//             do {
+//                 print(successResponse)
+//                 let responseModel = try JSONDecoder().decode(DownloadNotificationImageModel.self, from: successResponse.data!)
+//                 Success(responseModel)
+//             }
+//             catch {
+//                 print("Response Error")
+//                 Success(nil)
+//             }
+//
+//
+//         } , Falioure: {(Error) in
+//             Failure(Error)
+//         })
+//     }
+    
+    
+    class func getCheckUserSelfiImage(userid:String,Success: @escaping (DownloadNotificationImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+        let url = Constant.MainUrl + Constant.URLs.checkUserSelfiimage + userid
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(DownloadNotificationImageModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+                 Success(nil)
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    
+    class func downloadNotificationimage(notificationid:String,option:String,Success: @escaping (DownloadNotificationImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+        let url = Constant.MainUrl + Constant.URLs.downloadNotificationImage + notificationid + "/option/\(option)"
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(DownloadNotificationImageModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+                 Success(nil)
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    //MARK:- Get User Image By ID
+    
+    class func GetUserImageByID(userid:String,Success: @escaping (DownloadNotificationImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+        let url = Constant.MainUrl + Constant.URLs.getUserImageById + userid
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(DownloadNotificationImageModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+                 Success(nil)
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    class func downloadNotificationFile(notificationid:String,Success: @escaping (DownloadNotificationImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+        let url = Constant.MainUrl + Constant.URLs.downloadNotificationImage + notificationid + "/option/notification_file"
+        
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(DownloadNotificationImageModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+                 Success(nil)
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    class func downloadEventFile(eventid:String,Success: @escaping (DownloadNotificationImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+        let url = Constant.MainUrl + Constant.URLs.downloadEventFile + eventid 
+        print("Event file ",url)
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(DownloadNotificationImageModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+                 Success(nil)
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
 ///check-verification-code/{code}/by-username/{username}
     
     class func verifySixDigitCode(Success: @escaping (VerifySixDigitCodeModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
@@ -278,11 +466,11 @@ class userhandler {
     
     class func getContractByUserID(id:String,Success: @escaping (GetContractByUserModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.userContractcompanyservice + id
-        print("url company", url)
+        print("contract url company", url)
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
-                 print(successResponse)
+                 print("contract data:",successResponse)
                  let responseModel = try JSONDecoder().decode(GetContractByUserModel.self, from: successResponse.data!)
                  Success(responseModel)
              }
@@ -297,6 +485,57 @@ class userhandler {
          })
      }
     
+    
+    
+    
+    //MARK:- Link Device
+    
+    class func LinkUserDevice(deviceID:String,Success: @escaping (LoginModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.linkDevice + deviceID
+        print("url Link Device", url)
+         Networkhandler.PutRequest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(LoginModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    //MARK:- unLink Device
+    
+    class func unLinkUserDevice(userID:String,Success: @escaping (LoginModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.unlinkUserDevice + userID
+        print("url unlink device", url)
+         Networkhandler.PutRequest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(LoginModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
     //MARK:- Get getCompany Ristrictions
     
     class func getCompanyristrictionByID(id:String,Success: @escaping (CompanyRistriction?) -> Void, Failure: @escaping(NetworkError) -> Void){
@@ -305,7 +544,7 @@ class userhandler {
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
-                 print(successResponse)
+                 print("company resitriction:",successResponse)
                  let responseModel = try JSONDecoder().decode(CompanyRistriction.self, from: successResponse.data!)
                  Success(responseModel)
              }
@@ -388,9 +627,17 @@ class userhandler {
     
     //MARK:- check user Existience
     
-    class func checkUserExist(phone:String,Success: @escaping (getUserIsExistModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
-     let url = Constant.MainUrl + Constant.URLs.searchUserbyPhone + phone
+    class func checkUserExist(phone:String,isphone:Bool,Success: @escaping (getUserIsExistModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     var url = ""
         
+        
+        if isphone == true  {
+            url = Constant.MainUrl + Constant.URLs.searchUserbyPhone + phone
+        } else {
+            url = Constant.MainUrl + Constant.URLs.searchUserByEmail + phone
+        }
+        
+        print("check user url", url)
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
@@ -415,7 +662,7 @@ class userhandler {
     
     class func createInvitation(params:[String:Any],Success: @escaping (CreateInvitationModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.createInvitation
-        
+         print("Create Invitation:", url)
          Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
 
              do {
@@ -446,7 +693,7 @@ class userhandler {
                  Success(responseModel)
              }
              catch {
-                 print("Response Error")
+                 print("Response Error, Parsing Error")
              }
 
 
@@ -464,6 +711,7 @@ class userhandler {
 
              do {
                  print(successResponse)
+                 
                  let responseModel = try JSONDecoder().decode(EventModule.self, from: successResponse.data!)
                  Success(responseModel)
              }
@@ -482,7 +730,7 @@ class userhandler {
     
     class func getallCommenAreas(params:[String:Any],Success: @escaping (CommenAreasModels?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.getcommenAreas
-        
+          print("Commen area url:",url)
          Networkhandler.PostRequest(url: url, parameters: params,success: {(successResponse)  in
 
              do {
@@ -644,12 +892,33 @@ class userhandler {
     
     class func getNotificationAfterDate(afterdate:Int,Success: @escaping (NotificationModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.notification + "/\(afterdate)"
-        print("url",url)
+        print("Notification url",url)
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
              do {
                  print(successResponse)
                  let responseModel = try JSONDecoder().decode(NotificationModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    class func getUserCompanyRistrictionData(Success: @escaping (userCompanyRestrictionModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.userCompanyRestriction
+        print("user company rsitriction url",url)
+         Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(userCompanyRestrictionModel.self, from: successResponse.data!)
                  Success(responseModel)
              }
              catch {
@@ -772,7 +1041,7 @@ class userhandler {
     //MARK:- Update user
     class func updateuser(companyid:String,param:[String:Any],Success: @escaping (LoginModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.updateUser //+ companyid
-        
+          print("User Info Update",url)
          Networkhandler.PutRequest(url: url, parameters: param,success: {(successResponse)  in
 
              do {
@@ -819,7 +1088,7 @@ class userhandler {
     
     //MARK: Get all users
     class func getAllusers(companyid:String,Success: @escaping (GetAllUsersListModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
-     let url = Constant.MainUrl + Constant.URLs.getAllUsersList + companyid
+     let url = Constant.MainUrl + Constant.URLs.getAllUsersList  //+ companyid
         
          Networkhandler.GetRequiest(url: url, parameters: nil,success: {(successResponse)  in
 
@@ -1187,6 +1456,76 @@ class userhandler {
              Failure(Error)
          })
      }
+    
+    
+    class func uploadImage(param:[String:Any],img:UIImage?,file:String,Success: @escaping (UploadFileImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.uploadimage
+        print("url company", url)
+        Networkhandler.MultipartPut(url: url, filename: file, parameters: param, userimg: img!, Progress: {progress in
+            
+        }, Success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(UploadFileImageModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    class func uploadUserFile(param:[String:Any],fileurl:URL,Success: @escaping (UploadFileImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.uploadimage
+        print("url company", url)
+        Networkhandler.Uploadfile(url: url, fileUrl: fileurl, mimeType: "any", filename: "file", fileWithName: "image", parameters: param, Progress: {progress in
+            
+        }, Success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(UploadFileImageModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                Success(nil)
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
+    
+    
+    
+    
+    class func openTheEmplyeeDoor(Success: @escaping (OpenDoorModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
+     let url = Constant.MainUrl + Constant.URLs.openTheDoorLink//updateUserCompanyContract
+        
+         Networkhandler.PutRequest(url: url, parameters: nil,success: {(successResponse)  in
+
+             do {
+                 print(successResponse)
+                 let responseModel = try JSONDecoder().decode(OpenDoorModel.self, from: successResponse.data!)
+                 Success(responseModel)
+             }
+             catch {
+                 print("Response Error")
+             }
+
+
+         } , Falioure: {(Error) in
+             Failure(Error)
+         })
+     }
 }
 
 
@@ -1194,3 +1533,20 @@ class userhandler {
 
 
 
+struct APIResponse<T: Decodable>: Decodable {
+    var data: T?
+    var code: Int
+    var success: Bool
+    var http_response: Int
+}
+
+func decode<T: Decodable>(data: Data, ofType: T.Type) -> T? {
+    do {
+        let decoder = JSONDecoder()
+        let res = try decoder.decode(APIResponse<T>.self, from: data)
+        return res.data
+    } catch let parsingError {
+        print("Error", parsingError)
+    }
+    return nil
+}

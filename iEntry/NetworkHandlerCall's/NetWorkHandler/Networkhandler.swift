@@ -522,10 +522,6 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
         }
     
     
-    
-    
-
-        
             class func Multipart(url: String,filename:String, parameters: Parameters?,userimg: UIImage,Progress: @escaping (Int) ->Void, Success: @escaping (AFDataResponse<Any>)->Void, Falioure: @escaping (NetworkError) -> Void)
                     {
                         let cookieStore = HTTPCookieStorage.shared
@@ -626,7 +622,7 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
             
             
 
-                    class func MultipartGet(url: String,filename:String, parameters: Parameters?,userimg: UIImage,Progress: @escaping (Int) ->Void, Success: @escaping (AFDataResponse<Any>)->Void, Falioure: @escaping (NetworkError) -> Void)
+    class func MultipartPut(url: String,filename:String, parameters: Parameters?,userimg: UIImage,Progress: @escaping (Int) ->Void, Success: @escaping (AFDataResponse<Any>)->Void, Falioure: @escaping (NetworkError) -> Void)
                             {
                                 let cookieStore = HTTPCookieStorage.shared
                                 for cookie in cookieStore.cookies ?? [] {
@@ -658,13 +654,13 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                                         print(data)
                                         multipart.append(data, withName: fileName, fileName: filename, mimeType: "any")
                                     }
-                //                    for(key, values ) in parameters!
-                //                    {
-                //                        multipart.append((values as! String).data(using: String.Encoding.utf8)!, withName: key)
-                //                        print(values)
-                //                        print(values)
-                //                    }
-                                }, to: url, method: .get, headers: Headers) .responseJSON(completionHandler: { result in
+                                    for(key, values ) in parameters ?? [:]
+                                    {
+                                        multipart.append((values as! String).data(using: String.Encoding.utf8)!, withName: key)
+                                        print(values)
+                                        print(values)
+                                    }
+                                }, to: url, method: .put, headers: Headers) .responseJSON(completionHandler: { result in
 
                                     switch(result.result)
                                     {
@@ -724,15 +720,12 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
 
                                 }
     
-    class func UploadProfile(url: String,filename:String, parameters: Parameters?,userimg: UIImage,Progress: @escaping (Int) ->Void, Success: @escaping (AFDataResponse<Any>, Int)->Void, Falioure: @escaping (NetworkError) -> Void)
+    class func Uploadfile(url: String,fileUrl:URL,mimeType:String,filename:String,fileWithName:String, parameters: Parameters?,Progress: @escaping (Int) ->Void, Success: @escaping (AFDataResponse<Any>)->Void, Falioure: @escaping (NetworkError) -> Void)
             {
-                let cookieStore = HTTPCookieStorage.shared
-                for cookie in cookieStore.cookies ?? [] {
-                    cookieStore.deleteCookie(cookie)
-                }
+                
                 print(url)
                 print(filename)
-                print(userimg)
+                print(fileUrl)
                 
                 var Headers : HTTPHeaders
                 let Manger = Alamofire.Session.default
@@ -744,25 +737,33 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                     ]
                 }else
                 {
-                    Headers = ["Accept": "application/json"]
+                    Headers = ["Accept": "application/json",
+                               "Content-type": "multipart/form-data"
+                    ]
+                   
                 }
 
                
                 let fileName = filename//"image"
                 Manger.upload(multipartFormData: {(multipart) in
 
-                    if let data = userimg.jpegData(compressionQuality: 0.1)
+                    
+                    do {
+                            let videoData = try Data(contentsOf: fileUrl)
+                        print(videoData)
+                             multipart.append(videoData, withName: filename, fileName: fileWithName, mimeType: mimeType)
+                        } catch {
+                            debugPrint("Couldn't get Data from URL: \(fileUrl): \(error)")
+                        }
+                    
+
+                    for(key, values ) in parameters ?? [:]
                     {
-                        print(data)
-                        multipart.append(data, withName: fileName, fileName: filename, mimeType: "any")
+                        multipart.append((values as! String).data(using: String.Encoding.utf8)!, withName: key)
+                        print(values)
+                        print(values)
                     }
-//                    for(key, values ) in parameters!
-//                    {
-//                        multipart.append((values as! String).data(using: String.Encoding.utf8)!, withName: key)
-//                        print(values)
-//                        print(values)
-//                    }
-                }, to: url, method: .post, headers: Headers) .responseJSON(completionHandler: { result in
+                }, to: url, method: .put, headers: Headers) .responseJSON(completionHandler: { result in
 
                     switch(result.result)
                     {
@@ -771,7 +772,7 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                                 let resultValue = result.result
                                 print(resultValue)
                                 
-                                Success(result,result.response!.statusCode )
+                                Success(result)
                                 break
 
                             case .failure (let error):
@@ -821,6 +822,8 @@ class func PostRequest(url: String, parameters: Parameters?, success:@escaping (
                    
 
                 }
+    
+            
     
     
     

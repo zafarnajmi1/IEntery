@@ -29,14 +29,21 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
     @IBOutlet weak var qrimg: UIImageView!
     @IBOutlet weak var userimg: UIImageView!
     
-    @IBOutlet weak var btnregenrateQRAction: UIButton!
-    
-    
+    //@IBOutlet weak var btnregenrateQRAction: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lblmaptitle.text = "MAPA A LA COMPAÑIA".localized
         self.btnscantitle.setTitle("ESCANEAR CÓDIGO QR".localized, for: .normal)
+        
+        if ShareData.shareInfo.userRole == .employees {
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 5 })) != nil {
+                self.btnscantitle.isHidden = false
+            } else {
+                self.btnscantitle.isHidden = true
+            }
+        }
+        
         if isfromContract == true {
             self.mpView.isHidden = false
         } else {
@@ -45,7 +52,7 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
         mainView.shadowAndRoundcorner(cornerRadius: 5, shadowColor: #colorLiteral(red: 0.8626509309, green: 0.8627994061, blue: 0.8626416326, alpha: 1), shadowRadius: 2.0, shadowOpacity: 1)
         
         userimg.roundViiew()
-        btnregenrateQRAction.roundButtonWithCustomRadius(radius: 5)
+        //btnregenrateQRAction.roundButtonWithCustomRadius(radius: 5)
         navigationBarHidShow(isTrue: true)
         let qrString = "\(ShareData.shareInfo.obj?.email ?? "")" + (ShareData.shareInfo.obj?.phoneNumber)!
         qrimg.image = generateQRCode(from: qrString )
@@ -127,10 +134,10 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
             
             
         } else {
-        vc?.companyname =   ShareData.shareInfo.contractorListdataValueGetByUserid.company?.name ?? ""
-        vc?.address = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.address ?? ""
-        vc?.lat = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.latitud ?? 0
-        vc?.long = ShareData.shareInfo.contractorListdataValueGetByUserid.company?.longitud ?? 0
+            vc?.companyname =   ShareData.shareInfo.contractorListdataValueGetByUserid?.company?.name ?? ""
+            vc?.address = ShareData.shareInfo.contractorListdataValueGetByUserid?.company?.address ?? ""
+            vc?.lat = ShareData.shareInfo.contractorListdataValueGetByUserid?.company?.latitud ?? 0
+            vc?.long = ShareData.shareInfo.contractorListdataValueGetByUserid?.company?.longitud ?? 0
         }
         self.navigationController?.pushViewController(vc!, animated: true)
     }

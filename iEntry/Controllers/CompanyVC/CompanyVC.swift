@@ -35,10 +35,18 @@ class CompanyVC: BaseController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getContractByUSerIDApi()
+        
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         self.lblcontract.text = "C O N T R A C T".localized
         self.lbledittitle.text = "ACTUALIZAR DATOS".localized
+        
+        if Network.isAvailable {
+            print("Internet connection OK")
+            self.getContractByUSerIDApi()
+        } else {
+            print("Internet connection FAILED")
+            self.tblView.reloadData()
+        }
     }
 
     
@@ -72,6 +80,8 @@ class CompanyVC: BaseController {
             if response?.success == true {
                 
                 ShareData.shareInfo.companyid = response?.data?.company?.id ?? ""
+                self.getCompanyImageByIDApi(companyid:response?.data?.company?.id ?? "")
+                
                 ShareData.shareInfo.saveContract(contract: response?.data)
                 UserDefaults.standard.save(customObject: response?.data, inKey: "UserContractWithCompany")
                 self.contractData = response?.data
@@ -80,18 +90,30 @@ class CompanyVC: BaseController {
                // self.tblHeight.constant = 400
                 self.tblView.reloadData()
                 self.getCompanyRistrictionbyID()
+                
             } else {
                 self.hidLoader()
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
     
-    
+    func getCompanyImageByIDApi(companyid:String) {
+        userhandler.downloadNotificationimage(notificationid: companyid,option: "company", Success: {response in
+            if response?.success == true  {
+                //self.notificationimg =  self.convierteImagen(base64String: response?.data ?? "") ?? UIImage()
+                self.bannerImg.image = self.convierteImagen(base64String: response?.data ?? "") ?? UIImage()
+            } else {
+                
+            }
+        }, Failure: {error in
+            print("image download error")
+        })
+    }
     
     
     @IBAction func moreAction(_ sender: UIButton) {
@@ -105,8 +127,9 @@ class CompanyVC: BaseController {
         
         let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier:"AddProfileDataVC") as? AddProfileDataVC
-        vc?.company = contractData?.company
+        vc?.company = ShareData.shareInfo.conractWithCompany?.company//contractData?.company
         self.navigationController?.pushViewController(vc!, animated: true)
+        
     }
     
     @IBAction func profileAction(_ sender: UIButton) {
@@ -145,13 +168,15 @@ class CompanyVC: BaseController {
                     
                     
                 } else {
-                    //self.alert(message: response?.message ?? "")
+                    //AppUtility.showErrorMessage(message: response?.message ?? "")
                 }
             }, Failure: {error in
                 self.hidLoader()
-                //self.alert(message: error.message)
+                //AppUtility.showErrorMessage(message: error.message)
             })
         }
+    
+    
     
     
 }
@@ -167,8 +192,27 @@ extension CompanyVC : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "CompanyCell") as? CompanyCell
         
-        cell?.lbladdress.text = contractData?.role?.name
-        cell?.lblownername.text = contractData?.user?.name
+        cell?.lbladdress.text =   ShareData.shareInfo.conractWithCompany?.role?.name // contractData?.role?.name
+        cell?.lblownername.text = ShareData.shareInfo.conractWithCompany?.user?.name//contractData?.user?.name
+        
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 2 })) != nil {
+            cell?.mapView.isHidden = false
+        } else {
+            cell?.mapView.isHidden = true
+        }
+        
+        
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 3 })) != nil {
+            cell?.qrCodeView.isHidden = false
+        } else {
+            cell?.qrCodeView.isHidden = true
+        }
+        
+//        if ((ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.contains(obj: "SHOW_MAP")) != nil) {
+//            cell?.mapView.isHidden = false
+//        } else {
+//            cell?.mapView.isHidden = true
+//        }
         
 
 //        let epocTime = TimeInterval(contractData?.startDate ?? 0)
@@ -180,21 +224,21 @@ extension CompanyVC : UITableViewDelegate,UITableViewDataSource {
 //        let dateString = dateFormatter.string(from: myDate)
 
         
-        cell?.lblstartDate.text = self.getMilisecondstoDate(seconds: "\(contractData?.startDate ?? 0)", formatter: "") //dateString
+        cell?.lblstartDate.text = self.getMilisecondstoDate(seconds: "\(ShareData.shareInfo.conractWithCompany?.startDate ?? 0)", formatter: "") //dateString
         
       
-        
-        cell?.lblendDate.text = self.getMilisecondstoDate(seconds: "\(contractData?.endDate ?? 0)", formatter: "")
+         //contractData
+        cell?.lblendDate.text = self.getMilisecondstoDate(seconds: "\(ShareData.shareInfo.conractWithCompany?.endDate ?? 0)", formatter: "")
         
         cell?.callBack = { Istrue in
             if Istrue {
             let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier:"CompanyMapVC") as? CompanyMapVC
                 
-                vc?.companyname = self.contractData?.company?.name ?? ""
-                vc?.address = self.contractData?.company?.address ?? ""
-                vc?.lat = self.contractData?.company?.latitud ?? 0
-                vc?.long = self.contractData?.company?.longitud ?? 0
+                vc?.companyname = ShareData.shareInfo.conractWithCompany?.company?.name ?? ""//self.contractData?.company?.name ?? ""
+                vc?.address = ShareData.shareInfo.conractWithCompany?.company?.address ?? ""//self.contractData?.company?.address ?? ""
+                vc?.lat = ShareData.shareInfo.conractWithCompany?.company?.latitud ?? 0//self.contractData?.company?.latitud ?? 0
+                vc?.long = ShareData.shareInfo.conractWithCompany?.company?.longitud ?? 0//self.contractData?.company?.longitud ?? 0
             self.navigationController?.pushViewController(vc!, animated: true)
             }
             

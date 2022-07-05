@@ -42,7 +42,7 @@ class TokenManager {
     
     func token(email:String,password:String, token:@escaping (String)->Void){
         let dic: [String:Any] =  ["email":email,"password":password]
-
+           print(dic)
         var Headers : HTTPHeaders
 
         Headers = [
@@ -53,7 +53,8 @@ class TokenManager {
                ]
 
         let Manger = Alamofire.Session.default
-        Manger.request("http://182.176.161.38:8080/corporate-user-pre-prod-v1/token", method: .post, parameters: dic, encoding: URLEncoding.default,headers:Headers).responseJSON { response in
+        print(Constant.MainUrl + "token")
+        Manger.request(Constant.MainUrl + "token", method: .post, parameters: dic, encoding: URLEncoding.default,headers:Headers).responseJSON { response in
             switch response.result {
             case .success:
                 do {

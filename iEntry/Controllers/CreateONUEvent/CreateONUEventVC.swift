@@ -62,9 +62,9 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
         let stringDate2 = dateFormatter2.string(from: timeInMiliSecEndDate)
         self.txthours.text = stringDate2
         
-     starttimeInMiliSecDate = Int (Date().timeIntervalSince1970 * 1000)
-     endtimeInMiliSecDate = Int (Date().timeIntervalSince1970 * 1000)
-        timeInMiliSec = Int (Date().timeIntervalSince1970 * 1000)
+     starttimeInMiliSecDate = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0 //Int (Date().timeIntervalSince1970 * 1000)
+     endtimeInMiliSecDate = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0 //Int (Date().timeIntervalSince1970 * 1000)
+        timeInMiliSec =  StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int (Date().timeIntervalSince1970 * 1000)
         self.setUIView()
         self.getAllZonesApi()
     }
@@ -152,30 +152,30 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
     
     func checData() -> Bool {
          if txtname.text == "" {
-            self.alert(message: "Please Enter The Name")
+            AppUtility.showErrorMessage(message: "Please Enter The Name")
             return false
         } else
         if txtdate.text == "" {
-            self.alert(message: "Please Select The Date")
+            AppUtility.showErrorMessage(message: "Please Select The Date")
             return false
             
         } else if txtduration.text == "" {
-            self.alert(message: "Please Enter The Duration")
+            AppUtility.showErrorMessage(message: "Please Enter The Duration")
             return false
         }else if txthours.text == "" {
-            self.alert(message: "Please Select The Time")
+            AppUtility.showErrorMessage(message: "Please Select The Time")
             return false
         } else if txtunitsection.text == "" {
-            self.alert(message: "Please Enter Unit Section")
+            AppUtility.showErrorMessage(message: "Please Enter Unit Section")
             return false
         }else if txtpurpose.text == "" {
-            self.alert(message: "Please Enter The Purpose")
+            AppUtility.showErrorMessage(message: "Please Enter The Purpose")
             return false
         }else if txtaccompainment.text == "" {
-            self.alert(message: "Please Enter The compainment")
+            AppUtility.showErrorMessage(message: "Please Enter The compainment")
             return false
         }else if txtzone.text == "" {
-            self.alert(message: "Please Select The Zone")
+            AppUtility.showErrorMessage(message: "Please Select The Zone")
             return false
         }
         
@@ -185,17 +185,18 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
     
     func getAllZonesApi(){
         self.showLoader()
-        let dic : [String:Any] = ["userId": ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.conractWithCompany?.company?.id ?? ""]
+        let dic : [String:Any] = ["userId": ShareData.shareInfo.obj?.id ?? ""]
+        //"companyId":ShareData.shareInfo.conractWithCompany?.company?.id ?? ""
         userhandler.getAllZone(params: dic) { response in
             self.hidLoader()
             if response?.success == true {
                 self.getAllZonedata = response?.data
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         } Failure: { error  in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         }
 
     }
@@ -253,8 +254,8 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
         if picker.datePickerMode == .date {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
-            let stringDate = dateFormatter.string(from: picker.date)
-            self.timeInMiliSec =  Int(picker.date.timeIntervalSince1970 * 1000)
+            let stringDate = dateFormatter.string(from: picker.date.startOfDay()!)
+            self.timeInMiliSec = StartDayMiliSeconds(newdate: picker.date.startOfDay()!) ?? 0//Int(picker.date.timeIntervalSince1970 * 1000)
             self.txtdate.text = stringDate
             
         } else {
@@ -274,7 +275,8 @@ class CreateONUEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
             let stringDate = dateFormatter.string(from: picker.pickerDate)
-            self.timeInMiliSec =  Int(picker.pickerDate.timeIntervalSince1970 * 1000)
+            self.timeInMiliSec = StartDayMiliSeconds(newdate: picker.pickerDate.startOfDay()!) ?? 0
+            //Int(picker.pickerDate.timeIntervalSince1970 * 1000)
             self.txtdate.text = stringDate
         } else {
             let dateFormatter = DateFormatter()

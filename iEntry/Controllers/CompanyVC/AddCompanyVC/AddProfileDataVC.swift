@@ -100,6 +100,8 @@ class AddProfileDataVC: BaseController {
         }
         isBioAcronmy = !isBioAcronmy
     }
+    
+    
     //MARK:- Get Company By id
     func getCompanyRistrictionbyID(){
             self.showLoader()
@@ -146,11 +148,11 @@ class AddProfileDataVC: BaseController {
                     
                     
                 } else {
-                    self.alert(message: response?.message ?? "")
+                    AppUtility.showErrorMessage(message: response?.message ?? "")
                 }
             }, Failure: {error in
                 self.hidLoader()
-                self.alert(message: error.message)
+                AppUtility.showErrorMessage(message: error.message)
             })
         }
     //MARK:- register compnay function
@@ -164,14 +166,14 @@ class AddProfileDataVC: BaseController {
                 self.companyData = response
                 //ShareData.shareInfo.compData(data: response!)
 //                self.navigationController?.popViewController(animated: true)
-                self.updateCompanyristriction()
+                //self.updateCompanyristriction()
             } else {
                 self.hidLoader()
-                self.alert(message: trycatch ?? "Somthing is Wrong")
+                AppUtility.showErrorMessage(message: trycatch ?? "Somthing is Wrong")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 //    @IBAction func showHidMapAction(_ sender: UIButton) {
@@ -181,13 +183,13 @@ class AddProfileDataVC: BaseController {
     
     func updateCompanyristriction() {
         
-        let companydic:[String:Any] = ["id":self.getCompanydata?.company?.id ?? ""]
+        let companydic:[String:Any] = ["id":company?.id ?? ""]
         let dic : [String:Any] = ["id":self.getCompanydata?.id ?? "", "company":companydic,"sentEmail":true,"eventApproval":!isvalide,"extraDataEvent":false,"extraDataEmployee":!isAdditional,"biocrValidation":!isBioAcronmy]
         
         userhandler.updateCompanyristrictionByID(param:dic,Success: {responce in
             self.hidLoader()
             if responce?.success == true {
-                self.alert(message: responce?.message ?? "")
+                AppUtility.showSuccessMessage(message: responce?.message ?? "")
                 self.navigationController?.popViewController(animated: true)
                 
                
@@ -196,7 +198,7 @@ class AddProfileDataVC: BaseController {
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
         
         
@@ -205,24 +207,25 @@ class AddProfileDataVC: BaseController {
     
     func checkData() -> Bool {
         if txtaddress.text == "" {
-            self.alert(message: "Please Enter Address")
+            AppUtility.showErrorMessage(message: "Please Enter Address")
             return false
         }
         
         if txtcompany.text == "" {
-            self.alert(message: "Please Enter Company Name")
+            AppUtility.showErrorMessage(message: "Please Enter Company Name")
             return false
         }
         
         if txtacronmy.text == "" {
-            self.alert(message: "Please Enter ACRONMY")
+            AppUtility.showErrorMessage(message: "Please Enter ACRONMY")
             return false
         }
         return true
     }
     @IBAction func toUpdateACtion(_ sender: UIButton) {
         if checkData() {
-            self.registerCompanyApi()
+            self.updateCompanyristriction()
+            //self.registerCompanyApi()
         }
     }
     

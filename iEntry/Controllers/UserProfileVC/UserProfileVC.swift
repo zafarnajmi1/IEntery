@@ -10,6 +10,7 @@ import SDWebImage
 class UserProfileVC: BaseController {
     @IBOutlet weak var lblspanishtitle: UILabel!
     
+    @IBOutlet weak var btninformation: UIButton!
     @IBOutlet weak var lbldevicetitle: UILabel!
     @IBOutlet weak var lblbiomatrictitle: UILabel!
     @IBOutlet weak var lblaccetypetitle: UILabel!
@@ -50,6 +51,7 @@ class UserProfileVC: BaseController {
     @IBOutlet weak var lblDOB: UILabel!
     @IBOutlet weak var lblemail: UILabel!
     
+    @IBOutlet weak var extradataicon: UIImageView!
     @IBOutlet weak var lblenglishtitle: UILabel!
     @IBOutlet weak var lblphonetitle: UILabel!
     @IBOutlet weak var spanishView: UIView!
@@ -57,6 +59,7 @@ class UserProfileVC: BaseController {
     
     @IBOutlet weak var lblarabicnametitle: UILabel!
     
+    @IBOutlet weak var btnextradata: UIButton!
     @IBOutlet weak var frechView: UIView!
     @IBOutlet weak var englishView: UIView!
     
@@ -65,9 +68,40 @@ class UserProfileVC: BaseController {
     var isespainssion = true
     var isfrench = true
     var istypeAccess =  true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if ShareData.shareInfo.userRole == .employees {
+            if ShareData.shareInfo.conractWithCompany?.role?.roleRestriction?.extraDataEmployee == true  {
+                
+                if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 12 })) != nil {
+                    btninformation.isHidden = false
+                    btnextradata.isHidden = false
+                    extradataicon.isHidden = false
+                } else {
+                    btninformation.isHidden = true
+                    btnextradata.isHidden = true
+                    extradataicon.isHidden = true
+                }
+                
+            }  else {
+                btninformation.isHidden = true
+                btnextradata.isHidden = true
+                extradataicon.isHidden = true
+            }
+        } else {
+            if ShareData.shareInfo.conractWithCompany?.role?.roleRestriction?.extraDataEmployee == true  {
+                
+                btninformation.isHidden = false
+                btnextradata.isHidden = false
+                extradataicon.isHidden = false
+            } else {
+                btninformation.isHidden = true
+                btnextradata.isHidden = true
+                extradataicon.isHidden = true
+            }
+        }
         
 //        if ShareData.shareInfo.saveLanguage == "en" {
 //            englishAction(UIButton())
@@ -136,7 +170,7 @@ class UserProfileVC: BaseController {
         if ShareData.shareInfo.isBiomatric == true {
             btnswitch.isOn = true
         } else {
-            btnswitch.isOn = true
+            btnswitch.isOn = false
         }
         self.navigationBarHidShow(isTrue: true)
         mainView.roundCorners([.topLeft,.topRight], radius: 20)
@@ -148,9 +182,16 @@ class UserProfileVC: BaseController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if Network.isAvailable {
+            print("Internet connection OK")
+            getUserInfo()
+            getUSerImageByIDApi()
+        } else {
+            print("Internet connection FAILED")
+            self.setDate()
+        }
         
         
-        getUserInfo()
     }
     
     func setDate(){
@@ -181,7 +222,21 @@ class UserProfileVC: BaseController {
             
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
+        })
+    }
+    
+    
+    func getUSerImageByIDApi(){
+        userhandler.GetUserImageByID(userid: ShareData.shareInfo.obj?.id ?? "", Success: {response in
+            if response?.success == true {
+                self.userimg.image = self.convierteImagen(base64String: response?.data ?? "")
+                
+            } else {
+                
+            }
+        }, Failure: {error in
+            
         })
     }
     
@@ -237,6 +292,8 @@ class UserProfileVC: BaseController {
                     let vc = storyBoard.instantiateViewController(withIdentifier:"LoginVC") as? LoginVC
             ShareData.shareInfo.saveUser(user: nil)
             ShareData.shareInfo.saveContract(contract: nil)
+            ShareData.shareInfo.Email = nil
+            ShareData.shareInfo.password = nil
             let defaults = UserDefaults.standard
             defaults.set(nil, forKey: "checkuserExist")
             
@@ -252,6 +309,8 @@ class UserProfileVC: BaseController {
             defaults.set(nil, forKey: "providerEmployeeData")
             defaults.set(nil, forKey: "contractorEmployeeData")
             defaults.set(nil, forKey: "invitation")
+            defaults.set(nil, forKey: "UserContractWithCompany")
+            defaults.set(nil, forKey: "userRestriction")
             ShareData.shareInfo.password = nil
             ShareData.shareInfo.Email = nil
             ShareData.shareInfo.token = nil
@@ -273,43 +332,60 @@ class UserProfileVC: BaseController {
     
     //ic-check-2
     @IBAction func englishAction(_ sender: UIButton) {
-       
-            isfrench = false
-            isespainssion = false
-             isenglish = true
         
-        englishimg.image = UIImage(named: "ic-check-2")
-        frenchimg.image = UIImage(named: "")
-        espainimg.image = UIImage(named: "")
-        ShareData.shareInfo.saveLanguage = "en"
-        myDefaultLanguage = .en
-        view.setNeedsLayout()
-        view.setNeedsDisplay()
+        
+        
+        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+       let vc = storyBoard.instantiateViewController(withIdentifier:"LanguageChangeAlertVC") as? LanguageChangeAlertVC
+       vc?.modalPresentationStyle = .overFullScreen
+        vc?.callBack = {
+            self.isfrench = false
+            self.isespainssion = false
+            self.isenglish = true
+        
+            self.englishimg.image = UIImage(named: "ic-check-2")
+            self.frenchimg.image = UIImage(named: "")
+            self.espainimg.image = UIImage(named: "")
+            ShareData.shareInfo.saveLanguage = "en"
+            myDefaultLanguage = .en
+            self.view.setNeedsLayout()
+            self.view.setNeedsDisplay()
         self.view.layoutIfNeeded()
         //self.navigationController?.popViewController(animated: true)
-         viewDidLoad()
+            self.viewDidLoad()
+        }
+       self.present(vc!, animated: false, completion: nil)
+        
+       
+            
         
         
     }
     
     @IBAction func espanission(_ sender: UIButton) {
-        isfrench = false
-        isespainssion = true
-         isenglish = false
-    
-            englishimg.image = UIImage(named: "")
-            frenchimg.image = UIImage(named: "")
-            espainimg.image = UIImage(named: "ic-check-2")
-        ShareData.shareInfo.saveLanguage = "es"
-        myDefaultLanguage = .es
-        view.setNeedsLayout()
-        view.setNeedsDisplay()
-        self.view.layoutIfNeeded()
-        
-        viewDidLoad()
+       
         //self.navigationController?.popViewController(animated: true)
         
+        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+       let vc = storyBoard.instantiateViewController(withIdentifier:"LanguageChangeAlertVC") as? LanguageChangeAlertVC
+       vc?.modalPresentationStyle = .overFullScreen
+        vc?.callBack = {
+            self.isfrench = false
+            self.isespainssion = true
+            self.isenglish = false
         
+            self.englishimg.image = UIImage(named: "")
+            self.frenchimg.image = UIImage(named: "")
+            self.espainimg.image = UIImage(named: "ic-check-2")
+            ShareData.shareInfo.saveLanguage = "es"
+            myDefaultLanguage = .es
+            self.view.setNeedsLayout()
+            self.view.setNeedsDisplay()
+            self.view.layoutIfNeeded()
+            
+            self.viewDidLoad()
+        }
+       self.present(vc!, animated: false, completion: nil)
     }
     
     @IBAction func frenchAction(_ sender: UIButton) {
@@ -320,6 +396,67 @@ class UserProfileVC: BaseController {
             englishimg.image = UIImage(named: "")
             frenchimg.image = UIImage(named: "ic-check-2")
             espainimg.image = UIImage(named: "")
+    }
+    
+    @IBAction func LinkDeviceAction(_ sender: UIButton) {
+        
+        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+       let vc = storyBoard.instantiateViewController(withIdentifier:"NotificationDownloadImageAlertVC") as? NotificationDownloadImageAlertVC
+        vc?.titlofDialog = "DESVINCULAR DISPOSITIVO".localized
+        vc?.detailofDialog = "¿Estas seguro que deseas desvincular este dispositivo? En automáico se cerrará tu sesión y se eliminaran los datos de esta aplicación.".localized
+        vc?.acceptbuttontitle = "ACEPTAR".localized
+       vc?.modalPresentationStyle = .overFullScreen
+        vc?.callBack = { isok in
+            vc?.dismiss(animated: true, completion: nil)
+            self.unlinkUserDeviceApi()
+            //self.navigationController?.popViewController(animated: true)
+        }
+       self.present(vc!, animated: false, completion: nil)
+    }
+    
+    
+    func unlinkUserDeviceApi(){
+        self.showLoader()
+        userhandler.unLinkUserDevice(userID: ShareData.shareInfo.obj?.id ?? "", Success:{response in
+            self.hidLoader()
+            if response?.success == true  {
+               
+                
+                let storyBoard = UIStoryboard.init(name: StoryBoards.Main.rawValue, bundle: nil)
+                        let vc = storyBoard.instantiateViewController(withIdentifier:"LoginVC") as? LoginVC
+                ShareData.shareInfo.saveUser(user: nil)
+                ShareData.shareInfo.saveContract(contract: nil)
+                let defaults = UserDefaults.standard
+                defaults.set(nil, forKey: "checkuserExist")
+                
+                defaults.set(nil, forKey: "contractList")
+                
+                
+                defaults.set(nil, forKey: "contractorData")
+                UserDefaults.standard.set(nil, forKey: "notification")
+                UserDefaults.standard.set(nil, forKey: "contactList")
+                self.navigationController?.pushViewController(vc!, animated: true)
+                
+                defaults.set(nil, forKey: "contractorData")
+                defaults.set(nil, forKey: "providerEmployeeData")
+                defaults.set(nil, forKey: "contractorEmployeeData")
+                defaults.set(nil, forKey: "invitation")
+                defaults.set(nil, forKey: "UserContractWithCompany")
+                defaults.set(nil, forKey: "userRestriction")
+                ShareData.shareInfo.password = nil
+                ShareData.shareInfo.Email = nil
+                ShareData.shareInfo.token = nil
+                ShareData.shareInfo.fcmToken = nil
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
+                
+                
+            } else {
+                AppUtility.showErrorMessage(message: response?.message ?? "")
+            }
+        }, Failure: {error in
+            self.hidLoader()
+            AppUtility.showErrorMessage(message: error.message)
+        })
     }
     
 }

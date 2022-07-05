@@ -68,8 +68,6 @@ struct GetContractByUserModel : Codable {
 
 struct GetContractByUserModelData : Codable {
     
-    
-    
     let id : String?
     let user : User?
     let status : Status?

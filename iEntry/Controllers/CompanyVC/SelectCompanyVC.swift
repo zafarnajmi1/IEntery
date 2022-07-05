@@ -29,7 +29,7 @@ class SelectCompanyVC:BaseController {
             print(response)
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 import AVFoundation
-class QRScanVC: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
+class QRScanVC:BaseController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet weak var btncross: UIButton!
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
@@ -98,8 +98,25 @@ class QRScanVC: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
 
     func found(code: String) {
         print(code)
+        openthedoorAPi()
     }
 
+    
+    
+    func openthedoorAPi(){
+        userhandler.openTheEmplyeeDoor(Success: {response in
+            if response?.success == true  {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                
+            }
+        }, Failure: {error in
+            AppUtility.showErrorMessage(message: error.message)
+        })
+    }
+    
+    
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 class CreatedNotification:NSObject, NSCoding {
+    
     var qualification:String
     var message:String
     var notificationkind:String
@@ -16,8 +17,13 @@ class CreatedNotification:NSObject, NSCoding {
     var username :String
     var createdAt :String
     var type : String
-    
-    init(qualification:String,message:String,notificationkind:String,Notificationtime:String,Notificationdate:String,notificationType:String,username :String,createdAt:String,type:String) {
+    var dateMeeting: String
+    var path: String
+    var driveId:String
+    var file: String
+    var image: String
+    var id:String
+    init(qualification:String,message:String,notificationkind:String,Notificationtime:String,Notificationdate:String,notificationType:String,username :String,createdAt:String,type:String,dateMeeting:String,path:String,driveId:String,file:String,image:String,id:String) {
         self.qualification = qualification
         self.message = message
         self.notificationkind = notificationkind
@@ -27,6 +33,12 @@ class CreatedNotification:NSObject, NSCoding {
         self.username = username
         self.createdAt = createdAt
         self.type = type
+        self.dateMeeting = dateMeeting
+        self.path = path
+        self.driveId = driveId
+        self.file = file
+        self.image = image
+        self.id = id
         
     }
     
@@ -40,6 +52,14 @@ class CreatedNotification:NSObject, NSCoding {
         self.username = decoder.decodeObject(forKey: "username") as? String ?? ""
         self.createdAt = decoder.decodeObject(forKey: "createdAt") as? String ?? ""
         self.type = decoder.decodeObject(forKey: "type") as? String ?? ""
+        self.dateMeeting = decoder.decodeObject(forKey: "dateMeeting") as? String ?? ""
+        self.path = decoder.decodeObject(forKey: "path") as? String ?? ""
+        self.driveId = decoder.decodeObject(forKey: "driveId") as? String ?? ""
+        self.file = decoder.decodeObject(forKey: "file") as? String ?? ""
+        self.image = decoder.decodeObject(forKey: "image") as? String ?? ""
+        self.id = decoder.decodeObject(forKey: "id") as? String ?? ""
+        
+        
         }
     func encode(with coder: NSCoder) {
         coder.encode(qualification, forKey: "qualification")
@@ -53,6 +73,12 @@ class CreatedNotification:NSObject, NSCoding {
         coder.encode(createdAt,forKey: "createdAt")
         coder.encode(type,forKey: "type")
         
+        coder.encode(dateMeeting,forKey: "dateMeeting")
+        coder.encode(path,forKey: "path")
+        coder.encode(driveId,forKey: "driveId")
+        coder.encode(file,forKey: "file")
+        coder.encode(image,forKey: "image")
+        coder.encode(id,forKey: "id")
         
     }
 }

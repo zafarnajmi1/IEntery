@@ -6,9 +6,17 @@
 //
 
 import UIKit
-
+import DropDown
+import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var txtvistorcomments: UITextView!
+    
+    @IBOutlet weak var lblfindemployee: UILabel!
+    @IBOutlet weak var lblfindUser: UILabel!
+    var  userListdata = [GetAllUsersListModelData]()
+    var MainDrowpDown = DropDown()
+    @IBOutlet weak var txtemployee: MDCOutlinedTextField!
+    @IBOutlet weak var employeedorpdownView: UIView!
     
     @IBOutlet weak var lblscreentitle: UILabel!
     @IBOutlet weak var lblenduptitle: UILabel!
@@ -25,6 +33,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     var param = eventDic()
     var eventid = ""
     var guestNumber = 0
+    
     //MARK:- here are the ibOUtlet
     @IBOutlet weak var lblnumberofInvitation: UILabel!
     
@@ -38,6 +47,8 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setMDCTxtFieldDesign(txtfiled: txtemployee, Placeholder: "EMPLOYEE", imageIcon: UIImage(named: "sort-down-solid")!)
         txtvistorcomments.delegate = self
         txtvistorcomments.text = "COMENTARIOS PARA VISITANTES.".localized
         lblscreentitle.text = "CREAR EVENTO".localized
@@ -56,6 +67,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
         self.btngetnumber.setTitle("O ELIGE EN BASE A TU LISTA DE CONTACTOS".localized, for: .normal)
         self.lblenduptitle.text = "TERMINAR".localized
         self.lblenduptitle.text = "SIGUIENTE".localized
+        getallUsersListApi()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -93,16 +105,29 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
          }
      }
     
-    
+    func getallUsersListApi(){
+        self.showLoader()
+        userhandler.getAllusers(companyid: ShareData.shareInfo.contractData?.company?.id ?? "", Success: {response in
+            self.hidLoader()
+            if response?.success == true {
+                self.userListdata = response?.data ?? []
+            } else {
+                
+            }
+        }, Failure: {error in
+            self.hidLoader()
+            AppUtility.showErrorMessage(message: error.message)
+        })
+    }
     func checkData() ->Bool{
 //        if txtvistorcomments.text == "COMENTARIOS PARA VISITANTES." || txtvistorcomments.text == "" {
-//            self.alert(message: "Please Enter The Commnets")
+//            AppUtility.showErrorMessage(message: "Please Enter The Commnets")
 //            return false
 //        }
 //        else
             
             if self.checkRegisterUser.count < 1 {
-            self.alert(message: "Please Invite At Least One Person")
+            AppUtility.showErrorMessage(message: "Please Invite At Least One Person")
             return false
         }
         return true
@@ -145,15 +170,15 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
     
     @IBAction func searchaction(_ sender: UIButton) {
         if txtsearch.text == "" {
-            self.alert(message: "Please Enter Email / Phone number")
+            AppUtility.showErrorMessage(message: "Please Enter Email / Phone number")
             return
         } else if txtsearch.text?.isValidEmail == true {
-            searchApi(phone:txtsearch.text!)
+            searchApi(phone:txtsearch.text!, isphone: false)
             
         } else if isValidPhone(phone: txtsearch.text ?? "") == true {
-            searchApi(phone:txtsearch.text!)
+            searchApi(phone:txtsearch.text!, isphone: true)
         } else {
-            self.alert(message: "Please Enter Valid Email / Phone number")
+            AppUtility.showErrorMessage(message: "Please Enter Valid Email / Phone number")
         }
         
         
@@ -191,17 +216,17 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
             
             for item in selectedNumbers {
                 
-                self.checkUserExistApi(name: item.name!,phone: item.number!)
+                self.checkUserExistApi(name: item.name!,phone: item.number!, isphone: true)
             }
         }
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
    
-    func searchApi(phone:String){
+    func searchApi(phone:String,isphone:Bool){
         //self.showLoader()
        self.checkRegisterUser.removeAll()
-        userhandler.checkUserExist(phone: phone, Success: {[self]response in
+        userhandler.checkUserExist(phone: phone, isphone: isphone, Success: {[self]response in
             self.hidLoader()
             if response?.success == true {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
@@ -222,18 +247,75 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
             self.tblView.reloadData()
         }, Failure: {error in
             self.hidLoader()
-            //self.alert(message: error.message)
+            //AppUtility.showErrorMessage(message: error.message)
         })
     }
    
-   
-   
+    @IBAction func employeSwitchAction(_ sender: UISwitch) {
+        if sender.isOn == true {
+            self.employeedorpdownView.isHidden = false
+            self.searchView.isHidden = true
+            self.lblfindemployee.textColor = #colorLiteral(red: 0.1884683073, green: 0.50359869, blue: 0.4553821087, alpha: 1)
+            self.lblfindUser.textColor = #colorLiteral(red: 0.8077545762, green: 0.8078941703, blue: 0.8077457547, alpha: 1)
+        } else {
+            self.employeedorpdownView.isHidden = true
+            self.searchView.isHidden = false
+            self.lblfindemployee.textColor = #colorLiteral(red: 0.8077545762, green: 0.8078941703, blue: 0.8077457547, alpha: 1)
+            self.lblfindUser.textColor = #colorLiteral(red: 0.1884683073, green: 0.50359869, blue: 0.4553821087, alpha: 1)
+        }
+    }
+    
+    @IBAction func employeeDropwAction(_ sender: UIButton) {
+        
+        var employeeList = [String]()
+         
+        for item in self.userListdata {
+            employeeList.append(item.name ?? "")
+        }
+        
+        dropDownConfig(txtField: txtemployee, data: employeeList)
+    }
+    
+    //MARK:- General dropdown function
+    func dropDownConfig(txtField : UITextField, data:[String]) {
+        MainDrowpDown.anchorView = txtField
+        MainDrowpDown.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        MainDrowpDown.selectionBackgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        MainDrowpDown.dataSource =  data
+        DropDown.appearance().textColor = #colorLiteral(red: 0.5527616143, green: 0.5568413734, blue: 0.5609211326, alpha: 1)
+        DropDown.appearance().selectedTextColor = UIColor.red
+        //DropDown.appearance().textFont = UIFont(name: "JosefinSans-Regular", size: 18)!
+        self.MainDrowpDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+            
+            cell.optionLabel.textAlignment = .left
+            
+        }
+        
+        MainDrowpDown.bottomOffset = CGPoint(x: 0, y: txtField.bounds.height)
+        MainDrowpDown.selectionAction = { [self](index: Int, item: String) in
+            print(item)
+//            self.txtselcted.text = item
+//            self.question?.selectedAns = index
+//            self.question?.answerText = item
+//            self.delegate?.myclaimdropdown(cell:self, ind: index, Section: self.mysection  )
+            self.txtemployee.text = item
+               
+            if !self.checkRegisterUser.contains(where: { $0.phoneemail == self.userListdata[index].phoneNumber ?? "" }) {
+                self.checkRegisterUser.append(checkUserExistModel(name: self.userListdata[index].name ?? "", phone:self.userListdata[index].phoneNumber ?? "", isregister: false, guestid:"", registertype: 1))
+            }
+            self.lblnumberofInvitation.text = "\(checkRegisterUser.count) " + "Invitaciones".localized
+            self.tblView.reloadData()
+        }
+        MainDrowpDown.show()
+    }
+    
    
   
-   func checkUserExistApi(name:String,phone:String){
+    func checkUserExistApi(name:String,phone:String,isphone:Bool){
        //self.showLoader()
        
-       userhandler.checkUserExist(phone: phone, Success: {[self]response in
+       userhandler.checkUserExist(phone: phone, isphone: isphone, Success: {[self]response in
            self.hidLoader()
            if response?.success == true {
                DispatchQueue.main.async {
@@ -293,7 +375,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
            self.tblView.reloadData()
        }, Failure: {error in
            self.hidLoader()
-           self.alert(message: error.message)
+           AppUtility.showErrorMessage(message: error.message)
        })
    }
     
@@ -324,13 +406,13 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
                     
                 })
                 self.navigationController?.popToViewController(ofClass: HomeVC.self)
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 }
@@ -342,7 +424,7 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        self.lblnumberofInvitation.text = "\(checkRegisterUser.count) " + "Invitaciones".localized
             return self.checkRegisterUser.count
         
     }
@@ -449,12 +531,7 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
                                         vc?.modalPresentationStyle = .overFullScreen
                                         
                                         self.present(vc!, animated: false, completion: nil)
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
+                                       
                                     }
                                     vc?.modalPresentationStyle = .overFullScreen
                 

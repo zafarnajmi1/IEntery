@@ -390,12 +390,11 @@ struct RoleTasks : Codable {
 
 }
 
-
 struct Role : Codable {
-    
     let id : String?
     let name : String?
-    let roleTasks : [String]?
+    let roleTasks : [RoleTasks]?
+    let roleRestriction : RoleRestriction?
     let createdAt : Int?
     let updatedAt : Int?
 
@@ -404,6 +403,7 @@ struct Role : Codable {
         case id = "id"
         case name = "name"
         case roleTasks = "roleTasks"
+        case roleRestriction = "roleRestriction"
         case createdAt = "createdAt"
         case updatedAt = "updatedAt"
     }
@@ -412,16 +412,52 @@ struct Role : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
-        roleTasks = try values.decodeIfPresent([String].self, forKey: .roleTasks)
+        roleTasks = try values.decodeIfPresent([RoleTasks].self, forKey: .roleTasks)
+        roleRestriction = try values.decodeIfPresent(RoleRestriction.self, forKey: .roleRestriction)
         createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
         updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
     }
-    
-    
+
+}
+struct RoleRestriction : Codable {
+    let id : String?
+    let eventValidation : Bool?
+    let sharePdfInMobileApp : Bool?
+    let extraDataEmployee : Bool?
+    let biocrValidation : Bool?
+    let keepSessionActiveWebApp : Bool?
+    let useTokenWebApp : Bool?
+
+    enum CodingKeys: String, CodingKey {
+
+        case id = "id"
+        case eventValidation = "eventValidation"
+        case sharePdfInMobileApp = "sharePdfInMobileApp"
+        case extraDataEmployee = "extraDataEmployee"
+        case biocrValidation = "biocrValidation"
+        case keepSessionActiveWebApp = "keepSessionActiveWebApp"
+        case useTokenWebApp = "useTokenWebApp"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(String.self, forKey: .id)
+        eventValidation = try values.decodeIfPresent(Bool.self, forKey: .eventValidation)
+        sharePdfInMobileApp = try values.decodeIfPresent(Bool.self, forKey: .sharePdfInMobileApp)
+        extraDataEmployee = try values.decodeIfPresent(Bool.self, forKey: .extraDataEmployee)
+        biocrValidation = try values.decodeIfPresent(Bool.self, forKey: .biocrValidation)
+        keepSessionActiveWebApp = try values.decodeIfPresent(Bool.self, forKey: .keepSessionActiveWebApp)
+        useTokenWebApp = try values.decodeIfPresent(Bool.self, forKey: .useTokenWebApp)
+    }
+
+}
+
+//
+//struct Role : Codable {
+//
 //    let id : String?
 //    let name : String?
-//    let roleTasks : [RoleTasks]?
-//    let company : Company?
+//    let roleTasks : [String]?
 //    let createdAt : Int?
 //    let updatedAt : Int?
 //
@@ -430,7 +466,6 @@ struct Role : Codable {
 //        case id = "id"
 //        case name = "name"
 //        case roleTasks = "roleTasks"
-//        case company = "company"
 //        case createdAt = "createdAt"
 //        case updatedAt = "updatedAt"
 //    }
@@ -439,13 +474,40 @@ struct Role : Codable {
 //        let values = try decoder.container(keyedBy: CodingKeys.self)
 //        id = try values.decodeIfPresent(String.self, forKey: .id)
 //        name = try values.decodeIfPresent(String.self, forKey: .name)
-//        roleTasks = try values.decodeIfPresent([RoleTasks].self, forKey: .roleTasks)
-//        company = try values.decodeIfPresent(Company.self, forKey: .company)
+//        roleTasks = try values.decodeIfPresent([String].self, forKey: .roleTasks)
 //        createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
 //        updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
 //    }
-
-}
+//
+//
+////    let id : String?
+////    let name : String?
+////    let roleTasks : [RoleTasks]?
+////    let company : Company?
+////    let createdAt : Int?
+////    let updatedAt : Int?
+////
+////    enum CodingKeys: String, CodingKey {
+////
+////        case id = "id"
+////        case name = "name"
+////        case roleTasks = "roleTasks"
+////        case company = "company"
+////        case createdAt = "createdAt"
+////        case updatedAt = "updatedAt"
+////    }
+////
+////    init(from decoder: Decoder) throws {
+////        let values = try decoder.container(keyedBy: CodingKeys.self)
+////        id = try values.decodeIfPresent(String.self, forKey: .id)
+////        name = try values.decodeIfPresent(String.self, forKey: .name)
+////        roleTasks = try values.decodeIfPresent([RoleTasks].self, forKey: .roleTasks)
+////        company = try values.decodeIfPresent(Company.self, forKey: .company)
+////        createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
+////        updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
+////    }
+//
+//}
 
 struct Zone : Codable {
     let id : String?

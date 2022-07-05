@@ -7,6 +7,8 @@
 
 import UIKit
 import DZNEmptyDataSet
+import Alamofire
+import SideMenu
 class NotificationVC: BaseController {
     fileprivate func  emptyDataSetUp() {
         self.tblView.emptyDataSetSource = self
@@ -23,6 +25,7 @@ class NotificationVC: BaseController {
     @IBOutlet weak var tblView: UITableView!
     var notificationdata : [NotificationModelData]? = nil
     var notificationList = [CreatedNotification]()
+    var notificationimg = UIImage()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.buttonView.roundViiew()
@@ -44,7 +47,40 @@ class NotificationVC: BaseController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getNotificationApi()
+       
+        
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 23 })) != nil {
+            buttonView.isHidden = false
+        } else {
+            buttonView.isHidden = true
+        }
+        
+        
+        if Network.isAvailable {
+            if ShareData.shareInfo.userRole == .employees {
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 22 })) != nil {
+                getNotificationApi()
+            } else {
+                self.emptyView.isHidden = false
+                self.tblView.isHidden = true
+            }
+            } else {
+                getNotificationApi()
+            }
+        } else {
+            for item in ShareData.shareInfo.getBacNotificationsSaved() {
+                if !self.notificationList.contains(where: { $0.id == item.id }) {
+                self.notificationList.append(CreatedNotification(qualification:item.qualification, message: item.message, notificationkind: item.notificationkind, Notificationtime:"\(item.Notificationtime)" , Notificationdate: "\(item.Notificationdate)", notificationType:item.notificationType, username:item.username, createdAt: item.createdAt, type:item.type,dateMeeting:item.dateMeeting,path:item.path,driveId:item.driveId,file:item.file,image:item.image,id:item.id))
+                }
+            }
+            if self.notificationList.count == 0 {
+                //self.emptyDataSetUp()
+                self.emptyView.isHidden = false
+                self.tblView.isHidden = true
+            }
+            self.tblView.reloadData()
+        }
+        
         
     }
 //    @IBAction func backAction(_ sender: UIButton) {
@@ -67,7 +103,7 @@ class NotificationVC: BaseController {
     func getNotificationApi(){
         showLoader()
         let timeInMiliSec = Date()
-        let sectimeInMili = Int (timeInMiliSec.timeIntervalSince1970 * 1000)
+        let sectimeInMili = startDay()//Int (timeInMiliSec.timeIntervalSince1970 * 1000)
         
         //30 * 24 * 60 * 60 * 1000
         var dic : [String:Any] = [:]
@@ -80,12 +116,12 @@ class NotificationVC: BaseController {
         if ShareData.shareInfo.userRole == .provider{
             
             
-            dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid.company?.id ?? "","date":sectimeInMili]
+            dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid?.company?.id ?? "","date":sectimeInMili]
             
         } else if ShareData.shareInfo.userRole == .contractor {
             
             
-            dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid.company?.id ?? "","date":sectimeInMili]
+            dic = ["userId":ShareData.shareInfo.obj?.id ?? "", "companyId":ShareData.shareInfo.contractorListdataValueGetByUserid?.company?.id ?? "","date":sectimeInMili]
             
         }else if ShareData.shareInfo.userRole == .contractoremplyee {
             //contractorEmployeeId
@@ -104,14 +140,25 @@ class NotificationVC: BaseController {
                 self.notificationdata = response?.data
                 self.notificationList.removeAll()
                 
-                for item in ShareData.shareInfo.getBacNotificationsSaved() {
-                    self.notificationList.append(CreatedNotification(qualification:item.qualification, message: item.message, notificationkind: item.notificationkind, Notificationtime:"\(item.Notificationtime)" , Notificationdate: "\(item.Notificationdate)", notificationType:item.notificationType, username:item.username, createdAt: item.createdAt, type:item.type))
-                }
-                
                 
                 for item in self.notificationdata ?? []{
-                    self.notificationList.append(CreatedNotification(qualification: item.title ?? "", message: item.message ?? "", notificationkind: item.type ?? "", Notificationtime:"\(item.dateMeeting ?? 0)" , Notificationdate: "\(item.dateMeeting ?? 0)", notificationType:item.notificationType?.name ?? "", username: item.user?.name ?? "", createdAt: "\(item.createdAt ?? 0)", type: item.type ?? "" ))
+                    if !self.notificationList.contains(where: { $0.id == item.id }) {
+                    self.notificationList.append(CreatedNotification(qualification: item.title ?? "", message: item.message ?? "", notificationkind: item.type ?? "", Notificationtime:"\(item.dateMeeting ?? 0)" , Notificationdate: "\(item.dateMeeting ?? 0)", notificationType:item.notificationType?.name ?? "", username: item.user?.name ?? "", createdAt: "\(item.createdAt ?? 0)", type: item.type ?? "",dateMeeting:"\(item.dateMeeting ?? 0)",path:item.path ?? "",driveId:item.driveId ?? "",file:item.file ?? "",image:item.image ?? "",id:item.id ?? "" ))
+                    }
                 }
+                
+                
+                for item in ShareData.shareInfo.getBacNotificationsSaved() {
+                    if !self.notificationList.contains(where: { $0.id == item.id }) {
+                    self.notificationList.append(CreatedNotification(qualification:item.qualification, message: item.message, notificationkind: item.notificationkind, Notificationtime:"\(item.Notificationtime)" , Notificationdate: "\(item.Notificationdate)", notificationType:item.notificationType, username:item.username, createdAt: item.createdAt, type:item.type,dateMeeting:item.dateMeeting,path:item.path,driveId:item.driveId,file:item.file,image:item.image,id:item.id))
+                    }
+                }
+                
+                
+               
+                
+            
+                
                 
                 self.notificationList.sort(by: {$0.createdAt > $1.createdAt})
                 
@@ -124,13 +171,75 @@ class NotificationVC: BaseController {
                 self.tblView.reloadData()
             } else {
                 self.hidLoader()
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
+    
+    
+    func downloadFile(notificationid:String){
+
+        self.showLoader()
+        userhandler.downloadNotificationFile(notificationid:notificationid, Success: {response in
+            self.hidLoader()
+            if response?.success == true  {
+                //self.notificationimg =  self.convierteImagen(base64String: response?.data ?? "") ?? UIImage()
+                print("File Data:",response?.data)
+                self.saveBase64StringToPDF(response?.data ?? "", optionName: "Notification\(randomNumber)")
+            } else {
+                self.hidLoader()
+            }
+        }, Failure: {error in
+            self.hidLoader()
+            print("image download error")
+        })
+        
+        
+    }
+    
+//    func saveBase64StringToPDF(_ base64String: String) {
+//
+//        guard
+//            var documentsURL = (FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)).last,
+//            let convertedData = Data(base64Encoded: base64String)
+//            else {
+//                print("saving error File")
+//            //handle error when getting documents URL
+//            return
+//        }
+//
+//        //name your file however you prefer
+//        documentsURL.appendPathComponent("yourFileName.pdf")
+//
+//        do {
+//            try convertedData.write(to: documentsURL,options: .atomic)
+//        } catch {
+//            print("Save file error in local device ")
+//            print(error.localizedDescription)
+//            //handle write error here
+//        }
+//
+//
+//        //let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//            //let fileURL = documentsURL.appendingPathComponent("yourFileName.pdf")
+//            //if let pngImageData = UIImagePNGRepresentation(image) {
+//                //convertedData.write(to: fileURL, options: .atomic)
+//        //}
+//
+//
+//        //if you want to get a quick output of where your
+//        //file was saved from the simulator on your machine
+//        //just print the documentsURL and go there in Finder
+//        print(documentsURL)
+//    }
+    
+    
+
+    
+    
     
 }
 //MARK:- tableview delegates
@@ -146,10 +255,45 @@ extension NotificationVC :  UITableViewDelegate,UITableViewDataSource {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "NotificationsCell") as? NotificationsCell
         let obj = notificationList[indexPath.row]
         cell?.configdate(obj:obj )
+        
+        
+        if obj.path == "notification_image"{
+            userhandler.downloadNotificationimage(notificationid: obj.id,option: "notification_image", Success: {response in
+                if response?.success == true  {
+                    self.notificationimg =  self.convierteImagen(base64String: response?.data ?? "") ?? UIImage()
+                    cell?.attachedimg.image = self.notificationimg
+                } else {
+                    
+                }
+            }, Failure: {error in
+                print("image download error")
+            })
+            
+            
+        } else  if obj.path ==  "notification_file"{
+            print("File Downloaded")
+            
+            
+            
+            
+        }
+        
+        
+        cell?.imageshowCallBack = {
+            let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier:"PreViewNotificationImageVC") as? PreViewNotificationImageVC
+            vc?.notificationid  = obj.id
+            vc?.modalPresentationStyle = .overFullScreen
+            
+            self.present(vc!, animated: false, completion: nil)
+        }
+        
+        
+        cell?.callBack = {
+            self.alertDownload(indx: indexPath.row)
+        }
         return cell!
     }
-    
-    
     
     
     
@@ -168,6 +312,21 @@ extension NotificationVC :  UITableViewDelegate,UITableViewDataSource {
 
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }
+    
+    func alertDownload(indx:Int){
+        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+       let vc = storyBoard.instantiateViewController(withIdentifier:"NotificationDownloadImageAlertVC") as? NotificationDownloadImageAlertVC
+        vc?.titlofDialog = "DESCARGAR ARCHIVO".localized
+        vc?.detailofDialog = "¿Estas seguro de querer descargar el archivo? Confirma para empezar su descarga.".localized
+        vc?.acceptbuttontitle = "CONFIRMAR".localized
+       vc?.modalPresentationStyle = .overFullScreen
+        vc?.callBack = { isok in 
+            print("downloading")
+            let obj = self.notificationList[indx]
+            self.downloadFile(notificationid:obj.id)
+        }
+       self.present(vc!, animated: false, completion: nil)
+    }
     
 }
 extension NotificationVC : DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {

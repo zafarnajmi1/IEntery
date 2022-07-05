@@ -47,11 +47,11 @@ class EnterEmailVC: BaseController {
 //MARK:- Checking the null able paramters
     func checkData() -> Bool{
         if txtemail.text == "" {
-            self.alert(message: "Please Enter the Valid Email")
+            AppUtility.showErrorMessage(message: "Please Enter the Valid Email")
             return false
         }
         if txtemail.text?.isValidEmail != true {
-            self.alert(message: "Please Enter the Valid Email")
+            AppUtility.showErrorMessage(message: "Please Enter the Valid Email")
             return false
         }
         return true
@@ -61,17 +61,18 @@ class EnterEmailVC: BaseController {
     //MARK:- This funtion use to send the Email
     func sendEmailApi(){
         self.showLoader()
+        ShareData.shareInfo.token = ""
         loginVM.sendEmail(email: self.txtemail.text!, Success: {response , trycatch in
             self.hidLoader()
             if response?.success ?? false {
                 self.moveOnMethod()
             } else {
                 self.hidLoader()
-                self.alert(message: trycatch ?? "somthing is wrong")
+                AppUtility.showErrorMessage(message: trycatch ?? "somthing is wrong")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     

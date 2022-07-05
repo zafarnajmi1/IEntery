@@ -41,7 +41,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.timeInMiliSec =  Int(timeInMiliSecDate.timeIntervalSince1970 * 1000)
+        self.timeInMiliSec =  StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int(timeInMiliSecDate.timeIntervalSince1970 * 1000)
         self.lblenternumberofguesttitle.text = "Ingrese el número de invitados que llegarán".localized
         self.lblinvitationtitle.text = "I N V  IT A C I Ó N".localized
         txtnumberInvitayion.keyboardType = .numberPad
@@ -76,11 +76,11 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
             if response?.success == true {
                 self.getAllZonedata = response?.data
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         } Failure: { error  in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         }
 
     }
@@ -100,7 +100,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
             self.hidLoader()
             if response?.success == true {
                 self.cancelAction(UIButton())
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
                 
                 
                 
@@ -121,26 +121,26 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
                 self.callBack?(self.phone)
                 self.dismiss(animated: true, completion: nil)
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
                 self.dismiss(animated: true, completion: nil)
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message:error.message)
+            AppUtility.showErrorMessage(message:error.message)
         })
     }
     
     
     func checData() -> Bool {
         if txtdate.text == "" {
-            self.alert(message: "Please Select The Date")
+            AppUtility.showErrorMessage(message: "Please Select The Date")
             return false
             
         } else if txttime.text == "" {
-            self.alert(message: "Please Select The Time")
+            AppUtility.showErrorMessage(message: "Please Select The Time")
             return false
         } else if txtZone.text == "" {
-            self.alert(message: "Please Select The Zone")
+            AppUtility.showErrorMessage(message: "Please Select The Zone")
             return false
         }
         
@@ -251,7 +251,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
             let stringDate = dateFormatter.string(from: picker.date)
-            self.timeInMiliSec =  Int(picker.date.timeIntervalSince1970 * 1000)
+            self.timeInMiliSec =  StartDayMiliSeconds(newdate: picker.date.startOfDay()!) ?? 0//Int(picker.date.timeIntervalSince1970 * 1000)
             self.txtdate.text = stringDate
             
         } else {
@@ -271,7 +271,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
             let stringDate = dateFormatter.string(from: picker.pickerDate)
-            self.timeInMiliSec =  Int(picker.pickerDate.timeIntervalSince1970 * 1000)
+            self.timeInMiliSec = StartDayMiliSeconds(newdate: picker.pickerDate.startOfDay()!) ?? 0 //Int(picker.pickerDate.timeIntervalSince1970 * 1000)
             self.txtdate.text = stringDate
         } else {
             let dateFormatter = DateFormatter()

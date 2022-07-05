@@ -103,7 +103,7 @@ class ONURegisterUserVC: BaseController {
             if response?.success == true {
                 //self.cancelAction(UIButton())
                 //self.callback!(self.phoneNumberTextField.text!, self.txtname.text!)
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
                 self.callBack?(self.txtname.text ?? "", self.txtemail.text ?? "", self.txtphone.text ?? "", self.txtorganization.text ?? "", self.txtpickupsite.text ?? "",self.txtnumberofcompanies.text ?? "",self.isbzBadge,self.ispdfshare)
                    self.dismiss(animated: true, completion: nil)
             } else {
@@ -119,7 +119,7 @@ class ONURegisterUserVC: BaseController {
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
@@ -144,22 +144,22 @@ class ONURegisterUserVC: BaseController {
     func checkData() -> Bool {
         
         if txtname.text == "" {
-            self.alert(message: "Please Enter Name")
+            AppUtility.showErrorMessage(message: "Please Enter Name")
             return false
         } else if txtemail.text == "" {
-            self.alert(message: "Please Enter email")
+            AppUtility.showErrorMessage(message: "Please Enter email")
             return false
         } else if txtphone.text == "" {
-            self.alert(message: "Please Enter Phone Number")
+            AppUtility.showErrorMessage(message: "Please Enter Phone Number")
             return false
         } else if txtpickupsite.text == "" {
-            self.alert(message: "Please Enter Pick Up Site")
+            AppUtility.showErrorMessage(message: "Please Enter Pick Up Site")
             return false
         } else if txtorganization.text == "" {
-            self.alert(message: "Please Enter Organization")
+            AppUtility.showErrorMessage(message: "Please Enter Organization")
             return false
         } else if txtnumberofcompanies.text == "" {
-            self.alert(message: "Please Enter Companoin Number")
+            AppUtility.showErrorMessage(message: "Please Enter Companoin Number")
             return false
         }
         return true

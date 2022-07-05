@@ -18,7 +18,7 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
     @IBOutlet weak var lbltime: UILabel!
     //MARK:- here are iboutlet
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var btncode: UIButton!
+    //@IBOutlet weak var btncode: UIButton!
     @IBOutlet weak var usrimg: UIImageView!
     @IBOutlet weak var txtSix: UITextField!
     @IBOutlet weak var txtFive: UITextField!
@@ -32,18 +32,18 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
     @IBOutlet weak var CodeViewFour: UIView!
     @IBOutlet weak var CodeViewFive: UIView!
     @IBOutlet weak var CodeViewSix: UIView!
-    @IBOutlet weak var lbltimedetail: UILabel!
+    //@IBOutlet weak var lbltimedetail: UILabel!
     var otpTex = ""
     var loginVM = LoginViewModel()
     var tokenData : SixDigitCodeModel?
     private var timer: Timer?
     
-    var count = 1*59
+    var count = 1*5 //59
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lbltokentitle.text = "TOKEN DE ACCESO".localized
-        self.lbltimedetail.text = "Valido por los siguientes 30 segundos.".localized
-        btncode.setTitle("VOLVER A GENERAR".localized, for: .normal)
+        //self.lbltimedetail.text = "Valido por los siguientes 30 segundos.".localized
+       // btncode.setTitle("VOLVER A GENERAR".localized, for: .normal)
         self.lblusername.text = ShareData.shareInfo.obj?.name
         self.lbltime.text = self.getCurrentTime()
         self.lbldate.text = self.getCurrentDate()
@@ -70,10 +70,15 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.geneRateOtpApiCall()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
-                lbltimedetail.isUserInteractionEnabled = true
-        lbltimedetail.addGestureRecognizer(tap)
+        if Network.isAvailable {
+          self.geneRateOtpApiCall()
+        } else{
+            AppUtility.showErrorMessage(message: "No Internet Connection")
+            
+        }
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
+//                lbltimedetail.isUserInteractionEnabled = true
+//        lbltimedetail.addGestureRecognizer(tap)
     }
     
     
@@ -105,12 +110,17 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
     @objc func updateTimer() {
         if count > 0 {
             count -= 1
-            lbltimedetail.text = "Valido por los siguientes \(count),s segundos."
+           // lbltimedetail.text = "Valido por los siguientes \(count),s segundos."
         } else {
             timer?.invalidate()
             timer = nil
-            lbltimedetail.text = "Resend Code"
-            //self.geneRateOtpApiCall()
+           // lbltimedetail.text = "Resend Code"
+            if Network.isAvailable {
+            self.geneRateOtpApiCall()
+            } else{
+                AppUtility.showErrorMessage(message: "No Internet Connection")
+                
+            }
         }
     }
     
@@ -121,7 +131,7 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
         userhandler.getSixDigitCode(Success: {response in
             self.hidLoader()
             if response?.success == true {
-                self.count = 1*59
+                self.count = 1*5 //59
                 self.startTime()
                 self.tokenData = response
                 
@@ -134,7 +144,7 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
@@ -222,14 +232,15 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
         userhandler.verifySixDigitCode(Success: {response in
             self.hidLoader()
             if response?.success == true {
-                self.alert(message: response?.message ?? "")
+                
                 self.navigationController?.popViewController(animated: true)
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     

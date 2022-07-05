@@ -73,7 +73,7 @@ class ProviderDetailVC: BaseController {
         self.lblemployee.text = self.ordersdata?.providerEmployee?.user?.name ?? ""
 //        self.statusView.te
 //       lblstatus: UILabel!
-        self.lblvihicl.text = self.ordersdata?.providerVehicle ?? ""
+        self.lblvihicl.text = self.ordersdata?.providerVehicle?.vehicle?.brand ?? ""
         
         
         
@@ -103,7 +103,7 @@ class ProviderDetailVC: BaseController {
         
         
         self.lblrecieverDate.text = self.getFormattedMilisecondstoDate(seconds: "\(self.ordersdata?.createdAt ?? 0)", formatter: "");
-        self.lblrecieverusername.text = self.ordersdata?.userReceived ?? ""
+        //self.lblrecieverusername.text = self.ordersdata?.userReceived?.name ?? ""
 
         
     }

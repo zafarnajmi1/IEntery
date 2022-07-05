@@ -64,8 +64,11 @@ class InformationVC: BaseController {
             self.txtArabicName.isUserInteractionEnabled = true
             self.btnupdate.isUserInteractionEnabled = true
         }
-        
-        getExtraDataApi()
+        if Network.isAvailable {
+           getExtraDataApi()
+        } else {
+            AppUtility.showErrorMessage(message: "No internet Connection")
+        }
     }
     
     
@@ -86,23 +89,33 @@ class InformationVC: BaseController {
                 self.txtArabicName.text = self.extraData?.arabicName
                 
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 
     @IBAction func saveDataAction(_ sender: UIButton) {
-        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier:"AcceptORRejectionPopUpVC") as? AcceptORRejectionPopUpVC
-        vc?.modalPresentationStyle = .overFullScreen
-        vc?.callBack = {
-            vc?.dismiss(animated: true, completion: nil)
-            self.updateExtraDataApi()
+        
+        if Network.isAvailable {
+            print("Internet connection OK")
+            let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier:"AcceptORRejectionPopUpVC") as? AcceptORRejectionPopUpVC
+            vc?.modalPresentationStyle = .overFullScreen
+            vc?.callBack = {
+                vc?.dismiss(animated: true, completion: nil)
+                self.updateExtraDataApi()
+            }
+            self.present(vc!, animated: false, completion: nil)
+        } else {
+            print("Internet connection FAILED")
+            AppUtility.showErrorMessage(message: "No internet Connection")
+            
         }
-        self.present(vc!, animated: false, completion: nil)
+        
+        
         //self.navigationController?.popViewController(animated: true)
     }
     
@@ -110,22 +123,33 @@ class InformationVC: BaseController {
     func updateExtraDataApi(){
         showLoader()
         let dic : [String:Any] = ["id":ShareData.shareInfo.obj?.extraData?.id ?? "","town":txtstate.text!,"country":txtcountery.text!,"postalCode":txtpostcode.text!,"homePhone":txtphonenumber.text!,"arabicName":txtArabicName.text!,"bloodType":txtblood.text!,"contractorName":"9JSAJSDAI343","note":"none","wasVaccinated":true,"address1":txtaddress.text!,"address2":txtaddress2.text!]
-        userhandler.updateExtradatauser(params: dic, Success: {response in
+        userhandler.updateExtradatauser(params: dic,id:ShareData.shareInfo.obj?.id ?? "", Success: {response in
             self.hidLoader()
             if response?.success == true {
                
                 self.navigationController?.popViewController(animated: true)
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     @IBAction func backAction(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        
+        
+        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+       let vc = storyBoard.instantiateViewController(withIdentifier:"NotificationDownloadImageAlertVC") as? NotificationDownloadImageAlertVC
+        vc?.titlofDialog = "CAMBIOS EN EL PERFIL".localized
+        vc?.detailofDialog = "Si sales sin guardar los cambios, todo lo registrado se perderá y tendrás nuevamente que volver a hacer los cambios. ¿Estás seguro que quieres descartar los cambios?".localized
+        vc?.acceptbuttontitle = "ACEPTAR".localized
+       vc?.modalPresentationStyle = .overFullScreen
+        vc?.callBack = { isok in 
+            self.navigationController?.popViewController(animated: true)
+        }
+       self.present(vc!, animated: false, completion: nil)
     }
     
 }

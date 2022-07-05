@@ -85,11 +85,11 @@ class ONUVehicleVC: BaseController {
             if response?.success == true {
                 self.vehiclListdata = response?.data
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     

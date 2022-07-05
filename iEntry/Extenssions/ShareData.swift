@@ -22,7 +22,7 @@ class ShareData {
     
     func savecompanyRistriction(company:CompanyRistrictionData?){
         companyRistriction = company
-        setcompanyStriction(user: companyRistriction!)
+        setcompanyStriction(user: companyRistriction ?? nil )
     }
     
     
@@ -47,20 +47,6 @@ class ShareData {
             
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     var providerEmployeeGetByUserid : ProviderUserByIdModelData?
@@ -92,16 +78,6 @@ class ShareData {
             
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -166,9 +142,9 @@ class ShareData {
 
     }
 
-    var contractorListdataValueGetByUserid: GetContractorByUserIdModelData {
+    var contractorListdataValueGetByUserid: GetContractorByUserIdModelData? {
         get {
-            return UserDefaults.standard.retrieve(object: GetContractorByUserIdModelData.self, fromKey: "contractorData")!
+            return UserDefaults.standard.retrieve(object: GetContractorByUserIdModelData.self, fromKey: "contractorData")
         }
         set {
             
@@ -232,7 +208,7 @@ class ShareData {
     
     var notificationlist = [CreatedNotification]()
     
-    func saveNotification(qualification:String, message:String, notificationkind: String, Notificationtime:String, Notificationdate:String, notificationType:String, username:String,createdAt:String,type:String){
+    func saveNotification(qualification:String, message:String, notificationkind: String, Notificationtime:String, Notificationdate:String, notificationType:String, username:String,createdAt:String,type:String,dateMeeting:String,path:String,driveId:String,file:String,image:String,id:String){
         do {
             
             // retrieving a value for a key
@@ -243,8 +219,12 @@ class ShareData {
             }
             
                     // setting a value for a key
-            let newPerson = CreatedNotification(qualification: qualification, message: message, notificationkind: notificationkind, Notificationtime: Notificationtime, Notificationdate: Notificationdate, notificationType: notificationType, username: username, createdAt: createdAt, type: type)
+            let newPerson = CreatedNotification(qualification: qualification, message: message, notificationkind: notificationkind, Notificationtime: Notificationtime, Notificationdate: Notificationdate, notificationType: notificationType, username: username, createdAt: createdAt, type: type,dateMeeting:dateMeeting,path:path,driveId:driveId,file:file,image:image,id:id)
                     
+            
+            
+            
+            
             notificationlist.append(newPerson)
                     let encodedData = try NSKeyedArchiver.archivedData(withRootObject: notificationlist, requiringSecureCoding: false)
                     UserDefaults.standard.set(encodedData, forKey: "notification")
@@ -347,7 +327,40 @@ class ShareData {
     
     
     
-    let existuser:getUserIsExistModelData? = nil
+    var userCompanyRestrictionData : userCompanyRestrictionModelData?
+    
+    func saveUserCompanyRestriction(user:userCompanyRestrictionModelData?){
+        userCompanyRestrictionData = user
+        setvalueCompanyRestriction(user:user)
+    }
+    
+    
+    func setvalueCompanyRestriction(user:userCompanyRestrictionModelData?) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "userRestriction")
+            
+        }
+
+    }
+
+    var userRestrictionObj: userCompanyRestrictionModelData? {
+        get {
+            return UserDefaults.standard.retrieve(object: userCompanyRestrictionModelData.self, fromKey: "userRestriction")
+        }
+        set {
+            
+            UserDefaults.standard.save(customObject: userCompanyRestrictionData, inKey: "userRestriction")
+            
+        }
+    }
+    
+    
+    
+    
+    
+    var existuser:getUserIsExistModelData?
     func saveExistUser(existuser:getUserIsExistModelData) {
         setValueOrExistUser(existuser:existuser)
     }
@@ -360,17 +373,29 @@ class ShareData {
         }
     }
     
-    var checkUserExist = UserDefaults.standard.retrieve(object:getUserIsExistModelData.self, fromKey:"checkuserExist")
+    var checkUserExist: getUserIsExistModelData? {
+        get {
+            return UserDefaults.standard.retrieve(object: getUserIsExistModelData.self, fromKey: "checkuserExist")
+        }
+        set {
+            
+            UserDefaults.standard.save(customObject: existuser, inKey: "checkuserExist")
+            
+        }
+    }
     
     
+   // var checkUserExist = UserDefaults.standard.retrieve(object:getUserIsExistModelData.self, fromKey:"checkuserExist")
     
     
-    var userRole : UserRole = .employees
+       var userRole : UserRole = .employees
        var Loging : LoginModel?
 
        func LoginData(data: LoginModel){
          Loging = data
        }
+    
+    
     var companyData:CompanyRegisterModel?
     
     func compData(data: CompanyRegisterModel){
@@ -696,13 +721,12 @@ class ShareData {
         }
     }
     
-    
-    var  isLoginType : String? {
+    var  isLogin: String? {
         get{
-            return UserDefaults.standard.string(forKey: "isLoginType")
+            return UserDefaults.standard.string(forKey: "isLogin")
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "isLoginType")
+            UserDefaults.standard.set(newValue, forKey: "isLogin")
         }
     }
     
@@ -714,6 +738,7 @@ class ShareData {
             UserDefaults.standard.set(newValue, forKey: "companyid")
         }
     }
+    
     
     var saveLanguage:String?{
         set{

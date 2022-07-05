@@ -30,13 +30,20 @@ class OrderHistoryVC: BaseController,IndicatorInfoProvider {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
           //self.getproviderorderRecordsapi()
-        
-        if ShareData.shareInfo.userRole == .provideremployee {
-           self.getProvideremployeeApi()
-        } else {
-            self.getProviderApi()
+        if Network.isAvailable {
+            
+                if ShareData.shareInfo.userRole == .provideremployee {
+                   self.getProvideremployeeApi()
+                } else {
+                    self.getProviderApi()
+                }
+ 
+        } else{
+            AppUtility.showErrorMessage(message: "No Internet Connection")
+            self.tblView.isHidden = true
+            self.emptyView.isHidden = false
         }
-
+            
     }
     
     
@@ -74,10 +81,10 @@ class OrderHistoryVC: BaseController,IndicatorInfoProvider {
     }
     
 
-    
+    ////"\(Int (Date().timeIntervalSince1970 * 1000))"
     func getproviderorderRecordsapi(){
         self.showLoader()
-        userhandler.getAfterDateProviderOrdersByUserIDs(userid: ShareData.shareInfo.userRole == .provider ? ShareData.shareInfo.contractorListdataValueGetByUserid.id ?? "" : ShareData.shareInfo.providerEmployeedataValueGetByUserid?.id ?? "", datevalue:"\(Int (Date().timeIntervalSince1970 * 1000))", isproviderEmployee: ShareData.shareInfo.userRole == .provider ? false : true , Success: {response in
+        userhandler.getAfterDateProviderOrdersByUserIDs(userid: ShareData.shareInfo.userRole == .provider ? ShareData.shareInfo.contractorListdataValueGetByUserid?.id ?? "" : ShareData.shareInfo.providerEmployeedataValueGetByUserid?.id ?? "", datevalue:"\(StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0)", isproviderEmployee: ShareData.shareInfo.userRole == .provider ? false : true , Success: {response in
                self.hidLoader()
             if response?.success == true {
                 self.ordersdata = response?.data ?? []
@@ -89,11 +96,11 @@ class OrderHistoryVC: BaseController,IndicatorInfoProvider {
                     self.emptyView.isHidden = false
                 }
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
@@ -111,14 +118,14 @@ extension OrderHistoryVC: UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderHistoryCell") as? OrderHistoryCell
         
         cell?.lblcompany.text = self.ordersdata[indexPath.row].company?.name ?? ""
-        cell?.lblvehicle.text = self.ordersdata[indexPath.row].providerVehicle
+        cell?.lblvehicle.text = self.ordersdata[indexPath.row].providerVehicle?.vehicle?.brand ?? ""
         cell?.lblemployee.text = self.ordersdata[indexPath.row].providerEmployee?.user?.name ?? ""
         cell?.lbldeliverydate.text = self.getFormattedMilisecondstoDate(seconds: "\(self.ordersdata[indexPath.row].deliveryDate ?? 0)", formatter: "");
         cell?.lbldeliverydetail.text = self.ordersdata[indexPath.row].description ?? ""
         cell?.lbldeliveryproduct.text = self.ordersdata[indexPath.row].item ?? ""
         cell?.lbldeliverycompany.text = self.ordersdata[indexPath.row].company?.name ?? ""
     
-        cell?.lblreceiver.text = self.ordersdata[indexPath.row].userReceived ?? ""
+        //cell?.lblreceiver.text = self.ordersdata[indexPath.row].userReceived?.name ?? ""
         cell?.lblrecieverdate.text = self.getFormattedMilisecondstoDate(seconds: "\(self.ordersdata[indexPath.row].createdAt ?? 0)", formatter: "");
         
         if self.ordersdata[indexPath.row].status?.name ?? "" == "ORDER_IN_COMING" {

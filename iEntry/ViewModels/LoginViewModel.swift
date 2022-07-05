@@ -18,7 +18,7 @@ class  LoginViewModel {
                 Networkhandler.PostRequest(url: url, parameters: params, success: {(successResponse)  in
         
                     do {
-                    print("MyResponse : ", successResponse)
+                    print("Login MyResponse : ", successResponse)
                         let responseModel = try JSONDecoder().decode(LoginModel.self, from: successResponse.data!)
                         
                         Success(responseModel,nil)
@@ -164,7 +164,7 @@ class  LoginViewModel {
 
     func getUserByEmail(email:String,Success: @escaping (GetUserByEmailModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
         let url =  Constant.MainUrl + Constant.URLs.getuserbyemail + "\(email)"
-
+              print("GetUser URL:",url)
                Networkhandler.GetRequiest(url: url, parameters: nil, success: {(successResponse)  in
 
                    do {
@@ -175,6 +175,8 @@ class  LoginViewModel {
 
                    }
                    catch {
+                       
+                       print("Response Error")
                        Success(nil)
                    }
 

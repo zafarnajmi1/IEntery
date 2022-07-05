@@ -11,7 +11,10 @@ import UIKit
 
 class Constant {
     
-    static var MainUrl : String { return "http://182.176.161.38:8080/corporate-user-pre-prod-v1/" //"http://182.180.148.189:8080/corporate-user-pre-prod-v1/"
+    static var MainUrl : String { return "http://38.65.139.14:8080/corporate-user-pre-prod-v1/" //"http://182.176.161.38:8080/corporate-user-pre-prod-v1/"
+        
+        
+        //"http://182.180.148.189:8080/corporate-user-pre-prod-v1/"
     }
     
     //http://182.176.161.38:8080/corporate-user-pre-prod-v1
@@ -32,20 +35,24 @@ class Constant {
         static let checkuser = "authentication/checknewuser/"
         static let sendEmail = "authentication-service/send-email/reset-password/"
         static let updatepassword = "authentication-service/update-password-user-id/"
-        
+        static let sendFirstAccessSixDigitCode = "send-sms/reset-password/"
         static let generateToken = "otp/generate/"
         static let RegisterCompany = "company-service/create"
         static let Getcompany = "companies/company/get-by-id/"
-        
-        
+        static let getUserImage = "user-service/user-image/get-selfie/by-user-id/"
+        static let checkUserSelfiimage = "user-service/user-image/check-selfie/by-user-id/"
+        static let getUserImageById = "user-service/user-image/get-by-id/"
+        static let linkDevice = "user-service/link-device/device-id/"
+        static let unlinkUserDevice = "user-service/unlink-device/by-id/"
+        static let openTheDoorLink = "device-service/open-the-door"
         static let getuserbyemail = "user-service/get-by-email/"
         
         static let getcompanybyid = "company-service/get-by-id/"
         static let getallCompanies = "company-service/get-all"
         static let getGender = "gender-service/get-by-id/"
         static let getAllgender = "gender-service/get-all"
-        static let createUserCompanyContract = "user-company-service/create-contract-employee"
-        static let updateUserCompanyContract = "user-company-service/update-contract-employee"
+        static let createUserCompanyContract = "employee-service/create-contract-employee"//"user-company-service/create-contract-employee"
+        static let updateUserCompanyContract = "employee-service/update-contract-employee"//"user-company-service/update-contract-employee"
         
         static let getcompanyRistriction = "company-service/company-restriction/get-by-company-id/"
         
@@ -53,17 +60,18 @@ class Constant {
         
        static let getZonebyId = "zone-service/get-by-id/"
        static let createZone  = "zone-service/create"
-       static let getAllZone = "zone-service/get-all/allowed-zones"
+       static let getAllZone = "work-shift-service/get-all/allowed-zones"//"zone-service/get-all/allowed-zones"
         
         
         
         
        static let CreateExtraDataUser = "extra-data-service/create"
-       static let updateExtraDataUser = "extra-data-service/update"
-       static let getSixDigitCode = "authentication-service/get-verification-code/by-user-id" ///"authentication-service/get-verification-code/by-user-id/"
+       static let updateExtraDataUser = "extra-data-service/update-by-user-id/"///"extra-data-service/update"
+       static let getSixDigitCode = "authentication-service/get-verification-code"
+        //"authentication-service/get-verification-code/by-user-id" ///"authentication-service/get-verification-code/by-user-id/"
         
       
-       static let userContractcompanyservice = "user-company-service/get-by-user-id/"
+       static let userContractcompanyservice = "employee-service/get-by-user-id/"//"user-company-service/get-by-user-id/"
        static  let getAllInvitationByUserID = "invitation-service/get-all/by-guest-id/"
         static let createInvitation = "invitation-service/create"
         
@@ -76,7 +84,7 @@ class Constant {
          static let getBeforeDateEvent = "event-service/get-all/by-host-id/before-date" //"event-service/get-all/by-user-id/before-date"
         
         
-        static let getcommenAreas = "event-service/reservation/get-all-free-common-areas-by-dates"
+        static let getcommenAreas = "work-shift-service/app/v1/reservation/get-all-free-common-areas-by-dates"//"event-service/reservation/get-all-free-common-areas-by-dates"
         
         static let getEventInvitationAfterDate = "event-service/get-all/by-host-id/after-date"//"event-service/get-all/by-host-id/before-date" //"event-service/get-all-invitations/by-user-id/after-date"
         
@@ -100,7 +108,8 @@ class Constant {
         ///by-company-id/"
         
         static let getNotificationTypes = "notification-service/notification-type/get-all"
-        static let getAllUsersList = "user-company-service/get-all-only-user-data/by-company-id/"
+        //corporate-user-pre-prod-v1/employee-service/get-all/only-user-data
+        static let getAllUsersList = "employee-service/get-all/only-user-data" //"employee-service/get-all-only-user-data/by-company-id/" //"user-company-service/get-all-only-user-data/by-company-id/"
         static let createNotificationWithUsers = "notification-service/user-notification/create/by-employees-ids"
         static let deleteInvitation = "event-service/delete-invitation-by-invitation-id/"
         
@@ -131,6 +140,12 @@ class Constant {
         static let getVehicleList = "vehicle-company-service/get-all-by-company-id"
         static let createVehicle = "vehicle-service/create-for-company"
         static let vehicleInvitation = "event-service/create-vehicle-invitations"
+        static let uploadimage = "image-service/upload"
+        
+       static let downloadNotificationImage = "image-service/full-response/download-by-id/" //"image-service/download-by-id/"
+        static let downloadEventFile = "file-service/full-response/download-report-onu/"//"full-response/download-report-onu/"
+        
+        static let userCompanyRestriction = "company-service/company-restriction"
         
     }
     

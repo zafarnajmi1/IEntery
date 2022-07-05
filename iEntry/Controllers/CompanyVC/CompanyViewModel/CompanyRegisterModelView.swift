@@ -11,8 +11,8 @@ class CompanyregisterModelView{
     
     
     func companyRegisterApiCall(params:[String:Any],Success: @escaping (CompanyRegisterModel?,String?) -> Void, Failure: @escaping(NetworkError) -> Void){
-       let url = Constant.MainUrl + Constant.URLs.RegisterCompany
-       print(url)
+          let url = Constant.MainUrl + Constant.URLs.RegisterCompany
+          print(url)
                Networkhandler.PostRequest(url: url, parameters: params, success: {(successResponse)  in
        
                    do {

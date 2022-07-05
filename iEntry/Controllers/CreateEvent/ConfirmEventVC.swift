@@ -116,16 +116,16 @@ class ConfirmEventVC: BaseController {
             if response?.success == true {
                 self.eventid = response?.data?.id ?? ""
                 self.dismiss(animated: true, completion: nil)
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
                 self.dismiss(animated: false, completion: {
                     self.callBack!(true, self.eventid)
                 })
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 
@@ -151,7 +151,7 @@ class ConfirmEventVC: BaseController {
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     
         
@@ -181,7 +181,7 @@ class ConfirmEventVC: BaseController {
             if response?.success == true {
                 
                 self.dismiss(animated: true, completion: nil)
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
                 self.dismiss(animated: false, completion: {
                     
                     
@@ -190,11 +190,11 @@ class ConfirmEventVC: BaseController {
                 
                 
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     

@@ -44,7 +44,21 @@ class RecordVC: BaseController,IndicatorInfoProvider {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getEventsAfterDate()
+        if Network.isAvailable {
+            print("Internet connection OK")
+            if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 32 })) != nil {
+                self.getEventsAfterDate()
+            } else {
+                self.emptyView.isHidden = false
+                self.tblView.isHidden = true
+            }
+        } else {
+            print("Internet connection FAILED")
+            self.emptyView.isHidden = false
+            self.tblView.isHidden = true
+        }
+        
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -54,7 +68,7 @@ class RecordVC: BaseController,IndicatorInfoProvider {
     func getEventsAfterDate(){
         self.showLoader()
         let timeInMiliSecDate = Date()
-        let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+        let timeInMiliSec =  StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
         //userId
         //* 1 * 24 * 60 * 60 * 1000
         //let dic : [String:Any] = ["date":timeInMiliSec, "hostId":ShareData.shareInfo.obj?.id ?? ""]
@@ -73,11 +87,11 @@ class RecordVC: BaseController,IndicatorInfoProvider {
                 }
                 self.tblView.reloadData()
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 

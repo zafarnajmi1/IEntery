@@ -49,25 +49,25 @@ class CreateVehicleVC: BaseController {
     
     func checkData() -> Bool {
         if txtmarca.text == "" {
-            self.alert(message: "Please Enter Marca")
+            AppUtility.showErrorMessage(message: "Please Enter Marca")
             return false
         } else if txtsubmarca.text == "" {
-            self.alert(message: "Please Enter Sub-Marca")
+            AppUtility.showErrorMessage(message: "Please Enter Sub-Marca")
             return false
         } else if txtmodel.text == "" {
-            self.alert(message: "Please Enter Model")
+            AppUtility.showErrorMessage(message: "Please Enter Model")
             return false
         } else if txtcolor.text == "" {
-            self.alert(message: "Please Enter Color")
+            AppUtility.showErrorMessage(message: "Please Enter Color")
             return false
         } else if txtplaces.text == "" {
-            self.alert(message: "Please Enter Plate")
+            AppUtility.showErrorMessage(message: "Please Enter Plate")
             return false
         } else if txtsn.text == "" {
-            self.alert(message: "Please Enter S/N")
+            AppUtility.showErrorMessage(message: "Please Enter S/N")
             return false
         } else if txtvin.text == "" {
-            self.alert(message: "Please Enter VIN")
+            AppUtility.showErrorMessage(message: "Please Enter VIN")
             return false
         }
         return true
@@ -95,11 +95,11 @@ class CreateVehicleVC: BaseController {
                 self.dismiss(animated: true, completion: nil)
                 self.callBack?()
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     

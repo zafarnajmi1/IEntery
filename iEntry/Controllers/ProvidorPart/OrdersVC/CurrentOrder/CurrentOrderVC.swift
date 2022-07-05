@@ -33,11 +33,19 @@ class CurrentOrderVC: BaseController,IndicatorInfoProvider {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //self.getproviderorderRecordsapi()
+        
+        if Network.isAvailable {
         if ShareData.shareInfo.userRole == .provideremployee {
                 self.getProvideremployeeApi()
         } else {
                 self.getProviderApi()
         }
+    } else{
+        AppUtility.showErrorMessage(message: "No Internet Connection")
+        self.tblView.isHidden = true
+        self.emptyView.isHidden = false
+    }
+        
         //getProvideremployeeApi()
         //getProviderApi()
     }
@@ -88,9 +96,10 @@ class CurrentOrderVC: BaseController,IndicatorInfoProvider {
 //    }
     
     //ShareData.shareInfo.contractorListdataValueGetByUserid.id ?? ""
+    ////\(Int (Date().timeIntervalSince1970 * 1000))"
     func getproviderorderRecordsapi(){
         self.showLoader()
-        userhandler.getBeforeDateProviderOrdersByUserIDs(userid: ShareData.shareInfo.userRole == .provider ? ShareData.shareInfo.contractorListdataValueGetByUserid.id ?? "" : ShareData.shareInfo.providerEmployeedataValueGetByUserid?.id ?? "" , datevalue:"\(Int (Date().timeIntervalSince1970 * 1000))", isproviderEmployee: ShareData.shareInfo.userRole == .provider ? false : true , Success: {response in
+        userhandler.getBeforeDateProviderOrdersByUserIDs(userid: ShareData.shareInfo.userRole == .provider ? ShareData.shareInfo.contractorListdataValueGetByUserid?.id ?? "" : ShareData.shareInfo.providerEmployeedataValueGetByUserid?.id ?? "" , datevalue:"\(StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0)" , isproviderEmployee: ShareData.shareInfo.userRole == .provider ? false : true , Success: {response in
             self.hidLoader()
             if response?.success == true {
                 self.ordersdata = response?.data ?? []
@@ -105,11 +114,11 @@ class CurrentOrderVC: BaseController,IndicatorInfoProvider {
             
             
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 }
@@ -126,7 +135,7 @@ extension CurrentOrderVC: UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentOrderCells") as? CurrentOrderCells
         
         cell?.lblcompany.text = self.ordersdata[indexPath.row].company?.name ?? ""
-        cell?.lblvehicle.text = self.ordersdata[indexPath.row].providerVehicle
+        cell?.lblvehicle.text = self.ordersdata[indexPath.row].providerVehicle?.vehicle?.brand ?? ""
         cell?.lblemployee.text = self.ordersdata[indexPath.row].providerEmployee?.user?.name ?? ""
         cell?.lbldeliverydate.text = self.getFormattedMilisecondstoDate(seconds: "\(self.ordersdata[indexPath.row].deliveryDate ?? 0)", formatter: "");
         cell?.lbldeliverydetail.text = self.ordersdata[indexPath.row].description ?? ""

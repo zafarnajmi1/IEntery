@@ -138,7 +138,7 @@ class UserPersonalInfoVC: BaseController ,UITextFieldDelegate,SMDatePickerDelega
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
             let stringDate = dateFormatter.string(from: picker.date)
             let timeInMiliSecDate = picker.date
-             timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+             timeInMiliSec = StartDayMiliSeconds(newdate: picker.date.startOfDay()!) ?? 0//Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
             print(timeInMiliSec)
             self.txtDob.text = stringDate
             
@@ -154,7 +154,7 @@ class UserPersonalInfoVC: BaseController ,UITextFieldDelegate,SMDatePickerDelega
             dateFormatter.dateFormat = "dd/MMMM/yyyy" //HH:mm
             let stringDate = dateFormatter.string(from: picker.pickerDate)
             let timeInMiliSecDate = picker.pickerDate
-             timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+             timeInMiliSec = StartDayMiliSeconds(newdate: picker.pickerDate.startOfDay()!) ?? 0//Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
             print(timeInMiliSec)
             self.txtDob.text = stringDate
         }
@@ -200,7 +200,7 @@ class UserPersonalInfoVC: BaseController ,UITextFieldDelegate,SMDatePickerDelega
         showLoader()
 
         
-        let dic :[String:Any] = ["id":ShareData.shareInfo.obj?.id ?? "","name":txtname.text!,"phoneNumber":ttxphoneNumber.text!,"dob":self.timeInMiliSec,"email":txtemail.text!,"password":txtpassword.text ?? "","deviceId":"","firebaseId":"ASDKJS-438h3D_ASJD!)RKASDJA","secret":"RTWUFGOLRDXALQ5R","gender":["id": txtgender.text!.lowercased() == "male" ? "1":"2"],"userType":["id":ShareData.shareInfo.obj?.userType?.id ?? 0],"status":["id":ShareData.shareInfo.obj?.status?.id ?? 0]]
+        let dic :[String:Any] = ["id":ShareData.shareInfo.obj?.id ?? "","name":txtname.text!,"phoneNumber":ttxphoneNumber.text!,"dob":self.timeInMiliSec,"email":txtemail.text!,"password":txtpassword.text ?? "","deviceId":UUID ?? "","firebaseId":"ASDKJS-438h3D_ASJD!)RKASDJA","secret":"RTWUFGOLRDXALQ5R","gender":["id": txtgender.text!.lowercased() == "male" ? "1":"2"],"userType":["id":ShareData.shareInfo.obj?.userType?.id ?? 0],"status":["id":ShareData.shareInfo.obj?.status?.id ?? 0]]
         
         userhandler.updateuser(companyid: ShareData.shareInfo.contractData?.company?.id ?? "", param: dic, Success: {response in
             self.hidLoader()
@@ -213,29 +213,39 @@ class UserPersonalInfoVC: BaseController ,UITextFieldDelegate,SMDatePickerDelega
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message:error.message)
+            AppUtility.showErrorMessage(message:error.message)
         })
     }
     @IBAction func backAction(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)
+       let vc = storyBoard.instantiateViewController(withIdentifier:"NotificationDownloadImageAlertVC") as? NotificationDownloadImageAlertVC
+        vc?.titlofDialog = "CAMBIOS EN EL PERFIL".localized
+        vc?.detailofDialog = "Si sales sin guardar los cambios, todo lo registrado se perderá y tendrás nuevamente que volver a hacer los cambios. ¿Estás seguro que quieres descartar los cambios?".localized
+        vc?.acceptbuttontitle = "ACEPTAR".localized
+       vc?.modalPresentationStyle = .overFullScreen
+        vc?.callBack = { isok in
+            vc?.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
+       self.present(vc!, animated: false, completion: nil)
     }
     
     
     func checkData() -> Bool {
         if txtname.text == ""{
-            self.alert(message: "Enter the Name")
+            AppUtility.showErrorMessage(message: "Enter the Name")
             return false
         }  else if ttxphoneNumber.text! == "" {
-            self.alert(message: "Enter the Number ")
+            AppUtility.showErrorMessage(message: "Enter the Number ")
             return false
         }else if txtemail.text! == "" {
-            self.alert(message: "Enter the Email ")
+            AppUtility.showErrorMessage(message: "Enter the Email ")
             return false
         }else if txtpassword.text! == "" {
-            self.alert(message: "Enter the password ")
+            AppUtility.showErrorMessage(message: "Enter the password ")
             return false
         }else if txtgender.text! == "" {
-            self.alert(message: "Enter the Gender ")
+            AppUtility.showErrorMessage(message: "Enter the Gender ")
             return false
         }
         return true
@@ -243,9 +253,17 @@ class UserPersonalInfoVC: BaseController ,UITextFieldDelegate,SMDatePickerDelega
     
     
     @IBAction func bottomAction(_ sender: UIButton) {
-        if checkData() {
-           self.updateuserApi()
+        if Network.isAvailable {
+            print("Internet connection OK")
+            if checkData() {
+               self.updateuserApi()
+            }
+        } else {
+            print("Internet connection FAILED")
+            AppUtility.showErrorMessage(message: "No Internet Connection")
         }
+        
+        
     }
     
     @IBAction func genderDropDownAction(_ sender: UIButton) {

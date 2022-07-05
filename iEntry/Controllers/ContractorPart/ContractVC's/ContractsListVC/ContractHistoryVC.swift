@@ -32,7 +32,14 @@ class ContractHistoryVC: BaseController,IndicatorInfoProvider {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getContractList()
+        
+        if Network.isAvailable {
+            self.getContractList()
+        } else{
+            AppUtility.showErrorMessage(message: "No Internet Connection")
+            self.tblView.isHidden = true
+            self.emptyView.isHidden = false
+        }
     }
 //    @IBAction func CreateAction(_ sender: UIButton) {
 //        let storyBoard = UIStoryboard.init(name:StoryBoards.Contract.rawValue, bundle: nil)
@@ -48,25 +55,25 @@ class ContractHistoryVC: BaseController,IndicatorInfoProvider {
     }
     
     
-    
+    //Int (Date().timeIntervalSince1970 * 1000)
     func getContractList(){
         var dic : [String:Any] = [:]
         self.showLoader()
         
         var url = ""
        if ShareData.shareInfo.userRole == .contractor {
-        dic  = ["userId":ShareData.shareInfo.obj?.id ?? "","date":Int (Date().timeIntervalSince1970 * 1000)]
+        dic  = ["userId":ShareData.shareInfo.obj?.id ?? "","date":StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0]
                url = Constant.MainUrl + Constant.URLs.contractHirotyList
           
             
        } else if ShareData.shareInfo.userRole == .contractoremplyee{
         //contractorEmployeeId
         //ShareData.shareInfo.contractorEmployeedataValueGetByUserid?.id ?? ""
-        dic  = ["userId":ShareData.shareInfo.obj?.id ?? "","date":Int (Date().timeIntervalSince1970 * 1000)]
+        dic  = ["userId":ShareData.shareInfo.obj?.id ?? "","date":StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0]
            url = Constant.MainUrl + Constant.URLs.getallRecordContractorEmployee
        }
         
-        userhandler.getAllIncomingContractList(milisecond:Int (Date().timeIntervalSince1970 * 1000), newurl: url, Success: {response in
+        userhandler.getAllIncomingContractList(milisecond:StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0, newurl: url, Success: {response in
             self.hidLoader()
             if response?.success == true {
                 self.contractListdata = response?.data ?? []
@@ -81,11 +88,11 @@ class ContractHistoryVC: BaseController,IndicatorInfoProvider {
                 }
                 self.tblView.reloadData()
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 }

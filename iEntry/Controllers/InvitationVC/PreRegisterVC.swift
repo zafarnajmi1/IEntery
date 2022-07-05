@@ -74,13 +74,13 @@ class PreRegisterVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate{
     func checkData() ->Bool {
         
         if txtname.text == "" {
-            self.alert(message: "Please Enter The Name")
+            AppUtility.showErrorMessage(message: "Please Enter The Name")
             return  false
         } else if txtemail.text == "" {
-            self.alert(message: "Please Enter The Email")
+            AppUtility.showErrorMessage(message: "Please Enter The Email")
             return  false
         }else if phoneNumberTextField.text == "" {
-            self.alert(message: "Please Enter The Phone")
+            AppUtility.showErrorMessage(message: "Please Enter The Phone")
             return  false
         }
         return true
@@ -96,14 +96,14 @@ class PreRegisterVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate{
             if response?.success == true {
                 self.cancelAction(UIButton())
                 self.callback!(self.phoneNumberTextField.text!, self.txtname.text!)
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
                 self.dismiss(animated: true, completion: nil)
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     

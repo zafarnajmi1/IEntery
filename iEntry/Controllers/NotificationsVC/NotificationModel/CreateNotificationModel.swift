@@ -45,6 +45,11 @@ struct CreateNotificationModelData : Codable {
     let title : String?
     let message : String?
     let dateMeeting : Int?
+    let path : String?
+    let driveId : String?
+    let file : String?
+    let image : String?
+    
     let createdAt : Int?
 
     enum CodingKeys: String, CodingKey {
@@ -57,6 +62,10 @@ struct CreateNotificationModelData : Codable {
         case title = "title"
         case message = "message"
         case dateMeeting = "dateMeeting"
+        case path = "path"
+        case driveId = "driveId"
+        case file = "file"
+        case image = "image"
         case createdAt = "createdAt"
     }
 
@@ -70,6 +79,10 @@ struct CreateNotificationModelData : Codable {
         title = try values.decodeIfPresent(String.self, forKey: .title)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         dateMeeting = try values.decodeIfPresent(Int.self, forKey: .dateMeeting)
+        path = try values.decodeIfPresent(String.self, forKey: .path)
+        driveId = try values.decodeIfPresent(String.self, forKey: .driveId)
+        file = try values.decodeIfPresent(String.self, forKey: .file)
+        image = try values.decodeIfPresent(String.self, forKey: .image)
         createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
     }
 

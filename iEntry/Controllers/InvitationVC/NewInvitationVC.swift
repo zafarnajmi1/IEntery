@@ -37,6 +37,8 @@ class NewInvitationVC: BaseController,IndicatorInfoProvider {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
         getInvitationAfterDate()
     }
     ///get-all/by-guest-id/{guestId}/date-after
@@ -44,10 +46,8 @@ class NewInvitationVC: BaseController,IndicatorInfoProvider {
 
     func getInvitationAfterDate() {
         
-        
-        
         let timeInMiliSecDate = Date()
-        let timeInMiliSec = Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
+        let timeInMiliSec = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0//Int (timeInMiliSecDate.timeIntervalSince1970 * 1000)
         let stringurl = Constant.MainUrl + "invitation-service/get-all/by-guest-id/date-after/\(timeInMiliSec)"
         let url = URL(string: stringurl)
         var request = URLRequest(url: url!)
@@ -61,7 +61,9 @@ class NewInvitationVC: BaseController,IndicatorInfoProvider {
         AF.request(request).responseJSON { response in
                 print("all data ",response)
             do {
-               
+                if response.data == nil {
+                    return
+                }
                 let responseModel = try JSONDecoder().decode(GetallInvitationModel.self, from: response.data!)
                 self.invitationdata = responseModel.data
                 if self.invitationdata?.count == 0 {
@@ -82,15 +84,15 @@ class NewInvitationVC: BaseController,IndicatorInfoProvider {
         userhandler.updateInvitation(id:self.invitationdata?[indx].id ?? "" , option: option, Success: {response in
             self.hidLoader()
             if response?.success == true {
-                //self.alert(message: response?.message ?? "")
+                //AppUtility.showErrorMessage(message: response?.message ?? "")
                 self.getInvitationAfterDate()
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
             
         }, Failure: {erorr in
             self.hidLoader()
-            self.alert(message: erorr.message)
+            AppUtility.showErrorMessage(message: erorr.message)
         })
         
         

@@ -37,26 +37,69 @@ struct NotificationModel : Codable {
 }
 
 struct NotificationModelData : Codable {
+//    let id : String?
+//    let user : User?
+//    let company : Company?
+//    let notificationType : NotificationType?
+//    let type : String?
+//    let title : String?
+//    let message : String?
+//    let dateMeeting : Int?
+//    let createdAt : Int?
+//
+//    enum CodingKeys: String, CodingKey {
+//
+//        case id = "id"
+//        case user = "user"
+//        case company = "company"
+//        case notificationType = "notificationType"
+//        case type = "type"
+//        case title = "title"
+//        case message = "message"
+//        case dateMeeting = "dateMeeting"
+//        case createdAt = "createdAt"
+//    }
+//
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        id = try values.decodeIfPresent(String.self, forKey: .id)
+//        user = try values.decodeIfPresent(User.self, forKey: .user)
+//        company = try values.decodeIfPresent(Company.self, forKey: .company)
+//        notificationType = try values.decodeIfPresent(NotificationType.self, forKey: .notificationType)
+//        type = try values.decodeIfPresent(String.self, forKey: .type)
+//        title = try values.decodeIfPresent(String.self, forKey: .title)
+//        message = try values.decodeIfPresent(String.self, forKey: .message)
+//        dateMeeting = try values.decodeIfPresent(Int.self, forKey: .dateMeeting)
+//        createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
+//    }
+    
+    
     let id : String?
     let user : User?
-    let company : Company?
     let notificationType : NotificationType?
     let type : String?
     let title : String?
     let message : String?
     let dateMeeting : Int?
+    let path : String?
+    let driveId : String?
+    let file : String?
+    let image : String?
     let createdAt : Int?
 
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
         case user = "user"
-        case company = "company"
         case notificationType = "notificationType"
         case type = "type"
         case title = "title"
         case message = "message"
         case dateMeeting = "dateMeeting"
+        case path = "path"
+        case driveId = "driveId"
+        case file = "file"
+        case image = "image"
         case createdAt = "createdAt"
     }
 
@@ -64,14 +107,19 @@ struct NotificationModelData : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         user = try values.decodeIfPresent(User.self, forKey: .user)
-        company = try values.decodeIfPresent(Company.self, forKey: .company)
         notificationType = try values.decodeIfPresent(NotificationType.self, forKey: .notificationType)
         type = try values.decodeIfPresent(String.self, forKey: .type)
         title = try values.decodeIfPresent(String.self, forKey: .title)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         dateMeeting = try values.decodeIfPresent(Int.self, forKey: .dateMeeting)
+        path = try values.decodeIfPresent(String.self, forKey: .path)
+        driveId = try values.decodeIfPresent(String.self, forKey: .driveId)
+        file = try values.decodeIfPresent(String.self, forKey: .file)
+        image = try values.decodeIfPresent(String.self, forKey: .image)
         createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
     }
+
+    
 
 }
 

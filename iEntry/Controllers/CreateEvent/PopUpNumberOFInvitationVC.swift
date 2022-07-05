@@ -28,7 +28,7 @@ class PopUpNumberOFInvitationVC: BaseController {
 
     @IBAction func acceptAction(_ sender: UIButton) {
         if txtnumber.text == "" {
-            self.alert(message: "please enter invitation number")
+            AppUtility.showErrorMessage(message: "please enter invitation number")
             return
         }
         self.callBack?(txtnumber.text!)

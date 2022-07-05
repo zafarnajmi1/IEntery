@@ -37,7 +37,7 @@ class VerificationCodeVC: BaseController,UITextFieldDelegate {
     @IBOutlet weak var txtfive: UITextField!
     private var timer: Timer?
     
-    var count = 1*59
+    var count = 2*59
     var otpTex = ""
     var email = ""
     var isfrom = false
@@ -46,7 +46,10 @@ class VerificationCodeVC: BaseController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       // if isfrom {
+            self.getSixDigitCodeApi()
+            self.getSendSMSSixDigitCodeApi()
+        //}
         congFigUI()
         self.startTime()
     }
@@ -124,7 +127,7 @@ class VerificationCodeVC: BaseController,UITextFieldDelegate {
         
         
         self.btnBottom.setTitle("Nunca llevo el mensaje, enviarlo nuevamente".localized, for: .normal)
-        self.lblwelcome.text = "BIENVENIDO !!!".localized + (ShareData.shareInfo.obj?.name)!
+        self.lblwelcome.text = "BIENVENIDO !!!".localized + (ShareData.shareInfo.obj?.name ?? "" ) 
         self.lbltimerdetail.text = "para continuar necesitamos saber algunos datos personales pero antes necesitamos confirmar tu cuenta. En cuestión de segundos te llegará un mensaje de texto que se leerá solo.".localized
         self.lbltimerdetail.text = "Tiempo de vida del mensaje:".localized
 
@@ -258,21 +261,53 @@ func dismissKeyboard(){
     
     func checkkData() ->Bool {
         if otpTex.count < 6 {
-            alert(message: "OTP Is Not Correct Please Enter Correct OTP!")
+            AppUtility.showErrorMessage(message: "OTP Is Not Correct Please Enter Correct OTP!")
             return false
         }
         
         if otpTex.count > 6 {
-            alert(message: "OTP Is Not Correct Please Enter Correct OTP!")
+            AppUtility.showErrorMessage(message: "OTP Is Not Correct Please Enter Correct OTP!")
             return false
         }
         
         if otpTex == "" {
-            self.alert(message: "Please Enter Valid OTP")
+            AppUtility.showErrorMessage(message: "Please Enter Valid OTP")
             return false
         }
         return true
     }
+    
+    
+    func getSixDigitCodeApi(){
+        self.showLoader()
+        userhandler.getFirstAccessSixDigitCode(email:email,Success: {response in
+            self.hidLoader()
+            if response?.success == true {
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
+            } else {
+                AppUtility.showErrorMessage(message: response?.message ?? "")
+            }
+        }, Failure: { error in
+            AppUtility.showErrorMessage(message: error.message)
+        })
+    }
+    
+    func getSendSMSSixDigitCodeApi(){
+        //self.showLoader()
+        userhandler.getFirstAccessSendSMSSixDigitCode(email:email,Success: {response in
+            self.hidLoader()
+            if response?.success == true {
+                //AppUtility.showErrorMessage(message: response?.message ?? "")
+            } else {
+                //AppUtility.showErrorMessage(message: response?.message ?? "")
+            }
+        }, Failure: { error in
+            //AppUtility.showErrorMessage(message: error.message)
+        })
+    }
+    
+    
+    
   
     func otpValidate(otp:String) {
         self.showLoader()
@@ -286,11 +321,11 @@ func dismissKeyboard(){
                 self.moveOnChangePassword()
             } else {
                 self.hidLoader()
-                self.alert(message:trycatch ?? "Something is Wrong")
+                AppUtility.showErrorMessage(message:trycatch ?? "Something is Wrong")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message:error.message)
+            AppUtility.showErrorMessage(message:error.message)
         })
         
     }
@@ -300,27 +335,27 @@ func dismissKeyboard(){
 //            self.otpValidate()
 //        }
         
-        //self.sendEmailApi()
+        self.sendEmailApi()
         
     }
     
     //MARK:- Send Email to change Password
-//    func sendEmailApi(){
-//        self.showLoader()
-//        loginVM.sendEmail(email: email, Success: {response , trycatch in
-//            self.hidLoader()
-//            if response?.success ?? false {
-//                self.startTime()
-//                self.alert(message: response?.message ?? "")
-//            } else {
-//                self.hidLoader()
-//                self.alert(message: trycatch ?? "somthing is wrong")
-//            }
-//        }, Failure: {error in
-//            self.hidLoader()
-//            self.alert(message: error.message)
-//        })
-//    }
+    func sendEmailApi(){
+        self.showLoader()
+        loginVM.sendEmail(email: email, Success: {response , trycatch in
+            self.hidLoader()
+            if response?.success == true {
+                self.startTime()
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
+            } else {
+                self.hidLoader()
+                AppUtility.showErrorMessage(message: trycatch ?? "somthing is wrong")
+            }
+        }, Failure: {error in
+            self.hidLoader()
+            AppUtility.showErrorMessage(message: error.message)
+        })
+    }
     
     func moveOnChangePassword() {
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Alamofire
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 
 class ChangePasswordVC: BaseController {
@@ -107,16 +107,16 @@ class ChangePasswordVC: BaseController {
     func checkData() -> Bool {
         
         if txtpassword.text == "" {
-            self.alert(message: "Please Enter The Password")
+            AppUtility.showErrorMessage(message: "Please Enter The Password")
             return false
         }
         
         if txtpassword.text!.count < 6 {
-            self.alert(message: "Password Minimum Length 6 Characters")
+            AppUtility.showErrorMessage(message: "Password Minimum Length 6 Characters")
             return false
         }
         if txtpassword.text!.count > 15 {
-            self.alert(message: "Password Maximum Length 15 Characters")
+            AppUtility.showErrorMessage(message: "Password Maximum Length 15 Characters")
             return false
         }
         return true
@@ -126,40 +126,90 @@ class ChangePasswordVC: BaseController {
         self.showLoader()
         loginVM.getUserByEmail(email: email, Success: { response  in
             self.hidLoader()
-            if response?.status?.lowercased() == "ok" {
+            if response?.success == true {
                 self.userData = response
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
             
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
     
     //MARK:- this fun use to chnage the password 
+//    func changePassword() {
+//        self.showLoader()
+//        let dic : [String:Any] = ["password":txtpassword.text!]
+//        loginVM.updatePAssword(userid: self.userData?.data?.id ?? "", parms: dic, Success: {response , trycatch in
+//            self.hidLoader()
+//            if response?.success ?? true{
+//                if self.isfrom {
+//                    self.moveOnLogin()
+//                } else{
+//                self.moveOnPermission()
+//                }
+//            } else {
+//                self.hidLoader()
+//                AppUtility.showErrorMessage(message: trycatch ?? "Sonthing Is Wrong")
+//            }
+//        }, Failure: {error in
+//            self.hidLoader()
+//            AppUtility.showErrorMessage(message: error.message)
+//        })
+//    }
+    
+    
+    
+    
+    
     func changePassword() {
+        
         self.showLoader()
-        let dic : [String:Any] = ["password":txtpassword.text!]
-        loginVM.updatePAssword(userid: email, parms: dic, Success: {response , trycatch in
+        let stringurl = Constant.MainUrl + Constant.URLs.updatepassword + "\(self.userData?.data?.id ?? "")"
+        let url = URL(string: stringurl)
+        var request = URLRequest(url: url!)
+        print("password change url :",url)
+        request.httpMethod = HTTPMethod.put.rawValue
+        
+        //request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
+        
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        //request.setValue("Bearer \(ShareData.shareInfo.token ?? "")",forHTTPHeaderField: "Authorization")
+        request.httpBody = "\(txtpassword.text ?? "")".data(using: .utf8)
+
+        AF.request(request).responseJSON { response in
             self.hidLoader()
-            if response?.success ?? true{
-                if self.isfrom {
-                    self.moveOnLogin()
-                } else{
-                self.moveOnPermission()
+                print("all data ",response)
+            do {
+                if response.data == nil {
+                    return
                 }
-            } else {
-                self.hidLoader()
-                self.alert(message: trycatch ?? "Sonthing Is Wrong")
+                let responseModel = try JSONDecoder().decode(GetUserByEmailModel.self, from: response.data!)
+                if responseModel.success == true {
+                    if self.isfrom {
+                        self.moveOnLogin()
+                        AppUtility.showSuccessMessage(message: responseModel.message ?? "")
+                    } else{
+                      self.moveOnPermission()
+                    }
+                } else {
+                    self.hidLoader()
+                }
             }
-        }, Failure: {error in
-            self.hidLoader()
-            self.alert(message: error.message)
-        })
+            catch {
+                self.hidLoader()
+                print("Response Error")
+                AppUtility.showErrorMessage(message:  "")
+            }
+
+        }
     }
+    
+    
+    
     
     
     func moveOnPermission() {

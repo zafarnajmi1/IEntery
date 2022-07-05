@@ -13,6 +13,18 @@ class ThumScaningVC: UIViewController {
     @IBOutlet weak var lbldetail: UILabel!
     @IBOutlet weak var lblbiomatrictitle: UILabel!
     @IBOutlet weak var mainBottomView: UIView!
+    var callBack : ((_ isOk :Bool) -> Void)? = nil
+    
+//    enum AuthenticatinsError: String {
+//        case userEnrolled = "User is not enrolled"
+//        case passCodeNotSet = "user not set passcode"
+//        case biometricNotAvelabel = "Biometric authentication not available"
+//        case faild  = "faild to authenticat"
+//        case noIssue = ""
+//
+//    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainBottomView.roundCorners([.topLeft,.topRight], radius: 20)
@@ -28,10 +40,13 @@ class ThumScaningVC: UIViewController {
     
     @IBAction func passwordAction(_ sender: Any) {
         //authenticationWithTouchID()
+        self.callBack?(false)
         self.dismiss(animated: true, completion: nil)
     }
     
     func authenticationWithTouchID() {
+        DispatchQueue.main.async() {
+        
             let localAuthenticationContext = LAContext()
             localAuthenticationContext.localizedFallbackTitle = "Please use your Passcode"
 
@@ -44,18 +59,21 @@ class ThumScaningVC: UIViewController {
                     
                     if success {
                         DispatchQueue.main.async() {
-                            let alert = UIAlertController(title: "Success", message: "Authenticated succesfully!", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
+//                            let alert = UIAlertController(title: "Success", message: "Authenticated succesfully!", preferredStyle: UIAlertController.Style.alert)
+//                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                            self.present(alert, animated: true, completion: nil)
+                            self.dismiss(animated: true, completion: nil)
+                            self.callBack?(true)
                         }
                         
                     } else {
                         // Failed to authenticate
+                        self.callBack?(false)
                         guard let error = evaluateError else {
                             return
                         }
                         print(error)
-                    
+                        
                     }
                 }
             } else {
@@ -65,6 +83,7 @@ class ThumScaningVC: UIViewController {
                 }
                 print(error)
             }
+        }
         }
     
 

@@ -73,7 +73,7 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
     
     func checkData() -> Bool {
         if txtvalidationmsg.text == "" {
-            self.alert(message: "Please Enter Validation Comment")
+            AppUtility.showErrorMessage(message: "Please Enter Validation Comment")
             return false
         }
         return true
@@ -136,18 +136,18 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
             if response?.success == true {
                self.eventid = response?.data?.id ?? ""
                 //self.dismiss(animated: true, completion: nil)
-               // self.alert(message: response?.message ?? "")
+               // AppUtility.showErrorMessage(message: response?.message ?? "")
                 //self.dismiss(animated: false, completion: {
                  //self.callBack!(true, self.eventid)
                 //})
                 
                 self.InvitationUsers()
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 
@@ -204,7 +204,7 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
                 if self.selectVehicle.count == 0 {
                     self.dismiss(animated: true, completion: nil)
                     self.navigationController?.popToViewController(ofClass: HomeVC.self)
-                    self.alert(message: response?.message ?? "")
+                    AppUtility.showErrorMessage(message: response?.message ?? "")
                 } else {
                     self.sendVehicleInvitationApi()
                 }
@@ -214,13 +214,13 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
 //
 //                })
                 //self.navigationController?.popToViewController(ofClass: HomeVC.self)
-                //self.alert(message: response?.message ?? "")
+                //AppUtility.showErrorMessage(message: response?.message ?? "")
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     
@@ -243,12 +243,12 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
             if response?.success == true {
                 self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popToViewController(ofClass: HomeVC.self)
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             } else {
                 
             }
         }, Failure: {error in
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
     

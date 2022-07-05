@@ -24,7 +24,7 @@ class PermissionVC: UIViewController {
         
         
         let yourAttributes: [NSAttributedString.Key: Any] = [.font: UIFont(name: "Montserrat-Regular", size: 12)!,
-              .foregroundColor:#colorLiteral(red: 0.7379251719, green: 0.001223876374, blue: 0, alpha: 1),
+              .foregroundColor:#colorLiteral(red: 0.5803269744, green: 0.5804297328, blue: 0.5803204775, alpha: 1),
               .underlineStyle: NSUnderlineStyle.single.rawValue
           ]
         
@@ -33,7 +33,7 @@ class PermissionVC: UIViewController {
                 attributes: yourAttributes
              )
         btnnowithPassword.setAttributedTitle(attributeString, for: .normal)
-        
+       
         
     
         
@@ -59,15 +59,18 @@ class PermissionVC: UIViewController {
     
     @IBAction func continueAction(_ sender: UIButton) {
         self.moveOnLogin()
+        ShareData.shareInfo.isBiomatric = true
 //        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
 //        let vc = storyBoar                                                                                                 d.instantiateViewController(withIdentifier:"PasswordRecoveryVC") as? PasswordRecoveryVC
 //        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func WithPasswordAction(_ sender: UIButton) {
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier:"EnterEmailVC") as? EnterEmailVC
-        self.navigationController?.pushViewController(vc!, animated: true)
+        ShareData.shareInfo.isBiomatric = false
+        self.moveOnLogin()
+//        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier:"EnterEmailVC") as? EnterEmailVC
+//        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     

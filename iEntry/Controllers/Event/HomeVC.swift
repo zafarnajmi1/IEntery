@@ -68,6 +68,13 @@ class HomeVC: ButtonBarPagerTabStripViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationBarHidShow(isTrue: false)
+        
+        if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 33 })) != nil {
+            buttonView.isHidden = false
+        } else {
+            buttonView.isHidden = true
+        }
+        
     }
     
     //MARK:- this funtion of tabbar for XLpager

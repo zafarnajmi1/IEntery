@@ -6,12 +6,20 @@
 //
 
 import UIKit
-
+import DropDown
+import MaterialComponents.MaterialTextControls_OutlinedTextFields
 class EventInvitation: BaseController,UITextFieldDelegate {
     
+    
+    @IBOutlet weak var lblfindemployee: UILabel!
+    @IBOutlet weak var lblfindUser: UILabel!
+    
+    
+    @IBOutlet weak var txtemployee: MDCOutlinedTextField!
     @IBOutlet weak var lblenduptitle: UILabel!
     @IBOutlet weak var btngetnumber: UIButton!
     
+    @IBOutlet weak var employeedorpdownView: UIView!
     @IBOutlet weak var lblinvitationtitle: UILabel!
     var invitationsData : [getAllInvitationsAgainstEventModelData]? = nil
     var eventDetaildata : EventDetailModelData? = nil
@@ -19,7 +27,8 @@ class EventInvitation: BaseController,UITextFieldDelegate {
     var usersIDsarr = [String]()
     var checkRegisterUser = [checkUserExistModel]()
     var invitationlist = [InvitationsHistoryModel]()
-    
+    var  userListdata = [GetAllUsersListModelData]()
+    var MainDrowpDown = DropDown()
     var eventid = ""
     var guestNumber = 0
     //MARK:- here are the ibOUtlet
@@ -34,8 +43,12 @@ class EventInvitation: BaseController,UITextFieldDelegate {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var topBannerView: UIView!
     @IBOutlet weak var bannerImag: UIImageView!
+    var isEmployee = false 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        setMDCTxtFieldDesign(txtfiled: txtemployee, Placeholder: "EMPLOYEE", imageIcon: UIImage(named: "sort-down-solid")!)
         self.lblcompany.text = ShareData.shareInfo.conractWithCompany?.company?.name
         self.lbladdress.text = ShareData.shareInfo.conractWithCompany?.company?.address
         searchView.shadowAndRoundcorner(cornerRadius: Float(searchView.layer.frame.height) / 2, shadowColor: #colorLiteral(red: 0.8430451751, green: 0.843190372, blue: 0.843035996, alpha: 1), shadowRadius: 3.0, shadowOpacity: 1)
@@ -51,8 +64,23 @@ class EventInvitation: BaseController,UITextFieldDelegate {
         self.txtsearch.placeholder = "Escribe no celular / email para invitar".localized
         self.btngetnumber.setTitle("O ELIGE EN BASE A TU LISTA DE CONTACTOS".localized, for: .normal)
         self.lblenduptitle.text = "TERMINAR".localized
+        getallUsersListApi()
     }
     
+    func getallUsersListApi(){
+        self.showLoader()
+        userhandler.getAllusers(companyid: ShareData.shareInfo.contractData?.company?.id ?? "", Success: {response in
+            self.hidLoader()
+            if response?.success == true {
+                self.userListdata = response?.data ?? []
+            } else {
+                
+            }
+        }, Failure: {error in
+            self.hidLoader()
+            AppUtility.showErrorMessage(message: error.message)
+        })
+    }
     
     
     
@@ -98,19 +126,82 @@ class EventInvitation: BaseController,UITextFieldDelegate {
     
     @IBAction func searchaction(_ sender: UIButton) {
         if txtsearch.text == "" {
-            self.alert(message: "Please Enter Email / Phone number")
+            AppUtility.showErrorMessage(message: "Please Enter Email / Phone number")
             return
         } else if txtsearch.text?.isValidEmail == true {
-            searchApi(phone:txtsearch.text!)
+            searchApi(phone:txtsearch.text!, isphone: false)
             
         } else if isValidPhone(phone: txtsearch.text ?? "") == true {
-            searchApi(phone:txtsearch.text!)
+            searchApi(phone:txtsearch.text!, isphone: true)
         } else {
-            self.alert(message: "Please Enter Valid Email / Phone number")
+            AppUtility.showErrorMessage(message: "Please Enter Valid Email / Phone number")
         }
         
         
     }
+    
+    
+    @IBAction func employeSwitchAction(_ sender: UISwitch) {
+        if sender.isOn == true {
+            self.lblfindemployee.textColor = #colorLiteral(red: 0.1884683073, green: 0.50359869, blue: 0.4553821087, alpha: 1)
+            self.lblfindUser.textColor = #colorLiteral(red: 0.8077545762, green: 0.8078941703, blue: 0.8077457547, alpha: 1)
+            self.employeedorpdownView.isHidden = false
+            self.searchView.isHidden = true
+        } else {
+            self.lblfindemployee.textColor = #colorLiteral(red: 0.8077545762, green: 0.8078941703, blue: 0.8077457547, alpha: 1)
+            self.lblfindUser.textColor = #colorLiteral(red: 0.1884683073, green: 0.50359869, blue: 0.4553821087, alpha: 1)
+            self.employeedorpdownView.isHidden = true
+            self.searchView.isHidden = false
+        }
+    }
+    
+    
+    @IBAction func employeeDropwAction(_ sender: UIButton) {
+        
+        var employeeList = [String]()
+         
+        for item in self.userListdata {
+            employeeList.append(item.name ?? "")
+        }
+        
+        dropDownConfig(txtField: txtemployee, data: employeeList)
+    }
+    
+    //MARK:- General dropdown function
+    func dropDownConfig(txtField : UITextField, data:[String]) {
+        MainDrowpDown.anchorView = txtField
+        MainDrowpDown.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        MainDrowpDown.selectionBackgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        MainDrowpDown.dataSource =  data
+        DropDown.appearance().textColor = #colorLiteral(red: 0.5527616143, green: 0.5568413734, blue: 0.5609211326, alpha: 1)
+        DropDown.appearance().selectedTextColor = UIColor.red
+        //DropDown.appearance().textFont = UIFont(name: "JosefinSans-Regular", size: 18)!
+        self.MainDrowpDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+            
+            cell.optionLabel.textAlignment = .left
+            
+        }
+        
+        MainDrowpDown.bottomOffset = CGPoint(x: 0, y: txtField.bounds.height)
+        MainDrowpDown.selectionAction = { [self](index: Int, item: String) in
+            print(item)
+//            self.txtselcted.text = item
+//            self.question?.selectedAns = index
+//            self.question?.answerText = item
+//            self.delegate?.myclaimdropdown(cell:self, ind: index, Section: self.mysection  )
+            
+            self.txtemployee.text = item
+            if !self.checkRegisterUser.contains(where: { $0.phoneemail == self.userListdata[index].phoneNumber ?? "" }) {
+                self.checkRegisterUser.append(checkUserExistModel(name: self.userListdata[index].name ?? "", phone:self.userListdata[index].phoneNumber ?? "", isregister: false, guestid:"", registertype: 0))
+            }
+            self.tblView.reloadData()
+        }
+        MainDrowpDown.show()
+    }
+    
+    
+    
     func isValidPhone(phone: String) -> Bool {
             let phoneRegex = "^[0-9+]{0,1}+[0-9]{5,16}$"
             let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
@@ -144,17 +235,17 @@ class EventInvitation: BaseController,UITextFieldDelegate {
             
             for item in selectedNumbers {
                 
-                self.checkUserExistApi(name: item.name!,phone: item.number!)
+                self.checkUserExistApi(name: item.name!,phone: item.number!, isphone: true)
             }
         }
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     
-    func searchApi(phone:String){
+    func searchApi(phone:String,isphone:Bool){
         //self.showLoader()
        self.checkRegisterUser.removeAll()
-        userhandler.checkUserExist(phone: phone, Success: {[self]response in
+        userhandler.checkUserExist(phone: phone, isphone:isphone, Success: {[self]response in
             self.hidLoader()
             if response?.success == true {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
@@ -172,7 +263,7 @@ class EventInvitation: BaseController,UITextFieldDelegate {
             self.tblView.reloadData()
         }, Failure: {error in
             self.hidLoader()
-            //self.alert(message: error.message)
+            //AppUtility.showErrorMessage(message: error.message)
         })
     }
    
@@ -180,10 +271,10 @@ class EventInvitation: BaseController,UITextFieldDelegate {
    
    
   
-   func checkUserExistApi(name:String,phone:String){
+    func checkUserExistApi(name:String,phone:String,isphone:Bool){
        //self.showLoader()
        
-       userhandler.checkUserExist(phone: phone, Success: {[self]response in
+       userhandler.checkUserExist(phone: phone, isphone: isphone, Success: {[self]response in
            self.hidLoader()
            if response?.success == true {
                DispatchQueue.main.async {
@@ -239,7 +330,7 @@ class EventInvitation: BaseController,UITextFieldDelegate {
            self.tblView.reloadData()
        }, Failure: {error in
            self.hidLoader()
-           self.alert(message: error.message)
+           AppUtility.showErrorMessage(message: error.message)
        })
    }
     
@@ -272,13 +363,13 @@ class EventInvitation: BaseController,UITextFieldDelegate {
                     
                 })
                 self.navigationController?.popToViewController(ofClass: HomeVC.self)
-                self.alert(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
             } else {
-                self.alert(message: response?.message ?? "")
+                AppUtility.showErrorMessage(message: response?.message ?? "")
             }
         }, Failure: {error in
             self.hidLoader()
-            self.alert(message: error.message)
+            AppUtility.showErrorMessage(message: error.message)
         })
     }
 }

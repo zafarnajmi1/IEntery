@@ -301,3 +301,25 @@ extension String {
     }
     
 }
+extension Array {
+     func contains<T>(obj: T) -> Bool where T: Equatable {
+         return !self.filter({$0 as? T == obj}).isEmpty
+     }
+ }
+
+
+extension Date {
+
+    func startOfDay() -> Date?
+    {
+        let calendar = Calendar.current
+
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        components.minute = 0
+        components.second = 0
+        components.hour = 0
+
+        return calendar.date(from: components)
+    }
+
+}
