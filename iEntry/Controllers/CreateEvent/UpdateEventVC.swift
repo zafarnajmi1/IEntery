@@ -140,7 +140,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         
         self.checkRegisterUser.removeAll()
         for item in invitationsData ?? [] {
-            self.checkRegisterUser.append(checkUserExistModel(name: item.guest?.name ?? "", phone: item.guest?.phoneNumber ?? "", isregister: true, guestid: item.guest?.id ?? "", registertype: 0))
+            self.checkRegisterUser.append(checkUserExistModel(name: item.guest?.name ?? "", phone: item.guest?.phoneNumber ?? "", isregister: true, guestid: item.guest?.id ?? "", registertype: 0, email: item.guest?.email ?? ""))
         }
         
         
@@ -252,7 +252,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
         if string == ""{
             self.checkRegisterUser.removeAll()
             for item in invitationsData ?? [] {
-                self.checkRegisterUser.append(checkUserExistModel(name: item.guest?.name ?? "", phone: item.guest?.phoneNumber ?? "", isregister: true, guestid: item.guest?.id ?? "", registertype: 0))
+                self.checkRegisterUser.append(checkUserExistModel(name: item.guest?.name ?? "", phone: item.guest?.phoneNumber ?? "", isregister: true, guestid: item.guest?.id ?? "", registertype: 0, email: item.guest?.email ?? ""))
             }
             self.tblView.reloadData()
         }
@@ -268,11 +268,11 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
             self.hidLoader()
             if response?.success == true {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 0))
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 0, email: response?.data?.email ?? ""))
                }
             } else {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: phone, isregister: false, guestid:"", registertype: 0))
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: phone, isregister: false, guestid:"", registertype: 0, email:response?.data?.email ?? "" ))
                }
             }
             //self.lbltotalInvitation.text = "\(checkRegisterUser.count) Invitaciones)"
@@ -311,7 +311,7 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
                        
                        
                        
-                   ShareData.shareInfo.contactListSaved(isregister: true, name: response?.data?.name ?? "", phoneemail: response?.data?.phoneNumber ?? "", guestid: response?.data?.id ?? "", registertype: 0)
+                   ShareData.shareInfo.contactListSaved(isregister: true, name: response?.data?.name ?? "", phoneemail: response?.data?.phoneNumber ?? "", guestid: response?.data?.id ?? "", registertype: 0, email: response?.data?.email ?? "")
                        
                        
                    
@@ -329,14 +329,14 @@ class UpdateEventVC: BaseController,UITextFieldDelegate, SMDatePickerDelegate {
                }
               
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 0))
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 0, email: response?.data?.email ?? ""))
                    }
                
                
            } else {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   ShareData.shareInfo.contactListSaved(isregister: false, name: name, phoneemail: phone, guestid: response?.data?.id ?? "", registertype: 0)
-                   self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:"", registertype: 0))
+                   ShareData.shareInfo.contactListSaved(isregister: false, name: name, phoneemail: phone, guestid: response?.data?.id ?? "", registertype: 0, email:response?.data?.email ?? "" )
+                   self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:"", registertype: 0, email: response?.data?.email ?? ""))
                }
            }
            self.lblcount.text = "\(checkRegisterUser.count) Invitaciones)"

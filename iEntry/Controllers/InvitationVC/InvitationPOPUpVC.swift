@@ -100,7 +100,7 @@ class InvitationPOPUpVC: BaseController ,UITextFieldDelegate, SMDatePickerDelega
             self.hidLoader()
             if response?.success == true {
                 self.cancelAction(UIButton())
-                AppUtility.showErrorMessage(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
                 
                 
                 

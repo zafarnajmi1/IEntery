@@ -42,11 +42,11 @@ struct EventUpdateInvitationModelData : Codable {
 //    let guest : Guest?
 //    let event : Event?
 //    let zone : Zone?
-    let startDate : Int?
-    let guestNumber : Int?
-    let attend : String?
-    let createdAt : Int?
-    let updatedAt : Int?
+//    let startDate : Int?
+//    let guestNumber : Int?
+//    let attend : String?
+//    let createdAt : Int?
+//    let updatedAt : Int?
 
     enum CodingKeys: String, CodingKey {
 
@@ -55,11 +55,11 @@ struct EventUpdateInvitationModelData : Codable {
 //        case guest = "guest"
 //        case event = "event"
 //        case zone = "zone"
-        case startDate = "startDate"
-        case guestNumber = "guestNumber"
-        case attend = "attend"
-        case createdAt = "createdAt"
-        case updatedAt = "updatedAt"
+//        case startDate = "startDate"
+//        case guestNumber = "guestNumber"
+//        case attend = "attend"
+//        case createdAt = "createdAt"
+//        case updatedAt = "updatedAt"
     }
 
     init(from decoder: Decoder) throws {
@@ -69,11 +69,11 @@ struct EventUpdateInvitationModelData : Codable {
 //        guest = try values.decodeIfPresent(Guest.self, forKey: .guest)
 //        event = try values.decodeIfPresent(Event.self, forKey: .event)
 //        zone = try values.decodeIfPresent(Zone.self, forKey: .zone)
-        startDate = try values.decodeIfPresent(Int.self, forKey: .startDate)
-        guestNumber = try values.decodeIfPresent(Int.self, forKey: .guestNumber)
-        attend = try values.decodeIfPresent(String.self, forKey: .attend)
-        createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
-        updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
+//        startDate = try values.decodeIfPresent(Int.self, forKey: .startDate)
+//        guestNumber = try values.decodeIfPresent(Int.self, forKey: .guestNumber)
+//        attend = try values.decodeIfPresent(String.self, forKey: .attend)
+//        createdAt = try values.decodeIfPresent(Int.self, forKey: .createdAt)
+//        updatedAt = try values.decodeIfPresent(Int.self, forKey: .updatedAt)
     }
 
 }

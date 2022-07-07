@@ -250,7 +250,7 @@
                                                                             <constraint firstAttribute="height" constant="20" id="fyD-dW-kDI"/>
                                                                             <constraint firstAttribute="width" constant="20" id="l9v-bk-eql"/>
                                                                         </constraints>
-                                                                        <state key="normal" image="back1"/>
+                                                                        <state key="normal" image="ic-left-arrow"/>
                                                                         <connections>
                                                                             <action selector="backAction:" destination="FFB-Fy-eOA" eventType="touchUpInside" id="aJQ-I8-ws5"/>
                                                                         </connections>
@@ -795,7 +795,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="1322"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozA-b4-PDp">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1245.6666666666667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1314"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="New-Year-Car" translatesAutoresizingMaskIntoConstraints="NO" id="g2k-c2-UWc">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="175"/>
@@ -1017,7 +1017,7 @@
                                             <constraint firstItem="vIp-kb-a8c" firstAttribute="leading" secondItem="ozA-b4-PDp" secondAttribute="leading" constant="20" id="EoB-jN-sMg"/>
                                             <constraint firstItem="yNO-HT-4wn" firstAttribute="leading" secondItem="g2k-c2-UWc" secondAttribute="leading" constant="20" id="FaG-HA-zuE"/>
                                             <constraint firstItem="gcJ-0n-koI" firstAttribute="leading" secondItem="ozA-b4-PDp" secondAttribute="leading" constant="20" symbolic="YES" id="G9k-fT-ECp"/>
-                                            <constraint firstAttribute="bottom" secondItem="QxB-po-y5F" secondAttribute="bottom" constant="8" id="ItC-Re-4hY"/>
+                                            <constraint firstAttribute="bottom" secondItem="QxB-po-y5F" secondAttribute="bottom" constant="76.333333333333258" id="ItC-Re-4hY"/>
                                             <constraint firstItem="aKD-Hf-Q9c" firstAttribute="leading" secondItem="ozA-b4-PDp" secondAttribute="leading" constant="20" id="LhZ-Gz-d3e"/>
                                             <constraint firstAttribute="trailing" secondItem="rk4-Be-d79" secondAttribute="trailing" constant="20" symbolic="YES" id="M29-YX-V6x"/>
                                             <constraint firstItem="RjJ-f1-WGx" firstAttribute="top" secondItem="cDu-eY-5Ic" secondAttribute="bottom" constant="8" symbolic="YES" id="MHo-y2-3m9"/>
@@ -1052,7 +1052,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ozA-b4-PDp" secondAttribute="bottom" id="OVP-jp-EfU"/>
+                                    <constraint firstAttribute="bottom" secondItem="ozA-b4-PDp" secondAttribute="bottom" constant="8" id="OVP-jp-EfU"/>
                                     <constraint firstItem="ozA-b4-PDp" firstAttribute="top" secondItem="pmr-Qe-klc" secondAttribute="top" id="cIE-LP-kYq"/>
                                     <constraint firstItem="ozA-b4-PDp" firstAttribute="width" secondItem="pmr-Qe-klc" secondAttribute="width" id="fuw-UX-SMq"/>
                                     <constraint firstAttribute="trailing" secondItem="ozA-b4-PDp" secondAttribute="trailing" id="o34-29-w9G"/>

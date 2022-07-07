@@ -7,6 +7,7 @@
 
 import UIKit
 import HMSegmentedControl
+import IQKeyboardManagerSwift
 class VerificationOptionsVC: UIViewController {
     //MARK:- here are iboutlet
     @IBOutlet weak var lbloptionsTitle: UILabel!
@@ -26,19 +27,22 @@ class VerificationOptionsVC: UIViewController {
     lazy var tokenViewcontroller : CompanyVerificationCodeVC  = {
         let storyboard = UIStoryboard.init(name: StoryBoards.Home.rawValue, bundle: nil)
         var vc = storyboard.instantiateViewController(withIdentifier:"CompanyVerificationCodeVC") as? CompanyVerificationCodeVC
-        self.addchilfViewController(childvc: vc!)
+        //self.addChildViewControllerWithView(vc!)
+        //self.addchilfViewController(childvc: vc!)
         return vc!
     }()
     
     lazy var compnyqrcodeVC : QRCodeVC  = {
         let storyboard = UIStoryboard.init(name: StoryBoards.Home.rawValue, bundle: nil)
         var vc = storyboard.instantiateViewController(withIdentifier:"QRCodeVC") as? QRCodeVC
-        self.addchilfViewController(childvc: vc!)
+        //self.addchilfViewController(childvc: vc!)
+        //self.addChildViewControllerWithView(vc!)
         return vc!
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.keyboardManagerVisible(false)
         self.lbloptionsTitle.text = "O P C I O N E S".localized
         self.navigationBarHidShow(isTrue: true)
         
@@ -75,6 +79,7 @@ class VerificationOptionsVC: UIViewController {
             segmentedControl.selectedSegmentIndex = 1
             twoContainer.alpha = 0
             oneContainer.alpha = 1
+            self.removeChildViewController(compnyqrcodeVC)
             
         } else {
             twoContainer.alpha = 0
@@ -99,6 +104,17 @@ class VerificationOptionsVC: UIViewController {
        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.keyboardManagerVisible(false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        self.keyboardManagerVisible(true)
+    }
     
     //MARK:- this funtion use to change the tabs
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl) {
@@ -156,4 +172,10 @@ class VerificationOptionsVC: UIViewController {
     
     
 
+}
+extension VerificationOptionsVC {
+
+  private func keyboardManagerVisible(_ state: Bool) {
+    IQKeyboardManager.shared.enableAutoToolbar = state
+  }
 }

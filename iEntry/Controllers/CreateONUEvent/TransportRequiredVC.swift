@@ -204,7 +204,7 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
                 if self.selectVehicle.count == 0 {
                     self.dismiss(animated: true, completion: nil)
                     self.navigationController?.popToViewController(ofClass: HomeVC.self)
-                    AppUtility.showErrorMessage(message: response?.message ?? "")
+                    AppUtility.showSuccessMessage(message: response?.message ?? "")
                 } else {
                     self.sendVehicleInvitationApi()
                 }
@@ -243,7 +243,7 @@ class TransportRequiredVC: BaseController,UITextViewDelegate {
             if response?.success == true {
                 self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popToViewController(ofClass: HomeVC.self)
-                AppUtility.showErrorMessage(message: response?.message ?? "")
+                AppUtility.showSuccessMessage(message: response?.message ?? "")
             } else {
                 
             }

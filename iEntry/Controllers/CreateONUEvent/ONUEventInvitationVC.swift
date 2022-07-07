@@ -199,7 +199,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
         if string == ""{
             self.checkRegisterUser.removeAll()
             for item in invitationsData ?? [] {
-                self.checkRegisterUser.append(checkUserExistModel(name: item.guest?.name ?? "", phone: item.guest?.phoneNumber ?? "", isregister: true, guestid: item.guest?.id ?? "", registertype: 2))
+                self.checkRegisterUser.append(checkUserExistModel(name: item.guest?.name ?? "", phone: item.guest?.phoneNumber ?? "", isregister: true, guestid: item.guest?.id ?? "", registertype: 2, email: item.guest?.email ?? ""))
             }
             self.tblView.reloadData()
         }
@@ -230,7 +230,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
             self.hidLoader()
             if response?.success == true {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 1))
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 1, email: response?.data?.email ?? ""))
                }
             }
             
@@ -239,7 +239,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
                 defaults.set(nil, forKey: "checkuserExist")
                 
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone:phone, isregister: false, guestid:"", registertype: 0))
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone:phone, isregister: false, guestid:"", registertype: 0, email: response?.data?.email ?? ""))
                }
             }
             //self.lbltotalInvitation.text = "\(checkRegisterUser.count) Invitaciones)"
@@ -302,7 +302,7 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
             self.txtemployee.text = item
                
             if !self.checkRegisterUser.contains(where: { $0.phoneemail == self.userListdata[index].phoneNumber ?? "" }) {
-                self.checkRegisterUser.append(checkUserExistModel(name: self.userListdata[index].name ?? "", phone:self.userListdata[index].phoneNumber ?? "", isregister: false, guestid:"", registertype: 1))
+                self.checkRegisterUser.append(checkUserExistModel(name: self.userListdata[index].name ?? "", phone:self.userListdata[index].phoneNumber ?? "", isregister: false, guestid:"", registertype: 1, email: self.userListdata[index].email ?? ""))
             }
             self.lblnumberofInvitation.text = "\(checkRegisterUser.count) " + "Invitaciones".localized
             self.tblView.reloadData()
@@ -338,13 +338,13 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
                        
                        
                        
-                   ShareData.shareInfo.contactListSaved(isregister: true, name: response?.data?.name ?? "", phoneemail: response?.data?.phoneNumber ?? "", guestid: response?.data?.id ?? "", registertype: 1)
+                   ShareData.shareInfo.contactListSaved(isregister: true, name: response?.data?.name ?? "", phoneemail: response?.data?.phoneNumber ?? "", guestid: response?.data?.id ?? "", registertype: 1, email:  response?.data?.email ?? "")
                        
                        
                    
                    do {
                                // setting a value for a key
-                       let newPerson = checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 1)
+                       let newPerson = checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "", registertype: 1, email:  response?.data?.email ?? "")
                        
                             if !self.checkRegisterUser.contains(where: { $0.phoneemail == response?.data?.phoneNumber ?? "" }){
                                        
@@ -360,14 +360,14 @@ class ONUEventInvitationVC: BaseController,UITextFieldDelegate, UITextViewDelega
                }
               
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "",registertype:1))
+                   self.checkRegisterUser.append(checkUserExistModel(name: response?.data?.name ?? "", phone: response?.data?.phoneNumber ?? "", isregister: true, guestid: response?.data?.id ?? "",registertype:1, email:  response?.data?.email ?? ""))
                    }
                
                
            } else {
                if !self.checkRegisterUser.contains(where: { $0.phoneemail == phone }) {
-                   ShareData.shareInfo.contactListSaved(isregister: false, name: name, phoneemail: phone, guestid: response?.data?.id ?? "", registertype: 1)
-                   self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:"", registertype: 1))
+                   ShareData.shareInfo.contactListSaved(isregister: false, name: name, phoneemail: phone, guestid: response?.data?.id ?? "", registertype: 1, email:  response?.data?.email ?? "")
+                   self.checkRegisterUser.append(checkUserExistModel(name: name, phone: phone, isregister: false, guestid:"", registertype: 1, email: phone))
                }
            }
            self.lblnumberofInvitation.text = "\(checkRegisterUser.count) " + "Invitaciones".localized
@@ -467,7 +467,7 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
                 let vc = storyBoard.instantiateViewController(withIdentifier:"ONURegisterUserVC") as? ONURegisterUserVC
                 vc?.number = self.checkRegisterUser[indexPath.row].phoneemail
                 vc?.name = self.checkRegisterUser[indexPath.row].name
-                vc?.email = ShareData.shareInfo.checkUserExist?.email ?? ""
+                vc?.email = self.checkRegisterUser[indexPath.row].email//ShareData.shareInfo.checkUserExist?.email ?? ""
                 vc?.isAlreadyRegister = true
                 vc?.callBack = {name,email,phone,organization,pickupSite, numberofCompanoin,bzbadge,ispdfShare in
                     for item in self.checkRegisterUser {
@@ -507,7 +507,7 @@ extension ONUEventInvitationVC : UITableViewDelegate,UITableViewDataSource {
                                         let vc = storyBoard.instantiateViewController(withIdentifier:"ONURegisterUserVC") as? ONURegisterUserVC
                                         vc?.number = self.checkRegisterUser[indexPath.row].phoneemail
                                         vc?.name = self.checkRegisterUser[indexPath.row].name
-                                        //vc?.email = ShareData.shareInfo.checkUserExist?.email ?? ""
+                                        vc?.email = ShareData.shareInfo.checkUserExist?.email ?? ""
                                         vc?.isAlreadyRegister = false
                                         vc?.callBack = {name,email,phone,organization,pickupSite, numberofCompanoin,bzbadge,ispdfShare in
                                             

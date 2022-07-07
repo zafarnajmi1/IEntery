@@ -38,21 +38,21 @@ struct VehicleInvitationModel : Codable {
 
 struct VehicleInvitationModelData : Codable {
     let id : String?
-    let event : Event?
-    let vehicle : Vehicle?
+//    let event : Event?
+//    let vehicle : Vehicle?
 
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
-        case event = "event"
-        case vehicle = "vehicle"
+//        case event = "event"
+//        case vehicle = "vehicle"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
-        event = try values.decodeIfPresent(Event.self, forKey: .event)
-        vehicle = try values.decodeIfPresent(Vehicle.self, forKey: .vehicle)
+//        event = try values.decodeIfPresent(Event.self, forKey: .event)
+//        vehicle = try values.decodeIfPresent(Vehicle.self, forKey: .vehicle)
     }
 
 }

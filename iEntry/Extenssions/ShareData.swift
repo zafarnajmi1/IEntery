@@ -451,10 +451,10 @@ class ShareData {
     }
     
     var checkRegisterUser = [checkUserExistModel]()
-    func contactListSaved(isregister: Bool, name: String, phoneemail: String, guestid: String,registertype:Int){
+    func contactListSaved(isregister: Bool, name: String, phoneemail: String, guestid: String,registertype:Int,email:String){
         do {
                     // setting a value for a key
-            let newPerson = checkUserExistModel(name: name, phone: phoneemail, isregister: isregister, guestid: guestid, registertype: registertype)
+            let newPerson = checkUserExistModel(name: name, phone: phoneemail, isregister: isregister, guestid: guestid, registertype: registertype, email:email )
                     
             checkRegisterUser.append(newPerson)
                     let encodedData = try NSKeyedArchiver.archivedData(withRootObject: checkRegisterUser, requiringSecureCoding: false)
