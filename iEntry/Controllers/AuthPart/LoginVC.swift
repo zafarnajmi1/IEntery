@@ -32,11 +32,11 @@ class LoginVC: BaseController {
         
         //MARK:- Provider employee
            //"john@gmail.com"
-           //"WbxbE7q5LA90"
+           //"root"
         
         //MARK:- Provider
             //"Luis122@gmail.com"
-            //"IdIxk3f89MTd"
+            //"1234"
         
         //MARK:- Cpntractor employeee
          //"luis45@gmail.com"
@@ -103,7 +103,7 @@ class LoginVC: BaseController {
         passwordView.roundViiew()
         btnlogin.roundButtonWithCustomRadius(radius: 10)
         
-        self.txtemail.placeholder = "NOMBRE DE USUARIO".localized
+        self.txtemail.placeholder = "CORREO".localized
         self.txtpassword.placeholder = "CONTRASEÑA".localized
         self.btnlogin.setTitle("INICIAR SESIÓN".localized, for: .normal)
         self.lblhaveyou.text = "¿Has olvidado tu".localized

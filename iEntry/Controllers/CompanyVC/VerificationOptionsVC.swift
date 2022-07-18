@@ -66,8 +66,13 @@ class VerificationOptionsVC: UIViewController {
         
         segmentedControl.selectionIndicatorLocation = .bottom
         segmentedControl.selectionIndicatorHeight = 1.5
-        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name:"Montserrat-Bold", size: 13)!,NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentedControl.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name:"Montserrat-Bold", size: 14)!,NSAttributedString.Key.foregroundColor: UIColor.black]
         segmentedControl.selectionIndicatorColor = #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)
+        
+       
+
+        segmentedControl.selectedTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name:"Montserrat-Bold", size: 14)!,NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07949455827, green: 0.4369635582, blue: 0.3846057653, alpha: 1)]
+        
         segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(segmentedControl:)), for: .valueChanged)
         self.tabsView.addSubview(segmentedControl)
     }
@@ -177,5 +182,8 @@ extension VerificationOptionsVC {
 
   private func keyboardManagerVisible(_ state: Bool) {
     IQKeyboardManager.shared.enableAutoToolbar = state
+      IQKeyboardManager.shared.enable = state
+      IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+   
   }
 }

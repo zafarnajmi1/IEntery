@@ -39,7 +39,7 @@ class ContractInformationVC: UIViewController {
             self.statusView.backgroundColor = #colorLiteral(red: 0.3941653073, green: 0.6643448472, blue: 0.6202048659, alpha: 1)
             self.lblstatus.textColor = #colorLiteral(red: 0.3941653073, green: 0.6643448472, blue: 0.6202048659, alpha: 1)
             if myDefaultLanguage == .en {
-               self.lblstatus.text = self.contractListdata?.status?.name
+               self.lblstatus.text = "CONTRACT ACTIVE" //self.contractListdata?.status?.name
             } else {
                 self.lblstatus.text = "CONTRATO EMPLEADO ACTIVO"
             }
@@ -48,7 +48,7 @@ class ContractInformationVC: UIViewController {
             self.statusView.backgroundColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
             self.lblstatus.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
             if myDefaultLanguage == .en {
-                self.lblstatus.text = self.contractListdata?.status?.name
+                self.lblstatus.text = "CONTRACT FINISH"//self.contractListdata?.status?.name
             } else {
                 self.lblstatus.text = "CONTRATO FINALIZADO"
             }
@@ -56,7 +56,7 @@ class ContractInformationVC: UIViewController {
                 self.statusView.backgroundColor = #colorLiteral(red: 0.9991626143, green: 0.1742511094, blue: 0.3347000182, alpha: 1)
                 self.lblstatus.textColor = #colorLiteral(red: 0.9991626143, green: 0.1742511094, blue: 0.3347000182, alpha: 1)
                 if myDefaultLanguage == .en{
-                    self.lblstatus.text = self.contractListdata?.status?.name
+                    self.lblstatus.text = "CONTRACT CANCEL"//self.contractListdata?.status?.name
                 } else {
                     self.lblstatus.text = "CONTRATO CANCELADO"
                 }

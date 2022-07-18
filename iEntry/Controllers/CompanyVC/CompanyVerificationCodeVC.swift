@@ -33,6 +33,7 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
     @IBOutlet weak var CodeViewFive: UIView!
     @IBOutlet weak var CodeViewSix: UIView!
     //@IBOutlet weak var lbltimedetail: UILabel!
+    @IBOutlet weak var bottomView: UIView!
     var otpTex = ""
     var loginVM = LoginViewModel()
     var tokenData : SixDigitCodeModel?
@@ -42,8 +43,12 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lbltokentitle.text = "TOKEN DE ACCESO".localized
-        //self.lbltimedetail.text = "Valido por los siguientes 30 segundos.".localized
-       // btncode.setTitle("VOLVER A GENERAR".localized, for: .normal)
+        if ShareData.shareInfo.userRole == .provider || ShareData.shareInfo.userRole == .provideremployee {
+            self.bottomView.isHidden = false
+        } else {
+            self.bottomView.isHidden = true 
+        }
+        
         self.lblusername.text = ShareData.shareInfo.obj?.name
         self.lbltime.text = self.getCurrentTime()
         self.lbldate.text = self.getCurrentDate()
@@ -64,7 +69,7 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
         txtFour.textContentType = .oneTimeCode
         txtFive.textContentType = .oneTimeCode
         txtSix.textContentType = .oneTimeCode
-         txtOne.becomeFirstResponder()
+         //txtOne.becomeFirstResponder()
     
     }
     
@@ -92,6 +97,15 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
         timer?.invalidate()
         timer = nil
     }
+    
+    
+    
+    @IBAction func menuAction(_ sender: UIButton) {
+       let manager = ZSideMenuManager(isRTL: false)
+                    manager.openSideMenu(vc: self)
+
+    }
+    
     
     @objc
         func tapFunction(sender:UITapGestureRecognizer) {
@@ -156,7 +170,7 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
         txtFour.text = "\(arr[3])"
         txtFive.text = "\(arr[4])"
         txtSix.text = "\(arr[5])"
-        txtSix.becomeFirstResponder()
+        //txtSix.becomeFirstResponder()
     }
     
     //MARK:- textfield delegate 
@@ -164,24 +178,24 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
             // Range.length == 1 means,clicking backspace
         if (range.length == 0){
             if textField == txtOne {
-                txtTwo?.becomeFirstResponder()
+                //txtTwo?.becomeFirstResponder()
             }
             if textField == txtTwo {
-                txtThree?.becomeFirstResponder()
+                //txtThree?.becomeFirstResponder()
             }
             if textField == txtThree {
-                txtFour?.becomeFirstResponder()
+                //txtFour?.becomeFirstResponder()
             }
             if textField == txtFour {
-                txtFive?.becomeFirstResponder()
+                //txtFive?.becomeFirstResponder()
             }
             if textField == txtFive {
-                txtSix?.becomeFirstResponder()
+                //txtSix?.becomeFirstResponder()
             }
             
            
             if textField == txtSix {
-                txtSix?.resignFirstResponder()
+                //txtSix?.resignFirstResponder()
                  /*After the otpbox6 is filled we capture the All the OTP textField and do the server call. If you want to capture the otpbox6 use string.*/
                 self.otpTex = "\((txtOne?.text)!)\((txtTwo?.text)!)\((txtThree?.text)!)\((txtFour?.text)!)\((txtFive?.text)!)\(string)"
                 
@@ -191,22 +205,22 @@ class CompanyVerificationCodeVC: BaseController, UITextFieldDelegate,IndicatorIn
             return false
         }else if (range.length == 1) {
                 if textField == txtSix {
-                    txtFive?.becomeFirstResponder()
+                    //txtFive?.becomeFirstResponder()
                 }
                 if textField == txtFive {
-                    txtFour?.becomeFirstResponder()
+                    //txtFour?.becomeFirstResponder()
                 }
                 if textField == txtFour {
-                    txtThree?.becomeFirstResponder()
+                    //txtThree?.becomeFirstResponder()
                 }
                 if textField == txtThree {
-                    txtTwo?.becomeFirstResponder()
+                    //txtTwo?.becomeFirstResponder()
                 }
                 if textField == txtTwo {
-                    txtOne?.becomeFirstResponder()
+                    //txtOne?.becomeFirstResponder()
                 }
                 if textField == txtOne {
-                    txtOne?.resignFirstResponder()
+                    //txtOne?.resignFirstResponder()
                 }
                 textField.text? = ""
                 return false
