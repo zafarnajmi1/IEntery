@@ -15,6 +15,7 @@ class MenuVC: BaseController {
         var id:Int?
     }
     
+    
     @IBOutlet weak var lblemail: UILabel!
     @IBOutlet weak var lblname: UILabel!
     var MenuList = [MenuData]()
@@ -28,16 +29,45 @@ class MenuVC: BaseController {
         self.lblemail.text = ShareData.shareInfo.obj?.email
         
         menuConfig()
+        
+        
+        
+        if #available(iOS 13.0, *) {
+            let app = UIApplication.shared
+            let statusBarHeight: CGFloat = app.statusBarFrame.size.height
+            
+            let statusbarView = UIView()
+            statusbarView.backgroundColor = #colorLiteral(red: 0.5144373178, green: 0.7346428037, blue: 0.7027089, alpha: 1)
+            view.addSubview(statusbarView)
+          
+            statusbarView.translatesAutoresizingMaskIntoConstraints = false
+            statusbarView.heightAnchor
+                .constraint(equalToConstant: statusBarHeight).isActive = true
+            statusbarView.widthAnchor
+                .constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
+            statusbarView.topAnchor
+                .constraint(equalTo: view.topAnchor).isActive = true
+            statusbarView.centerXAnchor
+                .constraint(equalTo: view.centerXAnchor).isActive = true
+          
+        } else {
+            let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+            statusBar?.backgroundColor = #colorLiteral(red: 0.5144373178, green: 0.7346428037, blue: 0.7027089, alpha: 1)//UIColor.red
+        }
     }
+    
+    
+    
+    
     
     //MARK:-  this funtion use  to append the array
     func menuConfig()  {
         
         if ShareData.shareInfo.userRole == .contractor || ShareData.shareInfo.userRole == .contractoremplyee{
             
-            MenuList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")))
-            MenuList.append(MenuData(Titl: "CONTRATOS".localized, Img: UIImage(named: "ic-contract")))
-            MenuList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")))
+            MenuList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")?.withRenderingMode(.alwaysTemplate)))
+            MenuList.append(MenuData(Titl: "CONTRATOS".localized, Img: UIImage(named: "ic-contract")?.withRenderingMode(.alwaysTemplate)))
+            MenuList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")?.withRenderingMode(.alwaysTemplate)))
             
             
         }
@@ -51,34 +81,34 @@ class MenuVC: BaseController {
 //        }
         else  if ShareData.shareInfo.userRole == .provider || ShareData.shareInfo.userRole == .provideremployee {
             
-            MenuList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")))
-            MenuList.append(MenuData(Titl: "ORDENES DE COMPRA".localized, Img: UIImage(named: "ic-contract-1")))
-            MenuList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")))
+            MenuList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")?.withRenderingMode(.alwaysTemplate)))
+            MenuList.append(MenuData(Titl: "ORDENES DE COMPRA".localized, Img: UIImage(named: "ic-contract-1")?.withRenderingMode(.alwaysTemplate)))
+            MenuList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")?.withRenderingMode(.alwaysTemplate)))
             
         } else if ShareData.shareInfo.userRole == .employees {
             
             if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 21 })) != nil {
-                MenuList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")))
+                MenuList.append(MenuData(Titl: "NOTIFICACIONES".localized, Img: UIImage(named: "ic-bell")?.withRenderingMode(.alwaysTemplate)))
             }
             
             
             if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 1 })) != nil {
-                MenuList.append(MenuData(Titl: "COMPAÑIA".localized, Img: UIImage(named: "ic-building-outline")))
+                MenuList.append(MenuData(Titl: "COMPAÑIA".localized, Img: UIImage(named: "ic-building-outline")?.withRenderingMode(.alwaysTemplate)))
             }
             
             if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 31 })) != nil {
                   
-                   MenuList.append(MenuData(Titl: "EVENTOS".localized, Img: UIImage(named: "ic-event")))
+                   MenuList.append(MenuData(Titl: "EVENTOS".localized, Img: UIImage(named: "ic-event")?.withRenderingMode(.alwaysTemplate)))
             }
             
             
             if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 41 })) != nil {
-                MenuList.append(MenuData(Titl: "INVITACIONES".localized, Img: UIImage(named: "ic-invitation")))
+                MenuList.append(MenuData(Titl: "INVITACIONES".localized, Img: UIImage(named: "ic-invitation")?.withRenderingMode(.alwaysTemplate)))
             }
             
             
             if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 11 })) != nil {
-                MenuList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")))
+                MenuList.append(MenuData(Titl: "PERFIL".localized, Img: UIImage(named: "user-circle-solid-1")?.withRenderingMode(.alwaysTemplate)))
             }
             
             
@@ -111,12 +141,18 @@ extension MenuVC: UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as? menuCell
         cell?.lbltile.text = MenuList[indexPath.row].Titl
         cell?.img.image = MenuList[indexPath.row].Img
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.green
+        cell?.selectedBackgroundView = bgColorView
         return cell!
     }
     
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indx = indexPath.row
+//        let selectedCell = tableView.cellForRow(at: indexPath)!
+//        selectedCell.contentView.backgroundColor = UIColor.blue
         
         if ShareData.shareInfo.userRole == .contractor {
             

@@ -8,7 +8,7 @@
 import UIKit
 import XLPagerTabStrip
 class QRCodeVC: BaseController, IndicatorInfoProvider {
-
+    @IBOutlet weak var bottomView: UIView!
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "CÓDIGO QR".localized)
     }
@@ -33,8 +33,23 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if ShareData.shareInfo.userRole == .provider || ShareData.shareInfo.userRole == .provideremployee {
+            self.bottomView.isHidden = false
+        } else {
+            self.bottomView.isHidden = true
+        }
+        
+        //QR CODE SCAN
         self.lblmaptitle.text = "MAPA A LA COMPAÑIA".localized
-        self.btnscantitle.setTitle("ESCANEAR CÓDIGO QR".localized, for: .normal)
+        var buttontitle = ""
+        if ShareData.shareInfo.saveLanguage == "en"{
+            buttontitle = "QR CODE SCAN"
+        } else{
+            buttontitle = "ESCANEAR CÓDIGO QR"
+        }
+        self.btnscantitle.setTitle(buttontitle.localized, for: .normal)
         
         if ShareData.shareInfo.userRole == .employees {
             if (ShareData.shareInfo.conractWithCompany?.role?.roleTasks?.first(where: { $0.task?.id == 5 })) != nil {
@@ -118,7 +133,11 @@ class QRCodeVC: BaseController, IndicatorInfoProvider {
         return nil
     }
     
-    
+    @IBAction func menuAction(_ sender: UIButton) {
+       let manager = ZSideMenuManager(isRTL: false)
+                    manager.openSideMenu(vc: self)
+
+    }
     @IBAction func mapAction(_ sender: UIButton) {
         
         let storyBoard = UIStoryboard.init(name: "Home", bundle: nil)

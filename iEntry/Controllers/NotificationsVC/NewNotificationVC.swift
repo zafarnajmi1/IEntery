@@ -61,6 +61,7 @@ class NewNotificationVC: BaseController, UITextViewDelegate,SMDatePickerDelegate
         searchButtonView.roundCorners([.topRight,.bottomRight], radius: 25)
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         //sectimeInMili = Int(timeInMiliSec.timeIntervalSince1970 * 1000)
+        sectimeInMili = StartDayMiliSeconds(newdate: Date().startOfDay()!) ?? 0
         self.navigationBarHidShow(isTrue: true)
        
         setMDCTxtFieldDesign(txtfiled: txtqualificatioon, Placeholder: "TÍTULO".localized, imageIcon: UIImage())
@@ -162,6 +163,7 @@ class NewNotificationVC: BaseController, UITextViewDelegate,SMDatePickerDelegate
         self.fileName = myURL.lastPathComponent
         self.lblfilename.text = self.fileName
         print("import result : \(myURL)")
+        print("import result extenssion : \(myURL.pathExtension)")
         self.fileView.isHidden = false
         img.image = nil
         if img.image == nil {

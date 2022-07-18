@@ -38,6 +38,7 @@ class ProviderDetailVC: BaseController {
     
     @IBOutlet weak var lbldescriptiontitle: UILabel!
     @IBOutlet weak var lblemployeetitle: UILabel!
+    @IBOutlet weak var lblvehiclTitle: UILabel!
     
     @IBOutlet weak var lbldeliverycompanytitle: UILabel!
     @IBOutlet weak var lblrecieverDate: UILabel!
@@ -55,6 +56,7 @@ class ProviderDetailVC: BaseController {
         self.lblsupliretitle.text = "INFORMACIÓN DEL PROVEEDOR".localized
         self.lbldeliverydatetitle.text = "Fecha de entrega".localized
         self.lbluserdeliverytitle.text = "Recibido por".localized
+        self.lblvehiclTitle.text = "Vehículo".localized
         self.navigationBarHidShow(isTrue: true)
         if isfromcurrentorder == true  {
             recieverView.isHidden = true
@@ -86,19 +88,19 @@ class ProviderDetailVC: BaseController {
         if self.ordersdata?.status?.name ?? "" == "ORDER_IN_COMING" {
             self.lblstatus.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             self.statusView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            self.lblstatus.text = self.ordersdata?.status?.name ?? ""
+            self.lblstatus.text = "ORDER IN COMING"//self.ordersdata?.status?.name ?? ""
         } else if self.ordersdata?.status?.name ?? "" == "ORDER_ON_COURSE" {
             self.lblstatus.textColor = #colorLiteral(red: 0.002495895373, green: 0.3927112222, blue: 0.5756467581, alpha: 1)
             self.statusView.backgroundColor = #colorLiteral(red: 0.002665568143, green: 0.3928266764, blue: 0.5716279745, alpha: 1)
-            self.lblstatus.text = self.ordersdata?.status?.name ?? ""
+            self.lblstatus.text = "ORDER ON COURSE"//self.ordersdata?.status?.name ?? ""
         }else if self.ordersdata?.status?.name ?? "" == "ORDER_DELIVERED" {
             self.lblstatus.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
            self.statusView.backgroundColor = #colorLiteral(red: 0.9402042627, green: 0.6268541217, blue: 0, alpha: 1)
-            self.lblstatus.text = self.ordersdata?.status?.name ?? ""
+            self.lblstatus.text = "ORDER DELIVERED"//self.ordersdata?.status?.name ?? ""
         }else if self.ordersdata?.status?.name ?? "" == "ORDER_CANCELED" {
             self.lblstatus.textColor = #colorLiteral(red: 0.7379251719, green: 0.001223876374, blue: 0, alpha: 1)
             self.statusView.backgroundColor = #colorLiteral(red: 0.7379251719, green: 0.001223876374, blue: 0, alpha: 1)
-            self.lblstatus.text = self.ordersdata?.status?.name ?? ""
+            self.lblstatus.text = "ORDER CANCELED"//self.ordersdata?.status?.name ?? ""
         }
         
         

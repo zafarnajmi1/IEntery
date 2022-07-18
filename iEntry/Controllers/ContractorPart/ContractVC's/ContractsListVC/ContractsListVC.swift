@@ -146,7 +146,7 @@ extension ContractsListVC: UITableViewDelegate,UITableViewDataSource {
         cell?.statusView.backgroundColor = #colorLiteral(red: 0.3941653073, green: 0.6643448472, blue: 0.6202048659, alpha: 1)
         cell?.lblstatsu.textColor = #colorLiteral(red: 0.3941653073, green: 0.6643448472, blue: 0.6202048659, alpha: 1)
             if myDefaultLanguage == .en {
-                cell?.lblstatsu.text = self.contractListdata[indexPath.row].status?.name
+                cell?.lblstatsu.text = "CONTRACT ACTIVE" //self.contractListdata[indexPath.row].status?.name
             } else {
                 
                 cell?.lblstatsu.text = "CONTRATO ACTIVO"
@@ -159,7 +159,7 @@ extension ContractsListVC: UITableViewDelegate,UITableViewDataSource {
             cell?.statusView.backgroundColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
             cell?.lblstatsu.textColor = #colorLiteral(red: 0.9481226802, green: 0.630784452, blue: 0, alpha: 1)
             if myDefaultLanguage == .en {
-                cell?.lblstatsu.text = self.contractListdata[indexPath.row].status?.name
+                cell?.lblstatsu.text = "CONTRACT FINISH" //self.contractListdata[indexPath.row].status?.name
             } else {
                 cell?.lblstatsu.text =  "CONTRATO FINALIZADO"
             }
@@ -169,7 +169,7 @@ extension ContractsListVC: UITableViewDelegate,UITableViewDataSource {
                 cell?.statusView.backgroundColor = #colorLiteral(red: 0.9991626143, green: 0.1742511094, blue: 0.3347000182, alpha: 1)
                 cell?.lblstatsu.textColor = #colorLiteral(red: 0.9991626143, green: 0.1742511094, blue: 0.3347000182, alpha: 1)
                 if myDefaultLanguage == .en {
-                cell?.lblstatsu.text = self.contractListdata[indexPath.row].status?.name
+                cell?.lblstatsu.text = "CONTRACT CANCEL" //self.contractListdata[indexPath.row].status?.name
                 } else {
                     cell?.lblstatsu.text = "CONTRATO CANCELADO"
                 }

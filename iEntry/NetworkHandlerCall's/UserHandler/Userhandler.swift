@@ -1484,7 +1484,7 @@ class userhandler {
     class func uploadUserFile(param:[String:Any],fileurl:URL,Success: @escaping (UploadFileImageModel?) -> Void, Failure: @escaping(NetworkError) -> Void){
      let url = Constant.MainUrl + Constant.URLs.uploadimage
         print("url company", url)
-        Networkhandler.Uploadfile(url: url, fileUrl: fileurl, mimeType: "any", filename: "file", fileWithName: "image", parameters: param, Progress: {progress in
+        Networkhandler.Uploadfile(url: url, fileUrl: fileurl, mimeType: "any", filename: "file", fileWithName: "file", parameters: param, Progress: {progress in
             
         }, Success: {(successResponse)  in
 
